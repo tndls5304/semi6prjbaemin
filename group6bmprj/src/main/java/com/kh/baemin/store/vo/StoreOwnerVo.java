@@ -91,7 +91,12 @@ public class StoreOwnerVo {
 				+ ", phone=" + phone + ", delYn=" + delYn + ", companyResitrationNumber=" + companyResitrationNumber
 				+ ", profile=" + profile + "]";
 	}
+	
 
+	
+	
+	
+	
 	
 	
 	

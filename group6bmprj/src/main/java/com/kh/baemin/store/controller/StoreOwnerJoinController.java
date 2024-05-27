@@ -94,7 +94,7 @@ public class StoreOwnerJoinController extends HttpServlet{
 		}
 		
 	     // 현재 페이지로 포워드
-        req.getRequestDispatcher("WEB-INF/views/storeOwner/storeOwnerjoin.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/views/store/owner_join.jsp").forward(req, resp);
 		
 	}catch(Exception e) {
 		e.printStackTrace();
