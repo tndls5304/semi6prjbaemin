@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+  
+<mapper namespace="storeMapper">
+
+<insert id="joinStoreOwner">
+INSERT INTO MEMBER_STORE_OWNER(
+NO
+,ID
+,PWD
+,NAME
+,PHONE
+,COMPANY_RESITRATION_NUMBER
+,PROFILE
+) 
+VALUES(
+SEQ_MEMBER_STORE_OWNER_NO.NEXTVAL
+,#{vo.id}
+,#{vo.pwd}
+,#{vo.name}
+,#{vo.phone}
+,#{vo.companyResitrationNumber}
+,%{vo.profile}
+)
+</insert>
+
+
+
+  
+  <insert id="insertStoreMenuCategory">
+  INSERT INTO FOOD_MENU_CATEGORY
+  (
+		  NO
+		  ,NAME
+		  ,VIEW_YN
+		  ,DEL_YN
+		  ,STORE_NO
+  ) 
+  VALUES
+  (
+		  SEQ_FOOD_MENU_CATEGORY_NO.NEXTVAL
+		  ,#{name}
+		  ,#{viewYn}
+		  ,'N'
+		  ,#{storeNo})
+  </insert>
+  
+  <select id="getCategoryList"  resultType="com.kh.baemin.store.vo.CategoryVo">
+  
+   	SELECT NO,NAME,VIEW_YN,STORE_NO
+	FROM FOOD_MENU_CATEGORY
+    WHERE DEL_YN='N' AND STORE_NO=#{value}
+	ORDER BY NO ASC
+  
+  </select>
+  
+  <update id="categoryEdit">
+  
+  	UPDATE FOOD_MENU_CATEGORY 
+	SET NAME=#{name},
+	VIEW_YN=#{viewYn}
+	WHERE NO=#{no} AND STORE_NO=#{storeNo}
+  </update>
+  
+  
+  <update id="categoryDelete">
+    UPDATE FOOD_MENU_CATEGORY
+    SET DEL_YN = 'Y'
+    WHERE NO =#{no} AND STORE_NO=#{storeNo}
+  </update>
+  
+  
+  
+  
+</mapper>

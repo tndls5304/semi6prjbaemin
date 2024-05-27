@@ -12,8 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="/app/resources/css/store/menu_edit.css">
-  <script defer src="/app/resources/js/store/menu_edit.js"></script>
+   <link rel="stylesheet" href="/baemin/resources/css/store/menu_edit.css">
+  <script defer src="/baemin/resources/js/store/menu_edit.js"></script>
  
 </head>
 <body>
