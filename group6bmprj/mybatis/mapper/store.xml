@@ -19,12 +19,12 @@ NO
 ) 
 VALUES(
 SEQ_MEMBER_STORE_OWNER_NO.NEXTVAL
-,#{vo.id}
-,#{vo.pwd}
-,#{vo.name}
-,#{vo.phone}
-,#{vo.companyResitrationNumber}
-,%{vo.profile}
+,#{id}
+,#{pwd}
+,#{name}
+,#{phone}
+,#{companyResitrationNumber}
+,#{profile}
 )
 </insert>   
 
