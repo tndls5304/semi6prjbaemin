@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  
+    
   
 <mapper namespace="storeMapper">
 
@@ -26,7 +26,7 @@ SEQ_MEMBER_STORE_OWNER_NO.NEXTVAL
 ,#{vo.companyResitrationNumber}
 ,%{vo.profile}
 )
-</insert>
+</insert>   
 
 
 
