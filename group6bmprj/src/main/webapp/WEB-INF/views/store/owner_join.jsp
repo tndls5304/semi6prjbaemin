@@ -13,8 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
  
-   <link rel="stylesheet" href="/app/resources/css/store/owner_join.css">
-   <script src="/app/resources/js/store/owner_join.js"></script>
+   <link rel="stylesheet" href="/baemin/resources/css/store/owner_join.css">
+   <script src="/baemin/resources/js/store/owner_join.js"></script>
 </head>
 <body>
     <aside>
@@ -41,7 +41,7 @@
     </c:if>
     
         <div class="mainjoin"><h1>사장 회원가입 📃</h1></div>
-        <form id="signupForm" action="/app/store/store_owner_join" method="post" enctype="multipart/form-data">
+        <form id="signupForm" action="/baemin/store/store_owner_join" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="id"><h3>아이디</h3> </label>
                 <input type="text" id="id"  name="id" class="id-input" placeholder="아이디 입력">
