@@ -5,6 +5,7 @@
 *.classpath
 *.project
 setup/
-*/Servers
-*/Servers/*
+/Servers
+**/Servers/**
 */server.xml
+**/server.xml
