@@ -33,7 +33,7 @@ public class StoreOwnerService {
 			throw new Exception("비밀번호가 너무 길어요 10글자이하로 써주세요");
 		}
 		//		비번 일치 검사
-		if(vo.getPwd()!=vo.getPwdCheck()) {
+		if(vo.getPwd().equals(vo.getPwdCheck())) {
 			throw new Exception("비밀번호와 비밀번호 확인 데이터가 일치하지 않습니다");	
 		}
 		
@@ -53,7 +53,7 @@ public class StoreOwnerService {
 			throw new Exception("사업자 등록증은 숫자로만 11글자 써주세요 ");
 		}
 //		프로필 사진검사
-		if(vo.getProfile()!=null) {
+		if(vo.getProfile()==null) {
 			throw new Exception("가게의 특성이 돋보이는 프로필 사진을 업로드 해주세요");
 		}
 		
