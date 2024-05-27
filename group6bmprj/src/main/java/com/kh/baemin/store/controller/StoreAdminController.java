@@ -1,4 +1,4 @@
-package com.kh.app.Store.controller;
+package com.kh.baemin.store.controller;
 
 public class StoreAdminController {
 
