@@ -9,3 +9,4 @@ setup/
 */server.xml
 **/server.xml
 Servers/
+build/
