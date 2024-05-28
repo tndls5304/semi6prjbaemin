@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.kh.baemin.member.service.MemberService;
+import com.kh.baemin.member.vo.MemberVo;
 
 @WebServlet("/member/login")
 public class MemberLoginController extends HttpServlet {

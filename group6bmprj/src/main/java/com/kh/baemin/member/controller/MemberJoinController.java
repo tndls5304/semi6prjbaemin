@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import com.kh.baemin.member.service.MemberService;
+import com.kh.baemin.member.vo.MemberVo;
 
 @WebServlet("/member/join")
 @MultipartConfig(
