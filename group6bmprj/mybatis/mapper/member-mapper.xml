@@ -1,1 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemberMapper">
+
+    <insert id="join">
+        INSERT INTO MEMBER_USER
+        (
+            NO,
+            ID,
+            PWD,
+            NICK,
+            PROFILE,
+            NAME,
+            PHONE,
+            ADDRESS,
+            ADDRESS_DETAIL,  
+            GENERATION,
+            GENDER,
+            ACCOUNT_BALANCE
+        ) 
+        VALUES
+        (
+            SEQ_MEMBER_USER_NO.NEXTVAL,
+            #{id},
+            #{pwd},
+            #{nick},
+            #{profile},
+            #{name},
+            #{phone},
+            #{address},
+            #{addressdDetail},  
+            #{generation},
+            #{gender},
+            0
+        )
+    </insert>
+
+    <!-- 로그인 -->
+    <select id="login" resultType="com.kh.app.baemin.member.vo.MemberVo">
+        SELECT id, pwd
+        FROM MEMBER_USER
+        WHERE id = #{id} AND pwd = #{pwd}
+    </select>
+
+    <!-- 중복된 아이디 개수를 반환하는 쿼리 -->
+    <select id="idCheck" resultType="int">
+        SELECT COUNT(*) FROM MEMBER_USER WHERE id = #{id}
+    </select>
+
+</mapper>
