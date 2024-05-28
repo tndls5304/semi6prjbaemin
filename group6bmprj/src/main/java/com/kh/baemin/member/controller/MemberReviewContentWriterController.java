@@ -31,7 +31,7 @@ public class MemberReviewContentWriterController extends HttpServlet {
         String rating = req.getParameter("rating");
         String userContent = req.getParameter("opinion");
         String foodName = req.getParameter("foodName");
-        String deleveryProblem = req.getParameter("deleveryProblem");  // deleveryProblem 값 추가
+        String deliveryProblem = req.getParameter("deliveryProblem");  // deliveryProblem 값 추가
 
         // 리뷰 이미지 파일 처리
         Part filePart = req.getPart("review_image");
@@ -45,7 +45,7 @@ public class MemberReviewContentWriterController extends HttpServlet {
         vo.setUserContent(userContent);
         vo.setReviewImg(fileName);  // 저장된 파일 이름 설정
         vo.setFoodName(foodName);
-        vo.setDeleveryProblem(deleveryProblem);  // deleveryProblem 설정
+        vo.setDeleveryProblem(deliveryProblem);  // deliveryProblem 설정
         
         MemberService ms = new MemberService();
         int result = 0;
@@ -57,7 +57,7 @@ public class MemberReviewContentWriterController extends HttpServlet {
 
         if (result == 1) {
             req.setAttribute("message", "리뷰가 성공적으로 저장되었습니다.");
-            req.setAttribute("deleveryProblem", deleveryProblem);  // deleveryProblem 값 전달
+            req.setAttribute("deliveryProblem", deliveryProblem);  // deliveryProblem 값 전달
             req.setAttribute("reviewContent", userContent);         // 리뷰 내용 전달
             req.setAttribute("reviewImg", fileName);                // 리뷰 이미지 전달
             req.setAttribute("foodName", foodName);                 // 음식 이름 전달

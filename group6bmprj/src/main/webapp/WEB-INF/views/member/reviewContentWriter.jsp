@@ -21,7 +21,7 @@
         <div class="starlating">별점</div>
 
         <form action="/member/reviewContentWriter" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="deleveryProblem" value="<%= request.getAttribute("deleveryProblem") %>">
+            <input type="hidden" name="deliveryProblem" value="<%= request.getAttribute("deliveryProblem") != null ? request.getAttribute("deliveryProblem") : "" %>">
             <label for="opinion"><h2>리뷰내용을 입력해주세요:</h2></label>
             <div class="area">
                 <textarea name="opinion" id="opinion" cols="70" rows="7" oninput="updateCharCount(this)"></textarea>
