@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.kh.baemin.store.dao.StoreAdmitDao;
 import com.kh.baemin.store.vo.StoreInforVo;
 
 public class StoreAdmitService {
@@ -16,30 +17,23 @@ public class StoreAdmitService {
 		dao = new StoreAdmitDao();
 	}
 	
-	//게시글 목록 조회
-		public List<StoreInforVo> selectStoreInForList() throws Exception {
+		//허가 상태 조회
+//		public List<StoreInforVo> selectStoreInForList() throws Exception {
 			// 비즈니스 로직
 			
 			// DAO 호출
-			SqlSession ss = getSqlSession();
-			List<StoreInforVo> voList = dao.selectBoardList(ss , siv);
-			
-			ss.close();
-			
-			return voList;
-		}
+//			SqlSession ss = getSqlSession();
+//			List<StoreInforVo> voList = dao.selectBoardList(ss , siv);
+//			
+//			ss.close();
+//			
+//			return voList;
+//		}
 		
 		//허가 신청후 수정
 		public int insert(StoreInforVo vo, List<StoreInforVoList> storeInforVoList) throws Exception {
 			
 			// 비즈니스 로직
-			if(vo.getTitle().contains("18")) {
-				throw new Exception("욕하지마세요-제목");
-			}
-			
-			if(vo.getContent().contains("18")) {
-				throw new Exception("욕하지마세요-내용");
-			}
 			
 			// DAO 호출
 			SqlSession ss = getSqlSession();

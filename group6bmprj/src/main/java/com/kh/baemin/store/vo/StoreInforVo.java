@@ -6,7 +6,7 @@ public class StoreInforVo {
 	private String name;
 	private String address;
 	private String addressDetail;
-	private String businessRegistrationVertificateImg;
+	private String businessRegistrationCertificateImg;
 	private String introductionImg;
 	private String introduce;
 	private String mainImg;
@@ -44,11 +44,11 @@ public class StoreInforVo {
 	public void setAddressDetail(String addressDetail) {
 		this.addressDetail = addressDetail;
 	}
-	public String getBusinessRegistrationVertificateImg() {
-		return businessRegistrationVertificateImg;
+	public String getBusinessRegistrationCertificateImg() {
+		return businessRegistrationCertificateImg;
 	}
-	public void setBusinessRegistrationVertificateImg(String businessRegistrationVertificateImg) {
-		this.businessRegistrationVertificateImg = businessRegistrationVertificateImg;
+	public void setBusinessRegistrationCertificateImg(String businessRegistrationCertificateImg) {
+		this.businessRegistrationCertificateImg = businessRegistrationCertificateImg;
 	}
 	public String getIntroductionImg() {
 		return introductionImg;
@@ -131,7 +131,7 @@ public class StoreInforVo {
 	@Override
 	public String toString() {
 		return "StoreInforVo [no=" + no + ", name=" + name + ", address=" + address + ", addressDetail=" + addressDetail
-				+ ", businessRegistrationVertificateImg=" + businessRegistrationVertificateImg + ", introductionImg="
+				+ ", businessRegistrationCertificateImg=" + businessRegistrationCertificateImg + ", introductionImg="
 				+ introductionImg + ", introduce=" + introduce + ", mainImg=" + mainImg + ", phone=" + phone
 				+ ", minimumOrderAmount=" + minimumOrderAmount + ", viewedCnt=" + viewedCnt + ", openTime=" + openTime
 				+ ", endTime=" + endTime + ", breakTimeStart=" + breakTimeStart + ", breakTimeEnd=" + breakTimeEnd
@@ -139,7 +139,7 @@ public class StoreInforVo {
 				+ approvalStatusNo + "]";
 	}
 	public StoreInforVo(String no, String name, String address, String addressDetail,
-			String businessRegistrationVertificateImg, String introductionImg, String introduce, String mainImg,
+			String businessRegistrationCertificateImg, String introductionImg, String introduce, String mainImg,
 			String phone, String minimumOrderAmount, String viewedCnt, String openTime, String endTime,
 			String breakTimeStart, String breakTimeEnd, String storeOwnerNo, String storeCategoryNo,
 			String approvalStatusNo) {
@@ -148,7 +148,7 @@ public class StoreInforVo {
 		this.name = name;
 		this.address = address;
 		this.addressDetail = addressDetail;
-		this.businessRegistrationVertificateImg = businessRegistrationVertificateImg;
+		this.businessRegistrationCertificateImg = businessRegistrationCertificateImg;
 		this.introductionImg = introductionImg;
 		this.introduce = introduce;
 		this.mainImg = mainImg;
@@ -167,6 +167,7 @@ public class StoreInforVo {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 	
 	
