@@ -129,7 +129,22 @@ public boolean checkIdDup(String id) throws Exception {
 }
 
 
-public int reviewStatus(ReviewWriterVo vo) {
+public int reviewStatus(ReviewWriterVo vo) throws Exception {
+//	- DAO호출
+	SqlSession ss = getSqlSession();
+	int result = dao.reviewStatus(ss, vo);
+	
+	if(result == 1) {
+		ss.commit();
+		
+	}else {
+		ss.rollback();
+	}
+	
+	
+	return result;
+}
+public int reviewContent(ReviewWriterVo vo) throws Exception {
 //	- DAO호출
 	SqlSession ss = getSqlSession();
 	int result = dao.reviewStatus(ss, vo);
@@ -145,7 +160,6 @@ public int reviewStatus(ReviewWriterVo vo) {
 	return result;
 }
 }
-
 
 
 

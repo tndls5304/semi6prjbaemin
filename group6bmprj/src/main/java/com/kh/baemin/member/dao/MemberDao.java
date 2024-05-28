@@ -36,6 +36,9 @@ public class MemberDao {
 		return ss.insert("memberMapper.reviewStatus" , vo);
 	}
 
+	public int reviewContent(SqlSession ss, ReviewWriterVo vo) {
+		return ss.insert("memberMapper.reviewContent" , vo);
+	}
 
 
 
