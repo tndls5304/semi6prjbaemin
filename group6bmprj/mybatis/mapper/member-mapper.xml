@@ -38,7 +38,7 @@
     </insert>
 
     <!-- 로그인 -->
-    <select id="login" resultType="com.kh.app.baemin.member.vo.MemberVo">
+    <select id="login" resultType="com.kh.baemin.member.vo.MemberVo">
         SELECT id, pwd
         FROM MEMBER_USER
         WHERE id = #{id} AND pwd = #{pwd}
