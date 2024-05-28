@@ -28,9 +28,13 @@ SEQ_MEMBER_STORE_OWNER_NO.NEXTVAL
 )
 </insert>   
 
+<select id="joinStoreOwnerCheckIdDup" resultType="int">
 
+SELECT COUNT(*)
+ AS CNT FROM MEMBER_STORE_OWNER 
+ WHERE ID =#{id}
+</select>
 
-  
   <insert id="insertStoreMenuCategory">
   INSERT INTO FOOD_MENU_CATEGORY
   (

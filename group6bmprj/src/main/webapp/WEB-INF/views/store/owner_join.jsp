@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +14,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
  
    <link rel="stylesheet" href="/baemin/resources/css/store/owner_join.css">
-   <script src="/baemin/resources/js/store/owner_join.js"></script>
+   <script defer src="/baemin/resources/js/store/owner_join.js"> </script>
+   
+   <script>
+   <c:if test="${not empty resultMsg}">
+	 alert('${resultMsg}');
+</c:if>
+   </script>
 </head>
+   <c:remove var="alertMsg" scope="session" />
 <body>
     <aside>
         <nav>
@@ -36,16 +43,14 @@
  
     <main>
     
-    <c:if test="${not empty resultMsg }">
-  	 alert('${resultMsg}');
-    </c:if>
+   
     
         <div class="mainjoin"><h1>사장 회원가입 📃</h1></div>
         <form id="signupForm" action="/baemin/store/store_owner_join" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="id"><h3>아이디</h3> </label>
                 <input type="text" id="id"  name="id" class="id-input" placeholder="아이디 입력">
-                <button class="id-button">중복검사</button>
+                <button type="button"class="id-button" onclick="checkDup();">중복검사</button>
                 <div class="error-message" id="id-error"></div>
             </div>
             <div class="form-group">

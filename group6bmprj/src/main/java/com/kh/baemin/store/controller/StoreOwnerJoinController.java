@@ -81,7 +81,7 @@ public class StoreOwnerJoinController extends HttpServlet{
 		vo.setPhone(phone);
 		vo.setCompanyResitrationNumber(companyResitrationNumber);
 		vo.setProfile(changeName);
-		
+		System.out.println(changeName);
 		//서비스 호출
 		StoreOwnerService ss= new StoreOwnerService();
 		int result=ss.join(vo);
@@ -94,7 +94,7 @@ public class StoreOwnerJoinController extends HttpServlet{
 		}
 		
 	     // 현재 페이지로 포워드
-        req.getRequestDispatcher("WEB-INF/views/store/owner_join.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/views/store/owner_join.jsp").forward(req, resp);
 		
 	}catch(Exception e) {
 		e.printStackTrace();

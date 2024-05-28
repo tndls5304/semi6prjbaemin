@@ -14,6 +14,7 @@ public class StoreOwnerVo {
 	private String delYn;
 	private String companyResitrationNumber;
 	private String profile;
+	
 	public StoreOwnerVo() {
 		super();
 		// TODO Auto-generated constructor stub
