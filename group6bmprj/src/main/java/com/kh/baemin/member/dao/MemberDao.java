@@ -3,6 +3,7 @@ package com.kh.baemin.member.dao;
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.baemin.member.vo.MemberVo;
+import com.kh.baemin.member.vo.ReviewWriterVo;
 
 public class MemberDao {
 
@@ -25,6 +26,14 @@ public class MemberDao {
 	public boolean checkIdDup(SqlSession sqlSession, String id) {
 	    Integer count = sqlSession.selectOne("MemberMapper.idCheck", id);
 	    return count != null && count > 0;
+	}
+
+
+
+
+
+	public int reviewStatus(SqlSession ss, ReviewWriterVo vo) {
+		return ss.insert("memberMapper.reviewStatus" , vo);
 	}
 
 

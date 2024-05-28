@@ -1,0 +1,100 @@
+body {
+    background-color: rgb(236, 206, 227);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.content {
+    width: 515px;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    gap: 20px; /* 옵션 간격 조정 */
+}
+
+.emoji-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 0px;
+}
+
+.emoji-button {
+    background: none;
+    border: 10px solid transparent; /* 테두리 설정 */
+    padding: 4;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.3s ease, border-color 0.3s ease; /* 변형 및 테두리 색상에 트랜지션 효과 추가 */
+}
+
+.emoji-button h2 {
+    margin: 0;
+}
+
+.emoji-button:hover {
+    transform: scale(1.1); /* 마우스 호버 시 확대 효과 */
+}
+
+.emoji-button.active {
+    border-color: rgb(250, 128, 148); /* 클릭 시 테두리 색상 변경 */
+}
+
+.emoji-button:active {
+    transform: scale(0.9); /* 클릭 시 축소 효과 */
+}
+
+.question {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 두 칼럼으로 나눔 */
+    gap: 10px;
+}
+
+.option {
+    background-color: #f2a8a8;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.comment-input {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 100%; /* 입력 필드 너비 조정 */
+}
+
+.next-button {
+    background-color: #00BFFF;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%; /* 버튼 너비 조정 */
+}
+
+.review {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.custom-link {
+    color: black; /* 링크의 색상을 진한 회색으로 설정 */
+    text-decoration: none; /* 밑줄 제거 */
+}

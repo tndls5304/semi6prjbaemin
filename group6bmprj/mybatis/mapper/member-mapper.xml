@@ -49,4 +49,16 @@
         SELECT COUNT(*) FROM MEMBER_USER WHERE id = #{id}
     </select>
 
+    <insert id="reviewStatus">
+        INSERT INTO DELEVERY_PROBLEM (
+            NO,
+            DELEVERY_PROBLEM
+        )
+        VALUES (
+            SEQ_DELEVERY_PROBLEM_NO.NEXTVAL,
+            #{deliveryProblem}
+        );
+    </insert>
+
+
 </mapper>

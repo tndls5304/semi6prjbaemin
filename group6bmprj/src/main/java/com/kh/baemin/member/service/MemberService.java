@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.kh.baemin.member.dao.MemberDao;
 import com.kh.baemin.member.vo.MemberVo;
+import com.kh.baemin.member.vo.ReviewWriterVo;
 public class MemberService {
 private MemberDao dao;
 	
@@ -128,7 +129,23 @@ public boolean checkIdDup(String id) throws Exception {
 }
 
 
+public int reviewStatus(ReviewWriterVo vo) {
+//	- DAO호출
+	SqlSession ss = getSqlSession();
+	int result = dao.reviewStatus(ss, vo);
+	
+	if(result == 1) {
+		ss.commit();
+		
+	}else {
+		ss.rollback();
+	}
+	
+	
+	return result;
+}
 }
 
 
-}
+
+

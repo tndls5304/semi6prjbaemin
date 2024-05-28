@@ -9,14 +9,14 @@
     
     <title>유저 회원가입</title>
     
-    <%@ include file="/WEB-INF/views/layout/util.jsp" %>
+<%--     <%@ include file="/WEB-INF/views/layout/util.jsp" %> --%>
            <!-- js -->
         
            
-           <script defer src="/baemin/resources/js/memberjoin.js"></script>
+           <script defer src="/baemin/resources/js/member/join.js"></script>
            <!-- css -->
        
-            <link rel="stylesheet" href="/baemin/resources/css/memberjoin.css">
+            <link rel="stylesheet" href="/baemin/resources/css/member/join.css">
     <!-- 글씨체 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,7 +49,7 @@
 
                 <div class="mainjoin"><h1>유저 회원가입 📃</h1></div>
                 <!-- 아디 그룹 -->
-                <form id="signupForm" action="/app/member/join" method="post" enctype="multipart/form-data">
+                <form id="signupForm" action="/baemin/member/join" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <!-- 아디 -->
                         <label for="id">아이디 </label>
