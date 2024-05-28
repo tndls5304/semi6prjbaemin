@@ -1,0 +1,183 @@
+body {
+    background-color: rgb(236, 206, 227);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.content {
+    width: 515px;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    gap: 20px; /* 옵션 간격 조정 */
+}
+
+.custom-link { 
+    color: black; /* 링크의 색상을 진한 회색으로 설정 */
+    text-decoration: none; /* 밑줄 제거 */ 
+}
+
+
+
+/* 고정 상단바 입니다 */
+header {
+    position: fixed;
+    width: 515px;
+    height: 90px;
+    border: solid 1px;
+    display: grid;
+    grid-template-rows: 1.5fr 1fr;
+}
+
+/* 제일 위 고정 상단이 header이고 윗 상단바의 첫번째 디브 */
+header > div:nth-child(1) {
+    background-color: white;
+    display: grid;
+    grid-template-columns: 0.5fr 7fr 1fr;
+    padding-bottom: 0px;
+}
+
+/* 윗 상단바의 두번째 디브 */
+header > div:nth-child(2) {
+    font-size: 15px;
+    font-weight: 100;
+    margin-top: 0px;
+    padding-left: 30px;
+    margin-bottom: 5px;
+    padding-bottom: 0px;
+    background-color: rgb(249, 220, 220);
+}
+
+/* 맨 밑의 검색, 장바구니, 찜, 주문내역, my배민 클릭할 수 있는 하단바 입니다 */
+footer {
+    position: fixed;
+    margin-bottom: 5px;
+    width: 513px;
+    height: 45px;
+    border: solid 1px;
+    bottom: 1px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+/* 홈이미지 버튼이에요 */
+.right-bar, .back-img {
+    margin-top: 10px;
+    margin-left: 5px;
+    width: 35px;
+    height: 35px;
+}
+
+/* 상단바에서 뒤로가기버튼 */
+.left-bar :nth-child(1) {
+    width: 20px;
+    height: 30px;
+}
+
+/* 뒤로가기버튼 옆에 이 페이지의 제목을 담당 */
+.top-bar-name {
+    margin-top: 14px;
+    margin-left: 0px;
+    width: 60px;
+    height: 30px;
+}
+
+.main {
+    width: 515px;
+    height: 850px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    gap: 20px; /* 옵션 간격 조정 */
+}
+
+footer div {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+footer img {
+    width: 33px;
+    height: 27px;
+    margin-left: 32px;
+}
+
+footer span {
+    font-size: 12px;
+    margin-left: 28px;
+}
+
+.next-button {
+    background-color: #ff7f7f;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%; /* 버튼 너비 조정 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-bar-name {
+    width: 300px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tiltename,
+.starlating,
+.area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 텍스트 영역에 적용될 스타일 */
+.area textarea {
+    width: calc(100% - 20px); /* 텍스트 영역의 너비는 content의 너비에서 padding값만큼 제외한 값 */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    resize: none;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease; /* 포커스시 테두리 색상 변경 애니메이션 */
+}
+
+.area textarea:focus {
+    border-color: #00BFFF;
+}
+
+.area label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 미리보기 이미지 스타일 */
+#reviewPreviewImage {
+    max-width: 100px;
+    max-height: 100px;
+    margin-top: 10px;
+}
+
+.custom-link {
+    color: black; /* 링크의 색상을 진한 회색으로 설정 */
+    text-decoration: none; /* 밑줄 제거 */
+}

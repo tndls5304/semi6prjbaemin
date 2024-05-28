@@ -57,8 +57,25 @@
         VALUES (
             SEQ_DELEVERY_PROBLEM_NO.NEXTVAL,
             #{deliveryProblem}
-        );
+        )
     </insert>
+    
+     <insert id="reviewContent">
+        SELECT 
+	R.RATING,
+	R.USER_CONTENT,
+	R.IMG,
+	S.NAME AS STORENAME,
+	F.NAME AS FOODNAME
+	FROM REVIEW_COMMUNICATION R
+	JOIN STORE_INFOR S 
+	ON R.NO = S.NO 
+	JOIN FOOD_INFOR F 
+	ON F.NO = R.NO
+	WHERE R.DEL_YN = 'N'
+
+    </insert>
+    
 
 
 </mapper>
