@@ -1,5 +1,7 @@
 package com.kh.baemin.member.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.baemin.member.vo.MemberVo;
@@ -38,6 +40,26 @@ public class MemberDao {
 
 	public int reviewContent(SqlSession ss, ReviewWriterVo vo) {
 		return ss.insert("memberMapper.reviewContent" , vo);
+	}
+
+
+
+
+
+	 public List<ReviewWriterVo> selectReviewList(SqlSession ss) {
+	        return ss.selectList("memberMapper.selectReviewList");
+	 }
+
+	        public int insertReview(SqlSession ss, ReviewWriterVo vo) {
+	            return ss.insert("memberMapper.insertReview", vo);
+	        
+
+	       
+	    }
+
+
+
+	
 	}
 
 

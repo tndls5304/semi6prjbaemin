@@ -29,28 +29,28 @@ public class MemberReviewContentWriterController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String storeName = req.getParameter("storeName");
         String rating = req.getParameter("rating");
-        String userContent = req.getParameter("opinion");
+        String MemberContent = req.getParameter("MemberContent");
         String foodName = req.getParameter("foodName");
         String deliveryProblem = req.getParameter("deliveryProblem");  // deliveryProblem 값 추가
 
         // 리뷰 이미지 파일 처리
         Part filePart = req.getPart("review_image");
-        String fileName = getFileName(filePart);
+        String reviewImg = getFileName(filePart);
         String fileSavePath = getServletContext().getRealPath("/upload") + File.separator + fileName;
         filePart.write(fileSavePath);
 
         ReviewWriterVo vo = new ReviewWriterVo();
         vo.setStoreName(storeName);
         vo.setRating(rating);
-        vo.setUserContent(userContent);
-        vo.setReviewImg(fileName);  // 저장된 파일 이름 설정
+        vo.setMemberContent(MemberContent);
+        vo.setReviewImg(reviewImg);  // 저장된 파일 이름 설정
         vo.setFoodName(foodName);
-        vo.setDeleveryProblem(deliveryProblem);  // deliveryProblem 설정
+        vo.setDeliveryProblem(deliveryProblem);  // deliveryProblem 설정
         
         MemberService ms = new MemberService();
         int result = 0;
         try {
-            result = ms.reviewContent(vo);
+            result = ms.review/(vo);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -58,8 +58,8 @@ public class MemberReviewContentWriterController extends HttpServlet {
         if (result == 1) {
             req.setAttribute("message", "리뷰가 성공적으로 저장되었습니다.");
             req.setAttribute("deliveryProblem", deliveryProblem);  // deliveryProblem 값 전달
-            req.setAttribute("reviewContent", userContent);         // 리뷰 내용 전달
-            req.setAttribute("reviewImg", fileName);                // 리뷰 이미지 전달
+            req.setAttribute("MemberContent", MemberContent);         // 리뷰 내용 전달
+            req.setAttribute("reviewImg", reviewImg);                // 리뷰 이미지 전달
             req.setAttribute("foodName", foodName);                 // 음식 이름 전달
             req.getRequestDispatcher("/WEB-INF/views/member/review2.jsp").forward(req, resp);
         } else {
