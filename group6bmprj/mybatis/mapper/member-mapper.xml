@@ -60,22 +60,35 @@
         )
     </insert>
     
-     <insert id="reviewContent">
-        SELECT 
-	R.RATING,
-	R.USER_CONTENT,
-	R.IMG,
-	S.NAME AS STORENAME,
-	F.NAME AS FOODNAME
-	FROM REVIEW_COMMUNICATION R
-	JOIN STORE_INFOR S 
-	ON R.NO = S.NO 
-	JOIN FOOD_INFOR F 
-	ON F.NO = R.NO
-	WHERE R.DEL_YN = 'N'
-
+  <insert id="insertReview">
+        INSERT INTO reviews (member_nickname, member_img, rating, member_content, review_img, food_name, delivery_problem, ceo_img, ceo_content)
+        VALUES (#{memberNickName}, #{memberImg}, #{rating}, #{memberContent}, #{reviewImg}, #{foodName}, #{deliveryProblem}, #{ceoImg}, #{ceoContent})
     </insert>
+
+    <select id="selectReviewList" resultType="com.kh.baemin.member.vo.ReviewWriterVo">
+        SELECT 
+            R.RATING,
+            R.USER_CONTENT AS memberContent,
+            R.IMG AS reviewImg,
+            S.NAME AS storeName,
+            F.NAME AS foodName
+        FROM 
+            REVIEW_COMMUNICATION R
+        JOIN 
+            STORE_INFOR S ON R.NO = S.NO 
+        JOIN 
+            FOOD_INFOR F ON F.NO = R.NO
+        WHERE 
+            R.DEL_YN = 'N'
+    </select>
     
+    <select id="selectReviewList" resultType="com.kh.baemin.member.vo.ReviewWriterVo">
+    SELECT 
+    
+    
+    d
+    
+    </select>
 
 
 </mapper>

@@ -1,6 +1,8 @@
 package com.kh.baemin.member.service;
 import static com.kh.baemin.db.SqlSessionTemplate.getSqlSession;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.baemin.member.dao.MemberDao;
@@ -158,6 +160,46 @@ public int reviewContent(ReviewWriterVo vo) throws Exception {
 	
 	
 	return result;
+}
+
+//// 리뷰를 저장하는 메서드
+//public int reviewList(ReviewWriterVo vo) throws Exception {
+//    SqlSession ss = getSqlSession();
+//    int result = 0;
+//
+//    try {
+//        MemberDao dao = ss.getMapper(MemberDao.class);
+//        result = dao.insertReview(vo);
+//        if (result > 0) {
+//            ss.commit();
+//        } else {
+//            ss.rollback();
+//        }
+//    } catch (Exception e) {
+//        ss.rollback();
+//        throw e;
+//    } finally {
+//        ss.close();
+//    }
+//
+//    return result;
+//}
+
+// 리뷰 리스트를 가져오는 메서드
+public List<ReviewWriterVo> getReviewList() throws Exception {
+    SqlSession ss = getSqlSession();
+    List<ReviewWriterVo> reviewList = null;
+
+    try {
+        MemberDao dao = ss.getMapper(MemberDao.class);
+        reviewList = dao.selectReviewList();
+    } finally {
+        ss.close();
+    }
+
+    return reviewList;
+}
+}
 }
 }
 

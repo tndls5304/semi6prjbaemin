@@ -19,10 +19,10 @@ public class MemberReviewStatusWriterController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String deleveryProblem = req.getParameter("deleveryProblem");
+        String deliveryProblem = req.getParameter("deliveryProblem");
 
         ReviewWriterVo vo = new ReviewWriterVo();
-        vo.setDeleveryProblem(deleveryProblem);
+        vo.setDeliveryProblem(deliveryProblem);
 
         MemberService ms = new MemberService();
         int result = 0;
@@ -35,14 +35,11 @@ public class MemberReviewStatusWriterController extends HttpServlet {
 
         if (result == 1) {
             req.setAttribute("message", "리뷰가 성공적으로 저장되었습니다.");
-            req.setAttribute("deleveryProblem", deleveryProblem);
+            req.setAttribute("deliveryProblem", deliveryProblem);
             req.getRequestDispatcher("/WEB-INF/views/member/reviewContentWriter.jsp").forward(req, resp);
         } else {
             req.setAttribute("message", "리뷰 저장에 실패했습니다.");
             req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
         }
     }
-
-        
-    }
-
+}
