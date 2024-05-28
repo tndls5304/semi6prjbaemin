@@ -29,7 +29,7 @@ public class MemberReviewContentWriterController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String storeName = req.getParameter("storeName");
         String rating = req.getParameter("rating");
-        String userContent = req.getParameter("userContent");
+        String userContent = req.getParameter("opinion");
         String foodName = req.getParameter("foodName");
         String deleveryProblem = req.getParameter("deleveryProblem");  // deleveryProblem 값 추가
 
@@ -50,7 +50,7 @@ public class MemberReviewContentWriterController extends HttpServlet {
         MemberService ms = new MemberService();
         int result = 0;
         try {
-            result = ms.reviewStatus(vo);
+            result = ms.reviewContent(vo);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -58,6 +58,9 @@ public class MemberReviewContentWriterController extends HttpServlet {
         if (result == 1) {
             req.setAttribute("message", "리뷰가 성공적으로 저장되었습니다.");
             req.setAttribute("deleveryProblem", deleveryProblem);  // deleveryProblem 값 전달
+            req.setAttribute("reviewContent", userContent);         // 리뷰 내용 전달
+            req.setAttribute("reviewImg", fileName);                // 리뷰 이미지 전달
+            req.setAttribute("foodName", foodName);                 // 음식 이름 전달
             req.getRequestDispatcher("/WEB-INF/views/member/review2.jsp").forward(req, resp);
         } else {
             req.setAttribute("message", "리뷰 저장에 실패했습니다.");

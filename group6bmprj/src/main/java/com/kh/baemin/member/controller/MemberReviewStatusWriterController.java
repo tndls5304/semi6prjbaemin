@@ -43,6 +43,6 @@ public class MemberReviewStatusWriterController extends HttpServlet {
         }
     }
 
-        }
+        
     }
-}
+
