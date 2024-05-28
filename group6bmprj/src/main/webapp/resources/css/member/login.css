@@ -1,0 +1,419 @@
+body {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  /*  배민 앱은 content에요 */
+  .content{
+    width: 515px;
+    height: 100vh;
+    background-color:white;
+  
+    display: grid;
+    grid-template-rows: 1fr 10fr 1fr;
+  }
+  /* 고정 상단바 입니다 */
+  header{
+    position: fixed;
+  
+    width: 515px;
+    height: 90px;
+    border: solid 1px;
+  display: grid;
+  grid-template-rows: 1.5fr 1fr;
+  }
+  /* 제일 위 고정 상단이 header이고 
+  윗 상단바의 첫번째 디브 */
+  header > div:nth-child(1){
+  background-color:white;
+  display: grid;
+  grid-template-columns: 0.5fr 7fr 1fr ;
+  
+  padding-bottom: 0px;
+  }
+  /* 윗 상단바의 두번째 디브 */
+  header >div:nth-child(2){
+    font-size: 15px;
+    font-weight: 100;
+  
+    margin-top: 0px;
+  
+    padding-left: 30px;
+    margin-bottom: 5px;
+    padding-bottom: 0px;
+  background-color: rgb(249, 220, 220);
+  }
+  
+  
+  
+  /* 맨 밑의  검색,장바구니,찜,주문내역, my배민 클릭할 수 있는 하단바 입니다 */
+  footer{
+    position: fixed;
+  margin-bottom: 5px;
+  width: 513px;
+  height: 45px;
+  border: solid 1px;
+  bottom:1px;
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  }
+  
+  
+  
+  /* 홈이미지 버튼이에요 */
+  .right-bar,.back-img{
+    margin-top: 10px;
+    margin-left: 5px;
+    width: 35px;
+    height: 35px;
+  }
+  
+  /* 상단바에서 뒤로가기버튼   */
+  .left-bar :nth-child(1){
+  width: 20px;
+  height: 30px;
+  }
+  /* 뒤로가기버튼 옆에 이 페이지의 제목을 담당 */
+  .top-bar-name{
+    margin-top: 14px;
+    margin-left: 0px;
+    width: 60x;
+    height: 30px;
+  }
+  
+  /* 메인페이지----------------------------- */
+  
+  main{
+       
+      
+        margin-top: 90px;
+      }
+  
+  footer div{
+    display: grid;
+    grid-template-columns: 3fr lfr;
+  }
+  footer img{
+    width: 33px;
+    height: 27px;
+    margin-left: 32px;
+  }
+  
+  footer span{
+    font-size: 12px;
+    margin-left: 28px;
+  }
+  
+          /* 글씨체 */
+          body {
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+            body {
+     
+              background-color: rgb(236, 206, 227);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+   }
+   main{
+    width: 515px;
+    height: 850px;
+    background-color:white;
+    display: grid;
+    grid-template-columns:1fr ;
+  
+  }
+  .restaurant {
+          background-color: white;
+          border: 1px solid #dddddd;
+          border-radius: 10px;
+          padding: 10px;
+          margin: 10px;
+         
+      }
+      .menuplus{
+          background-color: white;
+          border: 1px solid #dddddd;
+          border-radius: 10px;
+          padding: 10px;
+          margin: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+  
+      .restaurant-header {
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px;
+      }
+  
+      .restaurant-logo {
+          width: 50px;
+          height: 50px;
+          margin-right: 10px;
+          border-radius: 50%;
+      }
+      .restaurant-info {
+          flex-grow: 1;
+      }
+  
+      .restaurant-name {
+          font-size: 20px;
+          font-weight: bold;
+          color: #333;
+      }
+      .menulogo{
+          display: flex;
+          justify-content: end;
+          align-items: end;
+      }   
+      .menu-container {
+      display: flex;
+      justify-content: flex-end;  /* 로고를 오른쪽으로 정렬 */
+      align-items: flex-start;    /* 로고를 상단으로 정렬 */
+      padding-top: 10px;          /* 상단 패딩 조절 */
+      }.time {
+      display: flex;        /* Flexbox 레이아웃 사용 */
+      justify-content: flex-end; /* 내용을 오른쪽으로 정렬 */
+      width: 100%;          /* 부모 요소의 전체 너비 사용 */
+  }
+  .together{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .product-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* 가로 방향 중앙 정렬 */
+    
+      
+  }
+  
+  .product {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0; /* 위아래 패딩만 유지, 좌우 패딩 제거 */
+      margin: 0; /* 여백 제거 */
+  }
+  
+  .product-name, .product-price {
+      margin-right: 10px;
+  }
+  
+  .add-btn {
+      width: 30px;
+      height: 30px;
+      font-size: 20px;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      background-color: #f1f1f1; /* 버튼 배경색 변경 */
+      border-radius: 50%; /* 버튼을 원형으로 만듦 */
+  }
+  
+  .product-image {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+  }
+  .storename{
+    
+      text-align: left; /* 텍스트를 왼쪽으로 정렬 */
+      width: 100%; /* div 요소 전체 너비 사용 */
+  }
+  .amountpay{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  } 
+  .restaurant-menuname .amount {
+      margin-left: 400px; /* 원하는 거리만큼 조정 */
+  }
+  .menuplusbtn,.paymentbtn {
+      background-color: #5ed1ea; /* 버튼의 배경색 */
+      color: white; /* 텍스트 색상 */
+      padding: 12px 24px; /* 패딩 조정 */
+      border: none; /* 테두리 제거 */
+      border-radius: 8px; /* 둥근 모서리 */
+      cursor: pointer; /* 커서 모양 변경 */
+      transition: background-color 0.3s; /* 호버 효과를 위한 전환 설정 */
+      font-size: 16px; /* 글꼴 크기 */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* 그림자 효과 */
+  }
+  
+  button:hover {
+      background-color: #2740cf; /* 호버 시 배경색 변경 */
+  }
+  .deliverytip {
+      margin-right: 10px; /* 배달팁과 금액 사이의 간격 조정 */
+  }
+  
+  .deliverymoney {
+      margin-left: 400px; /* 금액을 배달팁 텍스트로부터 더 멀리 띄우기 */
+  }
+  .totallmoney .amount {
+      font-weight: bold; /* 글씨를 두껍게 */
+      color:black; /* 금색으로 표시 */
+     
+      
+      margin-left: 10px; /* 왼쪽에서 조금 떨어져 보이게 */
+  }
+  /* 고정 상단바 입니다 */
+  header{
+    position: fixed;
+  
+    width: 515px;
+    height: 90px;
+    border: solid 1px;
+  display: grid;
+  grid-template-rows: 1.5fr 1fr;
+  }
+  /* 제일 위 고정 상단이 header이고 
+  윗 상단바의 첫번째 디브 */
+  header > div:nth-child(1){
+  background-color:white;
+  display: grid;
+  grid-template-columns: 0.5fr 7fr 1fr ;
+  
+  padding-bottom: 0px;
+  }
+  
+  .middle-bar{
+      display: flex;
+    
+  }
+  .storename{
+      display: flex;
+      justify-content:left;
+      align-items:stretch;
+  }
+  
+      .form-group {
+          display: flex;
+          flex-direction: column; /* 세로 배치 */
+      }
+      label {
+          font-weight: bold; /* 라벨 굵게 */
+          margin-bottom: 5px;
+      }
+      input[type="text"], input[type="email"], input[type="password"], input[type="tel"], select,
+      input[type="adress"],input[type="nickname"],input[type="detailadress"]   {
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px; /* 입력 필드 모서리 둥글게 */
+      }
+      button {
+          padding: 12px 20px;
+          color: white;
+          border: none;
+          border-radius: 4px; /* 버튼 모서리 둥글게 */
+          cursor: pointer;
+      }
+      button:hover {
+          background-color: #0056b3;
+      }
+  .form-group{
+      display: flex;
+      justify-content: center;
+     
+  }
+  .btncenter{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+     
+  }
+  .mainjoin{
+      display: flex;
+      justify-content: center;
+      align-items: center; 
+  }
+  .icon-container {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      margin-top: 20px;
+    }
+  
+    .icon {
+      text-align: center;
+      font-size: 24px;
+      color: #007bff;
+    }
+  
+    .icon h3 {
+      margin-top: 5px;
+      font-size: 18px;
+    }
+  
+    .baeminpay {
+      width: 100%;
+      text-align: center;
+      margin: 20px 0;
+    }
+  
+    #chargeForm {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+  
+    #amountInput {
+      flex-grow: 1;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  
+    .blue-button {
+      padding: 10px 20px;
+      background-color: #00BFFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+  
+    #reviewPreviewImage {
+              max-width: 100px;
+              max-height: 100px;
+              margin-top: 10px;
+          }
+          button {
+              padding: 12px 20px;
+             background-color: #ff7f7f;
+              color: white;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+              transition: background-color 0.3s;
+          }
+          button:hover {
+            background-color: #ff7f7f;
+          }
+          .button-container {
+              display: flex;
+              justify-content: center; /* Center the buttons horizontally */
+          }
+          .button-container button {
+              margin: 0 10px; /* Add some space between buttons */
+          }
+          .error-message {
+              color: red;
+              margin-top: 5px;
+              font-size: 14px;
+          }
+          

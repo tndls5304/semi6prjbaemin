@@ -16,6 +16,6 @@ public class MemberLogoutController extends HttpServlet {
 	HttpSession session = req.getSession();
 	session.removeAttribute("loginMemberVo");
 	session.setAttribute("alertMsg","유저 로그아웃 완료");
-	resp.sendRedirect("/app/home");
+	resp.sendRedirect("/baemin/login");
 }
 }

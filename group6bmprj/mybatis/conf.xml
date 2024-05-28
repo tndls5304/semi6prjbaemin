@@ -22,5 +22,6 @@
   </environments>
   <mappers>
     <mapper resource="/mapper/store.xml"/>
+     <mapper resource="/mapper/member-mapper.xml"/>
   </mappers>
 </configuration>

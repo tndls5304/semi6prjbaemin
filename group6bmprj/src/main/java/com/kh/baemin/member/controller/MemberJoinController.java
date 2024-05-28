@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import com.kh.baemin.member.service.MemberService;
+import com.kh.baemin.member.vo.MemberVo;
 
 @WebServlet("/member/join")
 @MultipartConfig(
@@ -50,7 +51,7 @@ public class MemberJoinController extends HttpServlet {
                 String originFileName = profile.getSubmittedFileName(); // 원본 파일 이름을 가져옴
                 InputStream is = profile.getInputStream(); // 파일의 입력 스트림을 가져옴
 
-                String path = "C:\\dev\\servletWorkspace\\baeminproject\\src\\main\\webapp\\resources\\upload\\"; // 파일 저장 경로
+                String path = "C:\\dev\\servletWorkspace\\group6bmprj\\src\\main\\webapp\\resources\\upload\\"; // 파일 저장 경로
                 java.io.File dir = new java.io.File(path); // 파일 저장 경로의 디렉토리 객체 생성
                 if (!dir.exists()) {
                     dir.mkdirs(); // 디렉토리가 존재하지 않으면 생성
@@ -91,10 +92,10 @@ public class MemberJoinController extends HttpServlet {
 
             if (result == 1) {
                 req.setAttribute("resultMsg", "회원가입 성공 !!!");
-                resp.sendRedirect("/app/member/login");
+                resp.sendRedirect("/baemin/member/login");
             } else {
                 req.setAttribute("resultMsg", "회원가입 실패 ...");
-              resp.sendRedirect("/app/member/join");
+              resp.sendRedirect("/baemin/member/join");
             }
         } catch (Exception e) {
             System.out.println("[ERROR-M0001] " + e.getMessage());

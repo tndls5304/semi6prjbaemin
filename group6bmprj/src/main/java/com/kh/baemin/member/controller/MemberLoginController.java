@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.kh.baemin.member.service.MemberService;
+import com.kh.baemin.member.vo.MemberVo;
 
 @WebServlet("/member/login")
 public class MemberLoginController extends HttpServlet {
@@ -44,7 +45,7 @@ public class MemberLoginController extends HttpServlet {
 	            // 로그인 성공
 	            session.setAttribute("alertMsg", "로그인 성공!!!");
 	            session.setAttribute("loginMemberVo", loginMemberVo);
-	            resp.sendRedirect("/app/home");
+	           // resp.sendRedirect("/baemin/home");
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	            // 에러 페이지로 리디렉션 등 에러 처리 로직 추가 가능
