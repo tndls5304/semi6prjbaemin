@@ -2,6 +2,8 @@ package com.kh.baemin.store.service;
 
 import static com.kh.baemin.db.SqlSessionTemplate.getSqlSession;
 
+import java.io.IOException;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.baemin.store.dao.StoreOwnerDao;
@@ -74,6 +76,16 @@ public class StoreOwnerService {
 	
 		
 }
+
+	public boolean checkIdDup(String id) throws IOException {
+	
+		SqlSession ss=getSqlSession();
+		int result=dao.checkIdDup(ss,id);
+		
+		ss.close();
+	
+		return result==0;
+	}
 
 
 }

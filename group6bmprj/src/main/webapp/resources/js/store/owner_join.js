@@ -1,4 +1,30 @@
 
+        //사장 회원가입 아이디 중복 체크 ajax 통신
+
+function checkDup(){
+		const id=document.querySelector("input[id=id]").value;
+	$.ajax({
+		url:"/baemin/store/store_owner_idcheck"
+		,type:"GET"
+		,data:{"id":id}
+		,success:function(x){
+				console.log(x);
+					
+				if(x==="good"){
+					alert("중복없음!사용가능한 id입니다");
+				}else{
+					alert("중복된 아이디입니다");
+				}
+		},
+		error:function(x){
+			
+			console.log("통신실패");
+		}
+})
+}
+        
+        
+        
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('id').addEventListener('onkeyup', function() {
                 hideErrorMessage('id-error');
