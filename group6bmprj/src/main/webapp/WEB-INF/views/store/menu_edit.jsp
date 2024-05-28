@@ -39,7 +39,7 @@
 <div class="header">
  	 <h2>음식 메뉴편집🍴🍴</h2>
 	 <div>  
-			<form action="/app/store/category_delete" id="deleteForm" method="post">
+			<form action="/baemin/store/category_delete" id="deleteForm" method="post">
 						 <input type="hidden" name="categoryNoText" id="submitCategoryNoText">
 				        <button type="button" onclick="showSelectionEdit()">선택수정</button>
 				        <td class="menu" ><button type="submit" class="delete-Button" onclick="showSelectionDelete()">선택삭제</button></td>
@@ -66,7 +66,7 @@
 	
 		
 		      <tr>
-		           <form action="/app/store/category_delete" method="post">
+		           <form action="/baemin/store/category_delete" method="post">
 			          <td><input type="checkbox" name="checkbox" id="checkCategoryNo-${categoryVo.no}"  data-type="category" data-name="${categoryVo.name}"  ></td>
 			          <td class="category"  colspan="3">${categoryVo.name}
 			          	<input type="hidden" name="categoryNoText" value="${categoryVo.no}"></td>
@@ -101,7 +101,7 @@
                 
     <!--  체크박스 누르고 카테고리변경클릭시 뜨는 창   showCategoryEdit()        -->     
                 
-   <form action="/app/store/category_edit" id="categoryEditForm" method="POST">
+   <form action="/baemin/store/category_edit" id="categoryEditForm" method="POST">
       <div id="categoryEditBlock" class="categoryEdit-block">
         <div class="detail-content">
          <p>카테고리 수정하기</p>
@@ -136,7 +136,7 @@
       <!--  카테고리등록 클릭시 뜨는 모달창   showCategoryRegist()        -->     
                 
      <div id="categoryRegistBlock" class="categoryRegist-block">
-          <form action="/app/store/category_add" method="post" >
+          <form action="/baemin/store/category_add" method="post" >
 	            <div class="detail-content">
 	                       <p>카테고리 추가 </p>
 	                       <p> NAME:
