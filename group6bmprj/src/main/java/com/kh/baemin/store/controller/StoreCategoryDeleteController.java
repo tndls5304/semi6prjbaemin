@@ -44,7 +44,7 @@ System.out.println(no);
 			} else {
 				req.setAttribute("resultMsg", "카테고리 삭제 실패!ㅜㅜ");
 			}
-			resp.sendRedirect("/app/store/category_list");
+			resp.sendRedirect("/baemin/store/category_list");
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(e.getMessage());
