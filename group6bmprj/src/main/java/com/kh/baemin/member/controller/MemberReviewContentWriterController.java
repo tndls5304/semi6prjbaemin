@@ -27,20 +27,20 @@ public class MemberReviewContentWriterController extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String storeName = req.getParameter("storeName");
+    
         String rating = req.getParameter("rating");
         String MemberContent = req.getParameter("MemberContent");
         String foodName = req.getParameter("foodName");
-        String deliveryProblem = req.getParameter("deliveryProblem");  // deliveryProblem 값 추가
+        String deliveryProblem = req.getParameter("deliveryProblem");
 
         // 리뷰 이미지 파일 처리
         Part filePart = req.getPart("review_image");
         String reviewImg = getFileName(filePart);
-        String fileSavePath = getServletContext().getRealPath("/upload") + File.separator + fileName;
+        String fileSavePath = getServletContext().getRealPath("/upload") + File.separator + reviewImg;
         filePart.write(fileSavePath);
 
         ReviewWriterVo vo = new ReviewWriterVo();
-        vo.setStoreName(storeName);
+    
         vo.setRating(rating);
         vo.setMemberContent(MemberContent);
         vo.setReviewImg(reviewImg);  // 저장된 파일 이름 설정
@@ -50,17 +50,16 @@ public class MemberReviewContentWriterController extends HttpServlet {
         MemberService ms = new MemberService();
         int result = 0;
         try {
-            result = ms.review/(vo);
+            result = ms.reviewContent(vo);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         if (result == 1) {
             req.setAttribute("message", "리뷰가 성공적으로 저장되었습니다.");
-            req.setAttribute("deliveryProblem", deliveryProblem);  // deliveryProblem 값 전달
-            req.setAttribute("MemberContent", MemberContent);         // 리뷰 내용 전달
-            req.setAttribute("reviewImg", reviewImg);                // 리뷰 이미지 전달
-            req.setAttribute("foodName", foodName);                 // 음식 이름 전달
+            req.setAttribute("deliveryProblem", deliveryProblem);
+            req.setAttribute("MemberContent", MemberContent);
+            req.setAttribute("reviewImg", reviewImg);
             req.getRequestDispatcher("/WEB-INF/views/member/review2.jsp").forward(req, resp);
         } else {
             req.setAttribute("message", "리뷰 저장에 실패했습니다.");

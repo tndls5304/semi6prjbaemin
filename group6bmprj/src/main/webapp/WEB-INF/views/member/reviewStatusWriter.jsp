@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>리뷰 작성 페이지</title>
+    <title>리뷰 상태 작성 페이지</title>
     <script defer src="/baemin/resources/js/member/reviewStatus.js"></script>
     <link rel="stylesheet" href="/baemin/resources/css/member/reviewStatus.css">
 </head>

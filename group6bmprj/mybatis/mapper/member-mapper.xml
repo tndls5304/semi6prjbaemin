@@ -60,13 +60,30 @@
         )
     </insert>
     
-  <insert id="insertReview">
-        INSERT INTO reviews (member_nickname, member_img, rating, member_content, review_img, food_name, delivery_problem, ceo_img, ceo_content)
-        VALUES (#{memberNickName}, #{memberImg}, #{rating}, #{memberContent}, #{reviewImg}, #{foodName}, #{deliveryProblem}, #{ceoImg}, #{ceoContent})
+  <insert id="reviewContent">
+ 
+        
+        INSERT INTO  REVIEW_COMMUNICATION 
+         
+        (
+        NO,
+        RATING,
+        USER_CONTENT,
+        IMG
+        )
+        VALUES
+           SEQ_REVIEW_COMMUNICATION_NO.NEXTVAL,
+           #{rating},
+           #{memberContent},
+           #{reviewImg}
+           
+        
     </insert>
 
     <select id="selectReviewList" resultType="com.kh.baemin.member.vo.ReviewWriterVo">
         SELECT 
+        	손님 사진 
+        	손님 닉네임 
             R.RATING,
             R.USER_CONTENT AS memberContent,
             R.IMG AS reviewImg,
@@ -82,13 +99,6 @@
             R.DEL_YN = 'N'
     </select>
     
-    <select id="selectReviewList" resultType="com.kh.baemin.member.vo.ReviewWriterVo">
-    SELECT 
-    
-    
-    d
-    
-    </select>
 
 
 </mapper>
