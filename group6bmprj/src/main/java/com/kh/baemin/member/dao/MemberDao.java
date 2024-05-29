@@ -40,9 +40,10 @@ public class MemberDao {
 
 	}
 
-	public int updateMemberInfo(SqlSession ss, MemberVo vo) {
-		return ss.update("memberMapper.updateMemberInfo", vo);
 
+
+	public int MemberInfo(SqlSession ss, MemberVo vo) {
+		return ss.selectOne("memberMapper.info", vo);
 	}
 
 }

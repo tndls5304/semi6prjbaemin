@@ -22,7 +22,7 @@ public class MemberReviewListController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	try {   // Retrieve parameters from the request
-        String memberNickName = req.getParameter("memberNickName");
+        String memberNickName = req.getParameter("nick");
         String memberImg = req.getParameter("memberImg");
         String rating = req.getParameter("rating");                
         String memberContent = req.getParameter("memberContent");                
