@@ -15,11 +15,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>유저 회원가입</title>
+    <title>유저 로그인</title>
        <!-- js -->
-       <script defer src="/baemin/resources/js/memberlogin.js"></script>
+       <script defer src="/baemin/resources/js/member/login.js"></script>
        <!-- css -->
-       <link rel="stylesheet" href="/baemin/resources/css/memberlogin.css">
+       <link rel="stylesheet" href="/baemin/resources/css/member/login.css">
     <!-- 글씨체 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

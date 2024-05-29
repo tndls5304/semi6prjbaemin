@@ -26,7 +26,28 @@ body {
     text-decoration: none; /* 밑줄 제거 */ 
 }
 
-
+    .star-rating {
+            direction: rtl;
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        .star-rating input[type="radio"] {
+            display: none;
+        }
+        .star-rating label {
+            font-size: 2rem;
+            color: gray;
+            cursor: pointer;
+            padding: 0 5px;
+        }
+        .star-rating input[type="radio"]:checked ~ label {
+            color: gold;
+        }
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: gold;
+        }
 
 /* 고정 상단바 입니다 */
 header {

@@ -1,6 +1,8 @@
 package com.kh.baemin.member.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +21,7 @@ public class MemberReviewListController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Retrieve parameters from the request
+    	try {   // Retrieve parameters from the request
         String memberNickName = req.getParameter("memberNickName");
         String memberImg = req.getParameter("memberImg");
         String rating = req.getParameter("rating");                
@@ -30,7 +32,7 @@ public class MemberReviewListController extends HttpServlet {
         String ceoImg = req.getParameter("ceoImg");                
         String ceoContent = req.getParameter("ceoContent");            
 
-        // Create a new ReviewWriterVo object and set its properties
+    
         ReviewWriterVo vo = new ReviewWriterVo();
         vo.setMemberNickName(memberNickName);
         vo.setMemberImg(memberImg);
@@ -44,22 +46,21 @@ public class MemberReviewListController extends HttpServlet {
 
         // SERVICE
         MemberService ms = new MemberService();
+        List<ReviewWriterVo> reviewVoList = ms.reviewList(vo);
 
-        int result = 0;
-        try {
-            result = ms.reviewList(vo);
+    	// 결과
+		System.out.println("voList : " + reviewVoList);
+		req.setAttribute("voList", reviewVoList);
+		req.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(req, resp);
+		
+        
         } catch (Exception e) {
             e.printStackTrace();
+        	req.setAttribute("errMsg", e.getMessage());
+			req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
+		}
+	}
+	
         }
 
-        // RESULT
-        if (result > 0) {
-            req.setAttribute("msg", "Review submitted successfully!");
-            req.setAttribute("review", vo);
-            req.getRequestDispatcher("/WEB-INF/views/member/reviewResult.jsp").forward(req, resp);
-        } else {
-            req.setAttribute("msg", "Failed to submit the review. Please try again.");
-            req.getRequestDispatcher("/WEB-INF/views/member/reviewList.jsp").forward(req, resp);
-        }
-    }
-}
+      

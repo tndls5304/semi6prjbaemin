@@ -149,7 +149,7 @@ public int reviewStatus(ReviewWriterVo vo) throws Exception {
 public int reviewContent(ReviewWriterVo vo) throws Exception {
 //	- DAO호출
 	SqlSession ss = getSqlSession();
-	int result = dao.reviewStatus(ss, vo);
+	int result = dao.reviewContent(ss, vo);
 	
 	if(result == 1) {
 		ss.commit();
@@ -186,22 +186,23 @@ public int reviewContent(ReviewWriterVo vo) throws Exception {
 //}
 
 // 리뷰 리스트를 가져오는 메서드
-public List<ReviewWriterVo> getReviewList() throws Exception {
+public List<ReviewWriterVo> reviewList(ReviewWriterVo vo) throws Exception {
+	
     SqlSession ss = getSqlSession();
-    List<ReviewWriterVo> reviewList = null;
-
-    try {
-        MemberDao dao = ss.getMapper(MemberDao.class);
-        reviewList = dao.selectReviewList();
-    } finally {
-        ss.close();
-    }
-
+    List<ReviewWriterVo> reviewList = dao.selectReviewList(ss);
+    
+    ss.close();
+    
     return reviewList;
+
+  
 }
 }
-}
-}
+
+
+
+
+
 
 
 
