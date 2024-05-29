@@ -9,68 +9,40 @@ import com.kh.baemin.member.vo.ReviewWriterVo;
 
 public class MemberDao {
 
-	
 	public int join(SqlSession ss, MemberVo vo) throws Exception {
-		
-		return ss.insert("MemberMapper.join" , vo);
+
+		return ss.insert("MemberMapper.join", vo);
 	}
-
-	
-	
-
 
 	public MemberVo login(SqlSession ss, MemberVo vo) {
-		  return ss.selectOne("MemberMapper.login", vo);
+		return ss.selectOne("MemberMapper.login", vo);
 	}
-
-
 
 	public boolean checkIdDup(SqlSession sqlSession, String id) {
-	    Integer count = sqlSession.selectOne("MemberMapper.idCheck", id);
-	    return count != null && count > 0;
+		Integer count = sqlSession.selectOne("MemberMapper.idCheck", id);
+		return count != null && count > 0;
 	}
 
-
-
-
-
 	public int reviewStatus(SqlSession ss, ReviewWriterVo vo) {
-		return ss.insert("memberMapper.reviewStatus" , vo);
+		return ss.insert("memberMapper.reviewStatus", vo);
 	}
 
 	public int reviewContent(SqlSession ss, ReviewWriterVo vo) {
-		return ss.insert("memberMapper.reviewContent" , vo);
+		return ss.insert("memberMapper.reviewContent", vo);
 	}
 
-
-
-
-
-	 public List<ReviewWriterVo> selectReviewList(SqlSession ss) {
-	        return ss.selectList("memberMapper.selectReviewList");
-	 }
-
-	        public int insertReview(SqlSession ss, ReviewWriterVo vo) {
-	            return ss.insert("memberMapper.insertReview", vo);
-	        
-
-	       
-	    }
-
-
-
-
-
-
-
-
-	
+	public List<ReviewWriterVo> selectReviewList(SqlSession ss) {
+		return ss.selectList("memberMapper.selectReviewList");
 	}
 
-
-
-
-
-
+	public int insertReview(SqlSession ss, ReviewWriterVo vo) {
+		return ss.insert("memberMapper.insertReview", vo);
 
 	}
+
+	public int updateMemberInfo(SqlSession ss, MemberVo vo) {
+		return ss.update("memberMapper.updateMemberInfo", vo);
+
+	}
+
+}

@@ -14,14 +14,17 @@ public class MemberVo {
 	private String accountBalance;
 	private String delYn;
 	private String gender;
-	private String profile;
+	private String memberImg;
+	private String memberNickName;
+	private String memberPay;
 	private String generation;
 	public MemberVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public MemberVo(String no, String nick, String id, String pwd, String name, String address, String addressdDetail,
-			String phone, String accountBalance, String delYn, String gender, String profile, String generation) {
+			String phone, String accountBalance, String delYn, String gender, String memberImg, String memberNickName,
+			String memberPay, String generation) {
 		super();
 		this.no = no;
 		this.nick = nick;
@@ -34,15 +37,18 @@ public class MemberVo {
 		this.accountBalance = accountBalance;
 		this.delYn = delYn;
 		this.gender = gender;
-		this.profile = profile;
+		this.memberImg = memberImg;
+		this.memberNickName = memberNickName;
+		this.memberPay = memberPay;
 		this.generation = generation;
 	}
 	@Override
 	public String toString() {
 		return "MemberVo [no=" + no + ", nick=" + nick + ", id=" + id + ", pwd=" + pwd + ", name=" + name + ", address="
 				+ address + ", addressdDetail=" + addressdDetail + ", phone=" + phone + ", accountBalance="
-				+ accountBalance + ", delYn=" + delYn + ", gender=" + gender + ", profile=" + profile + ", generation="
-				+ generation + "]";
+				+ accountBalance + ", delYn=" + delYn + ", gender=" + gender + ", memberImg=" + memberImg
+				+ ", memberNickName=" + memberNickName + ", memberPay=" + memberPay + ", generation=" + generation
+				+ "]";
 	}
 	public String getNo() {
 		return no;
@@ -110,11 +116,23 @@ public class MemberVo {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getProfile() {
-		return profile;
+	public String getMemberImg() {
+		return memberImg;
 	}
-	public void setProfile(String profile) {
-		this.profile = profile;
+	public void setMemberImg(String memberImg) {
+		this.memberImg = memberImg;
+	}
+	public String getMemberNickName() {
+		return memberNickName;
+	}
+	public void setMemberNickName(String memberNickName) {
+		this.memberNickName = memberNickName;
+	}
+	public String getMemberPay() {
+		return memberPay;
+	}
+	public void setMemberPay(String memberPay) {
+		this.memberPay = memberPay;
 	}
 	public String getGeneration() {
 		return generation;
@@ -122,5 +140,4 @@ public class MemberVo {
 	public void setGeneration(String generation) {
 		this.generation = generation;
 	}
-
 }
