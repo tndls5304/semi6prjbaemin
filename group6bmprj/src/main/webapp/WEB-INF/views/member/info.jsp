@@ -33,7 +33,7 @@
                 %>
                     <img class="picprofile" src="<%= loginMemberVo.getMemberImg() %>" alt="Profile Picture">
                     <div class="membername">
-                        <span><%= loginMemberVo.getMemberNickName() %></span>
+                        <span><%= loginMemberVo.getNick() %></span>
                     </div>
                 <%
                     } else {

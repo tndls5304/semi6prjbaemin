@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.kh.baemin.member.dao.MemberDao;
 import com.kh.baemin.member.vo.MemberVo;
 import com.kh.baemin.member.vo.ReviewWriterVo;
+import com.kh.baemin.member.vo.StoreOrderVo;
 public class MemberService {
 private MemberDao dao;
 	
@@ -215,8 +216,17 @@ public int info(MemberVo vo) throws IOException {
 	return result;
 }
 
-}
 
+public List<StoreOrderVo> getOrderListByUser(String id)throws Exception {
+
+    SqlSession ss = getSqlSession();
+    List<StoreOrderVo> orderList =  dao.storeOrderList(ss , id);
+    ss.close();
+    
+    
+    return orderList;
+}
+}
 
 
 

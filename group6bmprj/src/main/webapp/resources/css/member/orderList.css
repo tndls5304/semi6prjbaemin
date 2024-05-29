@@ -1,0 +1,247 @@
+body {
+    background-color: rgb(236, 206, 227);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  /*  배민 앱은 content에요 */
+  .content{
+    width: 515px;
+    height: 100vh;
+    background-color:rgb(252, 246, 247);
+  
+    display: grid;
+    grid-template-rows: 1fr 10fr 1fr;
+  }
+  /* 고정 상단바 입니다 */
+  header{
+    position: fixed;
+  
+    width: 515px;
+    height: 90px;
+    border: solid 1px;
+  display: grid;
+  grid-template-rows: 1.5fr 1fr;
+  }
+  /* 제일 위 고정 상단이 header이고 
+  윗 상단바의 첫번째 디브 */
+  header > div:nth-child(1){
+  background-color:white;
+  display: grid;
+  grid-template-columns: 0.5fr 7fr 1fr ;
+  
+  padding-bottom: 0px;
+  }
+  /* 윗 상단바의 두번째 디브 */
+  header >div:nth-child(2){
+    font-size: 15px;
+    font-weight: 100;
+  
+    margin-top: 0px;
+  
+    padding-left: 30px;
+    margin-bottom: 5px;
+    padding-bottom: 0px;
+  background-color: rgb(249, 220, 220);
+  }
+  
+  
+  
+  /* 맨 밑의  검색,장바구니,찜,주문내역, my배민 클릭할 수 있는 하단바 입니다 */
+  footer{
+    position: fixed;
+  margin-bottom: 5px;
+  width: 513px;
+  height: 45px;
+  border: solid 1px;
+  bottom:1px;
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  }
+  
+  
+  
+  /* 홈이미지 버튼이에요 */
+  .right-bar,.back-img{
+    margin-top: 10px;
+    margin-left: 5px;
+    width: 35px;
+    height: 35px;
+  }
+  
+  /* 상단바에서 뒤로가기버튼   */
+  .left-bar :nth-child(1){
+  width: 20px;
+  height: 30px;
+  }
+  /* 뒤로가기버튼 옆에 이 페이지의 제목을 담당 */
+  .top-bar-name{
+    margin-top: 14px;
+    margin-left: 0px;
+    width: 60x;
+    height: 30px;
+  }
+  
+  /* 메인페이지----------------------------- */
+  
+  main{
+        
+       
+        margin-top: 90px;
+      }
+  
+  footer div{
+    display: grid;
+    grid-template-columns: 3fr lfr;
+  }
+  footer img{
+    width: 33px;
+    height: 27px;
+    margin-left: 32px;
+  }
+  
+  footer span{
+    font-size: 12px;
+    margin-left: 28px;
+  }
+  body {
+             
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-family: "Jua", sans-serif;
+              font-weight: 400;
+              font-style: normal;
+         
+          }
+          .content {
+              width: 515px;
+              height: 100vh;
+              background-color: rgb(252, 246, 247);
+              display: grid;
+              grid-template-rows: 90px auto 45px;
+              grid-template-areas: "header" "main" "footer";
+              overflow-y: auto;
+          }
+          header {
+              grid-area: header;
+              position: fixed;
+              top: 0;
+              width: 515px;
+              height: 90px;
+              border: solid 1px;
+              display: grid;
+              grid-template-rows: 1.5fr 1fr;
+              background-color: white;
+          }
+          .top-bar {
+              display: grid;
+              grid-template-columns: 0.5fr 7fr 1fr;
+          }
+          .middle {
+              font-size: 15px;
+              font-weight: 100;
+              padding-left: 30px;
+              background-color: rgb(249, 220, 220);
+          }
+          main {
+              grid-area: main;
+              margin-top: 90px;
+              padding: 20px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+          }
+          .deal {
+              border: 1px solid #ccc;
+              padding: 20px;
+              width: 100%;
+              text-align: center;
+          }
+          .deal-header {
+              margin-bottom: 20px;
+          }
+          .deal-price {
+              color: black;
+              font-weight: bold;
+          }
+          .deal-details {
+              text-align: left;
+              margin-top: 20px;
+          }
+          .date-text,
+          .status-text {
+              color: #555;
+          }
+          footer {
+              grid-area: footer;
+              position: fixed;
+              bottom: 0;
+              width: 513px;
+              height: 45px;
+              border: solid 1px;
+              display: grid;
+              grid-template-columns: repeat(5, 1fr);
+          }
+          .link-button {
+              background-color: pink;
+              color: white;
+              padding: 10px 20px;
+              border: none;
+              margin-top: 10px;
+              cursor: pointer;
+          }
+          form {
+          background-color: white;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+      }
+      input[type="text"] {
+          padding: 10px;
+          border: 2px solid #ccc;
+          border-radius: 5px;
+          outline: none;
+          font-size: 16px;
+      }
+      input[type="text"]:focus {
+          border-color: #888;
+      }
+      button {
+          padding: 10px;
+          border: none;
+          border-radius: 5px;
+          background-color: #20cfcf;
+          color: white;
+          cursor: pointer;
+          font-size: 16px;
+      }
+      button:hover {
+          background-color: palevioletred;
+      }
+    .content::-webkit-scrollbar {
+      display: none; /* 스크롤바가 보이지 않도록 설정 */
+  }
+  
+  /* 스크롤바 숨기기 (파이어폭스) */
+  .content {
+      scrollbar-width: none; /* 파이어폭스에서 스크롤바를 숨김 */
+  }
+  
+  /* IE와 엣지 브라우저 */
+  .content{
+      -ms-overflow-style: none; /* 스크롤바 숨기기 */
+  }
+  .store a {
+      color: black;
+      text-decoration: none;
+  } .link-button {
+          text-decoration: none; /* 링크 텍스트의 밑줄 제거 */
+      }

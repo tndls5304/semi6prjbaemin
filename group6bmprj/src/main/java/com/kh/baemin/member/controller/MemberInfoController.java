@@ -29,7 +29,7 @@ public class MemberInfoController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String memberImg = req.getParameter("memberImg");
-        String memberNickName = req.getParameter("memberNickName");
+        String nick = req.getParameter("nick");
         String memberPayStr = req.getParameter("memberPay");
 
         HttpSession session = req.getSession();
@@ -37,7 +37,7 @@ public class MemberInfoController extends HttpServlet {
 
         if (loginMemberVo != null) {
             loginMemberVo.setMemberImg(memberImg);
-            loginMemberVo.setMemberNickName(memberNickName);
+            loginMemberVo.setNick(nick);
 
             // 기존 페이 금액에 입력된 금액을 더함
             int existingPay = Integer.parseInt(loginMemberVo.getMemberPay());
