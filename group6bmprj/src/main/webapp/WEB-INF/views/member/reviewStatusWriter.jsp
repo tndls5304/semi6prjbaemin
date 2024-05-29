@@ -20,7 +20,7 @@
         <div class="question"><h2>어떤 점이 불편하셨나요?</h2></div>
         <div class="container mt-5">
             <h1>배달 문제 선택</h1>
-            <form id="reviewForm" action="/member/reviewStatusWriter" method="post">
+            <form id="reviewForm" action="<%= request.getContextPath() %>/member/reviewStatusWriter" method="post">
                 <input type="hidden" name="deliveryProblem" id="deliveryProblem">
                 <div class="options d-flex flex-wrap gap-2 mt-3">
                     <button type="button" value="매우 늦게 도착" class="option btn btn-danger">매우 늦게 도착😒</button>

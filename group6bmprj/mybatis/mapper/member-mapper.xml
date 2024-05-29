@@ -81,22 +81,28 @@
     </insert>
 
     <select id="selectReviewList" resultType="com.kh.baemin.member.vo.ReviewWriterVo">
-        SELECT 
-        	손님 사진 
-        	손님 닉네임 
-            R.RATING,
-            R.USER_CONTENT AS memberContent,
-            R.IMG AS reviewImg,
-            S.NAME AS storeName,
-            F.NAME AS foodName
-        FROM 
-            REVIEW_COMMUNICATION R
-        JOIN 
-            STORE_INFOR S ON R.NO = S.NO 
-        JOIN 
-            FOOD_INFOR F ON F.NO = R.NO
-        WHERE 
-            R.DEL_YN = 'N'
+       SELECT 
+    M.PROFILE,
+    M.NICK,
+    R.RATING,
+    R.USER_CONTENT AS memberContent,
+    R.IMG AS reviewImg,
+    S.NAME AS storeName,
+    F.NAME AS foodName
+FROM 
+    REVIEW_COMMUNICATION R
+JOIN 
+    STORE_INFOR S ON R.NO = S.NO 
+JOIN 
+    FOOD_INFOR F ON F.NO = R.NO
+JOIN
+    MEMBER_USER M ON M.NO = R.NO 
+WHERE 
+	R.NO = #{x}
+	AND
+    R.DEL_YN = 'N'
+
+
     </select>
     
 
