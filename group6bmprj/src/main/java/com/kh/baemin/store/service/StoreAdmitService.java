@@ -31,7 +31,7 @@ public class StoreAdmitService {
 //		}
 		
 		//허가 신청후 수정
-		public int insert(StoreInforVo vo, List<StoreInforVoList> storeInforVoList) throws Exception {
+		public int insert(StoreInforVo vo, List<StoreInforVo> storeInforVoList) throws Exception {
 			
 			// 비즈니스 로직
 			
@@ -40,8 +40,8 @@ public class StoreAdmitService {
 			int result = dao.insert(ss,  vo);
 
 			int attResult = 1;
-			if(attVoList.size() > 0) {
-				attResult = dao.insertBoardAttachment(ss , attVoList);
+			if(storeInforVoList.size() > 0) {
+				attResult = dao.insert(ss , vo);
 			}
 			
 			if(result * attResult >= 1) {
