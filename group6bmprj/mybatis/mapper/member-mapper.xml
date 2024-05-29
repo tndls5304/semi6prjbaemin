@@ -105,6 +105,24 @@ WHERE
 
     </select>
     
+  <select id ="info">
+  SELECT 
+  M.PROFILE ,
+  M.NICK,
+  M.ACCOUNT_BALANCE
+ FROM 
+ MEMBER_USER M
+ WHERE 
+ PROFILE = #{memberImg}
+ and
+ NICK = #{memberNickName}
+ and 
+ ACCOUNT_BALANCE = #{memberPay}
+  
+  
+  
+  </select>
+  
 
 
 </mapper>

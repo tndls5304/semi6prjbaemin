@@ -202,7 +202,7 @@ public List<ReviewWriterVo> reviewList(ReviewWriterVo vo) throws Exception {
 public int info(MemberVo vo) throws IOException {
 //	- DAO호출
 	SqlSession ss = getSqlSession();
-	int result = dao.updateMemberInfo(ss, vo);
+	int result = dao.MemberInfo(ss, vo);
 	
 	if(result == 1) {
 		ss.commit();
@@ -215,7 +215,7 @@ public int info(MemberVo vo) throws IOException {
 	return result;
 }
 
-
+}
 
 
 
