@@ -51,7 +51,7 @@ SELECT COUNT(*)
 		  ,#{viewYn}
 		  ,'N'
 		  ,#{storeNo})
-  </inse6rt>
+  </insert>
   
   <select id="getCategoryList"  resultType="com.kh.baemin.store.vo.CategoryVo">
   

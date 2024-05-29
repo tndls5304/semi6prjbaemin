@@ -1,1 +1,53 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adminManageUserMapper">
+
+<select id="adminGetUserById" resultType="com.kh.baemin.member.vo.MemberVo">
+SELECT 
+NICK
+,ID
+,NAME
+,ADDRESS
+,ADDRESS_DETAIL
+,PHONE
+,ACCOUNT_BALANCE
+,DEL_YN
+,GENDER
+,GENERATION
+FROM MEMBER_USER
+WHERE DEL_YN='N' AND ID= #{value} 
+</select>
+
+
+
+<select id="adminGetInactiveUserById" resultType="com.kh.baemin.member.vo.MemberVo">
+SELECT 
+NICK
+,ID
+,NAME
+,ADDRESS
+,ADDRESS_DETAIL
+,PHONE
+,ACCOUNT_BALANCE
+,DEL_YN
+,GENDER
+,GENERATION
+FROM MEMBER_USER
+WHERE DEL_YN='Y' AND ID= #{value} 
+</select>
+
+
+<update id="adminDeleteUser">
+UPDATE MEMBER_USER 
+SET DEL_YN='Y'
+WHERE ID=#{value}
+</update>
+
+</mapper>
+
+
+
+
+
