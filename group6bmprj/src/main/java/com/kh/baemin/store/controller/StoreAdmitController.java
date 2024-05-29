@@ -13,8 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import com.kh.baemin.util.file.FileUpload;
 
-import org.apache.tomcat.util.http.fileupload.FileUpload;
+
 
 import com.kh.baemin.store.service.StoreAdmitService;
 import com.kh.baemin.store.vo.StoreInforVo;
@@ -27,7 +28,7 @@ import com.kh.baemin.store.vo.StoreOwnerVo;
 		)
 
 
-@WebServlet
+@WebServlet("/store/admit")
 public class StoreAdmitController extends HttpServlet {
 	
 	
@@ -61,6 +62,7 @@ public class StoreAdmitController extends HttpServlet {
 			String storeCategoryNo = req.getParameter("storeCategoryNo");
 			String companyResitrationNumber  = req.getParameter("companyResitrationNumber ");
 			String businessRegistrationVertificateImg = req.getParameter("businessRegistrationVertificateImg");
+			String companyRestrationNumber = req.getParameter("CompanyRestrationNumber");
 			
 			
 			Collection<Part> parts = req.getParts();
@@ -72,7 +74,7 @@ public class StoreAdmitController extends HttpServlet {
 				}
 			}
 			
-			//서버에 파일 업로드
+//			서버에 파일 업로드
 			List<StoreInforVo> storeInforVoList = new ArrayList<StoreInforVo>();
 			for (Part f : fileList) {
 				StoreInforVo storeInforVo = FileUpload.saveFile(f);
@@ -85,11 +87,12 @@ public class StoreAdmitController extends HttpServlet {
 			String no = storeOwnerVo.getNo();
 			
 			StoreInforVo vo = new StoreInforVo();
+			StoreOwnerVo svo = new StoreOwnerVo();
 			vo.setName(name);
 			vo.setAddress(address);
 			vo.setAddressDetail(addressDetail);
 			vo.setStoreCategoryNo(storeCategoryNo);
-			vo.setCompanyRestrationNumber(companyRestrationNumber);
+			svo.setCompanyResitrationNumber(companyRestrationNumber);
 			
 			// 서비스 호출
 			StoreAdmitService sas = new StoreAdmitService();
