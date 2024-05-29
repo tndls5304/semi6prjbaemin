@@ -21,7 +21,8 @@
     </environment>
   </environments>
   <mappers>
-    <mapper resource="/mapper/store.xml"/>
+    <mapper resource="/mapper/storeOwner-menuEdit-mapper.xml"/>
      <mapper resource="/mapper/member-mapper.xml"/>
+     <mapper resource="/mapper/admin-ManageUser-mapper.xml"/>
   </mappers>
 </configuration>
