@@ -1,0 +1,222 @@
+body {
+    background-color: rgb(236, 206, 227);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/*  배민 앱은 content에요 */
+.content{
+  width: 515px;
+  height: 100vh;
+  background-color:white;
+
+  display: grid;
+  grid-template-rows: 1fr 10fr 1fr;
+}
+/* 고정 상단바 입니다 */
+header{
+  position: fixed;
+
+  width: 515px;
+  height: 90px;
+  border: solid 1px;
+display: grid;
+grid-template-rows: 1.5fr 1fr;
+}
+/* 제일 위 고정 상단이 header이고 
+윗 상단바의 첫번째 디브 */
+header > div:nth-child(1){
+background-color:white;
+display: grid;
+grid-template-columns: 0.5fr 7fr 1fr ;
+
+padding-bottom: 0px;
+}
+/* 윗 상단바의 두번째 디브 */
+header >div:nth-child(2){
+  font-size: 15px;
+  font-weight: 100;
+
+  margin-top: 0px;
+
+  padding-left: 30px;
+  margin-bottom: 5px;
+  padding-bottom: 0px;
+background-color: rgb(249, 220, 220);
+}
+
+
+
+/* 맨 밑의  검색,장바구니,찜,주문내역, my배민 클릭할 수 있는 하단바 입니다 */
+footer{
+  position: fixed;
+margin-bottom: 5px;
+width: 513px;
+height: 45px;
+border: solid 1px;
+bottom:1px;
+display: grid;
+grid-template-columns: repeat(5,1fr);
+}
+
+
+
+/* 홈이미지 버튼이에요 */
+.right-bar,.back-img{
+  margin-top: 10px;
+  margin-left: 5px;
+  width: 35px;
+  height: 35px;
+}
+
+/* 상단바에서 뒤로가기버튼   */
+.left-bar :nth-child(1){
+width: 20px;
+height: 30px;
+}
+/* 뒤로가기버튼 옆에 이 페이지의 제목을 담당 */
+.top-bar-name{
+  margin-top: 14px;
+  margin-left: 0px;
+  width: 60x;
+  height: 30px;
+}
+
+/* 메인페이지----------------------------- */
+
+main{
+  padding-top: 92px;
+  width: 515px;
+  height: 850px;
+  background-color:white;
+  display: grid;
+  grid-template-columns:1fr ;
+  grid-template-rows: 2fr 2fr 2fr 2fr 2fr;
+    }
+
+footer div{
+  display: grid;
+  grid-template-columns: 3fr lfr;
+}
+footer img{
+  width: 33px;
+  height: 27px;
+  margin-left: 32px;
+}
+
+footer span{
+  font-size: 12px;
+  margin-left: 28px;
+}
+   
+
+    .charge{
+        display: flex;
+        align-items: center;
+        justify-content: center;  
+    }
+    .membername{
+      display: flex;
+      justify-content:left;
+      align-items: flex-start;
+    }
+   
+   .baeminpay{
+    display: flex;
+      justify-content:center;
+      align-items: center;
+   }
+/* 스크롤바 숨기기 (크롬, 사파리, 오페라) */
+main::-webkit-scrollbar {
+    display: none; /* 스크롤바가 보이지 않도록 설정 */
+}
+
+
+
+
+
+#chargeForm {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+
+  
+  .baeminpay {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+  }
+
+
+
+  .icon-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.icon {
+    text-align: center;
+    font-size: 24px;
+    color: black;
+}
+
+.icon h3 {
+    margin-top: 5px;
+    font-size: 18px;
+}
+#chargeForm {
+    display: flex;
+    justify-content: space-between; /* 각 요소 사이에 공간을 균일하게 배분합니다. */
+    align-items: center; /* 수직 중앙 정렬을 맞춥니다. */
+    padding: 20px; /* 내부 여백을 추가합니다. */
+    background-color: white; /* 배경색을 흰색으로 설정합니다. */
+    border-radius: 8px; /* 모서리를 둥글게 처리합니다. */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 그림자를 추가합니다. */
+    margin: 20px 0; /* 상하 여백을 추가합니다. */
+}
+
+#amountInput {
+    width: 70%; /* 입력 필드 너비를 설정합니다. */
+    padding: 10px; /* 입력 필드의 패딩을 설정합니다. */
+    border: 2px solid #ccc; /* 테두리를 설정합니다. */
+    border-radius: 5px; /* 입력 필드 모서리를 둥글게 처리합니다. */
+}
+
+.blue-button {
+  writing-mode: horizontal-tb;/* 텍스트를 세로로 배치합니다. */
+  padding: 1px 2px; /* 패딩을 조정하여 버튼의 크기를 변경합니다. */
+    background-color: #ff7f7f;
+    color: white; /* 텍스트 색상을 흰색으로 설정합니다. */
+    font-size: 16px; /* 글꼴 크기를 적절히 조정합니다. */
+    /* 텍스트를 중앙에 위치시킵니다. */
+    border: none; /* 테두리를 제거합니다. */
+    border-radius: 10px; /* 모서리를 둥글게 처리합니다. */
+    cursor: pointer; /* 마우스 오버시 커서를 포인터로 변경합니다. */
+    transition: background-color 0.3s, transform 0.3s; /* 색상과 변형에 대한 전환 효과를 추가합니다. */
+} 
+
+.blue-button:hover {
+  background-color: #fd6161;
+    transform: translateY(-2px);
+}
+.icon-rink,.fa fa-file-alt{
+  color: black; /* 링크의 색상을 진한 회색으로 설정 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+.icon-link,
+.icon-link:visited,
+.icon-link:active,
+.icon-link:hover {
+  color: #ff7f7f; /* 링크의 색상을 검정색으로 설정 */
+  text-decoration: none; /* 밑줄 제거 */
+}

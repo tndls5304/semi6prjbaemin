@@ -41,15 +41,15 @@ public class MemberJoinController extends HttpServlet {
             String addressdDetail = req.getParameter("addressdDetail");
             String generation = req.getParameter("generation");
             String gender = req.getParameter("gender");
-            Part profile = req.getPart("f"); // "profile" 파라미터로 업로드된 파일을 Part 객체로 받음
+            Part memberImg = req.getPart("f"); // "profile" 파라미터로 업로드된 파일을 Part 객체로 받음
 
             String changeName = ""; // 파일 이름 변경을 위한 변수 초기화
 
             // 파일이 업로드된 경우
-            if (profile.getSize() > 0) {
+            if (memberImg.getSize() > 0) {
                 // 파일을 서버에 저장하기
-                String originFileName = profile.getSubmittedFileName(); // 원본 파일 이름을 가져옴
-                InputStream is = profile.getInputStream(); // 파일의 입력 스트림을 가져옴
+                String originFileName = memberImg.getSubmittedFileName(); // 원본 파일 이름을 가져옴
+                InputStream is = memberImg.getInputStream(); // 파일의 입력 스트림을 가져옴
 
                 String path = "C:\\dev\\servletWorkspace\\group6bmprj\\src\\main\\webapp\\resources\\upload\\"; // 파일 저장 경로
                 java.io.File dir = new java.io.File(path); // 파일 저장 경로의 디렉토리 객체 생성
@@ -84,7 +84,7 @@ public class MemberJoinController extends HttpServlet {
             vo.setAddressdDetail(addressdDetail);
             vo.setGeneration(generation);
             vo.setGender(gender);
-            vo.setProfile(changeName);
+            vo.setMemberImg(changeName);
 
             MemberService ms = new MemberService();
             

@@ -1,6 +1,7 @@
 package com.kh.baemin.member.service;
 import static com.kh.baemin.db.SqlSessionTemplate.getSqlSession;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -80,7 +81,7 @@ public int join(MemberVo vo) throws Exception {
     }
 
     // 유저 사진 업로드 유효성 검사
-    if (vo.getProfile() == null || vo.getProfile().isEmpty()) {
+    if (vo.getMemberImg() == null || vo.getMemberImg().isEmpty()) {
       
         throw new Exception("유저 사진을 업로드해주세요.");
     }
@@ -197,9 +198,22 @@ public List<ReviewWriterVo> reviewList(ReviewWriterVo vo) throws Exception {
 
   
 }
+
+public int info(MemberVo vo) throws IOException {
+//	- DAO호출
+	SqlSession ss = getSqlSession();
+	int result = dao.updateMemberInfo(ss, vo);
+	
+	if(result == 1) {
+		ss.commit();
+		
+	}else {
+		ss.rollback();
+	}
+	
+	
+	return result;
 }
-
-
 
 
 
