@@ -1,4 +1,27 @@
+function checkDup(){
+  const id = document.querySelector("input[name=id]").value;
+  const obj = {
+    url : "/app/member/id-dup" ,
+    type : "get" ,
+    data : {"id" : id} ,
+    success : function(x){ 
+      console.log( x );
+
+      if( x === "good"){
+        alert("사용 가능한 아이디 입니다 !!! ");
+      }else{
+        alert("중복된 아이디 입니다 ... ㅠㅠ");
+      }
+      
+    } ,
+    error : function( x ){ console.log("통신 실패 ..."); } ,
+  };
+
+  $.ajax( obj );
+}
   // 폼 유효성 검사 함수
+  
+  
   function validateForm() {
     // 입력 필드에서 키를 누를 때 에러 메시지 숨기기
     document.getElementById('id').addEventListener('keydown', function() {
@@ -97,8 +120,8 @@ function checkPassword() {
         document.getElementById('nickname-error').innerText = '닉네임은 1~10자여야 합니다.';
         isValid = false;
     }
-    if (phone.length < 8 || phone.length > 15) {
-        document.getElementById('phone-error').innerText = '전화번호는 8~15자여야 합니다.';
+    if (phone.length != 11) {
+        document.getElementById('phone-error').innerText = '전화번호는 11자여야 합니다.';
         isValid = false;
     }
     if (address.length < 10 || address.length > 20) {
@@ -125,11 +148,11 @@ function checkPassword() {
 
     // 유효성 검사를 모두 통과하면 폼 제출
     if (isValid) {
-        alert('회원가입이 완료 되었습니다!');
-          document.getElementById('signupForm').submit(); // 폼 제출
-}
+       
+        document.getElementById('signupForm').submit();
+        
     }
-
+}
 
 // 에러 메시지 숨기기 함수
 function hideErrorMessage(id) {
