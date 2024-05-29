@@ -1,0 +1,306 @@
+body {
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  /*  배민 앱은 content에요 */
+  .content{
+    width: 515px;
+    height: 100vh;
+    background-color:white;
+  
+    display: grid;
+    grid-template-rows: 1fr 10fr 1fr;
+  }
+  /* 고정 상단바 입니다 */
+  header{
+    position: fixed;
+  
+    width: 515px;
+    height: 90px;
+    border: solid 1px;
+  display: grid;
+  grid-template-rows: 1.5fr 1fr;
+  }
+  /* 제일 위 고정 상단이 header이고 
+  윗 상단바의 첫번째 디브 */
+  header > div:nth-child(1){
+  background-color:white;
+  display: grid;
+  grid-template-columns: 0.5fr 7fr 1fr ;
+  
+  padding-bottom: 0px;
+  }
+  /* 윗 상단바의 두번째 디브 */
+  header >div:nth-child(2){
+    font-size: 15px;
+    font-weight: 100;
+  
+    margin-top: 0px;
+  
+    padding-left: 30px;
+    margin-bottom: 5px;
+    padding-bottom: 0px;
+  background-color: rgb(249, 220, 220);
+  }
+  
+  
+  
+  /* 맨 밑의  검색,장바구니,찜,주문내역, my배민 클릭할 수 있는 하단바 입니다 */
+  footer{
+    position: fixed;
+  margin-bottom: 5px;
+  width: 513px;
+  height: 45px;
+  border: solid 1px;
+  bottom:1px;
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  }
+  
+  
+  
+  /* 홈이미지 버튼이에요 */
+  .right-bar,.back-img{
+    margin-top: 10px;
+    margin-left: 5px;
+    width: 35px;
+    height: 35px;
+  }
+  
+  /* 상단바에서 뒤로가기버튼   */
+  .left-bar :nth-child(1){
+  width: 20px;
+  height: 30px;
+  }
+  /* 뒤로가기버튼 옆에 이 페이지의 제목을 담당 */
+  .top-bar-name{
+    margin-top: 14px;
+    margin-left: 0px;
+    width: 60x;
+    height: 30px;
+  }
+  
+  /* 메인페이지----------------------------- */
+  
+  main{
+       
+      
+        margin-top: 90px;
+      }
+  
+  footer div{
+    display: grid;
+    grid-template-columns: 3fr lfr;
+  }
+  footer img{
+    width: 33px;
+    height: 27px;
+    margin-left: 32px;
+  }
+  
+  footer span{
+    font-size: 12px;
+    margin-left: 28px;
+  }
+  
+          /* 글씨체 */
+          body {
+    font-family: "Jua", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+            body {
+     
+              background-color: rgb(236, 206, 227);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+   }
+   .main{
+    width: 515px;
+    height: 850px;
+    background-color:white;
+    display: grid;
+    grid-template-columns:1fr ;
+    grid-template-rows: 5fr 1fr 2fr 1fr 5fr 2fr;
+  }
+  .restaurant {
+          background-color: white;
+          border: 1px solid #dddddd;
+          border-radius: 10px;
+          padding: 10px;
+          margin: 10px;
+         
+      }
+      .menuplus,.payment{
+          background-color: white;
+          border: 1px solid #dddddd;
+          border-radius: 10px;
+          padding: 10px;
+          margin: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+  
+      .restaurant-header {
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px;
+      }
+  
+      .restaurant-logo {
+          width: 50px;
+          height: 50px;
+          margin-right: 10px;
+          border-radius: 50%;
+      }
+      .restaurant-info {
+          flex-grow: 1;
+      }
+  
+      .restaurant-name {
+          font-size: 20px;
+          font-weight: bold;
+          color: #333;
+      }
+      .menulogo{
+          display: flex;
+          justify-content: end;
+          align-items: end;
+      }   
+      .menu-container {
+      display: flex;
+      justify-content: flex-end;  /* 로고를 오른쪽으로 정렬 */
+      align-items: flex-start;    /* 로고를 상단으로 정렬 */
+      padding-top: 10px;          /* 상단 패딩 조절 */
+      }.time {
+      display: flex;        /* Flexbox 레이아웃 사용 */
+      justify-content: flex-end; /* 내용을 오른쪽으로 정렬 */
+      width: 100%;          /* 부모 요소의 전체 너비 사용 */
+  }
+  .together{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .product-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* 가로 방향 중앙 정렬 */
+    
+      
+  }
+  
+  .product {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0; /* 위아래 패딩만 유지, 좌우 패딩 제거 */
+      margin: 0; /* 여백 제거 */
+  }
+  
+  .product-name, .product-price {
+      margin-right: 10px;
+  }
+  
+  .add-btn {
+      width: 30px;
+      height: 30px;
+      font-size: 20px;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      background-color: #f1f1f1; /* 버튼 배경색 변경 */
+      border-radius: 50%; /* 버튼을 원형으로 만듦 */
+  }
+  
+  .product-image {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+  }
+  .storename{
+    
+      text-align: left; /* 텍스트를 왼쪽으로 정렬 */
+      width: 100%; /* div 요소 전체 너비 사용 */
+  }
+  .amountpay{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  } 
+  .restaurant-menuname .amount {
+      margin-left: 400px; /* 원하는 거리만큼 조정 */
+  }
+  .menuplusbtn,.paymentbtn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ff7f7f; /* 배경색을 연한 파랑색으로 설정 */
+      color: white; /* 텍스트 색상을 흰색으로 설정 */
+      text-align: center;
+      border: none; /* 테두리 없앰 */
+      border-radius: 5px; /* 모서리를 둥글게 처리 */
+      text-decoration: none; /* 링크 밑줄 제거 */
+      font-size: 16px; /* 폰트 크기 설정 */
+      cursor: pointer; /* 마우스 오버 시 포인터 모양으로 변경 */
+  }
+  
+  button:hover {
+      background-color: #fd5858; /* 호버 시 배경색 변경 */
+  }
+  .deliverytip {
+      margin-right: 10px; /* 배달팁과 금액 사이의 간격 조정 */
+  }
+  
+  .deliverymoney {
+      margin-left: 400px; /* 금액을 배달팁 텍스트로부터 더 멀리 띄우기 */
+  }
+  .totallmoney .amount {
+      font-weight: bold; /* 글씨를 두껍게 */
+      color:black; /* 금색으로 표시 */
+     
+      
+      margin-left: 10px; /* 왼쪽에서 조금 떨어져 보이게 */
+  }
+  /* 고정 상단바 입니다 */
+  header{
+    position: fixed;
+  
+    width: 515px;
+    height: 90px;
+    border: solid 1px;
+  display: grid;
+  grid-template-rows: 1.5fr 1fr;
+  }
+  /* 제일 위 고정 상단이 header이고 
+  윗 상단바의 첫번째 디브 */
+  header > div:nth-child(1){
+  background-color:white;
+  display: grid;
+  grid-template-columns: 0.5fr 7fr 1fr ;
+  
+  padding-bottom: 0px;
+  }
+  
+  .middle-bar{
+      display: flex;
+    
+  }
+  .storename{
+      display: flex;
+      justify-content:left;
+      align-items:center;
+  }
+  .black-link {
+          color: black;
+          text-decoration: none; /* 링크의 밑줄을 제거 */
+      }

@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.kh.baemin.member.vo.MemberVo;
 import com.kh.baemin.member.vo.ReviewWriterVo;
+import com.kh.baemin.member.vo.StoreOrderVo;
 
 public class MemberDao {
 
@@ -46,4 +47,10 @@ public class MemberDao {
 		return ss.selectOne("memberMapper.info", vo);
 	}
 
+	 public List<StoreOrderVo> storeOrderList(SqlSession ss, String id) {
+	        return ss.selectList("memberMapper.storeOrderList", id);
+	    }
+
+	
+	
 }
