@@ -1,7 +1,7 @@
 function checkDup(){
   const id = document.querySelector("input[name=id]").value;
   const obj = {
-    url : "/app/member/id-dup" ,
+    url : "/baemin/member/id-dup" ,
     type : "get" ,
     data : {"id" : id} ,
     success : function(x){ 
