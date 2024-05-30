@@ -13,8 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
  
-   <link rel="stylesheet" href="/baemin/resources/css/store/owner_join.css">
-   <script defer src="/baemin/resources/js/store/owner_join.js"> </script>
+   <link rel="stylesheet" href="/baemin/resources/css/store/owner_login.css">
+   <script defer src="/baemin/resources/js/store/owner_login.js"> </script>
    
 <title>Insert title here</title>
 </head>
@@ -55,6 +55,7 @@
             </div>
             <div class="button-container">
                 <button type="button" onclick="validateLogin()">로그인하기</button>
+                <button type="button" href="">회원가입하기</button>
          
             </div>
         </form>
