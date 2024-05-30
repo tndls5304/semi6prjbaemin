@@ -192,13 +192,13 @@
               <p>메뉴 추가</p>
               <p>name :  <input name="name" type="text" id="menuPlusName" required></p>
               <p>price  : <input name="price" type="number" id="menuPlusPrice" required></p>
-              <p>사 진  : <img  name="" src="">
-              			<button type="button" >추가</button> <button type="button">취소</button></p>
+              <p>사 진  :
+              <input type="file" name="img" > <button type="button">사진취소</button></p>
           
               <p>노출여부  :
-                <select name="">
-                      <option value="">Y</option>
-                      <option value="">N</option>
+                <select name="view_yn">
+                      <option value="Y">Y</option>
+                      <option value="N">N</option>
                 </select>  
               </p>
           </div>

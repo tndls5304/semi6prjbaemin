@@ -9,9 +9,9 @@
     
     <title>유저 회원가입</title>
     
-<%--     <%@ include file="/WEB-INF/views/layout/util.jsp" %> --%>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
            <!-- js -->
-        
            
            <script defer src="/baemin/resources/js/member/join.js"></script>
            <!-- css -->
