@@ -90,7 +90,7 @@ public class StoreMenuAddController extends HttpServlet {
 			throw new Exception("메뉴 추가 실패!");
 		}
 		
-		resp.sendRedirect("/baemin/store/menu_list");
+		resp.sendRedirect("/baemin/store/category_list");
 		
 	}catch(Exception e){
 		e.printStackTrace();

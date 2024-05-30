@@ -10,3 +10,4 @@ setup/
 **/server.xml
 Servers/
 build/
+**/upload
