@@ -217,10 +217,10 @@ public int info(MemberVo vo) throws IOException {
 }
 
 
-public List<StoreOrderVo> getOrderListByUser(String id)throws Exception {
+public List<StoreOrderVo> getOrderListByUser(MemberVo vo)throws Exception {
 
     SqlSession ss = getSqlSession();
-    List<StoreOrderVo> orderList =  dao.storeOrderList(ss , id);
+    List<StoreOrderVo> orderList =  dao.storeOrderList(ss , vo);
     ss.close();
     
     

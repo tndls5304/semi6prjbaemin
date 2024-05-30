@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import com.kh.baemin.member.service.MemberService;
+import com.kh.baemin.member.vo.MemberVo;
 import com.kh.baemin.member.vo.ReviewWriterVo;
 
 @WebServlet("/member/reviewContentWriter")
@@ -23,39 +24,54 @@ public class MemberReviewContentWriterController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession(false);
-        if (session == null || session.getAttribute("loginMember") == null) {
-            // 로그인이 되어 있지 않으면 로그인 페이지로 리다이렉트
-            resp.sendRedirect(req.getContextPath() + "/member/login");
+        HttpSession session = req.getSession();
+        MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
+        System.out.println(loginMemberVo);
+
+        if (loginMemberVo == null) {
+            System.out.println("로그인 필요");
+            resp.sendRedirect("/baemin/member/login");
             return;
         }
+
         req.getRequestDispatcher("/WEB-INF/views/member/reviewContentWriter.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession(false);
-        if (session == null || session.getAttribute("loginMember") == null) {
-            // 로그인이 되어 있지 않으면 로그인 페이지로 리다이렉트
-            resp.sendRedirect(req.getContextPath() + "/member/login");
+        HttpSession session = req.getSession();
+        MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
+        System.out.println(loginMemberVo);
+
+        if (loginMemberVo == null) {
+            System.out.println("로그인 필요");
+            resp.sendRedirect("/baemin/member/login");
             return;
         }
 
         String rating = req.getParameter("rating");
-        String memberContent = req.getParameter("MemberContent");
-        String deliveryProblem = req.getParameter("deliveryProblem");
+        String memberContent = req.getParameter("memberContent");  // 변수명을 소문자로 시작하도록 수정
+        String deliveryProblem = (String) session.getAttribute("deliveryProblem");
 
         // 리뷰 이미지 파일 처리
-        Part filePart = req.getPart("review_image");
+        Part filePart = req.getPart("reviewImage");
         String reviewImg = getFileName(filePart);
+
+        // 파일 저장 경로
         String fileSavePath = getServletContext().getRealPath("/upload") + File.separator + reviewImg;
+
+        // 경로가 존재하지 않으면 생성
+        File fileSaveDir = new File(fileSavePath).getParentFile();
+        if (!fileSaveDir.exists()) {
+            fileSaveDir.mkdirs();
+        }
+
         filePart.write(fileSavePath);
 
         ReviewWriterVo vo = new ReviewWriterVo();
         vo.setRating(rating);
         vo.setMemberContent(memberContent);
         vo.setReviewImg(reviewImg);  // 저장된 파일 이름 설정
- 
         vo.setDeliveryProblem(deliveryProblem);  // deliveryProblem 설정
 
         MemberService ms = new MemberService();
@@ -69,7 +85,7 @@ public class MemberReviewContentWriterController extends HttpServlet {
         if (result == 1) {
             req.setAttribute("message", "리뷰가 성공적으로 저장되었습니다.");
             req.setAttribute("deliveryProblem", deliveryProblem);
-            req.setAttribute("MemberContent", memberContent);
+            req.setAttribute("memberContent", memberContent);
             req.setAttribute("reviewImg", reviewImg);
             req.getRequestDispatcher("/WEB-INF/views/member/reviewList.jsp").forward(req, resp);
         } else {

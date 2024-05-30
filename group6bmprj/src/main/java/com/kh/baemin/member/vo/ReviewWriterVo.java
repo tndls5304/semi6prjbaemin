@@ -15,13 +15,18 @@ public class ReviewWriterVo {
 	private String foodName;
 	private String ceoImg;
 	private String memberNickName;
-	public ReviewWriterVo() {
-		super();
-		// TODO Auto-generated constructor stub
+	private String id;
+	@Override
+	public String toString() {
+		return "ReviewWriterVo [no=" + no + ", orderNo=" + orderNo + ", rating=" + rating + ", MemberContent="
+				+ MemberContent + ", CeoContent=" + CeoContent + ", reviewImg=" + reviewImg + ", memberImg=" + memberImg
+				+ ", enrollDate=" + enrollDate + ", delYn=" + delYn + ", deliveryProblem=" + deliveryProblem
+				+ ", storeName=" + storeName + ", foodName=" + foodName + ", ceoImg=" + ceoImg + ", memberNickName="
+				+ memberNickName + ", id=" + id + "]";
 	}
 	public ReviewWriterVo(String no, String orderNo, String rating, String memberContent, String ceoContent,
 			String reviewImg, String memberImg, String enrollDate, String delYn, String deliveryProblem,
-			String storeName, String foodName, String ceoImg, String memberNickName) {
+			String storeName, String foodName, String ceoImg, String memberNickName, String id) {
 		super();
 		this.no = no;
 		this.orderNo = orderNo;
@@ -37,14 +42,11 @@ public class ReviewWriterVo {
 		this.foodName = foodName;
 		this.ceoImg = ceoImg;
 		this.memberNickName = memberNickName;
+		this.id = id;
 	}
-	@Override
-	public String toString() {
-		return "ReviewWriterVo [no=" + no + ", orderNo=" + orderNo + ", rating=" + rating + ", MemberContent="
-				+ MemberContent + ", CeoContent=" + CeoContent + ", reviewImg=" + reviewImg + ", memberImg=" + memberImg
-				+ ", enrollDate=" + enrollDate + ", delYn=" + delYn + ", deliveryProblem=" + deliveryProblem
-				+ ", storeName=" + storeName + ", foodName=" + foodName + ", ceoImg=" + ceoImg + ", memberNickName="
-				+ memberNickName + "]";
+	public ReviewWriterVo() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	public String getNo() {
 		return no;
@@ -130,5 +132,10 @@ public class ReviewWriterVo {
 	public void setMemberNickName(String memberNickName) {
 		this.memberNickName = memberNickName;
 	}
-
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 }
