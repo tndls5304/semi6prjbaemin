@@ -2,82 +2,119 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-    
-  
+
+
+
 <mapper namespace="storeMapper">
 
-<insert id="joinStoreOwner">
-INSERT INTO MEMBER_STORE_OWNER(
-NO
-,ID
-,PWD
-,NAME
-,PHONE
-,COMPANY_RESITRATION_NUMBER
-,PROFILE
-) 
-VALUES(
-SEQ_MEMBER_STORE_OWNER_NO.NEXTVAL
-,#{id}
-,#{pwd}
-,#{name}
-,#{phone}
-,#{companyResitrationNumber}
-,#{profile}
-)
-</insert>   
+	<insert id="joinStoreOwner">
+		INSERT INTO MEMBER_STORE_OWNER(
+		NO
+		,ID
+		,PWD
+		,NAME
+		,PHONE
+		,COMPANY_RESITRATION_NUMBER
+		,PROFILE
+		)
+		VALUES(
+		SEQ_MEMBER_STORE_OWNER_NO.NEXTVAL
+		,#{id}
+		,#{pwd}
+		,#{name}
+		,#{phone}
+		,#{companyResitrationNumber}
+		,#{profile}
+		)
+	</insert>
 
-<select id="joinStoreOwnerCheckIdDup" resultType="int">
+	<select id="joinStoreOwnerCheckIdDup" resultType="int">
 
-SELECT COUNT(*)
- AS CNT FROM MEMBER_STORE_OWNER 
- WHERE ID =#{id}
-</select>
+		SELECT COUNT(*)
+		AS CNT FROM MEMBER_STORE_OWNER
+		WHERE ID =#{id}
+	</select>
 
-  <insert id="insertStoreMenuCategory">
-  INSERT INTO FOOD_MENU_CATEGORY
-  (
-		  NO
-		  ,NAME
-		  ,VIEW_YN
-		  ,DEL_YN
-		  ,STORE_NO
-  ) 
-  VALUES
-  (
-		  SEQ_FOOD_MENU_CATEGORY_NO.NEXTVAL
-		  ,#{name}
-		  ,#{viewYn}
-		  ,'N'
-		  ,#{storeNo})
-  </insert>
-  
-  <select id="getCategoryList"  resultType="com.kh.baemin.store.vo.CategoryVo">
-  
-   	SELECT NO,NAME,VIEW_YN,STORE_NO
-	FROM FOOD_MENU_CATEGORY
-    WHERE DEL_YN='N' AND STORE_NO=#{value}
-	ORDER BY NO ASC
-  
-  </select>
-  
-  <update id="categoryEdit">
-  
-  	UPDATE FOOD_MENU_CATEGORY 
-	SET NAME=#{name},
-	VIEW_YN=#{viewYn}
-	WHERE NO=#{no} AND STORE_NO=#{storeNo}
-  </update>
-  
-  
-  <update id="categoryDelete">
-    UPDATE FOOD_MENU_CATEGORY
-    SET DEL_YN = 'Y'
-    WHERE NO =#{no} AND STORE_NO=#{storeNo}
-  </update>
-  
-  
-  
-  
+	<insert id="insertStoreMenuCategory">
+		INSERT INTO FOOD_MENU_CATEGORY
+		(
+		NO
+		,NAME
+		,VIEW_YN
+		,DEL_YN
+		,STORE_NO
+		)
+		VALUES
+		(
+		SEQ_FOOD_MENU_CATEGORY_NO.NEXTVAL
+		,#{name}
+		,#{viewYn}
+		,'N'
+		,#{storeNo})
+	</insert>
+
+	<select id="getCategoryList"
+		resultType="com.kh.baemin.store.vo.CategoryVo">
+
+		SELECT NO,NAME,VIEW_YN,STORE_NO
+		FROM FOOD_MENU_CATEGORY
+		WHERE DEL_YN='N' AND STORE_NO=#{value}
+		ORDER BY NO ASC
+
+	</select>
+
+	<update id="categoryEdit">
+
+		UPDATE FOOD_MENU_CATEGORY
+		SET NAME=#{name},
+		VIEW_YN=#{viewYn}
+		WHERE NO=#{no} AND STORE_NO=#{storeNo}
+	</update>
+
+
+	<update id="categoryDelete">
+		UPDATE FOOD_MENU_CATEGORY
+		SET DEL_YN = 'Y'
+		WHERE NO
+		=#{no} AND STORE_NO=#{storeNo}
+	</update>
+
+
+	<insert id="menuAdd">
+		INSERT INTO FOOD_INFOR(
+		FOOD_IMG
+		,FOOD_MENU_CATEGORY_NO
+		,NAME
+		,NO
+		,PRICE
+		,STORE_NO
+		,VIEW_YN)
+
+		VALUES(
+		#{foodImg}
+		,#{foodMenuCategoryNo}
+		,#{name}
+		,SEQ_FOOD_INFOR_NO.NEXTVAL
+		,#{price}
+		,#{storeNo}
+		,#{viewYn})
+
+	</insert>
+
+	<select id="selectMenuList"
+		resultType="com.kh.baemin.store.vo.FoodInforVo">
+		SELECT
+		VIEW_YN
+		,STORE_NO
+		,PRICE
+		,NO
+		,NAME
+		,FOOD_MENU_CATEGORY_NO
+		,FOOD_IMG
+		,DEL_YN
+		FROM FOOD_INFOR
+		WHERE STORE_NO=#{value}
+	</select>
+
+
 </mapper>

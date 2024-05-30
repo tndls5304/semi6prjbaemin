@@ -19,6 +19,7 @@ function detailDelete() {
 //tag 요소는 
 //   <td><input type="checkbox" name="checkbox" data-type="category" data-name="반반피자" ></td>
 function showCategoryEdit(tag) {
+ console.log("카테고리 수정 모달창띄울것임!!")
 	var categoryEditBlock = document.getElementById("categoryEditBlock");
 	if (categoryEditBlock.style.display === "none" || categoryEditBlock.style.display === "") {
 		categoryEditBlock.style.display = "block";
@@ -38,14 +39,15 @@ function showCategoryEdit(tag) {
 }
 
 function categoryEditDelete() {
-	categoryEditBlock.style.display = "none"; categoryEditDelete - click
+	categoryEditBlock.style.display = "none";
+	
 }
 
 
 // 테이블에서 카테고리 수정시 나오는 모달창 tableShowCategoryEdit()----------------------------
 function tableShowCategoryEdit(no) {
-
-	var tag = document.querySelector("#checkCategoryNo-" + no);
+console.log("카테고리 수정 버튼 온클릭!!")
+	var tag = document.querySelector("#checkCategoryNo-"+ no);
 	showCategoryEdit(tag);
 }
 
@@ -61,8 +63,7 @@ function tableShowCategoryEdit(no) {
 //data-name="불고기피자메뉴" data-price="19000" data-src="/수인img/카테고리-돈까스회일식.png"></td>
 
 
-function showMenuEdit(
-) {
+function showMenuEdit() {
 	//  메뉴수정 모달창 띄우기 
 	var menuEditBlock = document.getElementById("menuEditBlock");
 	if (menuEditBlock.style.display === "none" || menuEditBlock.style.display === "") {
@@ -136,10 +137,13 @@ function categoryPlusRquest() {
 
 
 // 메뉴 추가 
-function showMenuPlus() {
+function showMenuPlus(categyryNo) {
 	var menuPlusBlock = document.getElementById("menuPlusBlock");
 	if (menuPlusBlock.style.display === "none" || menuPlusBlock.style.display === "") {
 		menuPlusBlock.style.display = "block";
+		//카테고리번호 모달로 전달하기
+		var modalCategyryNo = document.querySelector("#modalCategyryNo");
+		modalCategyryNo.value = categyryNo;
 	} else {
 		menuPlusBlock.style.display = "none";
 	}
@@ -358,7 +362,7 @@ function showSelectionDelete() {
 
 				if (checkboxType === 'category') {
 					showCategoryDelete(checkboxTag);
-					
+
 				} else {
 					showMenuDelete(checkboxTag);
 				}
@@ -371,6 +375,7 @@ function showSelectionDelete() {
 	}
 }
 
+
 //체크후-> 선택삭제  체크박스가 카테고리라면?
 //tag 요소는 요런거...
 //   <td><input type="checkbox" name="checkbox" id="checkCategoryNo-${categoryVo.no}"  data-type="category" data-name="${categoryVo.name}"  ></td>
@@ -378,8 +383,8 @@ function showCategoryDelete(tag) {
 
 	var categoryNoText = tag.getAttribute("id"); //체크박스의 아이디 속성을 가져와서 
 
-	var submitCategoryNoText=document.querySelector("#submitCategoryNoText"); //폼태그로 제출할 태그의 밸류값에 넣어주기 여기에 카테고리 번호가 포함된 문자가 있다
-	submitCategoryNoText.value=categoryNoText;
+	var submitCategoryNoText = document.querySelector("#submitCategoryNoText"); //폼태그로 제출할 태그의 밸류값에 넣어주기 여기에 카테고리 번호가 포함된 문자가 있다
+	submitCategoryNoText.value = categoryNoText;
 }
 
 
