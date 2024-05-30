@@ -54,7 +54,7 @@ public class MemberLoginController extends HttpServlet {
 			session.setAttribute("loginMemberVo", loginMemberVo);
 			System.out.println("211212211212211212211212211212211212211212211212211212211212211212211212211212211212");
 			System.out.println(loginMemberVo);
-			resp.sendRedirect("/baemin/member/reviewStatusWriter"); // 리뷰 상태 페이지로 리디렉트
+			resp.sendRedirect("/baemin/member/info"); // 리뷰 상태 페이지로 리디렉트
 		} catch (Exception e) {
 			e.printStackTrace();
 			req.setAttribute("errorMessage", "로그인 중 오류가 발생했습니다. 다시 시도해주세요.");

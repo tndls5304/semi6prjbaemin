@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -50,8 +51,10 @@ public class MemberJoinController extends HttpServlet {
                 // 파일을 서버에 저장하기
                 String originFileName = memberImg.getSubmittedFileName(); // 원본 파일 이름을 가져옴
                 InputStream is = memberImg.getInputStream(); // 파일의 입력 스트림을 가져옴
-
-                String path = "C:\\dev\\servletWorkspace\\group6bmprj\\src\\main\\webapp\\resources\\upload\\"; // 파일 저장 경로
+                
+                ServletContext context = getServletContext();
+                String path = context.getRealPath("/resources/upload/"); 
+                
                 java.io.File dir = new java.io.File(path); // 파일 저장 경로의 디렉토리 객체 생성
                 if (!dir.exists()) {
                     dir.mkdirs(); // 디렉토리가 존재하지 않으면 생성

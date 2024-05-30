@@ -24,33 +24,29 @@
             <div class="middle">주소입력칸&nbsp&nbsp&nbsp▽</div>
         </header>
         <main>
-            <%
-                List<StoreOrderVo> orderList = (List<StoreOrderVo>) request.getAttribute("orderList");
-                if (orderList != null) {
-                    for (StoreOrderVo order : orderList) {
-            %>
-                        <div class="deal">
-                            <div class="deal-header">
-                                <img src="<%= order.getStoreImg() %>" class="storelogo" alt="가게로고" style="width: 50px; height: 50px;">
-                                <div class="store"><h2><a href="store_link_here"><%= order.getStoreName() %></a></h2></div>
-                            </div>
-                            <p class="deal-price"><%= order.getStoreFood() %>, <%= order.getStoreFoodPrice() %></p>
-                            <div class="deal-details">
-                                <p class="date-text">주문 날짜 : <%= order.getStoreOrderDate() %></p>
-                                <p class="status-text">배달 상태 : <%= order.getOrderStatus() %></p>
-                            </div>
-                            <a href="리뷰관리_링크_URL" class="link-button">주문상세</a>
-                            <a href="리뷰관리_링크_URL" class="link-button">같은메뉴담기</a>
-                            <a href="리뷰관리_링크_URL" class="link-button">리뷰쓰기</a>
-                        </div>
-            <%
-                    }
-                } else {
-            %>
-                <p>주문 내역이 없습니다.</p>
-            <%
-                }
-            %>
+        
+            <div class="deal">
+                <div class="deal-header">
+                  <!-- 가게사진 -->
+                    <img src="/path_to_bbq_logo.jpg" class="storelogo" alt="가게로고" style="width: 50px; height: 50px;">
+                    <!-- 가게이름링크 -->
+                    <div class="store"><h2><a href="store_link_here">가게</a></h2>
+                    </div>
+                </div>
+                <!-- 가게음식 ,가게음식 가격 -->
+                <p class="deal-price">가게음식,가게음식 가격</p>
+                <div class="deal-details">
+                    <p class="date-text">주문 날짜 :</p>
+                    <p class="status-text">배달 상태 :</p>
+                </div>
+                <!-- 주문상세 버튼 -->
+                <a href="리뷰관리_링크_URL" class="link-button">주문상세</a>
+                <!-- 같은 메뉴 담기 버튼 -->
+                <a href="리뷰관리_링크_URL" class="link-button">같은메뉴담기</a>
+                <!-- 리뷰쓰기 버튼 -->
+                <a href="/baemin/member/reviewStatusWriter" class="link-button">리뷰쓰기</a>
+            </div>
+        
         </main>
     </div>
 </body>

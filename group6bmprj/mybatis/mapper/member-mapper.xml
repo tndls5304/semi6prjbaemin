@@ -41,7 +41,7 @@
     <select id="login" resultType="com.kh.baemin.member.vo.MemberVo">
         SELECT id, pwd
         FROM MEMBER_USER
-     	WHERE id = #{id} AND pwd = #{pwd}
+        WHERE id = #{id} AND pwd = #{pwd}
     </select>
 
     <!-- 중복된 아이디 개수를 반환하는 쿼리 -->
@@ -49,12 +49,9 @@
         SELECT COUNT(*) FROM MEMBER_USER WHERE id = #{id}
     </select>
     
-    
-    
-
     <insert id="reviewStatus">
         INSERT INTO DELIVERY_PROBLEM (
-                 NO,
+            NO,
             DELIVERY_PROBLEM
         )
         VALUES (
@@ -63,71 +60,103 @@
         )
     </insert>
     
-    
-    
-  <insert id="reviewContent">
- 
-        
-        INSERT INTO  REVIEW_COMMUNICATION 
-         
+    <insert id="reviewContent">
+        INSERT INTO REVIEW_COMMUNICATION 
         (
-        NO,
-        RATING,
-        USER_CONTENT,
-        IMG
+            NO,
+            RATING,
+            USER_CONTENT,
+            STORE_CONTENT,
+            IMG,
+            ENROLL_DATE,
+            DEL_YN
         )
         VALUES
-           SEQ_REVIEW_COMMUNICATION_NO.NEXTVAL,
-           #{rating},
-           #{memberContent},
-           #{reviewImg}
-           
-        
+        (
+            SEQ_REVIEW_COMMUNICATION_NO.NEXTVAL,
+            #{rating},
+            #{memberContent},
+            0,
+            #{reviewImg},
+            SYSDATE,
+            'N'
+        )
     </insert>
 
     <select id="selectReviewList" resultType="com.kh.baemin.member.vo.ReviewWriterVo">
-       SELECT 
-    M.PROFILE,
-    M.NICK,
-    R.RATING,
-    R.USER_CONTENT AS memberContent,
-    R.IMG AS reviewImg,
-    S.NAME AS storeName,
-    F.NAME AS foodName
-FROM 
-    REVIEW_COMMUNICATION R
-JOIN 
-    STORE_INFOR S ON R.NO = S.NO 
-JOIN 
-    FOOD_INFOR F ON F.NO = R.NO
-JOIN
-    MEMBER_USER M ON M.NO = R.NO 
-WHERE 
-	R.NO = #{x}
-	AND
-    R.DEL_YN = 'N'
-
-
+        SELECT 
+            M.PROFILE,
+            M.NICK,
+            R.RATING,
+            R.USER_CONTENT AS memberContent,
+            R.IMG AS reviewImg,
+            S.NAME AS storeName,
+            F.NAME AS foodName
+        FROM 
+            REVIEW_COMMUNICATION R
+        JOIN 
+            STORE_INFOR S ON R.NO = S.NO 
+        JOIN 
+            FOOD_INFOR F ON F.NO = R.NO
+        JOIN
+            MEMBER_USER M ON M.NO = R.NO 
+        WHERE 
+            R.NO = #{x}
+            AND
+            R.DEL_YN = 'N'
     </select>
     
-  <select id ="info">
-  SELECT 
-  M.PROFILE ,
-  M.NICK,
-  M.ACCOUNT_BALANCE
- FROM 
- MEMBER_USER M
- WHERE 
- PROFILE = #{memberImg}
- and
- NICK = #{memberNickName}
- and 
- ACCOUNT_BALANCE = #{memberPay}
+    <select id="info" resultType="com.kh.baemin.member.vo.MemberVo">
+        SELECT 
+            M.PROFILE,
+            M.NICK,
+            M.ACCOUNT_BALANCE
+        FROM 
+            MEMBER_USER M
+        WHERE 
+            PROFILE = #{memberImg}
+            AND
+            NICK = #{memberNickName}
+            AND 
+            ACCOUNT_BALANCE = #{memberPay}
+    </select>
   
-  
-  
-  </select>
-  
-
+    <select id="storeOrderList" resultType="com.kh.baemin.member.vo.StoreOrderVo">
+        SELECT 
+            S.INTRODUCTION_IMG,
+            S.NAME AS STORE_NAME,
+            F.NAME AS FOOD_NAME,
+            F.PRICE AS FOOD_PRICE,
+            O.ORDER_DAY,
+            OS.STATUS
+        FROM
+            STORE_INFOR S
+        JOIN
+            FOOD_INFOR F ON S.NO = F.NO
+        JOIN
+            ORDER_SHEET O ON O.NO = S.NO
+        JOIN
+            ORDER_STATUS OS ON OS.NO = O.NO
+        WHERE
+            1=1
+            <if test="storeImg != null and storeImg != ''">
+                AND S.INTRODUCTION_IMG = #{storeImg}
+            </if>
+            <if test="storeName != null and storeName != ''">
+                AND S.NAME = #{storeName}
+            </if>
+            <if test="storeFood != null and storeFood != ''">
+                AND F.NAME = #{storeFood}
+            </if>
+            <if test="storeFoodPrice != 0">
+                AND F.PRICE = #{storeFoodPrice}
+            </if>
+            <if test="storeOrderDate != null and storeOrderDate != ''">
+                AND O.ORDER_DAY = #{storeOrderDate}
+            </if>
+            <if test="deliveryStatus != null and deliveryStatus != ''">
+                AND OS.STATUS = #{deliveryStatus}
+            </if>
+    </select>
 
 </mapper>

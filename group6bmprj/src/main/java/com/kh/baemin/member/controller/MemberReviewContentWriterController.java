@@ -1,7 +1,12 @@
 package com.kh.baemin.member.controller;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.UUID;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -50,23 +55,43 @@ public class MemberReviewContentWriterController extends HttpServlet {
         }
 
         String rating = req.getParameter("rating");
-        String memberContent = req.getParameter("memberContent");  // 변수명을 소문자로 시작하도록 수정
+        String memberContent = req.getParameter("memberContent");
         String deliveryProblem = (String) session.getAttribute("deliveryProblem");
 
         // 리뷰 이미지 파일 처리
-        Part filePart = req.getPart("reviewImage");
-        String reviewImg = getFileName(filePart);
+        Part reviewImgPart = req.getPart("reviewImg");
+        String reviewImg = ""; // 파일 이름 변경을 위한 변수 초기화
 
-        // 파일 저장 경로
-        String fileSavePath = getServletContext().getRealPath("/upload") + File.separator + reviewImg;
+        // 파일이 업로드된 경우
+        if (reviewImgPart.getSize() > 0) {
+            // 파일을 서버에 저장하기
+            String originFileName = reviewImgPart.getSubmittedFileName(); // 원본 파일 이름을 가져옴
+            InputStream is = reviewImgPart.getInputStream(); // 파일의 입력 스트림을 가져옴
 
-        // 경로가 존재하지 않으면 생성
-        File fileSaveDir = new File(fileSavePath).getParentFile();
-        if (!fileSaveDir.exists()) {
-            fileSaveDir.mkdirs();
+            
+            ServletContext context = getServletContext();
+            String path = context.getRealPath("/resources/upload/"); 
+            // 파일 저장 경로 설정
+  
+            File dir = new File(path); // 파일 저장 경로의 디렉토리 객체 생성
+            if (!dir.exists()) {
+                dir.mkdirs(); // 디렉토리가 존재하지 않으면 생성
+            }
+
+            String random = UUID.randomUUID().toString(); // 고유한 파일 이름 생성을 위한 랜덤 문자열 생성
+            String ext = originFileName.substring(originFileName.lastIndexOf(".")); // 파일 확장자를 가져옴
+            reviewImg = System.currentTimeMillis() + "_" + random + ext; // 현재 시간과 랜덤 문자열을 조합하여 고유한 파일 이름 생성
+            FileOutputStream fos = new FileOutputStream(new File(dir, reviewImg)); // 파일 저장을 위한 출력 스트림 생성
+
+            byte[] buf = new byte[1024]; // 파일을 읽고 쓰기 위한 버퍼 생성
+            int size = 0;
+            while ((size = is.read(buf)) != -1) { // 입력 스트림에서 데이터를 읽어 버퍼에 저장
+                fos.write(buf, 0, size); // 버퍼에 있는 데이터를 출력 스트림에 씀
+            }
+
+            is.close(); // 입력 스트림 닫기
+            fos.close(); // 출력 스트림 닫기
         }
-
-        filePart.write(fileSavePath);
 
         ReviewWriterVo vo = new ReviewWriterVo();
         vo.setRating(rating);
@@ -87,20 +112,11 @@ public class MemberReviewContentWriterController extends HttpServlet {
             req.setAttribute("deliveryProblem", deliveryProblem);
             req.setAttribute("memberContent", memberContent);
             req.setAttribute("reviewImg", reviewImg);
+            req.setAttribute("rating", rating);
             req.getRequestDispatcher("/WEB-INF/views/member/reviewList.jsp").forward(req, resp);
         } else {
             req.setAttribute("message", "리뷰 저장에 실패했습니다.");
             req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
         }
-    }
-
-    private String getFileName(Part part) {
-        String contentDisposition = part.getHeader("content-disposition");
-        for (String cd : contentDisposition.split(";")) {
-            if (cd.trim().startsWith("filename")) {
-                return cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
-            }
-        }
-        return null;
     }
 }

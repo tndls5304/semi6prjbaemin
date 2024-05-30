@@ -4,7 +4,7 @@ public class ReviewWriterVo {
 	private String no;
 	private String orderNo;
 	private String rating;
-	private String MemberContent;
+	private String memberContent;
 	private String CeoContent;
 	private String reviewImg;
 	private String memberImg;
@@ -19,7 +19,7 @@ public class ReviewWriterVo {
 	@Override
 	public String toString() {
 		return "ReviewWriterVo [no=" + no + ", orderNo=" + orderNo + ", rating=" + rating + ", MemberContent="
-				+ MemberContent + ", CeoContent=" + CeoContent + ", reviewImg=" + reviewImg + ", memberImg=" + memberImg
+				+ memberContent + ", CeoContent=" + CeoContent + ", reviewImg=" + reviewImg + ", memberImg=" + memberImg
 				+ ", enrollDate=" + enrollDate + ", delYn=" + delYn + ", deliveryProblem=" + deliveryProblem
 				+ ", storeName=" + storeName + ", foodName=" + foodName + ", ceoImg=" + ceoImg + ", memberNickName="
 				+ memberNickName + ", id=" + id + "]";
@@ -31,7 +31,7 @@ public class ReviewWriterVo {
 		this.no = no;
 		this.orderNo = orderNo;
 		this.rating = rating;
-		MemberContent = memberContent;
+		memberContent = memberContent;
 		CeoContent = ceoContent;
 		this.reviewImg = reviewImg;
 		this.memberImg = memberImg;
@@ -67,10 +67,10 @@ public class ReviewWriterVo {
 		this.rating = rating;
 	}
 	public String getMemberContent() {
-		return MemberContent;
+		return memberContent;
 	}
 	public void setMemberContent(String memberContent) {
-		MemberContent = memberContent;
+		memberContent = memberContent;
 	}
 	public String getCeoContent() {
 		return CeoContent;

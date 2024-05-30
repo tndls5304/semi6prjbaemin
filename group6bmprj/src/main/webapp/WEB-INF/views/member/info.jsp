@@ -47,7 +47,7 @@
                 %>
                 <div class="icon-container">
                     <div class="icon">
-                        <a href="주문내역_링크_URL" class="icon-link">
+                        <a href="/baemin/member/orderList" class="icon-link">
                             <h1><i class="fa fa-file-alt"></i></h1>
                         </a>
                         <h3>주문내역</h3>
