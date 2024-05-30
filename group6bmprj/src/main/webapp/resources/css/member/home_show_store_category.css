@@ -1,0 +1,153 @@
+  body {
+  background-color: rgb(191, 202, 239);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/*  배민 앱은 content에요 */
+.content{
+  width: 515px;
+  height: 100vh;
+  background-color :rgb(255, 255, 255);
+
+  display: grid;
+  grid-template-rows: 1fr 10fr 1fr;
+}
+/* 고정 상단바 입니다 */
+header{
+  position: fixed;
+
+  width: 515px;
+  height: 90px;
+  /* border: solid 1px; */
+display: grid;
+grid-template-rows: 1.5fr 1fr;
+}
+/* 제일 위 고정 상단이 header이고 
+윗 상단바의 첫번째 디브 */
+header > div:nth-child(1){
+background-color:white;
+display: grid;
+grid-template-columns: 0.5fr 7fr 1fr ;
+
+padding-bottom: 0px;
+}
+/* 윗 상단바의 두번째 디브     : (상단이 두번째 줄) 내 주소 공간과 주소바꾸기 버튼------------ */
+header >div:nth-child(2){
+ 
+
+  margin-bottom: 5px;
+  padding-bottom: 0px;
+background-color: rgb(255, 245, 245);
+}
+
+.middle{
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+
+}
+.middle>button{
+  width: 100px;
+  height: 30px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(87, 18, 18);
+  border-radius: 17px;
+}
+
+/* 내  주소 공간 */
+.address{
+ 
+  margin-left: 10px;
+  font-size: 18px;
+  width: 400px;
+}
+
+/* 맨 밑의  검색,장바구니,찜,주문내역, my배민 클릭할 수 있는 하단바 입니다 */
+footer{
+  position: fixed;
+margin-bottom: 5px;
+width: 513px;
+height: 45px;
+border: solid 1px;
+bottom:1px;
+display: grid;
+grid-template-columns: repeat(5,1fr);
+}
+
+
+
+/* 홈이미지 버튼이에요 */
+.right-bar,.back-img{
+  margin-top: 10px;
+  margin-left: 5px;
+  width: 35px;
+  height: 35px;
+}
+
+/* 상단바에서 뒤로가기버튼   */
+.left-bar :nth-child(1){
+width: 20px;
+height: 30px;
+}
+/* 뒤로가기버튼 옆에 이 페이지의 제목을 담당 */
+.top-bar-name{
+  margin-top: 14px;
+  margin-left: 0px;
+  width: 60x;
+  height: 30px;
+}
+
+/* 메인페이지----------------------------- */
+
+.ad-img >img {
+width: 515px;
+
+      margin-top: 90px;
+    }
+.food-category{
+  height: 390px;
+  display: grid;
+  grid-template-rows:  repeat(4,1fr);
+  grid-template-columns: repeat(5,1fr);
+  padding: 0%;
+  margin:0%;
+  font-size: 19px;
+}
+.food-category img{
+  width: 95px;
+}
+
+/* 맨밑--------------------------------------------- */
+footer div{
+  display: grid;
+  grid-template-columns: 3fr lfr;
+}
+footer img{
+  width: 33px;
+  height: 27px;
+  margin-left: 32px;
+}
+
+footer span{
+  font-size: 12px;
+  margin-left: 28px;
+}
+.inputAddress{
+  margin-left: 50px;
+  width: 350px;
+  height: 30px;
+  border: 2px solid;
+}
+.addressBlock{
+  margin-top: 100px;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  height: 40px;
+  background-color: rgb(253, 235, 235);
+  display: none;
+}

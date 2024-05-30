@@ -102,20 +102,21 @@
 
 			
 		<tbody id="foodmenu">
-			<c:forEach var="foodMenuInforVo" items="foodMenuInforVolist">
-				<c:if test="${!empty foodMenuInforVo &&foodMenuInforVo.foodMenuCategoryNo==categoryVo.no}">
+		<c:if test="${!empty foodMenuInforVolist}">
+			<c:forEach var="foodMenuInforVo" items="${foodMenuInforVolist}">
+				<c:if test="${foodMenuInforVo.foodMenuCategoryNo eq categoryVo.no}">
 						<tr>
-						<th></th>
-						<th>${foodMenuInforVo.name}</th>
-						<th>메뉴가격${foodMenuInforVo.price}</th>
-						<th>사진${foodMenuInforVo.foodImg}</th>
-						<th>노출여부${foodMenuInforVo.delYn}</th>
-						<th></th>
-						<th></th>
+						<td></td>
+						<td>${foodMenuInforVo.name}</td>
+						<td>${foodMenuInforVo.price}</td>
+						<td><img width="80px" height="80px" src="/baemin/resources/upload/${foodMenuInforVo.foodImg}"></td>
+						<td>${foodMenuInforVo.delYn}</td>
+						<td></td>
+						<td></td>
 					<tr>
 				</c:if>
-					
 			</c:forEach>
+		</c:if>
 		</tbody>
 				
 					
