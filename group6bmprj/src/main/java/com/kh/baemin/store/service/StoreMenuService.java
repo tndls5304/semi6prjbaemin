@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.kh.baemin.store.dao.StoreMenuDao;
 import com.kh.baemin.store.vo.CategoryVo;
+import com.kh.baemin.store.vo.FoodInforVo;
 
 public class StoreMenuService {
 
@@ -97,6 +98,29 @@ public class StoreMenuService {
 		}
 		ss.close();
 		return result;
+	}
+
+	public int menuAdd(FoodInforVo vo) throws Exception {
+		SqlSession ss=getSqlSession();
+		int result =dao.menuAdd(ss,vo);
+		if(result==1) {
+			ss.commit();
+		}else {
+			ss.rollback();
+		}
+		ss.close();
+		return result;
+		
+	}
+
+	public List<FoodInforVo> selectMenuList(String storeNo) throws Exception {
+		SqlSession ss = getSqlSession();
+
+		List<FoodInforVo>menuVoList = dao.selectMenuList(ss,storeNo);
+
+		ss.close();
+		System.out.println(menuVoList);
+		return menuVoList;
 	}
 
 }

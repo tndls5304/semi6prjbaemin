@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.baemin.store.vo.CategoryVo;
+import com.kh.baemin.store.vo.FoodInforVo;
 
 public class StoreMenuDao {
 
@@ -27,6 +28,16 @@ public class StoreMenuDao {
 	public int categoryDelete(SqlSession ss, CategoryVo vo) {
 	
 		return ss.update("storeMapper.categoryDelete",vo);
+	}
+
+	public int menuAdd(SqlSession ss, FoodInforVo vo) {
+	
+		 return ss.insert("storeMapper.menuAdd",vo);
+	}
+
+	public List<FoodInforVo> selectMenuList(SqlSession ss, String storeNo) {
+	
+		return ss.selectList("storeMapper.selectMenuList",storeNo);
 	}
 
 
