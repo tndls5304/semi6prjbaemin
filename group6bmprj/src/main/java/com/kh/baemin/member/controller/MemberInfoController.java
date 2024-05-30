@@ -15,17 +15,18 @@ import com.kh.baemin.member.vo.MemberVo;
 public class MemberInfoController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
+    	  HttpSession session = req.getSession();
+          MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
+          System.out.println(loginMemberVo);
 
-        if (loginMemberVo != null) {
-            req.setAttribute("memberInfo", loginMemberVo);
-            req.getRequestDispatcher("/WEB-INF/views/member/info.jsp").forward(req, resp);
-        } else {
-            resp.sendRedirect("/baemin/member/login");
-        }
+          if (loginMemberVo == null) {
+              System.out.println("로그인 필요");
+              resp.sendRedirect("/baemin/member/login");
+              return;
+          }
+              req.getRequestDispatcher("/WEB-INF/views/member/info.jsp").forward(req, resp);
+          
     }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String memberImg = req.getParameter("memberImg");

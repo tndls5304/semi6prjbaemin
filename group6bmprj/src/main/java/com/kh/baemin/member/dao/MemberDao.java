@@ -47,7 +47,7 @@ public class MemberDao {
 		return ss.selectOne("MemberMapper.info", vo);
 	}
 
-	 public List<StoreOrderVo> storeOrderList(SqlSession ss, MemberVo vo) {
+	 public List<StoreOrderVo> storeOrderList(SqlSession ss, StoreOrderVo vo) {
 	        return ss.selectList("MemberMapper.storeOrderList", vo);
 	    }
 

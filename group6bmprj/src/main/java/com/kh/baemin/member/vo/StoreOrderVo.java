@@ -3,6 +3,8 @@ package com.kh.baemin.member.vo;
 public class StoreOrderVo {
 
 	private String no;
+	private String orderNo;
+	
 	private String name;
 	private String address;
 	private String addressDetail;
@@ -21,16 +23,19 @@ public class StoreOrderVo {
 	private int  storeFoodPrice;
 	private String storeOrderDate;
 	private String storeOrderStatus;
+	private String deliveryStatus;
 	public StoreOrderVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public StoreOrderVo(String no, String name, String address, String addressDetail, String introductionImg,
-			String introduce, String mainImg, String phone, String minimumOrderAmount, String viewedCnt,
-			String orderStatus, String orderDay, String foodImg, String storeImg, String storeName, String storeFood,
-			int storeFoodPrice, String storeOrderDate, String storeOrderStatus) {
+	public StoreOrderVo(String no, String orderNo, String name, String address, String addressDetail,
+			String introductionImg, String introduce, String mainImg, String phone, String minimumOrderAmount,
+			String viewedCnt, String orderStatus, String orderDay, String foodImg, String storeImg, String storeName,
+			String storeFood, int storeFoodPrice, String storeOrderDate, String storeOrderStatus,
+			String deliveryStatus) {
 		super();
 		this.no = no;
+		this.orderNo = orderNo;
 		this.name = name;
 		this.address = address;
 		this.addressDetail = addressDetail;
@@ -49,22 +54,29 @@ public class StoreOrderVo {
 		this.storeFoodPrice = storeFoodPrice;
 		this.storeOrderDate = storeOrderDate;
 		this.storeOrderStatus = storeOrderStatus;
+		this.deliveryStatus = deliveryStatus;
 	}
 	@Override
 	public String toString() {
-		return "StoreOrderVo [no=" + no + ", name=" + name + ", address=" + address + ", addressDetail=" + addressDetail
-				+ ", introductionImg=" + introductionImg + ", introduce=" + introduce + ", mainImg=" + mainImg
-				+ ", phone=" + phone + ", minimumOrderAmount=" + minimumOrderAmount + ", viewedCnt=" + viewedCnt
-				+ ", orderStatus=" + orderStatus + ", orderDay=" + orderDay + ", foodImg=" + foodImg + ", storeImg="
-				+ storeImg + ", storeName=" + storeName + ", storeFood=" + storeFood + ", storeFoodPrice="
-				+ storeFoodPrice + ", storeOrderDate=" + storeOrderDate + ", storeOrderStatus=" + storeOrderStatus
-				+ "]";
+		return "StoreOrderVo [no=" + no + ", orderNo=" + orderNo + ", name=" + name + ", address=" + address
+				+ ", addressDetail=" + addressDetail + ", introductionImg=" + introductionImg + ", introduce="
+				+ introduce + ", mainImg=" + mainImg + ", phone=" + phone + ", minimumOrderAmount=" + minimumOrderAmount
+				+ ", viewedCnt=" + viewedCnt + ", orderStatus=" + orderStatus + ", orderDay=" + orderDay + ", foodImg="
+				+ foodImg + ", storeImg=" + storeImg + ", storeName=" + storeName + ", storeFood=" + storeFood
+				+ ", storeFoodPrice=" + storeFoodPrice + ", storeOrderDate=" + storeOrderDate + ", storeOrderStatus="
+				+ storeOrderStatus + ", deliveryStatus=" + deliveryStatus + "]";
 	}
 	public String getNo() {
 		return no;
 	}
 	public void setNo(String no) {
 		this.no = no;
+	}
+	public String getOrderNo() {
+		return orderNo;
+	}
+	public void setOrderNo(String orderNo) {
+		this.orderNo = orderNo;
 	}
 	public String getName() {
 		return name;
@@ -173,5 +185,11 @@ public class StoreOrderVo {
 	}
 	public void setStoreOrderStatus(String storeOrderStatus) {
 		this.storeOrderStatus = storeOrderStatus;
+	}
+	public String getDeliveryStatus() {
+		return deliveryStatus;
+	}
+	public void setDeliveryStatus(String deliveryStatus) {
+		this.deliveryStatus = deliveryStatus;
 	}
 }
