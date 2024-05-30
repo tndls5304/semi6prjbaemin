@@ -25,30 +25,30 @@ public class MemberDao {
 	}
 
 	public int reviewStatus(SqlSession ss, ReviewWriterVo vo) {
-		return ss.insert("memberMapper.reviewStatus", vo);
+		return ss.insert("MemberMapper.reviewStatus", vo);
 	}
 
 	public int reviewContent(SqlSession ss, ReviewWriterVo vo) {
-		return ss.insert("memberMapper.reviewContent", vo);
+		return ss.insert("MemberMapper.reviewContent", vo);
 	}
 
 	public List<ReviewWriterVo> selectReviewList(SqlSession ss) {
-		return ss.selectList("memberMapper.selectReviewList");
+		return ss.selectList("MemberMapper.selectReviewList");
 	}
 
 	public int insertReview(SqlSession ss, ReviewWriterVo vo) {
-		return ss.insert("memberMapper.insertReview", vo);
+		return ss.insert("MemberMapper.insertReview", vo);
 
 	}
 
 
 
 	public int MemberInfo(SqlSession ss, MemberVo vo) {
-		return ss.selectOne("memberMapper.info", vo);
+		return ss.selectOne("MemberMapper.info", vo);
 	}
 
-	 public List<StoreOrderVo> storeOrderList(SqlSession ss, String id) {
-	        return ss.selectList("memberMapper.storeOrderList", id);
+	 public List<StoreOrderVo> storeOrderList(SqlSession ss, MemberVo vo) {
+	        return ss.selectList("MemberMapper.storeOrderList", vo);
 	    }
 
 	

@@ -41,24 +41,29 @@
     <select id="login" resultType="com.kh.baemin.member.vo.MemberVo">
         SELECT id, pwd
         FROM MEMBER_USER
-        WHERE id = #{id} AND pwd = #{pwd}
+     	WHERE id = #{id} AND pwd = #{pwd}
     </select>
 
     <!-- 중복된 아이디 개수를 반환하는 쿼리 -->
     <select id="idCheck" resultType="int">
         SELECT COUNT(*) FROM MEMBER_USER WHERE id = #{id}
     </select>
+    
+    
+    
 
     <insert id="reviewStatus">
-        INSERT INTO DELEVERY_PROBLEM (
-            NO,
-            DELEVERY_PROBLEM
+        INSERT INTO DELIVERY_PROBLEM (
+                 NO,
+            DELIVERY_PROBLEM
         )
         VALUES (
-            SEQ_DELEVERY_PROBLEM_NO.NEXTVAL,
+            SEQ_DELIVERY_PROBLEM_NO.NEXTVAL,
             #{deliveryProblem}
         )
     </insert>
+    
+    
     
   <insert id="reviewContent">
  

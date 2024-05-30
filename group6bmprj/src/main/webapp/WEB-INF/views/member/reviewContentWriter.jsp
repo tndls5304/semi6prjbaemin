@@ -44,7 +44,7 @@
         <div>&nbsp;</div>
         <div class="starlating"><h2>별점</h2></div>
 
-        <form action="/member/reviewContentWriter" method="post" enctype="multipart/form-data">
+        <form action="/baemin/member/reviewContentWriter" method="post" enctype="multipart/form-data">
             <input type="hidden" name="deliveryProblem" value="<%= request.getAttribute("deliveryProblem") != null ? request.getAttribute("deliveryProblem") : "" %>">
             
             <div class="star-rating">
@@ -66,7 +66,7 @@
                 <label for="company-pic"><h3>리뷰사진 선택</h3></label>
             </label>
             <div>&nbsp;</div>
-            <input id="file-upload" type="file" name="review_image" multiple/>
+            <input id="file-upload" type="file" name="reviewImg" multiple/>
             <div>&nbsp;</div>
 
             <button type="submit" class="next-button">완료</button>

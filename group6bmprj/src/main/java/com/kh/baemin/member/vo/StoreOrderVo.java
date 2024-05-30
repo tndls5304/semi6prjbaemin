@@ -14,13 +14,11 @@ public class StoreOrderVo {
 	private String viewedCnt;
 	private String orderStatus;
 	private String orderDay;
-	private String foodPrice;
-	private String food;
 	private String foodImg;
 	private String storeImg;
 	private String storeName;
 	private String storeFood;
-	private String storeFoodPrice;
+	private int  storeFoodPrice;
 	private String storeOrderDate;
 	private String storeOrderStatus;
 	public StoreOrderVo() {
@@ -29,8 +27,8 @@ public class StoreOrderVo {
 	}
 	public StoreOrderVo(String no, String name, String address, String addressDetail, String introductionImg,
 			String introduce, String mainImg, String phone, String minimumOrderAmount, String viewedCnt,
-			String orderStatus, String orderDay, String foodPrice, String food, String foodImg, String storeImg,
-			String storeName, String storeFood, String storeFoodPrice, String storeOrderDate, String storeOrderStatus) {
+			String orderStatus, String orderDay, String foodImg, String storeImg, String storeName, String storeFood,
+			int storeFoodPrice, String storeOrderDate, String storeOrderStatus) {
 		super();
 		this.no = no;
 		this.name = name;
@@ -44,8 +42,6 @@ public class StoreOrderVo {
 		this.viewedCnt = viewedCnt;
 		this.orderStatus = orderStatus;
 		this.orderDay = orderDay;
-		this.foodPrice = foodPrice;
-		this.food = food;
 		this.foodImg = foodImg;
 		this.storeImg = storeImg;
 		this.storeName = storeName;
@@ -59,10 +55,10 @@ public class StoreOrderVo {
 		return "StoreOrderVo [no=" + no + ", name=" + name + ", address=" + address + ", addressDetail=" + addressDetail
 				+ ", introductionImg=" + introductionImg + ", introduce=" + introduce + ", mainImg=" + mainImg
 				+ ", phone=" + phone + ", minimumOrderAmount=" + minimumOrderAmount + ", viewedCnt=" + viewedCnt
-				+ ", orderStatus=" + orderStatus + ", orderDay=" + orderDay + ", foodPrice=" + foodPrice + ", food="
-				+ food + ", foodImg=" + foodImg + ", storeImg=" + storeImg + ", storeName=" + storeName + ", storeFood="
-				+ storeFood + ", storeFoodPrice=" + storeFoodPrice + ", storeOrderDate=" + storeOrderDate
-				+ ", storeOrderStatus=" + storeOrderStatus + "]";
+				+ ", orderStatus=" + orderStatus + ", orderDay=" + orderDay + ", foodImg=" + foodImg + ", storeImg="
+				+ storeImg + ", storeName=" + storeName + ", storeFood=" + storeFood + ", storeFoodPrice="
+				+ storeFoodPrice + ", storeOrderDate=" + storeOrderDate + ", storeOrderStatus=" + storeOrderStatus
+				+ "]";
 	}
 	public String getNo() {
 		return no;
@@ -136,18 +132,6 @@ public class StoreOrderVo {
 	public void setOrderDay(String orderDay) {
 		this.orderDay = orderDay;
 	}
-	public String getFoodPrice() {
-		return foodPrice;
-	}
-	public void setFoodPrice(String foodPrice) {
-		this.foodPrice = foodPrice;
-	}
-	public String getFood() {
-		return food;
-	}
-	public void setFood(String food) {
-		this.food = food;
-	}
 	public String getFoodImg() {
 		return foodImg;
 	}
@@ -172,10 +156,10 @@ public class StoreOrderVo {
 	public void setStoreFood(String storeFood) {
 		this.storeFood = storeFood;
 	}
-	public String getStoreFoodPrice() {
+	public int getStoreFoodPrice() {
 		return storeFoodPrice;
 	}
-	public void setStoreFoodPrice(String storeFoodPrice) {
+	public void setStoreFoodPrice(int storeFoodPrice) {
 		this.storeFoodPrice = storeFoodPrice;
 	}
 	public String getStoreOrderDate() {
@@ -190,13 +174,4 @@ public class StoreOrderVo {
 	public void setStoreOrderStatus(String storeOrderStatus) {
 		this.storeOrderStatus = storeOrderStatus;
 	}
-
-	
 }
-	
-	
-	
-	
-	
-	
-
