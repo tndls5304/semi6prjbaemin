@@ -32,12 +32,18 @@ public class MemberReviewContentWriterController extends HttpServlet {
         HttpSession session = req.getSession();
         MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
         System.out.println(loginMemberVo);
-
+        
+        
         if (loginMemberVo == null) {
             System.out.println("로그인 필요");
             resp.sendRedirect("/baemin/member/login");
             return;
         }
+   //insert
+        //update
+        String deliveryProblem = req.getParameter("deliveryProblem");
+
+        req.setAttribute("deliveryProblem", deliveryProblem);
 
         req.getRequestDispatcher("/WEB-INF/views/member/reviewContentWriter.jsp").forward(req, resp);
     }

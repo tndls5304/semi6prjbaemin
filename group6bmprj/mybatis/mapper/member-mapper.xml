@@ -49,16 +49,16 @@
         SELECT COUNT(*) FROM MEMBER_USER WHERE id = #{id}
     </select>
     
-    <insert id="reviewStatus">
-        INSERT INTO DELIVERY_PROBLEM (
-            NO,
-            DELIVERY_PROBLEM
-        )
-        VALUES (
-            SEQ_DELIVERY_PROBLEM_NO.NEXTVAL,
-            #{deliveryProblem}
-        )
-    </insert>
+    <update id="reviewStatus">
+    
+    
+   
+UPDATE DELIVERY_PROBLEM
+SET NO =  SEQ_DELIVERY_PROBLEM_NO.NEXTVAL,
+    DELIVERY_PROBLEM = #{deliveryProblem}
+WHERE ID = #{id}
+    
+    </update>
     
     <insert id="reviewContent">
         INSERT INTO REVIEW_COMMUNICATION 

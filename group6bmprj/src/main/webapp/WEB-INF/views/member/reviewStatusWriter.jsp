@@ -20,17 +20,17 @@
         <div class="question"><h2>어떤 점이 불편하셨나요?</h2></div>
         <div class="container mt-5">
             <h1>배달 문제 선택</h1>
-            <form id="reviewForm" action="/baemin/member/reviewStatusWriter" method="post">
+            <form id="reviewForm" action="/baemin/member/reviewContentWriter" method="GET">
                 <input type="hidden" name="deliveryProblem" id="deliveryProblem">
                 <div class="options d-flex flex-wrap gap-2 mt-3">
-                    <button type="button" value="매우 늦게 도착" class="option btn btn-danger">매우 늦게 도착😒</button>
-                    <button type="button" value="요청사항 불이행" class="option btn btn-danger">요청사항 불이행😒</button>
-                    <button type="button" value="포장 불량" class="option btn btn-danger">포장 불량😒</button>
-                    <button type="button" value="음식 파손" class="option btn btn-danger">음식 파손😒</button>
-                    <button type="button" value="배달 지연" class="option btn btn-danger">배달 지연😒</button>
-                    <button type="button" value="다른 주소에 도착" class="option btn btn-danger">다른 주소에 도착😒</button>
-                    <button type="button" value="해당 사항 없음" class="option btn btn-danger">해당 사항 없음 😊</button>
-                </div>
+                    <button type="button" value="1" class="option btn btn-danger">매우 늦게 도착😒</button>
+                    <button type="button" value="2" class="option btn btn-danger">요청사항 불이행😒</button>
+                    <button type="button" value="3" class="option btn btn-danger">포장 불량😒</button>
+                    <button type="button" value="4" class="option btn btn-danger">음식 파손😒</button>
+                    <button type="button" value="5" class="option btn btn-danger">배달 지연😒</button>
+                    <button type="button" value="6" class="option btn btn-danger">다른 주소에 도착😒</button>
+                    <button type="button" value="7" class="option btn btn-danger">해당 사항 없음 😊</button>
+                    
             </form>
         </div>
         <div>
