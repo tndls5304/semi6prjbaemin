@@ -26,7 +26,7 @@
             #{id},
             #{pwd},
             #{nick},
-            #{profile},
+            #{memberImg},
             #{name},
             #{phone},
             #{address},

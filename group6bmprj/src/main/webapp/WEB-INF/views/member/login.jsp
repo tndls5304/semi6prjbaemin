@@ -44,7 +44,7 @@
       <main>
           <div class="main">
               <div class="mainjoin"><h1>회원 로그인 📃</h1></div>
-              <form id="loginForm" action="/app/?/?" method="post">
+              <form id="loginForm" action="baemin/member/reviewStatusWriter" method="post">
                   <div class="form-group">
                       <label for="id">아이디</label>
                       <input type="text" id="id" name="id" placeholder="아이디 입력">
