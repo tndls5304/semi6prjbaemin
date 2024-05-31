@@ -34,7 +34,7 @@ public class MemberLoginController extends HttpServlet {
 			
 			String id = req.getParameter("id");
 			String pwd = req.getParameter("pwd");
-
+				
 			MemberVo vo = new MemberVo();
 			vo.setId(id);
 			vo.setPwd(pwd);

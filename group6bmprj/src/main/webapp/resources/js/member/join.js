@@ -172,3 +172,7 @@ function previewImage(event) {
     };
     reader.readAsDataURL(event.target.files[0]);
 }
+
+var inputAddress=document.querySelector("#adress");
+inputAddress.addEventListener("input", function()
+{inputAddress.value = inputAddress.value.replace(/\s+/g,'')} );

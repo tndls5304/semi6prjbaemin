@@ -30,7 +30,7 @@
             #{name},
             #{phone},
             #{address},
-            #{addressdDetail},  
+            #{addressDetail},  
             #{generation},
             #{gender},
             0
@@ -40,10 +40,10 @@
 
     <!-- 로그인 -->
     <select id="login" resultType="com.kh.baemin.member.vo.MemberVo">
-        SELECT ID ,NICK, NO 
+        SELECT ID ,NICK, NO , ADDRESS,ADDRESS_DETAIL
         FROM MEMBER_USER
         WHERE id = #{id} 
-        AND pwd = #{pwd}
+        AND pwd = #{pwd}  
     </select>
 
     <!-- 중복된 아이디 개수를 반환하는 쿼리 -->

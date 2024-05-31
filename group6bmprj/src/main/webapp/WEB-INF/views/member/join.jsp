@@ -87,7 +87,7 @@
                 <!-- 이름 -->
                     <label for="name">이름 </label>
                     <!-- 이름 입력 -->
-                    <input type="text" id="name" name="name" placeholder="이름 입력" value="1234">
+                    <input type="text" id="name" name="name" placeholder="이름 입력" value="홍길동님">
                     <div class="error-message" id="name-error"></div>
                 </div>
                 <!-- 닉넴그룹 -->
@@ -95,7 +95,7 @@
                     <!-- 닉넴 -->
                     <label for="name">닉네임 </label>
                     <!-- 닉넴 입력 -->
-                    <input type="text" id="nickname" name="nick" placeholder="닉네임 입력" value="1234">
+                    <input type="text" id="nickname" name="nick" placeholder="닉네임 입력" value="길동이짱">
                     <div class="error-message" id="nickname-error"></div>
                 </div>
                 <!-- 전번 그룹 -->
@@ -104,7 +104,7 @@
                     <label for="phone">전화번호 </label>
                    
                     <!-- 전번 입력 -->
-                    <input type="tel" value="12345678901" name="phone" id="phone" placeholder="전화번호 입력" maxlength="11" >
+                    <input type="tel" value="01012345678" name="phone" id="phone" placeholder="전화번호 입력" maxlength="11" >
                     <div class="error-message" id="phone-error"></div>
                 </div>
                
@@ -114,7 +114,7 @@
                 <!-- 주소 -->
                     <label for="adress">주소(시,구,동)</label>
                     <!-- 주소 입력 -->
-                    <input type="adress" id="adress" name="address" placeholder="주소 입력" maxlength="20" value="12345678912345">
+                    <input type="adress" id="adress" name="address" placeholder="주소 입력" maxlength="20" value="서울시서초구서초1동">
                     <div class="error-message" id="address-error"></div>
                 </div>
                 <!-- 그룹 -->
@@ -122,7 +122,7 @@
                 <!-- 상세주소 -->
                     <label for="detailadress">상세주소</label>
                     <!-- 상세주소 입력 -->
-                    <input type="detailadress" id="detailadress" name="addressdDetail" placeholder="상세주소 입력" maxlength="20" value="12345678912345">
+                    <input type="detailadress" id="detailadress" name="addressDetail" placeholder="상세주소 입력" maxlength="20" value="유원서초아파트가동101호">
                     <div class="error-message" id="detail-address-error"></div>
                  
                 </div>
