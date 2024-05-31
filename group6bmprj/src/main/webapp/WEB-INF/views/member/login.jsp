@@ -63,13 +63,13 @@
                   <div class="button-container">
                       <button type="button" onclick="validateLogin()">로그인하기</button>
                       
+                  </div>
 				     
+
+              </form>
 				<button class="button">
     <a href="/baemin/member/join" class="link">회원가입하기</a>
 </button>
-
-                  </div>
-              </form>
           </div>
       </main>
       <footer>
