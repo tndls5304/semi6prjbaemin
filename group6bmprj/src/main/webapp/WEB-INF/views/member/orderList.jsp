@@ -40,19 +40,23 @@
                     <p class="status-text">배달 상태 :</p>
                 </div>
                 <!-- 주문상세 버튼 -->
-                <form action="/baemin/member/reviewContentWriter" method="get">
+             <a href="/baemin/member/reviewStatusWriter" >
                     <input type="hidden" name="memberNo" value="<%= request.getAttribute("memberNo") != null ? request.getAttribute("memberNo") : "" %>">
                     <button type="submit" class="link-button">주문상세</button>
+                    </a>
+                    
+                 
                 <!-- 같은 메뉴 담기 버튼 -->
-                  <form action="/baemin/member/reviewContentWriter" method="get">
+                   <a href="/baemin/member/reviewStatusWriter" >
                     <input type="hidden" name="memberNo" value="<%= request.getAttribute("memberNo") != null ? request.getAttribute("memberNo") : "" %>">
                     <button type="submit" class="link-button">같은메뉴담기</button>
+                     </a>
               <!-- 리뷰쓰기 버튼 -->
                 <a href="/baemin/member/reviewStatusWriter" >
                     <input type="hidden" name="memberNo" value="<%= request.getAttribute("memberNo") != null ? request.getAttribute("memberNo") : "" %>">
                     <button type="submit" class="link-button">리뷰쓰기</button>
-                       <h1>memberNo ::: ${memberNo}</h1>
            </a>
+                       <h1>memberNo ::: ${memberNo}</h1>
         
         </main>
     </div>
