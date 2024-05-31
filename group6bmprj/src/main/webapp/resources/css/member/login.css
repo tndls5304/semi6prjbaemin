@@ -1,3 +1,5 @@
+
+          
 body {
     background-color: white;
     display: flex;
@@ -392,6 +394,27 @@ body {
               max-height: 100px;
               margin-top: 10px;
           }
+          .button {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff6f6f;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.link:hover {
+    background-color: #ff4c4c;
+}
           button {
               padding: 12px 20px;
              background-color: #ff7f7f;
@@ -416,4 +439,3 @@ body {
               margin-top: 5px;
               font-size: 14px;
           }
-          

@@ -21,6 +21,7 @@ public class MemberOrderListController extends HttpServlet {
 		try {
 			HttpSession session = req.getSession();
 			MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
+			String no = loginMemberVo.getNo();
 			System.out.println(loginMemberVo);
 			
 
@@ -31,14 +32,13 @@ public class MemberOrderListController extends HttpServlet {
 			}
 			
 			
-			String no = req.getParameter("no");
 			StoreOrderVo vo = new StoreOrderVo();
-			vo.setMemberNo(no);
+		
 			
 			MemberService ms = new MemberService();
 			List<StoreOrderVo> orderList = ms.getOrderListByUser(no);
 			
-			req.setAttribute("no", no);
+			
 			req.setAttribute("orderList", orderList);
 			req.getRequestDispatcher("/WEB-INF/views/member/orderList.jsp").forward(req, resp);
 
@@ -53,6 +53,6 @@ public class MemberOrderListController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doGet(req, resp);
+		req.getRequestDispatcher("/WEB-INF/views/member/reviewContentWriter.jsp").forward(req, resp);
 	}
 }
