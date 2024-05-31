@@ -16,4 +16,9 @@ public class StoreOwnerDao {
 		 
 	}
 
+	public StoreOwnerVo login(SqlSession ss, StoreOwnerVo vo) {
+	
+		return ss.selectOne("storeMapper.loginStoreOwner",vo);
+	}
+
 }

@@ -110,9 +110,3 @@ button:hover {
     align-items: center;
 }
 
-.error-message {
-    color: red;
-    margin-top: 5px;
-    font-size: 14px;
-    display: none; /* 처음에 숨김 */
-}

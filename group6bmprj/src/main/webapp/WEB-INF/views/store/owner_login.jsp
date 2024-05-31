@@ -23,13 +23,18 @@
  <aside>
         <nav>
             <ul>
-                <li><a href=""><h1>배민사장</h1></a></li>
-                <li><a href="">홈</a></li>
-                <li><a href="">사장계정관리</a></li>
-                <li><a href="">손님계정관리</a></li>
+                
+                <li><a href=""><h1>사장님 페이지</h1></a></li>
+                <li><a href="">스토어 허가 신청</a></li>
+                <li><a href="">주문관리🕗</a></li>
+                <li><a href="">스토어 관리</a></li>
+                <li><a href="">회원관리</a></li>
+                <li><a href="">음식메뉴편집</a></li>
+                <li><a href="">매출관리</a></li>
                 <li><a href="">리뷰관리</a></li>
-                <li><a href="">리뷰상세조회</a></li>
-                <li><a href="">문의사항</a></li>
+                <li><a href="">
+                 <button>회원가입</button></a></li>
+
             </ul>
         </nav>
     </aside>
@@ -38,24 +43,24 @@
         <div class="mainjoin">
             <h1>사장 로그인 📃</h1>
         </div>
-        <form id="loginForm" action="/baemin/store/store_owner_login" method="post">
+        <form  action="/baemin/store/store_owner_login" method="post">
             <div class="form-group">
                 <!-- 아이디 -->
                 <label for="id"><h3>아이디</h3> </label>
                 <!-- 입력 하는곳 -->
                 <input type="text" id="id" name="id" placeholder="아이디 입력">
-                <div class="error-message" id="id-error"></div>
+      
             </div>
             <div class="form-group">
                 <!-- 비번 -->
                 <label for="password"><h3>비밀번호</h3></label>
                 <!-- 비번 입력 -->
-                <input type="password" id="password" name="password" placeholder="비밀번호 입력">
-                <div class="error-message" id="password-error"></div>
+                <input type="password" id="password" name="pwd" placeholder="비밀번호 입력">
+  
             </div>
             <div class="button-container">
-                <button type="button" onclick="validateLogin()">로그인하기</button>
-                <button type="button" href="">회원가입하기</button>
+                <button type="submit" >로그인하기</button>
+           
          
             </div>
         </form>

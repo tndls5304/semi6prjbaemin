@@ -87,5 +87,13 @@ public class StoreOwnerService {
 		return result==0;
 	}
 
+	public StoreOwnerVo login(StoreOwnerVo vo) throws Exception {
+		
+		SqlSession ss=getSqlSession();
+		StoreOwnerVo loginStoreOwnerVo=dao.login(ss,vo);
+		ss.close();
+		return  loginStoreOwnerVo;
+	}
+
 
 }
