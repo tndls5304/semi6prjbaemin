@@ -6,6 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+       <script>
+      <c:if test="${not empty resultMsg}">
+             alert('${resultMsg}');
+      </c:if>
+   </script>
 </head>
 <body>
     
@@ -57,7 +62,12 @@
                   </div>
                   <div class="button-container">
                       <button type="button" onclick="validateLogin()">로그인하기</button>
-                      <button type="button" onclick="window.location.href='signup.html'">회원가입하기</button>
+                      
+				     
+				<button class="button">
+    <a href="/baemin/member/join" class="link">회원가입하기</a>
+</button>
+
                   </div>
               </form>
           </div>

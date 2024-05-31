@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.kh.baemin.member.service.MemberService;
+import com.kh.baemin.member.vo.MemberVo;
 import com.kh.baemin.member.vo.StoreOrderVo;
 
 @WebServlet("/member/orderCart")
@@ -16,13 +17,19 @@ public class MemberOrderCartController extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession(false);
-        if (session == null || session.getAttribute("user") == null) {
-            resp.sendRedirect(req.getContextPath() + "/login");
-            return;
-        }
-        
-        String userId = (String) session.getAttribute("user");
+    	try {
+			HttpSession session = req.getSession();
+			MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
+			String no = loginMemberVo.getNo();
+			System.out.println(loginMemberVo);
+			
+
+			if (loginMemberVo == null) {
+				System.out.println("로그인 필요");
+				resp.sendRedirect("/baemin/member/login");
+				return;
+			}
+			
         
         MemberService ms = new MemberService();
         List<StoreOrderVo> orderList = ms.getOrderListByUser(userId);

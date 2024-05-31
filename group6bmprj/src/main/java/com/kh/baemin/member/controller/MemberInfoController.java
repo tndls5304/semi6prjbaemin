@@ -32,7 +32,6 @@ public class MemberInfoController extends HttpServlet {
         String memberImg = req.getParameter("memberImg");
         String nick = req.getParameter("nick");
         String memberPayStr = req.getParameter("memberPay");
-        String no = req.getParameter("no");
         HttpSession session = req.getSession();
         MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
 
