@@ -28,12 +28,10 @@
                 <li><a href="">스토어 허가 신청</a></li>
                 <li><a href="">주문관리🕗</a></li>
                 <li><a href="">스토어 관리</a></li>
-                <li><a href="">회원관리</a></li>
-                <li><a href="">음식메뉴편집</a></li>
+                <li><a href="/baemin/store/category_list">음식메뉴편집</a></li>
                 <li><a href="">매출관리</a></li>
                 <li><a href="">리뷰관리</a></li>
-                <li><a href="">
-                 <button>회원가입</button></a></li>
+                <li> <button onclick="location.href='/baemin/store/store_owner_join'">회원가입</button></li>
 
             </ul>
         </nav>

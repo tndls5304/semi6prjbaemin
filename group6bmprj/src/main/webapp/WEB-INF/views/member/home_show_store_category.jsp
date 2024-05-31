@@ -48,7 +48,9 @@
 <img src="/baemin/resources/수인img/카테고리-반찬.png">
 </div>
 
-<div class="addressBlock" id="address-Block">주소:<input class="inputAddress" type="text" placeholder="주소를입력해주세요">
+<div class="addressBlock" id="address-Block">주소:
+<input class="inputAddress" type="text" placeholder="시/구/동">
+<input  type="text" placeholder="상세주소">
 <button>go!</button><button>x</button></div>
 
         </main>

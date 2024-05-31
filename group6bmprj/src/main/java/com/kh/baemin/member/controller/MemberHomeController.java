@@ -16,7 +16,8 @@ import com.kh.baemin.member.vo.MemberVo;
 public class MemberHomeController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		//TODO 멤버번호받기 
+
 		req.getRequestDispatcher("/WEB-INF/views/member/home_show_store_category.jsp").forward(req, resp);
 	}
 }

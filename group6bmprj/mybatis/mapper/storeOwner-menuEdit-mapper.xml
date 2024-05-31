@@ -130,9 +130,11 @@
 		,DEL_YN
 		,COMPANY_RESITRATION_NUMBER
 		FROM MEMBER_STORE_OWNER
-		WHERE ID=#{id} AND PWD=#{pwd}
+		WHERE ID=#{id} AND
+		PWD=#{pwd}
 
 	</select>
+
 
 
 </mapper>
