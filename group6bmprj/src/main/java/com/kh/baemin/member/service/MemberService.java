@@ -64,7 +64,7 @@ public int join(MemberVo vo) throws Exception {
     }
 
   
-    if (vo.getAddressdDetail().length() < 10 || vo.getAddressdDetail().length() > 20) {
+    if (vo.getAddressDetail().length() < 10 || vo.getAddressDetail().length() > 20) {
     
         throw new Exception("상세주소는 10~20자여야 합니다.");
     }
@@ -116,7 +116,7 @@ public MemberVo login(MemberVo vo) {
             sqlSession.close();
         }
     }
-
+System.out.println("디비에서입력받아온 로그인멤버브이오는?"+loginMemberVo);
     return loginMemberVo;
 }
 

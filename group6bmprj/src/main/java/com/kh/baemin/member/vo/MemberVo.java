@@ -9,7 +9,7 @@ public class MemberVo {
 	private String pwd;
 	private String name;
 	private String address;
-	private String addressdDetail;
+	private String addressDetail;
 	private String phone;
 	private String accountBalance;
 	private String delYn;
@@ -21,7 +21,7 @@ public class MemberVo {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public MemberVo(String no, String nick, String id, String pwd, String name, String address, String addressdDetail,
+	public MemberVo(String no, String nick, String id, String pwd, String name, String address, String addressDetail,
 			String phone, String accountBalance, String delYn, String gender, String memberImg, String memberPay,
 			String generation) {
 		super();
@@ -31,7 +31,7 @@ public class MemberVo {
 		this.pwd = pwd;
 		this.name = name;
 		this.address = address;
-		this.addressdDetail = addressdDetail;
+		this.addressDetail = addressDetail;
 		this.phone = phone;
 		this.accountBalance = accountBalance;
 		this.delYn = delYn;
@@ -43,7 +43,7 @@ public class MemberVo {
 	@Override
 	public String toString() {
 		return "MemberVo [no=" + no + ", nick=" + nick + ", id=" + id + ", pwd=" + pwd + ", name=" + name + ", address="
-				+ address + ", addressdDetail=" + addressdDetail + ", phone=" + phone + ", accountBalance="
+				+ address + ", addressDetail=" + addressDetail + ", phone=" + phone + ", accountBalance="
 				+ accountBalance + ", delYn=" + delYn + ", gender=" + gender + ", memberImg=" + memberImg
 				+ ", memberPay=" + memberPay + ", generation=" + generation + "]";
 	}
@@ -83,11 +83,11 @@ public class MemberVo {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getAddressdDetail() {
-		return addressdDetail;
+	public String getAddressDetail() {
+		return addressDetail;
 	}
-	public void setAddressdDetail(String addressdDetail) {
-		this.addressdDetail = addressdDetail;
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
 	}
 	public String getPhone() {
 		return phone;

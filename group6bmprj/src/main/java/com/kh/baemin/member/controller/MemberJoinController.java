@@ -39,7 +39,7 @@ public class MemberJoinController extends HttpServlet {
             String nick = req.getParameter("nick");
             String phone = req.getParameter("phone");
             String address= req.getParameter("address");
-            String addressdDetail = req.getParameter("addressdDetail");
+            String addressDetail = req.getParameter("addressDetail");
             String generation = req.getParameter("generation");
             String gender = req.getParameter("gender");
             Part memberImg = req.getPart("f"); // "profile" 파라미터로 업로드된 파일을 Part 객체로 받음
@@ -84,7 +84,7 @@ public class MemberJoinController extends HttpServlet {
             vo.setNick(nick);
             vo.setPhone(phone);
             vo.setAddress(address);
-            vo.setAddressdDetail(addressdDetail);
+            vo.setAddressDetail(addressDetail);
             vo.setGeneration(generation);
             vo.setGender(gender);
             vo.setMemberImg(changeName);
