@@ -11,13 +11,12 @@
 <body>
   <div class="content">
         <header>
-          <div class="top-bar">
-            <div class="left-bar"><img class="back-img" src="/baemin/resources/수인img/상단바_뒤로가기.jpg"></div>
-           <div class="middle-bar"> <img class="top-bar-name" src="/baemin/resources/수인img/상단바_현재페이지이름_가게배달.jpg"> </div>
-            <img  class="right-bar" src="/baemin/resources/수인img/홈.png">
+    
+          <div class="middle">
+	        	  <div class="address">서울시용산구남영도 ${sessionScope.loginMemberVo.address}</div>
+	   	      <div class="address-detail">두텁바위로 167번지 000 삼성빌딩앞 254${sessionScope.loginMemberVo.addressdDetail}
+         		 <button onclick="trychangeAddress()">주소바꾸기</button></div>
           </div>
-   
-          <div class="middle"><div class="address">주소 ${sessionScope.loginMemberVo.address}</div><button  onclick="changeAddress()">주소바꾸기</button></div>
           <!-- <div class="bottom"><button>standardard</button><button>star☆</button></div> -->
         </header>
         <main>
@@ -48,10 +47,15 @@
 <img src="/baemin/resources/수인img/카테고리-반찬.png">
 </div>
 
-<div class="addressBlock" id="address-Block">주소:
-<input class="inputAddress" type="text" placeholder="시/구/동">
-<input  type="text" placeholder="상세주소">
-<button>go!</button><button>x</button></div>
+<form action="baemin//member/change_address" method="POST">
+	<div class="addressBlock" id="changeAddress-block">
+			주소:
+			<input class="inputAddress" id="input-address" type="text" name="changeAddress" placeholder="시/구/동 주소입력" required>
+			<input  type="text" id="input-addressDetail" placeholder="상세주소 입력" name="changeAddressdDetail" required>
+			<button type="submit" onclick="addressChangeRequest()">ok!</button>
+			<button type="button" onclick="cancelAddressChange()">취소</button>
+	</div>
+</form>
 
         </main>
         <footer>
