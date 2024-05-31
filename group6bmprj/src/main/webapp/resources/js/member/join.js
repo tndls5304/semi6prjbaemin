@@ -150,7 +150,7 @@ function checkPassword() {
     if (isValid) {
        
         document.getElementById('signupForm').submit();
-        
+        alert('회원가입 성공');
     }
 }
 

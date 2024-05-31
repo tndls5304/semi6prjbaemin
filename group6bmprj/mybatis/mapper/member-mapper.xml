@@ -82,7 +82,7 @@ WHERE ID = #{id}
         VALUES
         (
             SEQ_REVIEW_COMMUNICATION_NO.NEXTVAL,
-            #{memberNo},
+             SEQ_ORDER_SHEET_NO.NEXTVAL,
             #{rating},
             #{memberContent},
             0,
