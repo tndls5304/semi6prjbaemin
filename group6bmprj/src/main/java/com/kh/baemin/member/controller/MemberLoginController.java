@@ -31,6 +31,7 @@ public class MemberLoginController extends HttpServlet {
 //			System.out.println(loginMemberVo);
 
 			// 데이터 꺼내기
+			
 			String id = req.getParameter("id");
 			String pwd = req.getParameter("pwd");
 
@@ -38,10 +39,11 @@ public class MemberLoginController extends HttpServlet {
 			vo.setId(id);
 			vo.setPwd(pwd);
 			
+			
 			// 로그인 서비스 호출
 			MemberService ms = new MemberService();
 			MemberVo loginMemberVo = ms.login(vo);
-
+System.out.println("loginvo: " + loginMemberVo);
 			// 로그인 결과 처리
 			if (loginMemberVo == null) {
 				req.setAttribute("errorMessage", "로그인 실패: 아이디 또는 비밀번호를 확인하세요.");
@@ -50,6 +52,7 @@ public class MemberLoginController extends HttpServlet {
 			}
 
 			// 로그인 성공
+			 
 			session.setAttribute("alertMsg", "로그인 성공!!!");
 			session.setAttribute("loginMemberVo", loginMemberVo);
 			System.out.println("211212211212211212211212211212211212211212211212211212211212211212211212211212211212");

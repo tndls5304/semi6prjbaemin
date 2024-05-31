@@ -34,14 +34,16 @@
             #{generation},
             #{gender},
             0
+            
         )
     </insert>
 
     <!-- 로그인 -->
     <select id="login" resultType="com.kh.baemin.member.vo.MemberVo">
-        SELECT id, pwd
+        SELECT ID ,NICK, NO 
         FROM MEMBER_USER
-        WHERE id = #{id} AND pwd = #{pwd}
+        WHERE id = #{id} 
+        AND pwd = #{pwd}
     </select>
 
     <!-- 중복된 아이디 개수를 반환하는 쿼리 -->
@@ -80,7 +82,7 @@ WHERE ID = #{id}
         VALUES
         (
             SEQ_REVIEW_COMMUNICATION_NO.NEXTVAL,
-            #{orderNo},
+            #{memberNo},
             #{rating},
             #{memberContent},
             0,
@@ -115,17 +117,18 @@ WHERE ID = #{id}
     
     <select id="info" resultType="com.kh.baemin.member.vo.MemberVo">
         SELECT 
+        	M.NO
             M.PROFILE,
             M.NICK,
             M.ACCOUNT_BALANCE
         FROM 
             MEMBER_USER M
-        WHERE 
-            PROFILE = #{memberImg}
+        WHERE 	M.NO =#{no}
+            M.PROFILE = #{memberImg}
             AND
-            NICK = #{memberNickName}
+            M.NICK = #{memberNickName}
             AND 
-            ACCOUNT_BALANCE = #{memberPay}
+            M.ACCOUNT_BALANCE = #{memberPay}
     </select>
   
    <select id="storeOrderList" resultType="com.kh.baemin.member.vo.StoreOrderVo">

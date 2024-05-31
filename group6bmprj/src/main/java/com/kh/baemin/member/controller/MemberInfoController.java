@@ -32,7 +32,7 @@ public class MemberInfoController extends HttpServlet {
         String memberImg = req.getParameter("memberImg");
         String nick = req.getParameter("nick");
         String memberPayStr = req.getParameter("memberPay");
-
+        String no = req.getParameter("no");
         HttpSession session = req.getSession();
         MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
 
@@ -46,12 +46,22 @@ public class MemberInfoController extends HttpServlet {
             int updatedPay = existingPay + additionalPay;
             loginMemberVo.setMemberPay(String.valueOf(updatedPay));
 
+        	MemberVo vo = new MemberVo();
+			vo.setMemberImg(memberImg);
+			vo.setNick(nick);
+			vo.setMemberPay(memberPayStr);
+			vo.setNo(no);
+			
+            
+            
             MemberService ms = new MemberService();
             int result = ms.info(loginMemberVo);
 
             if (result == 1) {
+            	
                 req.setAttribute("message", "정보가 성공적으로 업데이트되었습니다.");
-                session.setAttribute("loginMemberVo", loginMemberVo);  // 업데이트된 정보 세션에 반영
+                session.setAttribute("loginMemberVo", loginMemberVo); 
+               
             } else {
                 req.setAttribute("message", "정보 업데이트에 실패했습니다.");
             }
