@@ -2,12 +2,10 @@ package com.kh.baemin.store.service;
 
 import static com.kh.baemin.db.SqlSessionTemplate.getSqlSession;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.baemin.store.dao.StoreAdmitDao;
-import com.kh.baemin.store.vo.StoreInforVo;
+import com.kh.baemin.store.vo.StoreAdmitVo;
 
 public class StoreAdmitService {
 	
@@ -31,27 +29,26 @@ public class StoreAdmitService {
 //		}
 		
 		//허가 신청후 수정
-		public int insert(StoreInforVo vo, List<StoreInforVo> storeInforVoList) throws Exception {
+		public int writeStoreInfor(StoreAdmitVo vo) throws Exception {
 			
 			// 비즈니스 로직
 			
 			// DAO 호출
 			SqlSession ss = getSqlSession();
-			int result = dao.insert(ss,  vo);
-
-			int attResult = 1;
-			if(storeInforVoList.size() > 0) {
-				attResult = dao.insert(ss , vo);
-			}
+			int result = dao.updateStoreInfor(ss,  vo);
+			int result2 = dao.insertStoreInfor(ss, vo);
 			
-			if(result * attResult >= 1) {
+			
+			if(result == 1 && result2 == 1) {
 				ss.commit();
 			}else {
 				ss.rollback();
 			}
 			ss.close();
 			
-			return result * attResult;
+			return result;
 		}
+
+
 
 }

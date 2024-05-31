@@ -9,7 +9,7 @@
     <!-- 글씨체 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="/baemin/resources/css/member/my_review.css">
+    <link rel="stylesheet" href="/baemin/resources/css/member/myeview.css">
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 </head>
 
