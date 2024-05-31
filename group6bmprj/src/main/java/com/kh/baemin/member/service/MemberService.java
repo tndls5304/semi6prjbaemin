@@ -217,16 +217,36 @@ public int info(MemberVo vo) throws IOException {
 }
 
 
-public List<StoreOrderVo> getOrderListByUser(StoreOrderVo vo)throws Exception {
+public List<StoreOrderVo> getOrderListByUser(String memberNo)throws Exception {
 
     SqlSession ss = getSqlSession();
-    List<StoreOrderVo> orderList =  dao.storeOrderList(ss , vo);
+    List<StoreOrderVo> orderList =  dao.storeOrderList(ss , memberNo);
     ss.close();
     
     
     return orderList;
 }
+
+
+
+public int contentDeliveryProblem(ReviewWriterVo vo) throws Exception {
+//	- DAO호출
+	SqlSession ss = getSqlSession();
+	int result = dao.contentDeliveryProblem(ss, vo);
+	
+	if(result == 1) {
+		ss.commit();
+		
+	}else {
+		ss.rollback();
+	}
+	
+	
+	return result;
 }
+	
+}
+
 
 
 

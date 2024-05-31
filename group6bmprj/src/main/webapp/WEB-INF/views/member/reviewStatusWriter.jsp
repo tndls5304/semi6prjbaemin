@@ -34,6 +34,7 @@
             </form>
         </div>
         <div>
+           <input type="hidden" name="orderNo" value="<%= request.getAttribute("orderNo") != null ? request.getAttribute("orderNo") : "" %>">
             <button id="nextButton" class="next-button">다음</button>
         </div>
     </div>

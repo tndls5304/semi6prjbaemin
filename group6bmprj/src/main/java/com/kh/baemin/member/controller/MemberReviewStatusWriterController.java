@@ -27,6 +27,10 @@ public class MemberReviewStatusWriterController extends HttpServlet {
             resp.sendRedirect("/baemin/member/login");
             return;
         }
+        
+        
+        String orderNo = req.getParameter("orderNo");
+        
 
         req.getRequestDispatcher("/WEB-INF/views/member/reviewStatusWriter.jsp").forward(req, resp);
     }
@@ -48,10 +52,11 @@ public class MemberReviewStatusWriterController extends HttpServlet {
      //   String no = loginMemberVo.getNo();
         
         String deliveryProblem = req.getParameter("deliveryProblem");
+        String orderNo =req.getParameter("orderNo");
 
         ReviewWriterVo vo = new ReviewWriterVo();
         vo.setDeliveryProblem(deliveryProblem);
-       
+       vo.setOrderNo(orderNo);
 
         MemberService ms = new MemberService();
         int result = 0;
@@ -63,9 +68,11 @@ public class MemberReviewStatusWriterController extends HttpServlet {
         }
 
         if (result == 1) {
+           
             session.setAttribute("deliveryProblem", deliveryProblem);
             req.setAttribute("message", "리뷰가 성공적으로 저장되었습니다.");
             req.setAttribute("deliveryProblem", deliveryProblem);
+            req.setAttribute("orderNo", orderNo);
             req.getRequestDispatcher("/WEB-INF/views/member/reviewContentWriter.jsp").forward(req, resp);
         } else {
             req.setAttribute("message", "리뷰 저장에 실패했습니다.");

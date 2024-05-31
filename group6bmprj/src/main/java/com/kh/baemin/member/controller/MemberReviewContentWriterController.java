@@ -42,8 +42,11 @@ public class MemberReviewContentWriterController extends HttpServlet {
    //insert
         //update
         String deliveryProblem = req.getParameter("deliveryProblem");
+        String orderNo = req.getParameter("orderNo");
+        System.out.println("Controller > orderNo : " + orderNo);
 
         req.setAttribute("deliveryProblem", deliveryProblem);
+        req.setAttribute("orderNo", orderNo);
 
         req.getRequestDispatcher("/WEB-INF/views/member/reviewContentWriter.jsp").forward(req, resp);
     }
@@ -61,7 +64,9 @@ public class MemberReviewContentWriterController extends HttpServlet {
         }
 
         String rating = req.getParameter("rating");
+        System.out.println("Rating: " + rating);  // rating 값 출력
         String memberContent = req.getParameter("memberContent");
+        String orderNo = req.getParameter("orderNo");
         String deliveryProblem = (String) session.getAttribute("deliveryProblem");
 
         // 리뷰 이미지 파일 처리
@@ -100,6 +105,7 @@ public class MemberReviewContentWriterController extends HttpServlet {
         }
 
         ReviewWriterVo vo = new ReviewWriterVo();
+        vo.setOrderNo(orderNo);
         vo.setRating(rating);
         vo.setMemberContent(memberContent);
         vo.setReviewImg(reviewImg);  // 저장된 파일 이름 설정
@@ -109,6 +115,7 @@ public class MemberReviewContentWriterController extends HttpServlet {
         int result = 0;
         try {
             result = ms.reviewContent(vo);
+            result = ms.contentDeliveryProblem(vo);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -119,6 +126,7 @@ public class MemberReviewContentWriterController extends HttpServlet {
             req.setAttribute("memberContent", memberContent);
             req.setAttribute("reviewImg", reviewImg);
             req.setAttribute("rating", rating);
+            req.setAttribute("orderNo", orderNo);
             req.getRequestDispatcher("/WEB-INF/views/member/reviewList.jsp").forward(req, resp);
         } else {
             req.setAttribute("message", "리뷰 저장에 실패했습니다.");

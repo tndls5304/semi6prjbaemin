@@ -60,10 +60,16 @@ WHERE ID = #{id}
     
     </update>
     
+    
+    
+    
+   
+    
     <insert id="reviewContent">
         INSERT INTO REVIEW_COMMUNICATION 
         (
             NO,
+            ORDER_NO,
             RATING,
             USER_CONTENT,
             STORE_CONTENT,
@@ -74,6 +80,7 @@ WHERE ID = #{id}
         VALUES
         (
             SEQ_REVIEW_COMMUNICATION_NO.NEXTVAL,
+            #{orderNo},
             #{rating},
             #{memberContent},
             0,
@@ -101,7 +108,7 @@ WHERE ID = #{id}
         JOIN
             MEMBER_USER M ON M.NO = R.NO 
         WHERE 
-            R.NO = #{x}
+            R.NO = #{no}
             AND
             R.DEL_YN = 'N'
     </select>
@@ -121,42 +128,33 @@ WHERE ID = #{id}
             ACCOUNT_BALANCE = #{memberPay}
     </select>
   
-    <select id="storeOrderList" resultType="com.kh.baemin.member.vo.StoreOrderVo">
-        SELECT 
-            S.INTRODUCTION_IMG,
-            S.NAME AS STORE_NAME,
-            F.NAME AS FOOD_NAME,
-            F.PRICE AS FOOD_PRICE,
-            O.ORDER_DAY,
-            OS.STATUS
-        FROM
-            STORE_INFOR S
-        JOIN
-            FOOD_INFOR F ON S.NO = F.NO
-        JOIN
-            ORDER_SHEET O ON O.NO = S.NO
-        JOIN
-            ORDER_STATUS OS ON OS.NO = O.NO
-        WHERE
-            1=1
-            <if test="storeImg != null and storeImg != ''">
-                AND S.INTRODUCTION_IMG = #{storeImg}
-            </if>
-            <if test="storeName != null and storeName != ''">
-                AND S.NAME = #{storeName}
-            </if>
-            <if test="storeFood != null and storeFood != ''">
-                AND F.NAME = #{storeFood}
-            </if>
-            <if test="storeFoodPrice != 0">
-                AND F.PRICE = #{storeFoodPrice}
-            </if>
-            <if test="storeOrderDate != null and storeOrderDate != ''">
-                AND O.ORDER_DAY = #{storeOrderDate}
-            </if>
-            <if test="deliveryStatus != null and deliveryStatus != ''">
-                AND OS.STATUS = #{deliveryStatus}
-            </if>
-    </select>
+   <select id="storeOrderList" resultType="com.kh.baemin.member.vo.StoreOrderVo">
+    SELECT 
+        S.INTRODUCTION_IMG AS storeImg,
+        S.NAME AS storeName,
+        F.NAME AS storeFood,
+        F.PRICE AS storeFoodPrice,
+        O.ORDER_DAY AS storeOrderDate,
+        OS.STATUS AS deliveryStatus,
+        M.NO AS memberNo
+    FROM
+        STORE_INFOR S
+    JOIN
+        FOOD_INFOR F ON S.NO = F.NO
+    JOIN
+        ORDER_SHEET O ON O.NO = F.NO
+    JOIN
+        ORDER_STATUS OS ON OS.NO = O.NO
+   	JOIN
+   		MEMBER_USER M ON M.NO= F.NO
+        WHERE 
+        M.NO = #{memberNo}
+</select>
+
+   <update id="changeAddress">
+      UPDATE MEMBER_USER
+      SET ADDRESS=#{address} , ADDRESS_DETAIL=#{addressdDetail}
+      WHERE NO=#{no};
+   </update>
 
 </mapper>

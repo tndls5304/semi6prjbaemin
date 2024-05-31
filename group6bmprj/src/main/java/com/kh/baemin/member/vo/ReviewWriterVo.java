@@ -16,13 +16,9 @@ public class ReviewWriterVo {
 	private String ceoImg;
 	private String memberNickName;
 	private String id;
-	@Override
-	public String toString() {
-		return "ReviewWriterVo [no=" + no + ", orderNo=" + orderNo + ", rating=" + rating + ", MemberContent="
-				+ memberContent + ", CeoContent=" + CeoContent + ", reviewImg=" + reviewImg + ", memberImg=" + memberImg
-				+ ", enrollDate=" + enrollDate + ", delYn=" + delYn + ", deliveryProblem=" + deliveryProblem
-				+ ", storeName=" + storeName + ", foodName=" + foodName + ", ceoImg=" + ceoImg + ", memberNickName="
-				+ memberNickName + ", id=" + id + "]";
+	public ReviewWriterVo() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	public ReviewWriterVo(String no, String orderNo, String rating, String memberContent, String ceoContent,
 			String reviewImg, String memberImg, String enrollDate, String delYn, String deliveryProblem,
@@ -31,7 +27,7 @@ public class ReviewWriterVo {
 		this.no = no;
 		this.orderNo = orderNo;
 		this.rating = rating;
-		memberContent = memberContent;
+		this.memberContent = memberContent;
 		CeoContent = ceoContent;
 		this.reviewImg = reviewImg;
 		this.memberImg = memberImg;
@@ -44,9 +40,13 @@ public class ReviewWriterVo {
 		this.memberNickName = memberNickName;
 		this.id = id;
 	}
-	public ReviewWriterVo() {
-		super();
-		// TODO Auto-generated constructor stub
+	@Override
+	public String toString() {
+		return "ReviewWriterVo [no=" + no + ", orderNo=" + orderNo + ", rating=" + rating + ", memberContent="
+				+ memberContent + ", CeoContent=" + CeoContent + ", reviewImg=" + reviewImg + ", memberImg=" + memberImg
+				+ ", enrollDate=" + enrollDate + ", delYn=" + delYn + ", deliveryProblem=" + deliveryProblem
+				+ ", storeName=" + storeName + ", foodName=" + foodName + ", ceoImg=" + ceoImg + ", memberNickName="
+				+ memberNickName + ", id=" + id + "]";
 	}
 	public String getNo() {
 		return no;
@@ -70,7 +70,7 @@ public class ReviewWriterVo {
 		return memberContent;
 	}
 	public void setMemberContent(String memberContent) {
-		memberContent = memberContent;
+		this.memberContent = memberContent;
 	}
 	public String getCeoContent() {
 		return CeoContent;

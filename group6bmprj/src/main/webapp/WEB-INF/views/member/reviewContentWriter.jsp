@@ -70,6 +70,8 @@
             <div>&nbsp;</div>
 
             <button type="submit" class="next-button">완료</button>
+                <input type="hidden" name="orderNo" value="<%= request.getAttribute("orderNo") != null ? request.getAttribute("orderNo") : "" %>">
+                <h1>memberNo ::: ${memberNo}</h1>
         </form>
     </div>
 
