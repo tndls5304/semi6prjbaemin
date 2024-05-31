@@ -50,8 +50,12 @@
                         <a href="/baemin/member/orderList" class="icon-link">
                             <h1><i class="fa fa-file-alt"></i></h1>
                         </a>
+                       <input type="hidden" name="no" value="${requestScope.LoginMemberVo.no != null ? requestScope.LoginMemberVo.no : ''}">
+
                         <h3>주문내역</h3>
                     </div>
+				
+                          <h3>no ::: ${sessionScope.loginMemberVo.no}</h3>
                     <div class="icon">
                         <a href="나의_찜_링크_URL" class="icon-link">
                             <h1><i class="fa fa-heart"></i></h1>

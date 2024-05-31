@@ -31,14 +31,14 @@ public class MemberOrderListController extends HttpServlet {
 			}
 			
 			
-			String memberNo = req.getParameter("memberNo");
+			String no = req.getParameter("no");
 			StoreOrderVo vo = new StoreOrderVo();
-			vo.setMemberNo(memberNo);
+			vo.setMemberNo(no);
 			
 			MemberService ms = new MemberService();
-			List<StoreOrderVo> orderList = ms.getOrderListByUser(memberNo);
+			List<StoreOrderVo> orderList = ms.getOrderListByUser(no);
 			
-			
+			req.setAttribute("no", no);
 			req.setAttribute("orderList", orderList);
 			req.getRequestDispatcher("/WEB-INF/views/member/orderList.jsp").forward(req, resp);
 
