@@ -125,13 +125,18 @@
     <aside>
         <nav>
             <ul>
-                <li><a href=""><h1>배민관리자</h1></a></li>
-                <li><a href="">홈</a></li>
-                <li><a href="">사장계정관리</a></li>
-                <li><a href="">손님계정관리</a></li>
+                
+                <li><a href=""><h1>사장님 페이지</h1></a></li>
+                <li><a href="">스토어 허가 신청</a></li>
+                <li><a href="">주문관리🕗</a></li>
+                <li><a href="">스토어 관리</a></li>
+                <li><a href="">회원관리</a></li>
+                <li><a href="">음식메뉴편집</a></li>
+                <li><a href="">매출관리</a></li>
                 <li><a href="">리뷰관리</a></li>
-                <li><a href="">문의사항</a></li>
-                <li><a href="">가게 허가 신청</a></li>
+                <li><a href="">
+                 <button>로그아웃</button></a></li>
+
             </ul>
         </nav>
     </aside>
@@ -159,7 +164,15 @@
                 <div class="form-group">
                     <div class="form-group-row">
                         <label for="address-detail">가게 상세 주소:</label>
-                        <input type="text" id="address-detail" name="address-detail" required>
+                        <input type="text" id="address_detail" name="address_detail" required>
+                    </div>
+                    <p id="addressDetailError">15글자 내로 작성해주세요.</p>
+                </div>
+                 <div class="form-group">
+                    <div class="form-group-row">
+                        <label for="delivery_zone">배달 지역 : </label>
+                        <input type="text" id="delivery_zone" name="delivery_zone" required> 
+                       <!-- 조건 안맞으면 되돌리기 --> 
                     </div>
                     <p id="addressDetailError">15글자 내로 작성해주세요.</p>
                 </div>
@@ -244,6 +257,11 @@
 
             return valid;
         }
-    </script>
+    </script>   
+    <script>
+      <c:if test="${not empty resultMsg}">
+             alert('${resultMsg}');
+      </c:if>
+   </script>
 </body>
 </html>
