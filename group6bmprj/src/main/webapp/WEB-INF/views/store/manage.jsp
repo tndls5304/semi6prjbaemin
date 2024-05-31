@@ -203,7 +203,20 @@
                     <div class="container-box">
                         <!--브레이크 상태 혹은 휴무일에는 Closed로 표시-->
                         <label>가게 상태:</label>
-                        <p id="store-status">Loading...</p>
+                        <p id="store-status">Loading.... <span class="edit-btn" onclick="editInfo('store-phone')">변경</span></p>
+                        <div class="edit-input" id="edit-store-phone">
+                        <input type="text" id="new-store-phone" value="010-1111-1111">
+                        <span class="save-btn" onclick="saveInfo('store-phone')">저장</span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="container-box">
+                    <label>사장 전화번호:</label>
+                    <p id="owner-phone">02-1111-1111 <span class="edit-btn" onclick="editInfo('owner-phone')">변경</span></p>
+                    <div class="edit-input" id="edit-owner-phone">
+                    <input type="text" id="new-owner-phone" value="010-1111-1111">
+                    <span class="save-btn" onclick="saveInfo('owner-phone')">저장</span>
+                    </div>
                     </div>
                     <br>
                     <div class="container-box">
@@ -221,6 +234,15 @@
                         <div class="edit-input" id="edit-store-description">
                             <input type="text" id="new-store-description" value="가게 소개 예시">
                             <span class="save-btn" onclick="saveInfo('store-description')">저장</span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="container-box">
+                        <label>비밀번호:</label>
+                        <p id="password">*** <span class="edit-btn" onclick="editInfo('password')">변경</span></p>
+                        <div class="edit-input" id="edit-password">
+                            <input type="password" id="new-password" value="">
+                            <span class="save-btn" onclick="saveInfo('password')">저장</span>
                         </div>
                     </div>
                 </div>
@@ -261,6 +283,24 @@
                             <span class="save-btn" onclick="saveInfo('closed-days')">저장</span>
                         </div>
                     </div>
+                    <br>
+                    <div class="container-box">
+                        <label>배달 팁:</label>
+                        <p id="delivery-tip">Loading... <span class="edit-btn" onclick="editInfo('delivery-tip')">변경</span></p>
+                        <div class="edit-input" id="edit-delivery-tip">
+                            <input type="text" id="new-delivery-tip" value="">
+                            <span class="save-btn" onclick="saveInfo('delivery-tip')">저장</span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="container-box">
+                        <label>최소 주문 금액:</label>
+                        <p id="minimum-order-amount">Loading... <span class="edit-btn" onclick="editInfo('minimum-order-amount')">변경</span></p>
+                        <div class="edit-input" id="edit-minimum-order-amount">
+                            <input type="text" id="new-minimum-order-amount" value="">
+                            <span class="save-btn" onclick="saveInfo('minimum-order-amount')">저장</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -279,11 +319,15 @@
                 const operatingHours = data.operating_hours; // "09:00-21:00" 형식
                 const breakTime = data.break_time; // "14:00-15:00" 형식
                 const closedDays = data.closed_days.split(','); // "Sunday" 등의 형식
+                const deliveryTip = data.delivery_tip;
+                const minimumOrderAmount = data.minimum_order_amount;
     
                 // HTML 요소 업데이트
                 document.getElementById('operating-hours').textContent = operatingHours;
                 document.getElementById('break-time').textContent = breakTime;
                 document.getElementById('closed-days').textContent = closedDays.join(', ');
+                document.getElementById('delivery-tip').textContent = deliveryTip;
+                document.getElementById('minimum-order-amount').textContent = minimumOrderAmount;
     
                 // 현재 시간 및 요일 계산
                 const now = new Date();
