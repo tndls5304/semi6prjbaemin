@@ -34,9 +34,9 @@ public class StoreOwnerLoginController extends HttpServlet {
 		
 		if(loginStoreOwnerVo!=null) {
 			session.setAttribute("loginStoreOwnerVo", loginStoreOwnerVo);
-			session.setAttribute("alertMsg", "로그인성공 ! 입점신청을 서둘러 진행 해주세요!");
+			session.setAttribute("resultMsg", "로그인성공 ! 입점신청을 서둘러 진행 해주세요!");
 		}else {
-			session.setAttribute("alertMsg", "로그인실패 ㅠ ㅠ");
+			session.setAttribute("resultMsg", "로그인실패 ㅠ ㅠ");
 		}
 		resp.sendRedirect("/baemin/store/admit");
 		

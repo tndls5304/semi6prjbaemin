@@ -138,16 +138,14 @@ footer span{
 }
 .inputAddress{
   margin-left: 50px;
-  width: 350px;
-  height: 30px;
+  width: 100px;
+  height: 10px;
   border: 2px solid;
 }
 .addressBlock{
   margin-top: 100px;
-  display: flex;
-  justify-content:center;
-  align-items:center;
-  height: 40px;
+
+  height: 80px;
   background-color: rgb(253, 235, 235);
   display: none;
 }

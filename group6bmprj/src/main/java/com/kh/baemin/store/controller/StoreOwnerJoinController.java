@@ -96,7 +96,7 @@ public class StoreOwnerJoinController extends HttpServlet{
 		
 		//결과처리
 		if(result==1) {
-			req.setAttribute("resultMsg", "환영해요! 회원가입 성공했습니다 입점신청도 서둘러주세요! ");
+			req.setAttribute("resultMsg", "환영해요! 회원가입 성공했습니다! ");
 		}else {
 			req.setAttribute("resultMsg", "회원가입실패!");
 		}
