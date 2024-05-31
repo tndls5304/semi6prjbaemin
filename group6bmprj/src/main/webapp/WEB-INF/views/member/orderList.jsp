@@ -41,18 +41,18 @@
                 </div>
                 <!-- 주문상세 버튼 -->
                 <form action="/baemin/member/reviewContentWriter" method="get">
-                       <input type="hidden" name="no" value="${requestScope.LoginMemberVo.no != null ? requestScope.LoginMemberVo.no : ''}">
+                    <input type="hidden" name="memberNo" value="<%= request.getAttribute("memberNo") != null ? request.getAttribute("memberNo") : "" %>">
                     <button type="submit" class="link-button">주문상세</button>
                 <!-- 같은 메뉴 담기 버튼 -->
                   <form action="/baemin/member/reviewContentWriter" method="get">
-   <input type="hidden" name="no" value="${requestScope.LoginMemberVo.no != null ? requestScope.LoginMemberVo.no : ''}">
+                    <input type="hidden" name="memberNo" value="<%= request.getAttribute("memberNo") != null ? request.getAttribute("memberNo") : "" %>">
                     <button type="submit" class="link-button">같은메뉴담기</button>
               <!-- 리뷰쓰기 버튼 -->
-                <form action="/baemin/member/reviewStatustWriter" method="get">
-   <input type="hidden" name="no" value="${requestScope.LoginMemberVo.no != null ? requestScope.LoginMemberVo.no : ''}">
+                <a href="/baemin/member/reviewStatusWriter" >
+                    <input type="hidden" name="memberNo" value="<%= request.getAttribute("memberNo") != null ? request.getAttribute("memberNo") : "" %>">
                     <button type="submit" class="link-button">리뷰쓰기</button>
                        <h1>memberNo ::: ${memberNo}</h1>
-           </form>
+           </a>
         
         </main>
     </div>

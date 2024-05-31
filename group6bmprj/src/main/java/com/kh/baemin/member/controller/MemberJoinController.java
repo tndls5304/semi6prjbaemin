@@ -94,6 +94,7 @@ public class MemberJoinController extends HttpServlet {
             int result = ms.join(vo);
 
             if (result == 1) {
+            	
                 req.setAttribute("resultMsg", "회원가입 성공 !!!");
                 resp.sendRedirect("/baemin/member/login");
             } else {
