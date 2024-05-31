@@ -17,7 +17,7 @@ inputAddress.addEventListener("input", function()
 	var inputAddressDetail=document.querySelector("#input-addressDetail");
 	inputAddressDetail.addEventListener("keyup",function(){
 		inputAddressDetail.value=inputAddressDetail.value.trim();	
-	
+	  
 	})
 
 

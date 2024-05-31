@@ -13,8 +13,8 @@
         <header>
     
           <div class="middle">
-	        	  <div class="address">서울시용산구남영도 ${sessionScope.loginMemberVo.address}</div>
-	   	      <div class="address-detail">두텁바위로 167번지 000 삼성빌딩앞 254${sessionScope.loginMemberVo.addressdDetail}
+	        	  <div class="address">${sessionScope.loginMemberVo.address}</div>
+	   	      <div class="address-detail">${sessionScope.loginMemberVo.addressdDetail}
          		 <button onclick="trychangeAddress()">주소바꾸기</button></div>
           </div>
           <!-- <div class="bottom"><button>standardard</button><button>star☆</button></div> -->
