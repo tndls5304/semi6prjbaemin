@@ -16,6 +16,17 @@ public class MemberGetInforService {
 	}
 
 	public int changeAddress(MemberVo vo) throws Exception {
+		//비지니스로직
+		
+		if(vo.getAddress()==null|| vo.getAddress().isEmpty()) {
+		throw new Exception("주소가입력되지 않았습니다!");
+		}
+		
+		if(vo.getAddressdDetail()==null||vo.getAddressdDetail().isEmpty()) {
+		throw new Exception("상세주소가입력되지 않았습니다!");
+		}
+		
+		
 		SqlSession ss = getSqlSession();
 		int result=dao.changeAddress(ss,vo);
 		
