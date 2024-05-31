@@ -117,4 +117,22 @@
 	</select>
 
 
+	<select id="loginStoreOwner"
+		resultType="com.kh.baemin.store.vo.StoreOwnerVo">
+
+		SELECT
+		PWD
+		,PROFILE
+		,PHONE
+		,NO
+		,NAME
+		,ID
+		,DEL_YN
+		,COMPANY_RESITRATION_NUMBER
+		FROM MEMBER_STORE_OWNER
+		WHERE ID=#{id} AND PWD=#{pwd}
+
+	</select>
+
+
 </mapper>
