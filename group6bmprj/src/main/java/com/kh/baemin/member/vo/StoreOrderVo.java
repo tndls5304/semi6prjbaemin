@@ -4,7 +4,7 @@ public class StoreOrderVo {
 
 	private String no;
 	private String orderNo;
-	
+	private String memberNo;
 	private String name;
 	private String address;
 	private String addressDetail;
@@ -28,7 +28,7 @@ public class StoreOrderVo {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public StoreOrderVo(String no, String orderNo, String name, String address, String addressDetail,
+	public StoreOrderVo(String no, String orderNo, String memberNo, String name, String address, String addressDetail,
 			String introductionImg, String introduce, String mainImg, String phone, String minimumOrderAmount,
 			String viewedCnt, String orderStatus, String orderDay, String foodImg, String storeImg, String storeName,
 			String storeFood, int storeFoodPrice, String storeOrderDate, String storeOrderStatus,
@@ -36,6 +36,7 @@ public class StoreOrderVo {
 		super();
 		this.no = no;
 		this.orderNo = orderNo;
+		this.memberNo = memberNo;
 		this.name = name;
 		this.address = address;
 		this.addressDetail = addressDetail;
@@ -58,13 +59,14 @@ public class StoreOrderVo {
 	}
 	@Override
 	public String toString() {
-		return "StoreOrderVo [no=" + no + ", orderNo=" + orderNo + ", name=" + name + ", address=" + address
-				+ ", addressDetail=" + addressDetail + ", introductionImg=" + introductionImg + ", introduce="
-				+ introduce + ", mainImg=" + mainImg + ", phone=" + phone + ", minimumOrderAmount=" + minimumOrderAmount
-				+ ", viewedCnt=" + viewedCnt + ", orderStatus=" + orderStatus + ", orderDay=" + orderDay + ", foodImg="
-				+ foodImg + ", storeImg=" + storeImg + ", storeName=" + storeName + ", storeFood=" + storeFood
-				+ ", storeFoodPrice=" + storeFoodPrice + ", storeOrderDate=" + storeOrderDate + ", storeOrderStatus="
-				+ storeOrderStatus + ", deliveryStatus=" + deliveryStatus + "]";
+		return "StoreOrderVo [no=" + no + ", orderNo=" + orderNo + ", memberNo=" + memberNo + ", name=" + name
+				+ ", address=" + address + ", addressDetail=" + addressDetail + ", introductionImg=" + introductionImg
+				+ ", introduce=" + introduce + ", mainImg=" + mainImg + ", phone=" + phone + ", minimumOrderAmount="
+				+ minimumOrderAmount + ", viewedCnt=" + viewedCnt + ", orderStatus=" + orderStatus + ", orderDay="
+				+ orderDay + ", foodImg=" + foodImg + ", storeImg=" + storeImg + ", storeName=" + storeName
+				+ ", storeFood=" + storeFood + ", storeFoodPrice=" + storeFoodPrice + ", storeOrderDate="
+				+ storeOrderDate + ", storeOrderStatus=" + storeOrderStatus + ", deliveryStatus=" + deliveryStatus
+				+ "]";
 	}
 	public String getNo() {
 		return no;
@@ -77,6 +79,12 @@ public class StoreOrderVo {
 	}
 	public void setOrderNo(String orderNo) {
 		this.orderNo = orderNo;
+	}
+	public String getMemberNo() {
+		return memberNo;
+	}
+	public void setMemberNo(String memberNo) {
+		this.memberNo = memberNo;
 	}
 	public String getName() {
 		return name;
