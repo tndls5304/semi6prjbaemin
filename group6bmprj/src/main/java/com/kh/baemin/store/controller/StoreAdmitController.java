@@ -52,68 +52,69 @@ public class StoreAdmitController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		try {
-			HttpSession session = req.getSession();
-			
-			// 데이터 꺼내기
-			String name = req.getParameter("name");
-			String address = req.getParameter("address");
-			String addressDetail = req.getParameter("addressDetail");
-			String storeCategoryNo = req.getParameter("storeCategoryNo");
-			String companyResitrationNumber  = req.getParameter("companyResitrationNumber ");
-			String businessRegistrationVertificateImg = req.getParameter("businessRegistrationVertificateImg");
-			String companyRestrationNumber = req.getParameter("CompanyRestrationNumber");
-			
-			
-			Collection<Part> parts = req.getParts();
-			
-			List<Part> fileList = new ArrayList<Part>();
-			for (Part part : parts) {
-				if(part.getContentType() != null) {
-					fileList.add(part);
-				}
-			}
-			
-//			서버에 파일 업로드
-			List<StoreInforVo> storeInforVoList = new ArrayList<StoreInforVo>();
-			for (Part f : fileList) {
-				StoreInforVo storeInforVo = FileUpload.saveFile(f);
-				storeInforVoList.add(storeInforVo);
-			}
-			
-
-			
-			StoreOwnerVo storeOwnerVo = (StoreOwnerVo) session.getAttribute("storeOwnerVo");
-			String no = storeOwnerVo.getNo();
-			
-			StoreInforVo vo = new StoreInforVo();
-			StoreOwnerVo svo = new StoreOwnerVo();
-			vo.setName(name);
-			vo.setAddress(address);
-			vo.setAddressDetail(addressDetail);
-			vo.setStoreCategoryNo(storeCategoryNo);
-			svo.setCompanyResitrationNumber(companyRestrationNumber);
-			
-			// 서비스 호출
-			StoreAdmitService sas = new StoreAdmitService();
-			int result = sas.insert(vo , storeInforVoList);
-			
-			// 결과
-			if(result < 1) {
-				throw new Exception("허가 신청 실패 ...");
-			}
-			resp.sendRedirect("/baemin/store/admit");
-			
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
-			e.printStackTrace();
-			req.setAttribute("errMsg", e.getMessage());
-			req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
-		}
+//		try {
+//			HttpSession session = req.getSession();
+//			
+//			// 데이터 꺼내기
+//			String name = req.getParameter("name");
+//			String address = req.getParameter("address");
+//			String addressDetail = req.getParameter("addressDetail");
+//			String storeCategoryNo = req.getParameter("storeCategoryNo");
+//			String companyResitrationNumber  = req.getParameter("companyResitrationNumber ");
+//			String businessRegistrationVertificateImg = req.getParameter("businessRegistrationVertificateImg");
+//			String companyRestrationNumber = req.getParameter("CompanyRestrationNumber");
+//			
+//			
+//			Collection<Part> parts = req.getParts();
+//			
+//			List<Part> fileList = new ArrayList<Part>();
+//			for (Part part : parts) {
+//				if(part.getContentType() != null) {
+//					fileList.add(part);
+//				}
+//			}
+//			
+////			서버에 파일 업로드
+//			List<StoreInforVo> storeInforVoList = new ArrayList<StoreInforVo>();
+//			for (Part f : fileList) {
+//				StoreInforVo storeInforVo = FileUpload.saveFile(f);
+//				storeInforVoList.add(storeInforVo);
+//			}
+//			
+//
+//			
+//			StoreOwnerVo storeOwnerVo = (StoreOwnerVo) session.getAttribute("storeOwnerVo");
+//			String no = storeOwnerVo.getNo();
+//			
+//			StoreInforVo vo = new StoreInforVo();
+//			StoreOwnerVo svo = new StoreOwnerVo();
+//			vo.setName(name);
+//			vo.setAddress(address);
+//			vo.setAddressDetail(addressDetail);
+//			vo.setStoreCategoryNo(storeCategoryNo);
+//			svo.setCompanyResitrationNumber(companyRestrationNumber);
+//			
+//			// 서비스 호출
+//			StoreAdmitService sas = new StoreAdmitService();
+//			int result = sas.insert(vo , storeInforVoList);
+//			
+//			// 결과
+//			if(result < 1) {
+//				throw new Exception("허가 신청 실패 ...");
+//			}
+//			resp.sendRedirect("/baemin/store/admit");
+//			
+//		}catch(Exception e) {
+//			System.out.println(e.getMessage());
+//			e.printStackTrace();
+//			req.setAttribute("errMsg", e.getMessage());
+//			req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
+//		}
+//		
+//	}
+		
 		
 	}
-		
-		
-	}
 
+}
 
