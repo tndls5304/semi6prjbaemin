@@ -1,8 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.kh.baemin.member.vo.MemberVo" %>
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,8 +17,12 @@
     <div class="content">
         <header>
             <div class="top-bar">
-                <div class="left-bar"><img class="back-img" src="/배민캡쳐/상단바_뒤로가기.jpg"></div>
-                <div class="middle-bar"><img class="top-bar-name" src="/배민캡쳐/상단바_현재페이지이름_가게배달.jpg"></div>
+                <div class="left-bar">
+                    <img class="back-img" src="/배민캡쳐/상단바_뒤로가기.jpg">
+                </div>
+                <div class="middle-bar">
+                    <img class="top-bar-name" src="/배민캡쳐/상단바_현재페이지이름_가게배달.jpg">
+                </div>
                 <img class="right-bar" src="/배민캡쳐/홈.png">
             </div>
             <div class="middle">주소입력칸&nbsp&nbsp&nbsp▽</div>
@@ -50,12 +52,8 @@
                         <a href="/baemin/member/orderList" class="icon-link">
                             <h1><i class="fa fa-file-alt"></i></h1>
                         </a>
-                       <input type="hidden" name="no" value="${requestScope.LoginMemberVo.no != null ? requestScope.LoginMemberVo.no : ''}">
-
                         <h3>주문내역</h3>
                     </div>
-				
-                         
                     <div class="icon">
                         <a href="나의_찜_링크_URL" class="icon-link">
                             <h1><i class="fa fa-heart"></i></h1>
@@ -73,9 +71,9 @@
             <div class="baeminpay">
                 <h1>페이💰</h1>
                 <form id="chargeForm" method="POST" action="/baemin/member/info" class="mt-3">
-                    <input type="number" id="amountInput" name="memberPay" class="form-control" placeholder="충전할 금액을 입력하세요">
+                    <input type="number" id="amountInput" name="accountBalance" class="form-control" placeholder="충전할 금액을 입력하세요">
                     <button type="submit" class="btn btn-primary blue-button mt-5">충전</button>
-                    <div id="balanceDisplay">현재 잔액: <span id="balanceAmount"><%= loginMemberVo != null ? loginMemberVo.getMemberPay() : "0" %></span>원</div>
+                    <div id="balanceDisplay">현재 잔액: <span id="balanceAmount"><%= loginMemberVo.getAccountBalance() %></span>원</div>
                 </form>
             </div>
         </main>

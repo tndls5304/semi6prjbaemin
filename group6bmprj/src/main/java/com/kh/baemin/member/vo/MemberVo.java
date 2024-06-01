@@ -15,15 +15,15 @@ public class MemberVo {
 	private String delYn;
 	private String gender;
 	private String memberImg;
-	private String memberPay;
 	private String generation;
+	private String chargeAmount;
 	public MemberVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public MemberVo(String no, String nick, String id, String pwd, String name, String address, String addressDetail,
-			String phone, String accountBalance, String delYn, String gender, String memberImg, String memberPay,
-			String generation) {
+			String phone, String accountBalance, String delYn, String gender, String memberImg, String generation,
+			String chargeAmount) {
 		super();
 		this.no = no;
 		this.nick = nick;
@@ -37,15 +37,15 @@ public class MemberVo {
 		this.delYn = delYn;
 		this.gender = gender;
 		this.memberImg = memberImg;
-		this.memberPay = memberPay;
 		this.generation = generation;
+		this.chargeAmount = chargeAmount;
 	}
 	@Override
 	public String toString() {
 		return "MemberVo [no=" + no + ", nick=" + nick + ", id=" + id + ", pwd=" + pwd + ", name=" + name + ", address="
 				+ address + ", addressDetail=" + addressDetail + ", phone=" + phone + ", accountBalance="
 				+ accountBalance + ", delYn=" + delYn + ", gender=" + gender + ", memberImg=" + memberImg
-				+ ", memberPay=" + memberPay + ", generation=" + generation + "]";
+				+ ", generation=" + generation + ", chargeAmount=" + chargeAmount + "]";
 	}
 	public String getNo() {
 		return no;
@@ -119,16 +119,16 @@ public class MemberVo {
 	public void setMemberImg(String memberImg) {
 		this.memberImg = memberImg;
 	}
-	public String getMemberPay() {
-		return memberPay;
-	}
-	public void setMemberPay(String memberPay) {
-		this.memberPay = memberPay;
-	}
 	public String getGeneration() {
 		return generation;
 	}
 	public void setGeneration(String generation) {
 		this.generation = generation;
+	}
+	public String getChargeAmount() {
+		return chargeAmount;
+	}
+	public void setChargeAmount(String chargeAmount) {
+		this.chargeAmount = chargeAmount;
 	}
 }

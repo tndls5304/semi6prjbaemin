@@ -200,18 +200,11 @@ public List<ReviewWriterVo> reviewList(ReviewWriterVo vo) throws Exception {
   
 }
 
-public int info(MemberVo vo) throws IOException {
+public MemberVo info(String no) throws IOException {
 //	- DAO호출
 	SqlSession ss = getSqlSession();
-	int result = dao.MemberInfo(ss, vo);
-	
-	if(result == 1) {
-		ss.commit();
-		
-	}else {
-		ss.rollback();
-	}
-	
+	MemberVo result = dao.MemberInfo(ss, no);
+	ss.close();
 	
 	return result;
 }
@@ -244,6 +237,20 @@ public int contentDeliveryProblem(ReviewWriterVo vo) throws Exception {
 	
 	return result;
 }
+
+public int updateAccount(String no) throws Exception {
+//	- DAO호출
+	SqlSession ss = getSqlSession();
+	int result = dao.MemberAccount(ss, no);
+	ss.close();
+	
+	return result;
+}
+
+
+
+
+
 	
 }
 
