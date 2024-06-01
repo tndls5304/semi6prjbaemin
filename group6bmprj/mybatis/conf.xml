@@ -27,5 +27,6 @@
 		<mapper resource="/mapper/storeOwner-menuEdit-mapper.xml" />
 		<mapper resource="/mapper/member-mapper.xml" />
 		<mapper resource="/mapper/admin-ManageUser-mapper.xml" />
+		<mapper resource="/mapper/member-search-store-mapper.xml" />
 	</mappers>
 </configuration>
