@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="memberSearchForStoreMapper" resultType="com.kh.baemin.store.vo.StoreInforVo">
+
+<select id="searchForStoreByBasic">
+		SELECT *
+		FROM STORE_INFOR S 
+		LEFT JOIN CLOSED_DAY C             ON S.NO    =   C.STORE_NO
+		JOIN STORE_DELIVERY_ZONE Z         ON S.NO  =   Z.STORE_NO
+		JOIN LOCAL_NAME L                   ON Z.ZONE_NO  =   L.ZONE_NUMBER
+		WHERE 
+		S.STORE_CATEGORY_NO=#{storeCategoryNo} 
+		AND L.ADDRESS=#{memberAddress}
+		AND S.APPROVAL_STATUS_NO='2'
+		AND S.OPEN_YN='Y' 
+		AND S.OPEN_TIME <SYSDATE
+		AND S.END_TIME > SYSDATE
+		AND (S.BREAK_TIME_START IS NULL OR S.BREAK_TIME_START > SYSDATE)
+		AND  (S.BREAK_TIME_END IS NULL OR S.BREAK_TIME_END < SYSDATE)
+		AND ( C.DAY IS NULL OR TRUNC(C.DAY) != TRUNC(SYSDATE));
+
+</select>
+
+</mapper>
