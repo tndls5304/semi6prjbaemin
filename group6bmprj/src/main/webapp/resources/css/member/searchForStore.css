@@ -1,0 +1,135 @@
+ body {
+   
+  background-color: rgb(236, 206, 227);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  
+  font-style: normal;
+}
+/*  배민 앱은 content에요 */
+.content{
+  width: 515px;
+  height: 100vh;
+  background-color:white;
+
+  display: grid;
+  grid-template-rows: 1fr 10fr 1fr;
+}
+/* 고정 상단바 입니다 */
+header{
+  position: fixed;
+
+  width: 515px;
+  height: 100px;
+  border: solid 1px;
+display: grid;
+grid-template-rows: 1fr 0.5fr 1fr;
+}
+/* 제일 위 고정 상단이 header이고 그 안에 3개의 디브층이에요 */
+header > div:nth-child(1){
+background-color:white;
+display: grid;
+grid-template-columns: 0.5fr 7fr 1fr ;
+}
+/* 가게 카테고리 선택*/
+header >div:nth-child(2){
+  font-size: 20px;
+  font-weight: 100;
+
+  margin-top: 0px;
+  padding-left: 10px;
+  margin-bottom: 2px;
+
+background-color: white;
+}
+header >div:nth-child(3){
+  background-color: white;
+}
+
+select{
+  border-radius: 10px;
+  height: 25px;
+  background-color: rgb(243, 241, 255);
+  margin-left: 20px;
+}
+/* 맨 밑의  검색,장바구니,찜,주문내역, my배민 클릭할 수 있는 하단바 입니다 */
+footer{
+  position: fixed;
+margin-bottom: 5px;
+width: 513px;
+height: 45px;
+border: solid 1px;
+bottom:1px;
+display: grid;
+grid-template-columns: repeat(5,1fr);
+
+
+}
+/* 홈버튼이에요 */
+.right-bar,.back-img{
+  margin-top: 10px;
+  margin-left: 5px;
+  width: 35px;
+  height: 35px;
+}
+
+/* 상단바 뒤로가기  */
+.left-bar :nth-child(1){
+width: 20px;
+height: 30px;
+}
+
+/* 가게배달 이미지 */
+
+
+/* 메인 여기만 바꿔주면됨 */
+
+main{
+      /* border:1px  solid black; */
+      /* background-color: rgb(174, 48, 48); */
+      margin-top: 105px;
+    }
+
+
+
+
+
+/*  */
+
+footer div{
+  display: grid;
+  grid-template-columns: 3fr lfr;
+}
+footer img{
+  width: 33px;
+  height: 27px;
+  margin-left: 32px;
+}
+
+footer span{
+  font-size: 12px;
+  margin-left: 28px;
+}
+/*  */
+
+
+.storeList{
+  margin-top: 25px;
+  margin-left: 10px;
+}
+.storeList img{
+  border-radius: 10px;
+  margin: 1px;
+}
+.storeName{
+  margin-top: 3px;
+  font-size: 19px;
+ 
+}
+.minimumMoney{
+  font-size: 14px;
+  color: rgb(113, 113, 113);
+}
