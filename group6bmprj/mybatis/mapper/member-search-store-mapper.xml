@@ -7,44 +7,95 @@
 
 <mapper namespace="memberSearchForStoreMapper">
 
-	<select id="searchForStoreByBasic" resultType="com.kh.baemin.store.vo.StoreInforVo">
+<resultMap type="com.kh.baemin.store.vo.StoreInforVo" id="storeInforMap">
+	<id column="NO" property="no"/>
+	<result column="NAME" property="name"/>
+	<result column="ADDRESS" property="address"/>
+	<result column="ADDRESS_DETAIL" property="addressDetail"/>
+	<result column="BUSINESS_REGISTRATION_CERTIFICATE_IMG" property="businessRegistrationCertificateImg"/>
+	<result column="INTRODUCTION_IMG" property="introductionImg"/>
+	<result column="INTRODUCE" property="introduce"/>
+	<result column="PHONE" property="phone"/>
+	<result column="MINIMUM_ORDER_AMOUNT" property="minimumOrderAmount"/>
+	<result column="VIEWED_CNT" property="viewedCnt"/>
+	<result column="OPEN_TIME" property="openTime"/>
+	<result column="END_TIME" property="endTime"/>
+	<result column="BREAK_TIME_START" property="breakTimeStart"/>
+	<result column="BREAK_TIME_END" property="breakTimeEnd"/>
+	<result column="STORE_OWNER_NO" property="storeOwnerNo"/>
+	<result column="STORE_CATEGORY_NO" property="storeCategoryNo"/>
+	<result column="APPROVAL_STATUS_NO" property="approvalStatusNo"/>
+	 <collection property="foodImgList"  ofType="string" javaType="list">
+	 	<result column="FOOD_IMG"/>
+	 </collection>
+</resultMap>
+
+	<select id="searchForStoreByBasic"
+		resultMap="storeInforMap">
 	<![CDATA[
-		SELECT
-		S.NO
-		,S.NAME
-		,S.ADDRESS
-		,S.ADDRESS_DETAIL
-		,S.BUSINESS_REGISTRATION_CERTIFICATE_IMG
-		,S.INTRODUCTION_IMG
-		,S.INTRODUCE
-		,S.MAIN_IMG
-		,S.PHONE
-		,S.MINIMUM_ORDER_AMOUNT
-		,S.VIEWED_CNT
-		,S.OPEN_TIME
-		,S.END_TIME
-		,S.BREAK_TIME_START
-		,S.BREAK_TIME_END
-		,S.STORE_OWNER_NO
-		,S.STORE_CATEGORY_NO
-		,S.APPROVAL_STATUS_NO
-		,S.OPEN_YN
-		FROM STORE_INFOR S
-		LEFT JOIN CLOSED_DAY C ON S.NO = C.STORE_NO
-		JOIN STORE_DELIVERY_ZONE Z ON
-		S.NO = Z.STORE_NO
-		JOIN LOCAL_NAME L ON Z.ZONE_NO = L.ZONE_NUMBER
-			WHERE
-			S.STORE_CATEGORY_NO=#{storeCategoryNo}
-			AND L.ADDRESS=#{memberAddress}
-			AND S.APPROVAL_STATUS_NO='2'
-			AND	S.OPEN_YN='Y'
-			AND S.OPEN_TIME<SYSDATE 
-			AND S.END_TIME >SYSDATE
-			AND (S.BREAK_TIME_START IS NULL OR S.BREAK_TIME_START > SYSDATE)
-			AND (S.BREAK_TIME_END IS NULL OR S.BREAK_TIME_END < SYSDATE)
-			AND ( C.DAY IS NULL OR TRUNC(C.DAY) != TRUNC(SYSDATE));
-]]>
+	SELECT 
+			R.NO
+			,R.NAME
+			,R.ADDRESS
+			,R.ADDRESS_DETAIL
+			,R.BUSINESS_REGISTRATION_CERTIFICATE_IMG
+			,R.INTRODUCTION_IMG
+			,R.INTRODUCE
+			,R.MAIN_IMG
+			,R.PHONE
+			,R.MINIMUM_ORDER_AMOUNT
+			,R.VIEWED_CNT
+			,R.OPEN_TIME
+			,R.END_TIME
+			,R.BREAK_TIME_START
+			,R.BREAK_TIME_END
+			,R.STORE_OWNER_NO
+			,R.STORE_CATEGORY_NO
+			,R.APPROVAL_STATUS_NO
+			,R.OPEN_YN
+			,R.FOOD_IMG
+			,R.RK
+	FROM (
+			SELECT 
+					S.NO
+					,S.NAME
+					,S.ADDRESS
+					,S.ADDRESS_DETAIL
+					,S.BUSINESS_REGISTRATION_CERTIFICATE_IMG
+					,S.INTRODUCTION_IMG
+					,S.INTRODUCE
+					,S.MAIN_IMG
+					,S.PHONE
+					,S.MINIMUM_ORDER_AMOUNT
+					,S.VIEWED_CNT
+					,S.OPEN_TIME
+					,S.END_TIME
+					,S.BREAK_TIME_START
+					,S.BREAK_TIME_END
+					,S.STORE_OWNER_NO
+					,S.STORE_CATEGORY_NO
+					,S.APPROVAL_STATUS_NO
+					,S.OPEN_YN
+					,F.FOOD_IMG
+					,RANK() OVER (ORDER BY S.no,F.NO DESC)    AS  RK 
+					FROM STORE_INFOR S 
+					JOIN FOOD_INFOR F                  ON F.STORE_NO = S.NO
+					LEFT JOIN CLOSED_DAY C             ON S.NO    =   C.STORE_NO
+					JOIN STORE_DELIVERY_ZONE Z         ON S.NO  =   Z.STORE_NO
+					JOIN LOCAL_NAME L                  ON Z.ZONE_NO  =   L.ZONE_NUMBER
+					WHERE 
+					S.STORE_CATEGORY_NO=#{storeCategoryNo}
+					AND L.ADDRESS=#{memberAddress}
+					AND S.APPROVAL_STATUS_NO='2'
+					AND S.OPEN_YN='Y' 
+					AND S.OPEN_TIME <TO_CHAR(SYSDATE, 'HH24MISS')
+					AND S.END_TIME > TO_CHAR(SYSDATE, 'HH24MISS')
+					AND TO_CHAR(SYSDATE, 'HH24MISS') NOT BETWEEN S.BREAK_TIME_START AND  S.BREAK_TIME_END 
+					AND ( C.DAY IS NULL OR TRUNC(C.DAY) != TRUNC(SYSDATE))
+					) R
+	WHERE RK<5
+	
+	]]>
 	</select>
 
 </mapper>
