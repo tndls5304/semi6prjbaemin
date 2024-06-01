@@ -5,10 +5,10 @@
 
 
 
-<mapper namespace="memberSearchForStoreMapper"
-	resultType="com.kh.baemin.store.vo.StoreInforVo">
+<mapper namespace="memberSearchForStoreMapper">
 
-	<select id="searchForStoreByBasic">
+	<select id="searchForStoreByBasic" resultType="com.kh.baemin.store.vo.StoreInforVo">
+	<![CDATA[
 		SELECT
 		S.NO
 		,S.NAME
@@ -44,7 +44,7 @@
 			AND (S.BREAK_TIME_START IS NULL OR S.BREAK_TIME_START > SYSDATE)
 			AND (S.BREAK_TIME_END IS NULL OR S.BREAK_TIME_END < SYSDATE)
 			AND ( C.DAY IS NULL OR TRUNC(C.DAY) != TRUNC(SYSDATE));
-
+]]>
 	</select>
 
 </mapper>
