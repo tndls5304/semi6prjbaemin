@@ -47,6 +47,68 @@
 		AND pwd = #{pwd}
 	</select>
 
+    <select id="selectReviewList" resultType="com.kh.baemin.member.vo.ReviewWriterVo">
+        SELECT 
+            M.PROFILE,
+            M.NICK,
+            R.RATING,
+            R.ORDER_NO,
+            R.USER_CONTENT AS memberContent,
+            R.IMG AS reviewImg,
+            S.NAME AS storeName,
+            F.NAME AS foodName
+        FROM 
+            REVIEW_COMMUNICATION R
+        JOIN 
+            STORE_INFOR S ON R.NO = S.NO 
+        JOIN 
+            FOOD_INFOR F ON F.NO = R.NO
+        JOIN
+            MEMBER_USER M ON M.NO = R.NO 
+        WHERE 
+            R.NO = #{no}
+            AND
+            R.DEL_YN = 'N'
+    </select>
+    
+    <select id="info" resultType="com.kh.baemin.member.vo.MemberVo">
+        SELECT 
+        	M.NO
+            M.PROFILE,
+            M.NICK,
+            M.ACCOUNT_BALANCE
+        FROM 
+            MEMBER_USER M
+        WHERE 	M.NO =#{no}
+            M.PROFILE = #{memberImg}
+            AND
+            M.NICK = #{memberNickName}
+            AND 
+            M.ACCOUNT_BALANCE = #{memberPay}
+    </select>
+  
+   <select id="storeOrderList" resultType="com.kh.baemin.member.vo.StoreOrderVo">
+    SELECT 
+        S.INTRODUCTION_IMG AS storeImg,
+        S.NAME AS storeName,
+        F.NAME AS storeFood,
+        F.PRICE AS storeFoodPrice,
+        O.ORDER_DAY AS storeOrderDate,
+        OS.STATUS AS deliveryStatus,
+        M.NO AS memberNo
+    FROM
+        STORE_INFOR S
+    JOIN
+        FOOD_INFOR F ON S.NO = F.NO
+    JOIN
+        ORDER_SHEET O ON O.NO = F.NO
+    JOIN
+        ORDER_STATUS OS ON OS.NO = O.NO
+   	JOIN
+   		MEMBER_USER M ON M.NO= F.NO
+        WHERE 
+        M.NO = #{memberNo}
+</select>
 	<!-- 중복된 아이디 개수를 반환하는 쿼리 -->
 	<select id="idCheck" resultType="int">
 		SELECT COUNT(*) FROM MEMBER_USER

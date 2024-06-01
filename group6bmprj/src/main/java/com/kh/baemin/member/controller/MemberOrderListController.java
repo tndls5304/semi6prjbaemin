@@ -32,8 +32,14 @@ public class MemberOrderListController extends HttpServlet {
 			}
 			
 			
+			
+			
+			
+			String orderNo = req.getParameter("orderNo");
+			
+			
 			StoreOrderVo vo = new StoreOrderVo();
-		
+			vo.setOrderNo(orderNo);
 			
 			MemberService ms = new MemberService();
 			List<StoreOrderVo> orderList = ms.getOrderListByUser(no);
