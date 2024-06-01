@@ -76,33 +76,15 @@
 
 	<select id="info" resultType="com.kh.baemin.member.vo.MemberVo">
 		SELECT
-		M.NO
-		M.PROFILE,
-		M.NICK,
-		M.ACCOUNT_BALANCE
-		FROM
-		MEMBER_USER M
-		WHERE M.NO =#{no}
-		M.PROFILE =
-		#{memberImg}
-		AND
-		M.NICK = #{nick}
-		AND
-		M.ACCOUNT_BALANCE =
-		#{memberPay}
-		
-		 SELECT
-        M.NO,
-        M.PROFILE,
+    
+        M.PROFILE as memberImg,
         M.NICK,
-        M.ACCOUNT_BALANCE
+        M.ACCOUNT_BALANCE as accountBalance
     FROM
         MEMBER_USER M
     WHERE 
         M.NO = #{no}
-        AND M.PROFILE = #{profile}
-        AND M.NICK = #{nick}
-        AND M.ACCOUNT_BALANCE = #{accountBalance}
+   
 	</select>
   
    <select id="storeOrderList" resultType="com.kh.baemin.member.vo.StoreOrderVo">

@@ -43,8 +43,9 @@ public class MemberDao {
 
 
 
-	public int MemberInfo(SqlSession ss, MemberVo vo) {
-		return ss.selectOne("MemberMapper.info", vo);
+	public MemberVo MemberInfo(SqlSession ss, String no) {
+		return ss.selectOne("MemberMapper.info",no);
+		
 	}
 
 	 public List<StoreOrderVo> storeOrderList(SqlSession ss, String no) {
@@ -54,6 +55,10 @@ public class MemberDao {
 
 	public int contentDeliveryProblem(SqlSession ss, ReviewWriterVo vo) {
 		return ss.update("MemberMapper.contentDeliveryProblem", vo);
+	}
+
+	public int MemberAccount(SqlSession ss, MemberVo vo) {
+		return ss.update("MemberMapper.Account", vo);
 	}
 
 	
