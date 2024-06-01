@@ -42,7 +42,7 @@ public class StoreOwnerLoginController extends HttpServlet {
 		
 	}catch(Exception e) {
 		e.printStackTrace();
-		req.setAttribute("errMsg", "[ERROR-M0002] 로그인 중 에러 발생 ...");
+		req.setAttribute("errMsg", e.getMessage());
 		req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
 	}
 	}

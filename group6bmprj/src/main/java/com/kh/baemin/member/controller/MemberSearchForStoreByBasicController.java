@@ -20,23 +20,38 @@ public class MemberSearchForStoreByBasicController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO 화면에서 가게종목 번호 받아오기
-		String storeCategoryNo=req.getParameter("storeCategoryNo");
-		
-		//회원주소가져오기
-		HttpSession session=req.getSession();
-		MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
-		String memberAddress=loginMemberVo.getAddress();
-		
-		
-		//가게종목번호랑 회원주소 뭉쳐서 이제 가보자~
-		SearchForStoreVo searchForStoreVo=new SearchForStoreVo();
-		
-		MemberSearchForStoreService service=new MemberSearchForStoreService();
-		
-		List<StoreInforVo>storeInforVo=service.searchForStoreByBasic(searchForStoreVo);
-		
-		
-		super.doGet(req, resp);
+		try {
+			// TODO 화면에서 가게종목 번호 받아오기
+			String storeCategoryNo=req.getParameter("storeCategoryNo");
+			
+			//세션에서 회원주소가져오기
+			HttpSession session=req.getSession();
+			MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
+			String memberAddress=loginMemberVo.getAddress();
+			
+			
+			//가게종목번호랑 회원주소 뭉쳐서 이제 가보자~
+			SearchForStoreVo searchForStoreVo=new SearchForStoreVo();
+			searchForStoreVo.setStoreCategoryNo(storeCategoryNo);
+			searchForStoreVo.setMemberAddress(memberAddress);
+			
+			
+			MemberSearchForStoreService service=new MemberSearchForStoreService();
+			List<StoreInforVo>storeInforVoList=service.searchForStoreByBasic(searchForStoreVo);
+			
+			req.setAttribute("storeInforVoList", searchForStoreVo);
+			req.getRequestDispatcher("/WEB-INF/views/.jsp").forward(req, resp);
+		}catch(Exception e) {
+			e.printStackTrace();
+			req.setAttribute("errMsg", e.getMessage());
+			req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
+		}
+
+	
 	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
+	
 }

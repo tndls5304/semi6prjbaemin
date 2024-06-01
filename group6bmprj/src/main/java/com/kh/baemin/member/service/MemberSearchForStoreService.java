@@ -21,15 +21,15 @@ public class MemberSearchForStoreService {
 	public List<StoreInforVo> searchForStoreByBasic(SearchForStoreVo searchForStoreVo) throws Exception {
 		
 		SqlSession ss=getSqlSession();
-		List <StoreInforVo> storeInforVo=dao.searchForStoreByBasic(ss,searchForStoreVo);
+		List <StoreInforVo> storeInforVoList=dao.searchForStoreByBasic(ss,searchForStoreVo);
 		
-		if(storeInforVo!=null) {
+		if(storeInforVoList!=null) {
 			ss.commit();
 		}else {
 			ss.rollback();
 		}
 		ss.close();
-		return storeInforVo;
+		return storeInforVoList;
 	}
 
 }
