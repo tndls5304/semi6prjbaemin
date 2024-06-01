@@ -40,34 +40,54 @@ public class MemberInfoController extends HttpServlet {
             loginMemberVo.setNick(nick);
 
             // 기존 페이 금액에 입력된 금액을 더함
-            int existingPay = Integer.parseInt(loginMemberVo.getMemberPay());
-            int additionalPay = Integer.parseInt(memberPayStr);
+            int existingPay = 0;
+            try {
+                if (loginMemberVo.getMemberPay() != null && !loginMemberVo.getMemberPay().isEmpty()) {
+                    existingPay = Integer.parseInt(loginMemberVo.getMemberPay());
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                // 예외가 발생한 경우 기본값 사용 또는 오류 메시지 설정
+                req.setAttribute("message", "기존 페이 금액을 읽는 중 오류가 발생했습니다.");
+                req.getRequestDispatcher("/WEB-INF/views/member/info.jsp").forward(req, resp);
+                return;
+            }
+
+            int additionalPay = 0;
+            try {
+                if (memberPayStr != null && !memberPayStr.isEmpty()) {
+                    additionalPay = Integer.parseInt(memberPayStr);
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                // 예외가 발생한 경우 기본값 사용 또는 오류 메시지 설정
+                req.setAttribute("message", "추가 페이 금액을 읽는 중 오류가 발생했습니다.");
+                req.getRequestDispatcher("/WEB-INF/views/member/info.jsp").forward(req, resp);
+                return;
+            }
+
             int updatedPay = existingPay + additionalPay;
             loginMemberVo.setMemberPay(String.valueOf(updatedPay));
 
-        	MemberVo vo = new MemberVo();
-			vo.setMemberImg(memberImg);
-			vo.setNick(nick);
-			vo.setMemberPay(memberPayStr);
-			vo.setNo(no);
-			
-            
-            
+            MemberVo vo = new MemberVo();
+            vo.setMemberImg(memberImg);
+            vo.setNick(nick);
+            vo.setMemberPay(memberPayStr);
+
             MemberService ms = new MemberService();
             int result = ms.info(loginMemberVo);
 
             if (result == 1) {
-            	
                 req.setAttribute("message", "정보가 성공적으로 업데이트되었습니다.");
-                session.setAttribute("loginMemberVo", loginMemberVo); 
-               
+                session.setAttribute("loginMemberVo", loginMemberVo);
             } else {
                 req.setAttribute("message", "정보 업데이트에 실패했습니다.");
             }
         } else {
             req.setAttribute("message", "로그인이 필요합니다.");
         }
-        
+
         req.getRequestDispatcher("/WEB-INF/views/member/info.jsp").forward(req, resp);
     }
+
 }

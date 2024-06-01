@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
       
-      <c:if test="${not empty resultMsg}">
-             alert('${resultMsg}');
+      <c:if test="${not empty alertMsg}">
+             alert('${alertMsg}');
       </c:if>
   
 </head>
