@@ -21,8 +21,10 @@ public class MemberSearchForStoreByBasicController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			// TODO 화면에서 가게종목 번호 받아오기
+		//가게 카테고리와 카테고리 이름 받아오기
 			String storeCategoryNo=req.getParameter("storeCategoryNo");
+			String storeCategoryName=req.getParameter("storeCategoryName");
+			
 			
 			//세션에서 회원주소가져오기
 			HttpSession session=req.getSession();
@@ -39,8 +41,11 @@ public class MemberSearchForStoreByBasicController extends HttpServlet {
 			MemberSearchForStoreService service=new MemberSearchForStoreService();
 			List<StoreInforVo>storeInforVoList=service.searchForStoreByBasic(searchForStoreVo);
 			
-			req.setAttribute("storeInforVoList", searchForStoreVo);
-			req.getRequestDispatcher("/WEB-INF/views/.jsp").forward(req, resp);
+			System.out.println("storeInforVoList받아왔니?"+storeInforVoList);
+			req.setAttribute("storeInforVoList", storeInforVoList);
+			req.setAttribute("storeCategoryName", storeCategoryName);
+			
+			req.getRequestDispatcher("/WEB-INF/views/member/searchForStore.jsp").forward(req, resp);
 		}catch(Exception e) {
 			e.printStackTrace();
 			req.setAttribute("errMsg", e.getMessage());

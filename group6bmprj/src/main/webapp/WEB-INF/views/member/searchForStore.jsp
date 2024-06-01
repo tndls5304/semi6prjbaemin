@@ -18,12 +18,12 @@
     <div class="content">
         <header>
           <div class="top-bar">
-            <div class="left-bar"><img class="back-img" src="/수인img/상단바_뒤로가기.jpg"></div>
+            <div class="left-bar"><img class="back-img" src="/baemin/resources/수인img/상단바_뒤로가기.jpg"></div>
            <div class="middle-bar">  </div>
-            <img  class="right-bar" src="/수인img/홈.png">
+            <img  class="right-bar" src="/baemin/resources/수인img/홈.png">
           </div>
-   
-          <div class="food-category">음식메뉴</div>
+  
+          <div class="food-category">${storeCategoryName}</div>
           <div >
            <select name="" id="">
                 <option> 기본순</option>
@@ -38,40 +38,27 @@
        
         </header>
         <main>
-
+ <c:forEach items="${storeInforVoList}"  var="storeInforVo"> 
           <div class="storeList">
-                <img width="120px" height="120px"  src="/수인img/가게대표사진.jpg" alt="">
-                <img width="120px" height="120px"  src="/수인img/홈광고.jpg" alt="">
-                <img width="120px" height="120px"  src="/수인img/홈광고.jpg" alt="">
-                <img width="120px" height="120px"  src="/수인img/홈광고.jpg" alt="">
-                <div class="storeName">미친피자 본점</div>
-                <div class="minimumMoney">최소주문: 원</div>
-
-
-
+                <img width="110px" height="110px"  src="/수인img/가게대표사진.jpg" alt="">
+                <img width="110px" height="110px"  src="/수인img/홈광고.jpg" alt="">
+                <img width="110px" height="110px"  src="/수인img/홈광고.jpg" alt="">
+                <img width="110px" height="110px"  src="/수인img/홈광고.jpg" alt="">
+                <div class="storeName">${storeInforVo.name}</div>
+                <div class="minimumMoney">최소주문: ${storeInforVo.minimumOrderAmount}</div>
           </div>
 
-          <div class="storeList">
-            <img width="120px" height="120px"  src="/수인img/가게대표사진.jpg" alt="">
-            <img width="120px" height="120px"  src="/수인img/홈광고.jpg" alt="">
-            <div class="storeName">미친피자 본점</div>
-            <div class="minimumMoney">최소주문: 원</div>
-
-
-
-      </div>
-
-
+ </c:forEach>
 
 
         </main>
         <footer>
           <!-- 클릭하면 페이지 넘어갈 수 있게 온클릭에 url쓰시면 될듯 합니다  -->
-          <div onclick=""><img src="/수인img/하단바_돋보기.jpg">  <span>&nbsp&nbsp검색</span> </div>
-          <div onclick=""> <img src="/수인img/하단바_장바구니.jpg">  <span>장바구니</span></div>
-          <div onclick=""> <img src="/수인img/하단바_찜.jpg"> <span>&nbsp&nbsp&nbsp&nbsp찜</span></div>
-          <div onclick=""> <img src="/수인img/하단바_주문내역.jpg"> <span>주문내역</span></div>
-          <div onclick="">  <img src="/수인img/하단바_마이배민.jpg"> <span>my배민</span></div>
+          <div onclick=""><img src="/baemin/resources/수인img/하단바_돋보기.jpg">  <span>&nbsp&nbsp검색</span> </div>
+          <div onclick=""> <img src="/baemin/resources/수인img/하단바_장바구니.jpg">  <span>장바구니</span></div>
+          <div onclick=""> <img src="/baemin/resources/수인img/하단바_찜.jpg"> <span>&nbsp&nbsp&nbsp&nbsp찜</span></div>
+          <div onclick=""> <img src="/baemin/resources/수인img/하단바_주문내역.jpg"> <span>주문내역</span></div>
+          <div onclick="">  <img src="/baemin/resources/수인img/하단바_마이배민.jpg"> <span>my배민</span></div>
          
   
         </footer>

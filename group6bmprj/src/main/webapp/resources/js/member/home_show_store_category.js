@@ -29,9 +29,9 @@ function cancelAddressChange() {
 }
 
 //가게종목 이미지 클릭하면 번호 전해주기 
-function sendStoreCategoryNo(storeCategoryNo) {
+function sendStoreCategoryNo(storeCategoryNo,storeCategoryName) {
 	// 서블릿으로 GET 요청을 보내는 URL 구성
-	var url = '/baemin/member/search_store_by_basic?storeCategoryNo=' + storeCategoryNo;
+	var url = '/baemin/member/search_store_by_basic?storeCategoryNo=' + storeCategoryNo+'&storeCategoryName='+storeCategoryName;
 	// 현재 페이지를 해당 URL로 리디렉션
 	window.location.href = url;
 }

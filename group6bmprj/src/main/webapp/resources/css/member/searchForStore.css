@@ -91,6 +91,10 @@ main{
       /* border:1px  solid black; */
       /* background-color: rgb(174, 48, 48); */
       margin-top: 105px;
+      overflow-y: auto; 
+   height: 76vh;
+    overflow-y: scroll;
+    padding-bottom: 57px;
     }
 
 
