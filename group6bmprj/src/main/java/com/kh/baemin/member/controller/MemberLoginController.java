@@ -57,7 +57,7 @@ System.out.println("loginvo: " + loginMemberVo);
 			resp.sendRedirect("/baemin/member/home"); //홈 페이지로 리디렉트
 		} catch (Exception e) {
 			e.printStackTrace();
-			req.setAttribute("errorMessage", "로그인 중 오류가 발생했습니다. 다시 시도해주세요.");
+			req.setAttribute("alertMsg", "로그인 중 오류가 발생했습니다. 다시 시도해주세요.");
 			req.getRequestDispatcher("/WEB-INF/views/member/login.jsp").forward(req, resp);
 		}
 

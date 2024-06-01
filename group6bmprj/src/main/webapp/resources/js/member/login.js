@@ -21,11 +21,9 @@ document.getElementById('password').addEventListener('keydown', function() {
       }
 
       if (isValid) {
-          alert('로그인 성공');
           document.getElementById('loginForm').submit();
       
-      } else {
-        alert('로그인 실패');
+ 
     }
   }
   function hideErrorMessage(id) {
