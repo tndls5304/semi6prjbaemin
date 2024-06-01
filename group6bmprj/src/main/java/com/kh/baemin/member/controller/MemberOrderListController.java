@@ -30,20 +30,12 @@ public class MemberOrderListController extends HttpServlet {
 				resp.sendRedirect("/baemin/member/login");
 				return;
 			}
+		
 			
 			
-			
-			
-			
-			String orderNo = req.getParameter("orderNo");
-			
-			
-			StoreOrderVo vo = new StoreOrderVo();
-			vo.setOrderNo(orderNo);
-			
+		
 			MemberService ms = new MemberService();
 			List<StoreOrderVo> orderList = ms.getOrderListByUser(no);
-			
 			
 			req.setAttribute("orderList", orderList);
 			req.getRequestDispatcher("/WEB-INF/views/member/orderList.jsp").forward(req, resp);

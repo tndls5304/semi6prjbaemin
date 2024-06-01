@@ -19,11 +19,12 @@ public class StoreOrderVo {
 	private String foodImg;
 	private String storeImg;
 	private String storeName;
-	private String storeFood;
+	private String storeFoodName;
 	private int  storeFoodPrice;
 	private String storeOrderDate;
 	private String storeOrderStatus;
 	private String deliveryStatus;
+	private int storeFoodCount;
 	public StoreOrderVo() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -31,8 +32,8 @@ public class StoreOrderVo {
 	public StoreOrderVo(String no, String orderNo, String memberNo, String name, String address, String addressDetail,
 			String introductionImg, String introduce, String mainImg, String phone, String minimumOrderAmount,
 			String viewedCnt, String orderStatus, String orderDay, String foodImg, String storeImg, String storeName,
-			String storeFood, int storeFoodPrice, String storeOrderDate, String storeOrderStatus,
-			String deliveryStatus) {
+			String storeFoodName, int storeFoodPrice, String storeOrderDate, String storeOrderStatus,
+			String deliveryStatus, int storeFoodCount) {
 		super();
 		this.no = no;
 		this.orderNo = orderNo;
@@ -51,11 +52,12 @@ public class StoreOrderVo {
 		this.foodImg = foodImg;
 		this.storeImg = storeImg;
 		this.storeName = storeName;
-		this.storeFood = storeFood;
+		this.storeFoodName = storeFoodName;
 		this.storeFoodPrice = storeFoodPrice;
 		this.storeOrderDate = storeOrderDate;
 		this.storeOrderStatus = storeOrderStatus;
 		this.deliveryStatus = deliveryStatus;
+		this.storeFoodCount = storeFoodCount;
 	}
 	@Override
 	public String toString() {
@@ -64,9 +66,9 @@ public class StoreOrderVo {
 				+ ", introduce=" + introduce + ", mainImg=" + mainImg + ", phone=" + phone + ", minimumOrderAmount="
 				+ minimumOrderAmount + ", viewedCnt=" + viewedCnt + ", orderStatus=" + orderStatus + ", orderDay="
 				+ orderDay + ", foodImg=" + foodImg + ", storeImg=" + storeImg + ", storeName=" + storeName
-				+ ", storeFood=" + storeFood + ", storeFoodPrice=" + storeFoodPrice + ", storeOrderDate="
+				+ ", storeFoodName=" + storeFoodName + ", storeFoodPrice=" + storeFoodPrice + ", storeOrderDate="
 				+ storeOrderDate + ", storeOrderStatus=" + storeOrderStatus + ", deliveryStatus=" + deliveryStatus
-				+ "]";
+				+ ", storeFoodCount=" + storeFoodCount + "]";
 	}
 	public String getNo() {
 		return no;
@@ -170,11 +172,11 @@ public class StoreOrderVo {
 	public void setStoreName(String storeName) {
 		this.storeName = storeName;
 	}
-	public String getStoreFood() {
-		return storeFood;
+	public String getStoreFoodName() {
+		return storeFoodName;
 	}
-	public void setStoreFood(String storeFood) {
-		this.storeFood = storeFood;
+	public void setStoreFoodName(String storeFoodName) {
+		this.storeFoodName = storeFoodName;
 	}
 	public int getStoreFoodPrice() {
 		return storeFoodPrice;
@@ -200,4 +202,10 @@ public class StoreOrderVo {
 	public void setDeliveryStatus(String deliveryStatus) {
 		this.deliveryStatus = deliveryStatus;
 	}
+	public int getStoreFoodCount() {
+		return storeFoodCount;
+	}
+	public void setStoreFoodCount(int storeFoodCount) {
+		this.storeFoodCount = storeFoodCount;
+	} 
 }
