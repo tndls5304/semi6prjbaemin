@@ -25,13 +25,14 @@ public class MemberChangeAddressController extends HttpServlet {
 	String no=loginMemberVo.getNo();
 		//회원이 입력한 주소
 		String changeAddress = req.getParameter("changeAddress");
-		String changeAddressdDetail = req.getParameter("changeAddressdDetail");
-		
+		String changeAddressDetail = req.getParameter("changeAddressDetail");
+		System.out.println("홈에서 회원주소바꾸기 시도"+changeAddress);
+		System.out.println("홈에서 회원 상세주소바꾸기 시도"+changeAddress);
 		//뭉쳐서
 		MemberVo vo=new MemberVo();
 		vo.setNo(no);
 		vo.setAddress(changeAddress);
-		vo.setAddressdDetail(changeAddressdDetail);
+		vo.setAddressDetail(changeAddressDetail);
 		
 		//디비로 가는길
 		MemberGetInforService service = new MemberGetInforService();
@@ -43,8 +44,8 @@ public class MemberChangeAddressController extends HttpServlet {
 		
 		// 디비에 주소 바꾼 후에 세션에 바뀐주소 넣기
 		loginMemberVo.setAddress(changeAddress);
-		loginMemberVo.setAddressdDetail(changeAddressdDetail);
-
+		loginMemberVo.setAddressDetail(changeAddressDetail);
+req.getRequestDispatcher("/WEB-INF/views/member/home_show_store_category.jsp").forward(req, resp);
 	
 	}catch(Exception e) {
 		e.printStackTrace();

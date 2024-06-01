@@ -4,93 +4,48 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MemberMapper">
 
-    <insert id="join">
-        INSERT INTO MEMBER_USER
-        (
-            NO,
-            ID,
-            PWD,
-            NICK,
-            PROFILE,
-            NAME,
-            PHONE,
-            ADDRESS,
-            ADDRESS_DETAIL,  
-            GENERATION,
-            GENDER,
-            ACCOUNT_BALANCE
-        ) 
-        VALUES
-        (
-            SEQ_MEMBER_USER_NO.NEXTVAL,
-            #{id},
-            #{pwd},
-            #{nick},
-            #{memberImg},
-            #{name},
-            #{phone},
-            #{address},
-            #{addressDetail},  
-            #{generation},
-            #{gender},
-            0
-            
-        )
-    </insert>
+	<insert id="join">
+		INSERT INTO MEMBER_USER
+		(
+		NO,
+		ID,
+		PWD,
+		NICK,
+		PROFILE,
+		NAME,
+		PHONE,
+		ADDRESS,
+		ADDRESS_DETAIL,
+		GENERATION,
+		GENDER,
+		ACCOUNT_BALANCE
+		)
+		VALUES
+		(
+		SEQ_MEMBER_USER_NO.NEXTVAL,
+		#{id},
+		#{pwd},
+		#{nick},
+		#{memberImg},
+		#{name},
+		#{phone},
+		#{address},
+		#{addressDetail},
+		#{generation},
+		#{gender},
+		0
 
-    <!-- 로그인 -->
-    <select id="login" resultType="com.kh.baemin.member.vo.MemberVo">
-        SELECT ID ,NICK, NO , ADDRESS,ADDRESS_DETAIL
-        FROM MEMBER_USER
-        WHERE id = #{id} 
-        AND pwd = #{pwd}  
-    </select>
+		)
+	</insert>
 
-    <!-- 중복된 아이디 개수를 반환하는 쿼리 -->
-    <select id="idCheck" resultType="int">
-        SELECT COUNT(*) FROM MEMBER_USER WHERE id = #{id}
-    </select>
-    
-    <update id="reviewStatus">
-    
-    
-   
-UPDATE DELIVERY_PROBLEM
-SET NO =  SEQ_DELIVERY_PROBLEM_NO.NEXTVAL,
-    DELIVERY_PROBLEM = #{deliveryProblem}
-WHERE ID = #{id}
-    
-    </update>
-    
-    
-    
-    
-   
-    
-    <insert id="reviewContent">
-        INSERT INTO REVIEW_COMMUNICATION 
-        (
-            NO,
-            ORDER_NO,
-            RATING,
-            USER_CONTENT,
-            STORE_CONTENT,
-            IMG,
-            ENROLL_DATE,
-            DEL_YN
-        )
-        VALUES
-        (
-            SEQ_REVIEW_COMMUNICATION_NO.NEXTVAL,
-             SEQ_ORDER_SHEET_NO.NEXTVAL,
-            #{rating},
-            #{memberContent},
-            0,
-            #{reviewImg},
-            SYSDATE,
-            'N'
-        )
-    </insert>
+	<!-- 로그인 -->
+	<select id="login" resultType="com.kh.baemin.member.vo.MemberVo">
+		SELECT ID ,NICK, NO ,
+		ADDRESS,ADDRESS_DETAIL
+		FROM MEMBER_USER
+		WHERE id = #{id}
+		AND pwd = #{pwd}
+	</select>
 
     <select id="selectReviewList" resultType="com.kh.baemin.member.vo.ReviewWriterVo">
         SELECT 
@@ -154,11 +109,129 @@ WHERE ID = #{id}
         WHERE 
         M.NO = #{memberNo}
 </select>
+	<!-- 중복된 아이디 개수를 반환하는 쿼리 -->
+	<select id="idCheck" resultType="int">
+		SELECT COUNT(*) FROM MEMBER_USER
+		WHERE id = #{id}
+	</select>
 
-   <update id="changeAddress">
-      UPDATE MEMBER_USER
-      SET ADDRESS=#{address} , ADDRESS_DETAIL=#{addressdDetail}
-      WHERE NO=#{no};
-   </update>
+	<update id="reviewStatus">
+
+
+
+		UPDATE DELIVERY_PROBLEM
+		SET NO =
+		SEQ_DELIVERY_PROBLEM_NO.NEXTVAL,
+		DELIVERY_PROBLEM = #{deliveryProblem}
+		WHERE ID = #{id}
+
+	</update>
+
+
+
+
+
+
+	<insert id="reviewContent">
+		INSERT INTO REVIEW_COMMUNICATION
+		(
+		NO,
+		ORDER_NO,
+		RATING,
+		USER_CONTENT,
+		STORE_CONTENT,
+		IMG,
+		ENROLL_DATE,
+		DEL_YN
+		)
+		VALUES
+		(
+		SEQ_REVIEW_COMMUNICATION_NO.NEXTVAL,
+		SEQ_ORDER_SHEET_NO.NEXTVAL,
+		#{rating},
+		#{memberContent},
+		0,
+		#{reviewImg},
+		SYSDATE,
+		'N'
+		)
+	</insert>
+
+	<select id="selectReviewList"
+		resultType="com.kh.baemin.member.vo.ReviewWriterVo">
+		SELECT
+		M.PROFILE,
+		M.NICK,
+		R.RATING,
+		R.USER_CONTENT AS
+		memberContent,
+		R.IMG AS reviewImg,
+		S.NAME AS storeName,
+		F.NAME AS
+		foodName
+		FROM
+		REVIEW_COMMUNICATION R
+		JOIN
+		STORE_INFOR S ON R.NO = S.NO
+		JOIN
+		FOOD_INFOR F ON F.NO = R.NO
+		JOIN
+		MEMBER_USER M ON M.NO = R.NO
+		WHERE
+		R.NO = #{no}
+		AND
+		R.DEL_YN = 'N'
+	</select>
+
+	<select id="info" resultType="com.kh.baemin.member.vo.MemberVo">
+		SELECT
+		M.NO
+		M.PROFILE,
+		M.NICK,
+		M.ACCOUNT_BALANCE
+		FROM
+		MEMBER_USER M
+		WHERE M.NO =#{no}
+		M.PROFILE =
+		#{memberImg}
+		AND
+		M.NICK = #{memberNickName}
+		AND
+		M.ACCOUNT_BALANCE =
+		#{memberPay}
+	</select>
+
+	<select id="storeOrderList"
+		resultType="com.kh.baemin.member.vo.StoreOrderVo">
+		SELECT
+		S.INTRODUCTION_IMG AS storeImg,
+		S.NAME AS storeName,
+		F.NAME AS storeFood,
+		F.PRICE AS storeFoodPrice,
+		O.ORDER_DAY AS
+		storeOrderDate,
+		OS.STATUS AS deliveryStatus,
+		M.NO AS memberNo
+		FROM
+		STORE_INFOR S
+		JOIN
+		FOOD_INFOR F ON S.NO = F.NO
+		JOIN
+		ORDER_SHEET O ON O.NO
+		= F.NO
+		JOIN
+		ORDER_STATUS OS ON OS.NO = O.NO
+		JOIN
+		MEMBER_USER M ON M.NO=
+		F.NO
+		WHERE
+		M.NO = #{memberNo}
+	</select>
+
+	<update id="changeAddress">
+		UPDATE MEMBER_USER
+		SET ADDRESS=#{address},ADDRESS_DETAIL=#{addressDetail}
+		WHERE NO=${no}
+	</update>
 
 </mapper>

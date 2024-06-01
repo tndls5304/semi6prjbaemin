@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <script defer src="/baemin/resources/js/member/home_show_store_category.js"></script>
 <link rel="stylesheet" href="/baemin/resources/css/member/home_show_store_category.css">
@@ -14,57 +15,57 @@
     
           <div class="middle">
 	        	  <div class="address">${sessionScope.loginMemberVo.address}</div>
-	   	      <div class="address-detail">${sessionScope.loginMemberVo.addressdDetail}
-         		 <button onclick="trychangeAddress()">ÁÖ¼Ò¹Ù²Ù±â</button></div>
+	   	      <div class="address-detail">${sessionScope.loginMemberVo.addressDetail}
+         		 <button onclick="trychangeAddress()">ì£¼ì†Œë°”ê¾¸ê¸°</button></div>
           </div>
-          <!-- <div class="bottom"><button>standardard</button><button>star¡Ù</button></div> -->
+          <!-- <div class="bottom"><button>standardard</button><button>starâ˜†</button></div> -->
         </header>
         <main>
-          <!-- Á¦ÀÏ À§  ±¤°íÀÚ¸® -->
-<div class="ad-img" ><img src="/baemin/resources/¼öÀÎimg/È¨±¤°í.jpg"></div>
-<!-- À½½ÄÄ«Å×°í¸® -->
+          <!-- ì œì¼ ìœ„  ê´‘ê³ ìžë¦¬ -->
+<div class="ad-img" ><img src="/baemin/resources/ìˆ˜ì¸img/í™ˆê´‘ê³ .jpg"></div>
+<!-- ìŒì‹ì¹´í…Œê³ ë¦¬ -->
 
 <div class="food-category">
-  <img src="/baemin/resources/¼öÀÎimg/Ä«Å×°í¸®-ÂòÅÁÂî°³.png">
-  <img src="/baemin/resources/¼öÀÎimg/Ä«Å×°í¸®-Á·¹ßº¸½Ó.png">
-<img src="/baemin/resources/¼öÀÎimg/Ä«Å×°í¸®-µ·±î½ºÈ¸ÀÏ½Ä.png">
-<img src="/baemin/resources/¼öÀÎimg/Ä«Å×°í¸®-ÆÐ½ºÆ®Çªµå.png">
-<img src="/baemin/resources/¼öÀÎimg/Ä«Å×°í¸®-ÇÇÀÚ.png">
-<img src="/baemin/resources/¼öÀÎimg/Ä«Å×°í¸®-°í±â±¸ÀÌ.png">
-<img src="/baemin/resources/¼öÀÎimg/Ä«Å×°í¸®-¾ß½Ä.png">
-<img src="/baemin/resources/¼öÀÎimg/Ä«Å×°í¸®-¾ç½Ä.png">
-<img src="/baemin/resources/¼öÀÎimg/Ä«Å×°í¸®-1ÀÎºÐ.png">
-<img src="/baemin/resources/¼öÀÎimg/Ä«Å×°í¸®-Ä¡Å².png">
-<img src="/baemin/resources/¼öÀÎimg/Ä«Å×°í¸®-Áß½Ä.png">
-<img src="/baemin/resources/¼öÀÎimg/Ä«Å×°í¸®-¾Æ½Ã¾È.png">
-<img src="/baemin/resources/¼öÀÎimg/Ä«Å×°í¸®-¹é¹Ý±¹¼ö.png">
-<img src="/baemin/resources/¼öÀÎimg/Ä«Å×°í¸®-µµ½Ã¶ô.png">
-<img src="/baemin/resources/¼öÀÎimg/Ä«Å×°í¸®-ºÐ½Ä.png">
-<img src="/baemin/resources/¼öÀÎimg/Ä«Å×°í¸®-Ä«ÆäµðÀúÆ®.png">
+  <img src="/baemin/resources/ìˆ˜ì¸img/ì¹´í…Œê³ ë¦¬-ì°œíƒ•ì°Œê°œ.png">
+  <img src="/baemin/resources/ìˆ˜ì¸img/ì¹´í…Œê³ ë¦¬-ì¡±ë°œë³´ìŒˆ.png">
+<img src="/baemin/resources/ìˆ˜ì¸img/ì¹´í…Œê³ ë¦¬-ëˆê¹ŒìŠ¤íšŒì¼ì‹.png">
+<img src="/baemin/resources/ìˆ˜ì¸img/ì¹´í…Œê³ ë¦¬-íŒ¨ìŠ¤íŠ¸í‘¸ë“œ.png">
+<img src="/baemin/resources/ìˆ˜ì¸img/ì¹´í…Œê³ ë¦¬-í”¼ìž.png">
+<img src="/baemin/resources/ìˆ˜ì¸img/ì¹´í…Œê³ ë¦¬-ê³ ê¸°êµ¬ì´.png">
+<img src="/baemin/resources/ìˆ˜ì¸img/ì¹´í…Œê³ ë¦¬-ì•¼ì‹.png">
+<img src="/baemin/resources/ìˆ˜ì¸img/ì¹´í…Œê³ ë¦¬-ì–‘ì‹.png">
+<img src="/baemin/resources/ìˆ˜ì¸img/ì¹´í…Œê³ ë¦¬-1ì¸ë¶„.png">
+<img src="/baemin/resources/ìˆ˜ì¸img/ì¹´í…Œê³ ë¦¬-ì¹˜í‚¨.png">
+<img src="/baemin/resources/ìˆ˜ì¸img/ì¹´í…Œê³ ë¦¬-ì¤‘ì‹.png">
+<img src="/baemin/resources/ìˆ˜ì¸img/ì¹´í…Œê³ ë¦¬-ì•„ì‹œì•ˆ.png">
+<img src="/baemin/resources/ìˆ˜ì¸img/ì¹´í…Œê³ ë¦¬-ë°±ë°˜êµ­ìˆ˜.png">
+<img src="/baemin/resources/ìˆ˜ì¸img/ì¹´í…Œê³ ë¦¬-ë„ì‹œë½.png">
+<img src="/baemin/resources/ìˆ˜ì¸img/ì¹´í…Œê³ ë¦¬-ë¶„ì‹.png">
+<img src="/baemin/resources/ìˆ˜ì¸img/ì¹´í…Œê³ ë¦¬-ì¹´íŽ˜ë””ì €íŠ¸.png">
 
-<img src="/baemin/resources/¼öÀÎimg/Ä«Å×°í¸®-Ã¤½Ä.png">
+<img src="/baemin/resources/ìˆ˜ì¸img/ì¹´í…Œê³ ë¦¬-ì±„ì‹.png">
 
-<img src="/baemin/resources/¼öÀÎimg/Ä«Å×°í¸®-¹ÝÂù.png">
+<img src="/baemin/resources/ìˆ˜ì¸img/ì¹´í…Œê³ ë¦¬-ë°˜ì°¬.png">
 </div>
 
-<form action="baemin//member/change_address" method="POST">
+<form action="/baemin/member/change_address" method="POST">
 	<div class="addressBlock" id="changeAddress-block">
-			ÁÖ¼Ò:
-			<input class="inputAddress" id="input-address" type="text" name="changeAddress" placeholder="½Ã/±¸/µ¿ ÁÖ¼ÒÀÔ·Â" required>
-			<input  type="text" id="input-addressDetail" placeholder="»ó¼¼ÁÖ¼Ò ÀÔ·Â" name="changeAddressdDetail" required>
+			ì£¼ì†Œ:
+			<input class="inputAddress" id="input-address" type="text" name="changeAddress" placeholder="ì‹œ/êµ¬/ë™ ì£¼ì†Œìž…ë ¥" required>
+			<input  type="text" id="input-addressDetail" placeholder="ìƒì„¸ì£¼ì†Œ ìž…ë ¥" name="changeAddressDetail" required>
 			<button type="submit" onclick="addressChangeRequest()">ok!</button>
-			<button type="button" onclick="cancelAddressChange()">Ãë¼Ò</button>
+			<button type="button" onclick="cancelAddressChange()">ì·¨ì†Œ</button>
 	</div>
 </form>
 
         </main>
         <footer>
-          <!-- Å¬¸¯ÇÏ¸é ÆäÀÌÁö ³Ñ¾î°¥ ¼ö ÀÖ°Ô ¿ÂÅ¬¸¯¿¡ url¾²±â~  -->
-          <div onclick=""><img src="/baemin/resources/¼öÀÎimg/ÇÏ´Ü¹Ù_µ¸º¸±â.jpg">  <span>&nbsp&nbsp°Ë»ö</span> </div>
-          <div onclick=""> <img src="/baemin/resources/¼öÀÎimg/ÇÏ´Ü¹Ù_Àå¹Ù±¸´Ï.jpg">  <span>Àå¹Ù±¸´Ï</span></div>
-          <div onclick=""> <img src="/baemin/resources/¼öÀÎimg/ÇÏ´Ü¹Ù_Âò.jpg"> <span>&nbsp&nbsp&nbsp&nbspÂò</span></div>
-          <div onclick=""> <img src="/baemin/resources/¼öÀÎimg/ÇÏ´Ü¹Ù_ÁÖ¹®³»¿ª.jpg"> <span>ÁÖ¹®³»¿ª</span></div>
-          <div onclick="">  <img src="/baemin/resources/¼öÀÎimg/ÇÏ´Ü¹Ù_¸¶ÀÌ¹è¹Î.jpg"> <span>my¹è¹Î</span></div>
+          <!-- í´ë¦­í•˜ë©´ íŽ˜ì´ì§€ ë„˜ì–´ê°ˆ ìˆ˜ ìžˆê²Œ ì˜¨í´ë¦­ì— urlì“°ê¸°~  -->
+          <div onclick=""><img src="/baemin/resources/ìˆ˜ì¸img/í•˜ë‹¨ë°”_ë‹ë³´ê¸°.jpg">  <span>&nbsp&nbspê²€ìƒ‰</span> </div>
+          <div onclick=""> <img src="/baemin/resources/ìˆ˜ì¸img/í•˜ë‹¨ë°”_ìž¥ë°”êµ¬ë‹ˆ.jpg">  <span>ìž¥ë°”êµ¬ë‹ˆ</span></div>
+          <div onclick=""> <img src="/baemin/resources/ìˆ˜ì¸img/í•˜ë‹¨ë°”_ì°œ.jpg"> <span>&nbsp&nbsp&nbsp&nbspì°œ</span></div>
+          <div onclick=""> <img src="/baemin/resources/ìˆ˜ì¸img/í•˜ë‹¨ë°”_ì£¼ë¬¸ë‚´ì—­.jpg"> <span>ì£¼ë¬¸ë‚´ì—­</span></div>
+          <div onclick="">  <img src="/baemin/resources/ìˆ˜ì¸img/í•˜ë‹¨ë°”_ë§ˆì´ë°°ë¯¼.jpg"> <span>myë°°ë¯¼</span></div>
          
   
         </footer>

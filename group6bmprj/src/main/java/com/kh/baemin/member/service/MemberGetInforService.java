@@ -22,7 +22,7 @@ public class MemberGetInforService {
 		throw new Exception("주소가입력되지 않았습니다!");
 		}
 		
-		if(vo.getAddressdDetail()==null||vo.getAddressdDetail().isEmpty()) {
+		if(vo.getAddressDetail()==null||vo.getAddressDetail().isEmpty()) {
 		throw new Exception("상세주소가입력되지 않았습니다!");
 		}
 		
