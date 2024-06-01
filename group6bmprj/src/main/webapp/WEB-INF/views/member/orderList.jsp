@@ -53,10 +53,10 @@
                      </a>
               <!-- 리뷰쓰기 버튼 -->
                 <a href="/baemin/member/reviewStatusWriter" >
-                    <input type="hidden" name="memberNo" value="<%= request.getAttribute("memberNo") != null ? request.getAttribute("memberNo") : "" %>">
+                    <input type="hidden" name="memberNo" value="<%= request.getAttribute("orderNo") != null ? request.getAttribute("orderNo") : "" %>">
                     <button type="submit" class="link-button">리뷰쓰기</button>
            </a>
-                       <h1>memberNo ::: ${memberNo}</h1>
+                       <h1>orderrNo ::: ${orderNo}</h1>
         
         </main>
     </div>

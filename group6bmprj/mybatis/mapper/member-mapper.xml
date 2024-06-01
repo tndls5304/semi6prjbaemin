@@ -97,6 +97,7 @@ WHERE ID = #{id}
             M.PROFILE,
             M.NICK,
             R.RATING,
+            R.ORDER_NO,
             R.USER_CONTENT AS memberContent,
             R.IMG AS reviewImg,
             S.NAME AS storeName,

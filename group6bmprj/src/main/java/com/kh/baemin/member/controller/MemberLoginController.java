@@ -26,8 +26,6 @@ public class MemberLoginController extends HttpServlet {
 		try {
 			// 세션 생성 또는 기존 세션 가져오기
 			HttpSession session = req.getSession();
-			System.out.println("21312321j3oi12j3oi21j3ioj21ioj321io");
-			System.out.println("211212211212211212211212211212211212211212211212211212211212211212211212211212211212");
 //			System.out.println(loginMemberVo);
 
 			// 데이터 꺼내기
@@ -55,7 +53,6 @@ System.out.println("loginvo: " + loginMemberVo);
 			 
 			session.setAttribute("alertMsg", "로그인 성공!!!");
 			session.setAttribute("loginMemberVo", loginMemberVo);
-			System.out.println("211212211212211212211212211212211212211212211212211212211212211212211212211212211212");
 			System.out.println(loginMemberVo);
 			resp.sendRedirect("/baemin/member/home"); //홈 페이지로 리디렉트
 		} catch (Exception e) {
