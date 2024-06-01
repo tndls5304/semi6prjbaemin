@@ -194,7 +194,7 @@ public List<ReviewWriterVo> reviewList(ReviewWriterVo vo) throws Exception {
     List<ReviewWriterVo> reviewList = dao.selectReviewList(ss);
     
     ss.close();
-    
+  
     return reviewList;
 
   
@@ -217,12 +217,12 @@ public int info(MemberVo vo) throws IOException {
 }
 
 
-public List<StoreOrderVo> getOrderListByUser(String memberNo)throws Exception {
+public List<StoreOrderVo> getOrderListByUser(String no)throws Exception {
 
     SqlSession ss = getSqlSession();
-    List<StoreOrderVo> orderList =  dao.storeOrderList(ss , memberNo);
+    List<StoreOrderVo> orderList =  dao.storeOrderList(ss , no);
     ss.close();
-    
+    System.out.println("회원정보 번호 :" +no);
     
     return orderList;
 }

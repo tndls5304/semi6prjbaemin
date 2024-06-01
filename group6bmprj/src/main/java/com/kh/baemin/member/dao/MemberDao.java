@@ -47,8 +47,8 @@ public class MemberDao {
 		return ss.selectOne("MemberMapper.info", vo);
 	}
 
-	 public List<StoreOrderVo> storeOrderList(SqlSession ss, String memberNo) {
-	        return ss.selectList("MemberMapper.storeOrderList",memberNo);
+	 public List<StoreOrderVo> storeOrderList(SqlSession ss, String no) {
+	        return ss.selectList("MemberMapper.storeOrderList",no);
 	    }
 
 
