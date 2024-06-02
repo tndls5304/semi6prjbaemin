@@ -23,8 +23,9 @@ public class MemberReviewController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
-        List<MemberReviewVo> reviewList =  memberReviewService.getMyReviewList(loginMemberVo.getNo());
+        List<MemberReviewVo> reviewList =  memberReviewService.getMyReviewList(loginMemberVo.getId());
         req.setAttribute("reviewList", reviewList);
+        req.setAttribute("reviewCount", reviewList.size());
         req.getRequestDispatcher("/WEB-INF/views/member/myReview.jsp").forward(req, resp);
     }
 

@@ -1,10 +1,13 @@
 package com.kh.baemin.store.dao;
 
-import com.kh.baemin.store.vo.StoreInforVo;
-import org.apache.ibatis.session.SqlSession;
-
 import java.util.List;
 import java.util.Map;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.kh.baemin.store.vo.ClosedDayVo;
+import com.kh.baemin.store.vo.StoreCategory;
+import com.kh.baemin.store.vo.StoreInforVo;
 
 public class StoreInforDao {
     public List<StoreInforVo> getTop10StoreList(SqlSession ss) {
@@ -38,5 +41,29 @@ public class StoreInforDao {
 
     public void updateStoreInfor(SqlSession ss, StoreInforVo storeInfor) {
         ss.update("StoreInforMapper.updateStoreInfor", storeInfor);
+    }
+
+    public void insertStoreCategory(SqlSession ss, StoreInforVo storeCategoryName) {
+        ss.insert("StoreInforMapper.insertStoreCategory", storeCategoryName);
+    }
+
+    public void insertApprovalStatus(SqlSession ss, StoreInforVo approvalStatus) {
+        ss.insert("StoreInforMapper.insertApprovalStatus", approvalStatus);
+    }
+
+    public List<StoreCategory> getStoreCategoryList(SqlSession ss) {
+        return ss.selectList("StoreInforMapper.getStoreCategoryList");
+    }
+
+    public void insertStoreClosedDays(SqlSession ss, String no, String closedDays) {
+        ss.insert("StoreInforMapper.insertStoreClosedDays", Map.of("storeNo", no, "closedDays", closedDays));
+    }
+
+    public void deleteStoreClosedDays(SqlSession ss, String no) {
+        ss.delete("StoreInforMapper.deleteStoreClosedDays", no);
+    }
+
+    public List<ClosedDayVo> getClosedDays(SqlSession ss, String no) {
+        return ss.selectList("StoreInforMapper.getClosedDays", no);
     }
 }

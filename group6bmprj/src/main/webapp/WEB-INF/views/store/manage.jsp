@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -182,123 +183,147 @@
             <div id="basic-info" class="tab-content active">
                 <div class="info-block">
                     <div class="container-box">
+                        <label>가게 번호:</label>
+                        <p>${storeInfor.no}</p>
+                    </div><br>
+                    <div class="container-box">
                         <label>가게 이름:</label>
-                        <p>이름 대충</p>
+                        <p>${storeInfor.name}</p>
                     </div>
                     <br>
                     <div class="container-box">
-                        <label>가게 번호:</label>
-                        <p>12345</p>
-                    </div><br>
-                    <div class="container-box">
                         <label>가게 카테고리:</label>
-                        <p>분식</p>
+                        <p>${storeInfor.storeCategoryName}</p>
                     </div>
                     <br>
                     <div class="container-box">
                         <label>가게 주소:</label>
-                        <p>지구 어딘가</p>
+                        <p>${storeInfor.address}</p>
                     </div>
                     <br>
                     <div class="container-box">
                         <!--브레이크 상태 혹은 휴무일에는 Closed로 표시-->
                         <label>가게 상태:</label>
-                        <p id="store-status">Loading.... <span class="edit-btn" onclick="editInfo('store-phone')">변경</span></p>
-                        <div class="edit-input" id="edit-store-phone">
-                        <input type="text" id="new-store-phone" value="010-1111-1111">
-                        <span class="save-btn" onclick="saveInfo('store-phone')">저장</span>
+                        <p id="store-status">
+                        <p id="open-yn" >${storeInfor.openYn == 'Y' ? '오픈' : '미오픈'}
+                        <span class="edit-btn" onclick="editInfo('open-yn')">변경</span></p>
+                        <div class="edit-input" id="edit-open-yn">
+                        <input type="text" id="new-open-yn" value="${storeInfor.openYn}">
+                        <span class="save-btn" onclick="saveInfo('openYn', 'open-yn')">저장</span>
                         </div>
                     </div>
                     <br>
                     <div class="container-box">
                     <label>사장 전화번호:</label>
-                    <p id="owner-phone">02-1111-1111 <span class="edit-btn" onclick="editInfo('owner-phone')">변경</span></p>
+                    <p id="owner-phone">
+                        ${storeInfor.storeOwnerPhone}
+                    <span class="edit-btn" onclick="editInfo('owner-phone')">변경</span></p>
                     <div class="edit-input" id="edit-owner-phone">
-                    <input type="text" id="new-owner-phone" value="010-1111-1111">
-                    <span class="save-btn" onclick="saveInfo('owner-phone')">저장</span>
+                    <input type="text" id="new-owner-phone" value="${storeInfor.storeOwnerPhone}">
+                    <span class="save-btn" onclick="saveInfo('storeOwnerPhone', 'owner-phone')">저장</span>
                     </div>
                     </div>
                     <br>
                     <div class="container-box">
                         <label>가게 전화번호:</label>
-                        <p id="store-phone">02-1111-1111 <span class="edit-btn" onclick="editInfo('store-phone')">변경</span></p>
+                        <p id="store-phone">
+                            ${storeInfor.phone}
+                        <span class="edit-btn" onclick="editInfo('store-phone')">변경</span></p>
                         <div class="edit-input" id="edit-store-phone">
-                            <input type="text" id="new-store-phone" value="02-1111-1111">
-                            <span class="save-btn" onclick="saveInfo('store-phone')">저장</span>
+                            <input type="text" id="new-store-phone" value="${storeInfor.phone}">
+                            <span class="save-btn" onclick="saveInfo('phone', 'store-phone')">저장</span>
                         </div>
                     </div>
                     <br>
                     <div class="container-box">
                         <label>가게 소개:</label>
-                        <p id="store-description">가게 소개 예시 <span class="edit-btn" onclick="editInfo('store-description')">변경</span></p>
+                        <p id="store-description">${storeInfor.introduce} <span class="edit-btn" onclick="editInfo('store-description')">변경</span></p>
                         <div class="edit-input" id="edit-store-description">
-                            <input type="text" id="new-store-description" value="가게 소개 예시">
-                            <span class="save-btn" onclick="saveInfo('store-description')">저장</span>
+                            <input type="text" id="new-store-description" value="${storeInfor.introduce}">
+                            <span class="save-btn" onclick="saveInfo('introduce' ,'store-description')">저장</span>
                         </div>
                     </div>
                     <br>
-                    <div class="container-box">
-                        <label>비밀번호:</label>
-                        <p id="password">*** <span class="edit-btn" onclick="editInfo('password')">변경</span></p>
-                        <div class="edit-input" id="edit-password">
-                            <input type="password" id="new-password" value="">
-                            <span class="save-btn" onclick="saveInfo('password')">저장</span>
-                        </div>
-                    </div>
+<%--                    <div class="container-box">--%>
+<%--                        <label>비밀번호:</label>--%>
+<%--                        <p id="password">*** <span class="edit-btn" onclick="editInfo('password')">변경</span></p>--%>
+<%--                        <div class="edit-input" id="edit-password">--%>
+<%--                            <input type="password" id="new-password" value="">--%>
+<%--                            <span class="save-btn" onclick="saveInfo('password')">저장</span>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
                 </div>
             </div>
             <div id="operational-info" class="tab-content">
                 <div class="info-block">
                     <div class="container-box">
                         <label>영업 시간:</label>
-                        <p id="operating-hours">Loading... <span class="edit-btn" onclick="editInfo('operating-hours')">변경</span></p>
+                        <p id="operating-hours">${storeInfor.openTime} - ${storeInfor.endTime} <span class="edit-btn" onclick="editInfo('operating-hours')">변경</span></p>
                         <div class="edit-input" id="edit-operating-hours">
-                            <input type="time" id="new-operating-hours-start"> - <input type="time" id="new-operating-hours-end">
-                            <span class="save-btn" onclick="saveInfo('operating-hours')">저장</span>
+                            <input type="text" id="new-operating-hours-start" value="${storeInfor.openTime}" > - <input type="text" id="new-operating-hours-end" value="${storeInfor.endTime}">
+                            <span class="save-btn" onclick="saveInfo('operating-hours','operating-hours')">저장</span>
                         </div>
                     </div>
                     <br>
                     <div class="container-box">
                         <label>휴게 시간:</label>
-                        <p id="break-time">Loading... <span class="edit-btn" onclick="editInfo('break-time')">변경</span></p>
+                        <p id="break-time">${storeInfor.breakTimeStart} - ${storeInfor.breakTimeEnd} <span class="edit-btn" onclick="editInfo('break-time')">변경</span></p>
                         <div class="edit-input" id="edit-break-time">
-                            <input type="time" id="new-break-time-start"> - <input type="time" id="new-break-time-end">
-                            <span class="save-btn" onclick="saveInfo('break-time')">저장</span>
+                            <input type="text" id="new-break-time-start" value="${storeInfor.breakTimeStart}"> - <input type="text" id="new-break-time-end" value="${storeInfor.breakTimeEnd}">
+                            <span class="save-btn" onclick="saveInfo('break-time','break-time')">저장</span>
                         </div>
                     </div>
                     <br>
                     <div class="container-box">
                         <label>휴무일:</label>
-                        <p id="closed-days">Loading... <span class="edit-btn" onclick="editInfo('closed-days')">변경</span></p>
+                        <p id="closed-days">
+                            <%-- fmt yyyy-mm-dd --%>
+
+
+                            <c:forEach items="${closedDays}" var="closedDay" varStatus="status">
+                                <span> 휴무일 ${status.count}: ${closedDay.day}</span>
+                                <br>
+                            </c:forEach>
+                        <span class="edit-btn" onclick="editInfo('closed-days')">변경</span></p>
                         <div class="edit-input" id="edit-closed-days">
-                            <select id="new-closed-days" multiple>
-                                <option value="Sunday">Sunday</option>
-                                <option value="Monday">Monday</option>
-                                <option value="Tuesday">Tuesday</option>
-                                <option value="Wednesday">Wednesday</option>
-                                <option value="Thursday">Thursday</option>
-                                <option value="Friday">Friday</option>
-                                <option value="Saturday">Saturday</option>
-                            </select>
-                            <span class="save-btn" onclick="saveInfo('closed-days')">저장</span>
+
+                            <div id="new-closed-days">
+                                <c:forEach var="i" begin="1" end="5">
+                                    <br>
+                                    휴무일 ${i}
+                                    <input type="text" id="new-closed-days-${i}" value="<c:out value='${closedDays[i-1].day}' default=''/>" />
+                                    <br>
+                                </c:forEach>
+
+                            </div>
+<%--                            <select id="new-closed-days" multiple>--%>
+<%--                                <option value="Sunday">Sunday</option>--%>
+<%--                                <option value="Monday">Monday</option>--%>
+<%--                                <option value="Tuesday">Tuesday</option>--%>
+<%--                                <option value="Wednesday">Wednesday</option>--%>
+<%--                                <option value="Thursday">Thursday</option>--%>
+<%--                                <option value="Friday">Friday</option>--%>
+<%--                                <option value="Saturday">Saturday</option>--%>
+<%--                            </select>--%>
+                            <span class="save-btn" onclick="saveInfo('closed-days', 'closed-days')">저장</span>
                         </div>
                     </div>
                     <br>
-                    <div class="container-box">
-                        <label>배달 팁:</label>
-                        <p id="delivery-tip">Loading... <span class="edit-btn" onclick="editInfo('delivery-tip')">변경</span></p>
-                        <div class="edit-input" id="edit-delivery-tip">
-                            <input type="text" id="new-delivery-tip" value="">
-                            <span class="save-btn" onclick="saveInfo('delivery-tip')">저장</span>
-                        </div>
-                    </div>
-                    <br>
+<%--                    <div class="container-box">--%>
+<%--                        <label>배달 팁:</label>--%>
+<%--                        <p id="delivery-tip">Loading... <span class="edit-btn" onclick="editInfo('delivery-tip')">변경</span></p>--%>
+<%--                        <div class="edit-input" id="edit-delivery-tip">--%>
+<%--                            <input type="text" id="new-delivery-tip" value="">--%>
+<%--                            <span class="save-btn" onclick="saveInfo('delivery-tip')">저장</span>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <br>--%>
                     <div class="container-box">
                         <label>최소 주문 금액:</label>
-                        <p id="minimum-order-amount">Loading... <span class="edit-btn" onclick="editInfo('minimum-order-amount')">변경</span></p>
+                        <p id="minimum-order-amount">${storeInfor.minimumOrderAmount} <span class="edit-btn" onclick="editInfo('minimum-order-amount')">변경</span></p>
                         <div class="edit-input" id="edit-minimum-order-amount">
-                            <input type="text" id="new-minimum-order-amount" value="">
-                            <span class="save-btn" onclick="saveInfo('minimum-order-amount')">저장</span>
+                            <input type="text" id="new-minimum-order-amount" value="${storeInfor.minimumOrderAmount}">
+                            <span class="save-btn" onclick="saveInfo('minimumOrderAmount', 'minimum-order-amount')">저장</span>
                         </div>
                     </div>
                 </div>
@@ -360,42 +385,79 @@
             document.getElementById('edit-' + id).style.display = 'block';
         }
     
-        function saveInfo(id) {
-            let newValue;
-            if (id === 'operating-hours' || id === 'break-time') {
-                const start = document.getElementById('new-' + id + '-start').value;
-                const end = document.getElementById('new-' + id + '-end').value;
-                newValue = start + '-' + end;
-            } else if (id === 'closed-days') {
-                const selectedOptions = document.getElementById('new-closed-days').selectedOptions;
-                newValue = Array.from(selectedOptions).map(option => option.value).join(',');
-            } else {
-                newValue = document.getElementById('new-' + id).value;
+        function saveInfo(name, key, value) {
+            //
+            const param = {}
+
+            if (key === 'operating-hours' || key === 'break-time') {
+                param['openTime'] =  document.getElementById('new-' + key + '-start').value;
+                param['endTime'] = document.getElementById('new-' + key + '-end').value;
+            } else if(key === 'break-time'){
+                param['breakTimeStart'] =  document.getElementById('new-' + key + '-start').value;
+                param['breakTimeEnd'] = document.getElementById('new-' + key + '-end').value;
+            } else if(key === 'closed-days'){
+                param['closedDays1'] =  document.getElementById('new-' + key + '-1').value;
+                param['closedDays2'] =  document.getElementById('new-' + key + '-2').value;
+                param['closedDays3'] =  document.getElementById('new-' + key + '-3').value;
+                param['closedDays4'] =  document.getElementById('new-' + key + '-4').value;
+                param['closedDays5'] =  document.getElementById('new-' + key + '-5').value;
             }
-    
-            fetch('update_store_info.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
+            else{
+                param[name] = $('#new-' + key).val();
+            }
+
+            param['no'] = '${storeInfor.no}'
+
+            //
+            // const formData = new FormData();
+            // formData.append(name, value);
+
+            $.ajax({
+                url: "/baemin/store/manage",
+                type: "POST",
+                data: param,
+                success: function(response) {
+                    alert("저장되었습니다.");
+                    location.reload()
                 },
-                body: JSON.stringify({
-                    field: id,
-                    value: newValue
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    document.getElementById(id).textContent = newValue + ' ';
-                    document.getElementById(id).appendChild(createEditButton(id));
-                    document.getElementById(id).style.display = 'block';
-                    document.getElementById('edit-' + id).style.display = 'none';
-                    // 저장이 완료되면 창을 닫음
-                    closeEditWindow(id);
-                } else {
-                    alert('Failed to update the information.');
+                error: function(xhr, status, error) {
+                    console.error(xhr);
+                    alert("저장에 실패하였습니다.");
                 }
             });
+
+            // let newValue;
+
+            // } else if (id === 'closed-days') {
+            //     const selectedOptions = document.getElementById('new-closed-days').selectedOptions;
+            //     newValue = Array.from(selectedOptions).map(option => option.value).join(',');
+            // } else {
+            //     newValue = document.getElementById('new-' + id).value;
+            // }
+    
+            // fetch('update_store_info.php', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify({
+            //         field: id,
+            //         value: newValue
+            //     })
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     if (data.success) {
+            //         document.getElementById(id).textContent = newValue + ' ';
+            //         document.getElementById(id).appendChild(createEditButton(id));
+            //         document.getElementById(id).style.display = 'block';
+            //         document.getElementById('edit-' + id).style.display = 'none';
+            //         // 저장이 완료되면 창을 닫음
+            //         closeEditWindow(id);
+            //     } else {
+            //         alert('Failed to update the information.');
+            //     }
+            // });
         }
     
         function createEditButton(id) {
@@ -426,5 +488,6 @@
             document.querySelector('button[onclick="showTab(\'' + tabId + '\')"]').classList.add('active');
         }
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </body>
 </html>
