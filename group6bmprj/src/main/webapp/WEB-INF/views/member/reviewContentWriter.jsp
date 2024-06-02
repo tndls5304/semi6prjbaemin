@@ -24,6 +24,7 @@
 
         <form action="/baemin/member/reviewContentWriter" method="post" enctype="multipart/form-data">
             <input name="deliveryProblem" value="<%= request.getParameter("deliveryProblem")%>">
+            <input name="orderNo" value="<%= request.getParameter("orderNo")%>">
             
             <div class="star-rating">
                 <input type="radio" id="star5" name="rating" value="5" /><label for="star5">★</label>

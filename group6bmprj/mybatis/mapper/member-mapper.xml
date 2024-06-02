@@ -156,7 +156,7 @@
 		VALUES
 		(
 		SEQ_REVIEW_COMMUNICATION_NO.NEXTVAL,
-		#{orderNo}
+		#{orderNo},
 		#{rating},
 		#{memberContent},
 		#{reviewImg},

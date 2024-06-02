@@ -27,6 +27,7 @@
               
                 <div class="options d-flex flex-wrap gap-2 mt-3">
                 <input class="hide" type="hidden" name="deliveryProblem" id="deliveryProblem"></input>
+                <input class="hide" type="hidden" name="orderNo" value="<%=request.getParameter("orderNo") %>"></input>
              <c:forEach items="${selectList}" var="vo">
 					
 					 
@@ -40,7 +41,6 @@
                     
         </div>
         <div>
-        <input type="hidden" ${orderNo}>
             <button type="submit" id="nextButton"  class="next-button">다음</button>
         </div>
             </form>

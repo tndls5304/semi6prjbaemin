@@ -42,6 +42,7 @@ public class MemberReviewContentWriterController extends HttpServlet {
         System.out.println(loginMemberVo);
 
     
+        String orderNo = req.getParameter("orderNo");
         String deliveryProblem = req.getParameter("deliveryProblem");
         System.out.println("배달문제선택 번호 값 화면 받아 온지? #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+ deliveryProblem);
 
@@ -83,11 +84,13 @@ public class MemberReviewContentWriterController extends HttpServlet {
         }
 
         ReviewWriterVo vo = new ReviewWriterVo();
-    
+        vo.setOrderNo(orderNo);
         vo.setRating(rating);
         vo.setMemberContent(memberContent);
         vo.setReviewImg(reviewImg);  // 저장된 파일 이름 설정
         vo.setDeliveryProblem(deliveryProblem);  // deliveryProblem 설정
+        
+        System.out.println("############################ vo" + vo);
 
         MemberService ms = new MemberService();
         int result = 0;
