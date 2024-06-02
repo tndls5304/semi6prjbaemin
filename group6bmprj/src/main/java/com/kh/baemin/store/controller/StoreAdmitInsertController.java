@@ -54,10 +54,10 @@ public class StoreAdmitInsertController extends HttpServlet {
 				}
 			}
 			
-//			ì„œë²„ì— íŒŒì¼ ì—…ë¡œë“œ
+//			¼­¹ö¿¡ ÆÄÀÏ ¾÷·Îµå
 			List<StoreAdmitVo> storeAdmitVoList = new ArrayList<StoreAdmitVo>();
 			for (Part f : fileList) {
-				StoreAdmitVo storeAdmitVo = FileUpload.saveFile(f);
+				//StoreAdmitVo storeAdmitVo = FileUpload.saveFile(f);
 				storeAdmitVoList.add(storeAdmitVo);
 			}
 	
