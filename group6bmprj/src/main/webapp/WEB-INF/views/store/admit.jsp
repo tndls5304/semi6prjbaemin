@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -146,7 +147,7 @@
             <h2>가게 허가 신청</h2>
         </div>
         <div class="file-upload">
-            <form action="/baemin/store/admit" method="post" id = "storeAdmit" onsubmit="return validateForm()">
+            <form action="/baemin/store/admit"  method="post" enctype="multipart/form-data" id = "storeAdmit" onsubmit="return validateForm()">
                 <div class="form-group">
                     <div class="form-group-row">
                         <label for="name">가게 이름:</label>
@@ -163,6 +164,18 @@
                 </div>
                 <div class="form-group">
                     <div class="form-group-row">
+                        <label for="address">영업 시작 일시:</label>
+                        <input type="text" id="openTime" name="openTime" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-group-row">
+                        <label for="address">영업 종료 일시:</label>
+                        <input type="text" id="endTime" name="endTime" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-group-row">
                         <label for="address-detail">가게 상세 주소:</label>
                         <input type="text" id="addressDetail" name="addressDetail" required>
                     </div>
@@ -171,7 +184,7 @@
                  <div class="form-group">
                     <div class="form-group-row">
                         <label for="delivery_zone">배달 지역 : </label>
-                        <input type="text" id="deliveryZone" name="deliveryZone" required> 
+                        <input type="text" id="deliveryZoneName" name="deliveryZoneName" required>
                        <!-- 조건 안맞으면 되돌리기 --> 
                     </div>
                     <p id="addressDetailError">15글자 내로 작성해주세요.</p>
@@ -180,37 +193,35 @@
                     <div class="form-group-row">
                         <label for="storeCategoryNo">가게 종목:</label>
                         <select id="storeCategoryNo" name="storeCategoryNo" required>
-                            <option value="1">찜,탕,찌개</option>
-                            <option value="2">족발,보쌈</option>
-                            <option value="3">돈까스,회,일식</option>
-                            <option value="4">패스트푸드</option>
-                            <option value="5">피자</option>
-                            <option value="6">고기구이</option>
-                            <option value="7">야식</option>
-                            <option value="8">양식</option>
-                            <option value="9">1인분</option>
-                            <option value="10">치킨</option>
-                            <option value="11">중식</option>
-                            <option value="12">아시안</option>
-                            <option value="13">백반,죽,국수</option>
-                            <option value="14">도시락</option>
-                            <option value="15">분식</option>
-                            <option value="16">카페,디저트</option>
-                            <option value="17">채식</option>
-                            <option value="18">반찬</option>
+                        <%--storeCategories  for el expression --%>
+                        <c:forEach items="${storeCategories}" var="storeCategory">
+                            <option value="${storeCategory.no}">${storeCategory.name}</option>
+                        </c:forEach>
                         </select>
                     </div>
                 </div>
+                <%--                <div class="form-group">--%>
+                <%--                    <div class="form-group-row">--%>
+                <%--                        <label for="companyResistraionNumber">사업자 등록 번호:</label>--%>
+                <%--                        <input type="text" id="companyResistraionNumber" name="companyResistraionNumber" required>--%>
+                <%--                    </div>--%>
+                <%--                </div>--%>
                 <div class="form-group">
                     <div class="form-group-row">
-                        <label for="companyResistraionNumber">사업자 등록 번호:</label>
-                        <input type="text" id="companyResistraionNumber" name="companyResistraionNumber" required>
+                        <label for="businessRegistrationVertificateImg">사업자 등록증:</label>
+                        <input type="file" id="businessRegistrationVertificateImg" name="businessRegistrationVertificateImg" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-group-row">
-                        <label for="businessResistration">사업자 등록증:</label>
-                        <input type="file" id="businessResistration" name="businessResistration" required>
+                        <label for="introduceImage">가게 소개 사진:</label>
+                        <input type="file" id="introduceImage" name="introduceImage" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-group-row">
+                        <label for="mainImage">가게 메인 사진:</label>
+                        <input type="file" id="mainImage" name="mainImage" required>
                     </div>
                 </div>
                 <div class="form-group">

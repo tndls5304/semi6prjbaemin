@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemberReviewMapper">
+
+	<select id="getMyReviewList" resultType="com.kh.baemin.member.vo.MemberReviewVo">
+		SELECT
+			S.NAME AS STORE_NAME
+			, S.INTRODUCTION_IMG
+			, R.RATING
+			, R.ENROLL_DATE
+			, R.USER_CONTENT
+			, R.IMG AS REVIEW_IMG
+			, R.STORE_CONTENT
+			, O.NO AS ORDER_NO
+			,(
+				SELECT LISTAGG(F.NAME, ', ') WITHIN GROUP(ORDER BY F.NO)
+					FROM FOOD_INFOR F
+					WHERE F.NO IN (
+						SELECT F.NO
+						FROM ORDER_DETAIL O
+						JOIN FOOD_INFOR F ON O.FOOD_NO = F.NO
+						WHERE O.ORDER_NO = R.ORDER_NO
+					)
+			) AS FOOD_NAMES
+		FROM REVIEW_COMMUNICATION R
+		JOIN ORDER_SHEET O ON R.ORDER_NO = O.NO
+		JOIN MEMBER_USER M ON O.USER_NO = M.NO
+		JOIN STORE_INFOR S ON O.STORE_NO = S.NO
+		WHERE 1 = 1
+		AND R.DEL_YN = 'N'
+		AND M.ID = #{memberNo}
+	</select>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+

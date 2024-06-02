@@ -9,7 +9,15 @@ public class MemberReviewVo {
     private String storeContent;
     private String orderNo;
     private String foodNames;
+    private String storeName;
 
+    public String getStoreName() {
+        return storeName;
+    }
+
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
+    }
 
     public String getFoodNames() {
         return foodNames;

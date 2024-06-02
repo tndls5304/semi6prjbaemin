@@ -36,35 +36,38 @@ public class FileUpload {
 	}//method
 
 
-	public static String save(Part f, ServletContext context) {
+	public static String save(Part f, ServletContext context, String saveRootPath) {
 
 		try {
-			// ÆÄÀÏÀÌ ¾÷·ÎµåµÈ °æ¿ì
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ï¿½ ï¿½ï¿½ï¿½
 			if (f.getSize() > 0) {
-				// ÆÄÀÏÀ» ¼­¹ö¿¡ ÀúÀåÇÏ±â
-				String originFileName = f.getSubmittedFileName(); // ¿øº» ÆÄÀÏ ÀÌ¸§À» °¡Á®¿È
-				InputStream is = f.getInputStream(); // ÆÄÀÏÀÇ ÀÔ·Â ½ºÆ®¸²À» °¡Á®¿È
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
+				String originFileName = f.getSubmittedFileName(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				InputStream is = f.getInputStream(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-				String path = context.getRealPath("/resources/upload/");
 
-				java.io.File dir = new java.io.File(path); // ÆÄÀÏ ÀúÀå °æ·ÎÀÇ µð·ºÅä¸® °´Ã¼ »ý¼º
+				String resourceRoot = context.getRealPath("/resources");
+				String filePath = resourceRoot + "/" + saveRootPath;
+
+				java.io.File dir = new java.io.File(filePath); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ä¸® ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 				if (!dir.exists()) {
-					dir.mkdirs(); // µð·ºÅä¸®°¡ Á¸ÀçÇÏÁö ¾ÊÀ¸¸é »ý¼º
+					dir.mkdirs(); // ï¿½ï¿½ï¿½ä¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				}
 
-				String random = UUID.randomUUID().toString(); // °íÀ¯ÇÑ ÆÄÀÏ ÀÌ¸§ »ý¼ºÀ» À§ÇÑ ·£´ý ¹®ÀÚ¿­ »ý¼º
-				String ext = originFileName.substring(originFileName.lastIndexOf(".")); // ÆÄÀÏ È®ÀåÀÚ¸¦ °¡Á®¿È
-				String changeName = System.currentTimeMillis() + "_" + random + ext; // ÇöÀç ½Ã°£°ú ·£´ý ¹®ÀÚ¿­À» Á¶ÇÕÇÏ¿© °íÀ¯ÇÑ ÆÄÀÏ ÀÌ¸§ »ý¼º
-				FileOutputStream fos = new FileOutputStream(path + changeName); // ÆÄÀÏ ÀúÀåÀ» À§ÇÑ Ãâ·Â ½ºÆ®¸² »ý¼º
+				String random = UUID.randomUUID().toString(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½
+				String ext = originFileName.substring(originFileName.lastIndexOf(".")); // ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				String changeName = System.currentTimeMillis() + "_" + random + ext; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+				FileOutputStream fos = new FileOutputStream( filePath + "/" + changeName); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-				byte[] buf = new byte[1024]; // ÆÄÀÏÀ» ÀÐ°í ¾²±â À§ÇÑ ¹öÆÛ »ý¼º
+				byte[] buf = new byte[1024]; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				int size = 0;
-				while ((size = is.read(buf)) != -1) { // ÀÔ·Â ½ºÆ®¸²¿¡¼­ µ¥ÀÌÅÍ¸¦ ÀÐ¾î ¹öÆÛ¿¡ ÀúÀå
-					fos.write(buf, 0, size); // ¹öÆÛ¿¡ ÀÖ´Â µ¥ÀÌÅÍ¸¦ Ãâ·Â ½ºÆ®¸²¿¡ ¾¸
+				while ((size = is.read(buf)) != -1) { // ï¿½Ô·ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Ð¾ï¿½ ï¿½ï¿½ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½
+					fos.write(buf, 0, size); // ï¿½ï¿½ï¿½Û¿ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 				}
 
-				is.close(); // ÀÔ·Â ½ºÆ®¸² ´Ý±â
-				fos.close(); // Ãâ·Â ½ºÆ®¸² ´Ý±â
+				is.close(); // ï¿½Ô·ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ý±ï¿½
+				fos.close(); // ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ý±ï¿½
+				return "/" + saveRootPath + "/" + changeName;
 			}
 			return null;
 		} catch (IOException e) {
