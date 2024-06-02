@@ -180,10 +180,8 @@
 	</update>
 	
 	<select id="selectDeliveryProblem" resultType="com.kh.baemin.member.vo.DeliveryProblemVo">
-SELECT DELIVERY_PROBLEM,ORDER_NO
-FROM DELIVERY_PROBLEM D
-JOIN REVIEW_COMMUNICATION R 
-ON D.NO = R.NO 
+		SELECT *
+		FROM DELIVERY_PROBLEM
 		
 	</select>
 
