@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AdminReviewMapper">
+
+	<select id="getReviewList" resultType="com.kh.baemin.admin.vo.AdminReviewVO">
+		SELECT NO
+		, ORDER_NO
+		, RATING
+		, USER_CONTENT
+		, STORE_CONTENT
+		, IMG
+		, ENROLL_DATE
+		, DEL_YN FROM REVIEW_COMMUNICATION WHERE 1 = 1 AND DEL_YN = 'N'
+			<if test="userContent != null and userContent != ''"> AND USER_CONTENT LIKE '%' || #{userContent} || '%' </if>
+			<if test="userId != null and userId != ''"> AND ORDER_NO IN ( SELECT NO FROM ORDER_SHEET WHERE USER_ID = #{userId} ) </if>
+			<if test="srchStartDt != null and srchEndDt != null">
+		AND ENROLL_DATE
+		<![CDATA[ >= ]]>
+		TO_DATE(#{srchStartDt}, 'YYYY-MM-DD')
+		</if>
+		<if test="srchEndDt != null and srchStartDt == null">
+		AND ENROLL_DATE
+		<![CDATA[ <= ]]>
+		TO_DATE(#{srchEndDt}, 'YYYY-MM-DD')
+		</if>
+	</select>
+	
+	<delete id="deleteReview"> 
+	UPDATE REVIEW_COMMUNICATION SET DEL_YN = 'Y' WHERE NO = #{reviewNo} 
+	</delete>
+	<!-- getReviewDetail -->
+	<select id="getReviewDetail" resultType="com.kh.baemin.admin.vo.AdminReviewVO"> 
+	SELECT NO
+	, ORDER_NO
+	, RATING
+	, USER_CONTENT
+	, STORE_CONTENT
+	, IMG
+	, ENROLL_DATE
+	, DEL_YN FROM REVIEW_COMMUNICATION WHERE NO = #{reviewNo} 
+	</select>
+
+</mapper>
+
+
+
+
+

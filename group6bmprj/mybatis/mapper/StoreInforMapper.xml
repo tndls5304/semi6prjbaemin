@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="StoreInforMapper">
+
+	<select id="getTop10StoreList" resultType="com.kh.baemin.store.vo.StoreInforVo">
+		SELECT NAME FROM ( SELECT NAME FROM STORE_INFOR ORDER BY viewed_cnt DESC ) WHERE ROWNUM
+		<![CDATA[ <= ]]>
+		10
+	</select>
+	
+	<select id="getStoreInfor" resultType="com.kh.baemin.store.vo.StoreInforVo"> 
+		SELECT STORE_ID
+		, NAME
+		, CATEGORY
+		, PHONE
+		, ADDRESS
+		, OPEN_TIME
+		, CLOSE_TIME
+		, DELIVERY_TIME
+		, MIN_PRICE
+		, DELIVERY_TIP
+		, DELIVERY_AREA
+		, VIEWED_CNT
+		, REG_DATE
+		, OWNER_ID 
+		FROM STORE_INFOR WHERE STORE_ID = #{searchText} 
+	</select>
+	
+	<select id="getDeliveryZoneNoByLocalName"> SELECT ZONE_NUMBER FROM LOCAL_NAME WHERE ADDRESS = #{localName} </select>
+	
+	<insert id="insertStoreInfor" parameterType="com.kh.baemin.store.vo.StoreInforVo">
+	<selectKey keyProperty="no" resultType="int" order="BEFORE"> 
+		SELECT SEQ_STORE_INFOR_NO.NEXTVAL FROM DUAL </selectKey>
+		INSERT INTO STORE_INFOR 
+		( NO
+		, NAME
+		, ADDRESS
+		, ADDRESS_DETAIL
+		, STORE_CATEGORY_NO
+		, BUSINESS_REGISTRATION_CERTIFICATE_IMG, ) 
+		VALUES ( #{no}, #{name}, #{address}, #{addressDetail}, #{storeCategoryNo}, #{businessRegistrationCertificateImg}, )
+	</insert>
+	
+	<insert id="insertStoreZone"> INSERT INTO STORE_ZONE ( STORE_NO, ZONE_NO ) VALUES ( #{storeNo}, #{zoneNo} ) </insert>
+	
+	<select id="getStoreInfor" resultType="com.kh.baemin.store.vo.StoreInforVo"> 
+		SELECT 
+		NO
+		, NAME
+		, ADDRESS
+		, ADDRESS_DETAIL
+		, BUSINESS_REGISTRATION_CERTIFICATE_IMG
+		, INTRODUCTION_IMG
+		, INTRODUCE
+		, MAIN_IMG
+		, PHONE
+		, MINIMUM_ORDER_AMOUNT
+		, VIEWED_CNT
+		, OPEN_TIME
+		, END_TIME
+		, BREAK_TIME_START
+		, BREAK_TIME_END
+		, STORE_OWNER_NO
+		, STORE_CATEGORY_NO
+		, APPROVAL_STATUS_NO 
+		FROM STORE_INFOR WHERE NO = #{storeNo} 
+	</select>
+	
+	<update id="updateStoreOwnerPhone"> 
+		UPDATE MEMBER_STORE_OWNER SET PHONE = #{phone} 
+		WHERE NO = ( SELECT STORE_OWNER_NO FROM STORE_INFOR WHERE NO = #{storeNo} ) 
+	</update>
+	
+	<update id="updateStoreInfor" parameterType="com.kh.baemin.store.vo.StoreInforVo">
+		UPDATE STORE_INFOR
+		<set>
+		<if test="openYn != null and openYn != ''"> OPEN_YN = #{openYn}, </if>
+		<if test="phone != null and phone != ''"> PHONE = #{phone}, </if>
+		<if test="introduce != null and introduce != ''"> INTRODUCE = #{introduce}, </if>
+		</set>
+		WHERE NO = #{no}
+	</update>
+	
+</mapper>
+
+
+
+
