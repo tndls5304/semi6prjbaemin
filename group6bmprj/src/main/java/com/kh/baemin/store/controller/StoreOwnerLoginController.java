@@ -30,6 +30,7 @@ public class StoreOwnerLoginController extends HttpServlet {
 		vo.setPwd(pwd);
 		StoreOwnerService ss= new StoreOwnerService();
 		StoreOwnerVo loginStoreOwnerVo=ss.login(vo);
+		
 		HttpSession session=req.getSession();
 		
 		if(loginStoreOwnerVo!=null) {

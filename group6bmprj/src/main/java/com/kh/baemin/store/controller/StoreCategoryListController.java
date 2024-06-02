@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.kh.baemin.member.vo.MemberVo;
 import com.kh.baemin.store.service.StoreMenuService;
 import com.kh.baemin.store.vo.CategoryVo;
 import com.kh.baemin.store.vo.FoodInforVo;
@@ -24,16 +23,14 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 		
 	
 	try {
-		// TODO StoreNo
 		HttpSession session = req.getSession();
-	MemberVo loginStoreMemberVo = (StoreOwnerVo) session.getAttribute("loginStoreMemberVo");
-		session.setAttribute(, );
-	
 		
-		CategoryVo vo = new CategoryVo();
+		//세션에서 가게넘버 빼자
+		String storeNo=(String) session.getAttribute("storeNo");
 	
 		// TODO StoreNo
-		String storeNo="1";
+		storeNo="1";
+		
 		
 		StoreMenuService sms=new StoreMenuService();
 		List<CategoryVo> categoryVolist=sms.selectCategoryList(storeNo);
