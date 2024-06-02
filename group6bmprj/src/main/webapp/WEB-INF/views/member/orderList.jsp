@@ -67,12 +67,10 @@
 					<button type="submit" class="link-button">같은메뉴담기</button>
 				</a>
 				<!-- 리뷰쓰기 버튼 -->
-				<a href="/baemin/member/reviewStatusWriter"> 
+				<a href="/baemin/member/reviewStatusWriter?orderNo=${vo.orderNo}" > 
 					<button type="submit" class="link-button">리뷰쓰기</button>
 				</a>
-				<input
-					type="hidden" name="no"
-					value="${sessionScope.LoginMemberVo.no}">
+				
 	</div>
 				
 				</c:forEach>

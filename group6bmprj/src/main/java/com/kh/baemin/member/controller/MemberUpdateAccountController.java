@@ -12,32 +12,33 @@ import javax.servlet.http.HttpSession;
 import com.kh.baemin.member.service.MemberService;
 import com.kh.baemin.member.vo.MemberVo;
 
-@WebServlet
+@WebServlet("/member/account")
 public class MemberUpdateAccountController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	try {	HttpSession session = req.getSession();
+	try {	
+		
+		HttpSession session = req.getSession();
 		MemberVo loginMemberVo =(MemberVo)session.getAttribute("loginMemberVo");
 		String no = loginMemberVo.getNo();
-		
+
 		String chargeAmount = req.getParameter("chargeAmount");
-		
 		MemberVo vo = new MemberVo();
 		vo.setChargeAmount(chargeAmount);
-		
+		vo.setNo(no);
 		
 		MemberService ms = new MemberService();
+		int result = ms.updateAccount(vo);
+		System.out.println("돈들어옴?" + vo);
 		
-		
-		
-		
-		MemberVo memberVo = ms.updateAccount(no);
-		req.getRequestDispatcher("/WEB-INF/views/member/info.jsp").forward(req, resp);
-	
-	} catch (
+		if (result == 1) {
 
-			Exception e) {
+			resp.sendRedirect("/baemin/member/info");
+		}
+	
+	
+	} catch (Exception e) {
 				req.setAttribute("errMsg", e.getMessage());
 
 				e.printStackTrace();

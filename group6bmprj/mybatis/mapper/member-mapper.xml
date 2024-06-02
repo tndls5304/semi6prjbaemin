@@ -47,105 +47,88 @@
 		AND PWD = #{pwd}
 	</select>
 
-    <select id="selectReviewList" resultType="com.kh.baemin.member.vo.ReviewWriterVo">
-        SELECT 
-            M.PROFILE,
-            M.NICK,
-            R.RATING,
-            R.ORDER_NO,
-            R.USER_CONTENT AS memberContent,
-            R.IMG AS reviewImg,
-            S.NAME AS storeName,
-            F.NAME AS foodName
-        FROM 
-            REVIEW_COMMUNICATION R
-        JOIN 
-            STORE_INFOR S ON R.NO = S.NO 
-        JOIN 
-            FOOD_INFOR F ON F.NO = R.NO
-        JOIN
-            MEMBER_USER M ON M.NO = R.NO 
-        WHERE 
-            M.NO = #{no}
-            AND
-            R.DEL_YN = 'N'
-    </select>
-    
-   
-    
+	<select id="selectReviewList"
+		resultType="com.kh.baemin.member.vo.ReviewWriterVo">
+		SELECT
+		M.PROFILE,
+		M.NICK,
+		R.RATING,
+		R.ORDER_NO,
+		R.USER_CONTENT AS memberContent,
+		R.IMG AS reviewImg,
+		S.NAME AS storeName,
+		F.NAME AS foodName
+		FROM
+		REVIEW_COMMUNICATION R
+		JOIN
+		STORE_INFOR S ON R.NO = S.NO
+		JOIN
+		FOOD_INFOR F ON F.NO = R.NO
+		JOIN
+		MEMBER_USER M ON M.NO = R.NO
+		WHERE
+		M.NO = #{no}
+		AND
+		R.DEL_YN = 'N'
+	</select>
+
+
+
 
 	<select id="info" resultType="com.kh.baemin.member.vo.MemberVo">
 		SELECT
-    
-        M.PROFILE as memberImg,
-        M.NICK,
-        M.ACCOUNT_BALANCE as accountBalance
-    FROM
-        MEMBER_USER M
-    WHERE 
-        M.NO = #{no}
-   
-	</select>
-  
-   <select id="storeOrderList" resultType="com.kh.baemin.member.vo.StoreOrderVo">
-   
-   SELECT 
-    '1717069005724_a8c5eb0a-2785-475a-b9d2-a2ea2c4912ae.png' AS storeImg, 
-    '마라천국' AS storeName,
-    '마라탕' AS storeFoodName,
-    '1' AS storeFoodCount, 
-    '15000' AS storeFoodPrice,
-    '2024-06-01 18:12' AS storeOrderDate,
-    '주문완료' AS storeOrderStatus,
-    '' AS NO 
-    FROM DUAL
-    
-    union all
-   
-   SELECT 
-    '1717069005724_a8c5eb0a-2785-475a-b9d2-a2ea2c4912ae.png' AS storeImg, 
-    '김밥나라' AS storeName,
-    '참치김밥' AS storeFoodName,
-    '2' AS storeFoodCount, 
-    '30000' AS storeFoodPrice,
-    '2024-06-01 18:12' AS storeOrderDate,
-    '주문완료' AS storeOrderStatus,
-    '' AS NO 
-    FROM DUAL
-    
-   
-    
-   
-    
-   <!-- 
-   SELECT  
-    S.INTRODUCTION_IMG AS storeImg, 
-    S.NAME AS storeName,
-    F.NAME AS storeFoodName,
-    O.FOOD_COUNT AS storeFoodCount, 
-    O.FOOD_PRICE AS storeFoodPrice,
-    OT.ORDER_DAY AS storeOrderDate,
-    OS.STATUS AS storeOrderStatus,
-    OS.NO ,
-    M.NO 
-FROM 
-    STORE_INFOR S
-JOIN 
-    ORDER_DETAIL O ON S.NO = O.NO 
-JOIN 
-    FOOD_INFOR F ON F.NO = S.NO
-JOIN 
-    ORDER_SHEET OT ON S.NO = OT.NO
-JOIN 
-    ORDER_STATUS OS ON OS.NO = S.NO
-JOIN 
-    MEMBER_USER M ON M.NO = S.NO
-WHERE 
-    M.NO = #{no}
-   
-   -->
 
-</select>
+		M.PROFILE as memberImg,
+		M.NICK,
+		M.ACCOUNT_BALANCE as accountBalance
+		FROM
+		MEMBER_USER M
+		WHERE
+		M.NO = #{no}
+
+	</select>
+
+	<select id="storeOrderList"
+		resultType="com.kh.baemin.member.vo.StoreOrderVo">
+
+		SELECT
+		'1' orderNo,
+		'1717069005724_a8c5eb0a-2785-475a-b9d2-a2ea2c4912ae.png' AS storeImg,
+		'마라천국' AS storeName,
+		'마라탕' AS storeFoodName,
+		'1' AS storeFoodCount,
+		'15000' AS storeFoodPrice,
+		'2024-06-01 18:12' AS storeOrderDate,
+		'주문완료' AS storeOrderStatus,
+		'' AS NO
+		FROM DUAL
+
+		union all
+
+		SELECT
+		'2' orderNo,
+		'1717069005724_a8c5eb0a-2785-475a-b9d2-a2ea2c4912ae.png' AS storeImg,
+		'김밥나라' AS storeName,
+		'참치김밥' AS storeFoodName,
+		'2' AS storeFoodCount,
+		'30000' AS storeFoodPrice,
+		'2024-06-01 18:12' AS storeOrderDate,
+		'주문완료' AS storeOrderStatus,
+		'' AS NO
+		FROM DUAL
+
+
+
+
+
+		<!-- SELECT S.INTRODUCTION_IMG AS storeImg, S.NAME AS storeName, F.NAME 
+			AS storeFoodName, O.FOOD_COUNT AS storeFoodCount, O.FOOD_PRICE AS storeFoodPrice, 
+			OT.ORDER_DAY AS storeOrderDate, OS.STATUS AS storeOrderStatus, OS.NO , M.NO 
+			FROM STORE_INFOR S JOIN ORDER_DETAIL O ON S.NO = O.NO JOIN FOOD_INFOR F ON 
+			F.NO = S.NO JOIN ORDER_SHEET OT ON S.NO = OT.NO JOIN ORDER_STATUS OS ON OS.NO 
+			= S.NO JOIN MEMBER_USER M ON M.NO = S.NO WHERE M.NO = #{no} -->
+
+	</select>
 
 	<!-- 중복된 아이디 개수를 반환하는 쿼리 -->
 	<select id="idCheck" resultType="int">
@@ -153,22 +136,11 @@ WHERE
 		WHERE id = #{id}
 	</select>
 
-	<update id="reviewStatus">
-
-
-
+	<insert id="reviewStatus">
 		UPDATE DELIVERY_PROBLEM
-		SET NO =
-		SEQ_DELIVERY_PROBLEM_NO.NEXTVAL,
-		DELIVERY_PROBLEM = #{deliveryProblem}
-		WHERE ID = #{id}
-
-	</update>
-
-
-
-
-
+		SET DELIVERY_PROBLEM = #{deliveryProblem}
+		WHERE no = #{no}
+	</insert>
 
 	<insert id="reviewContent">
 		INSERT INTO REVIEW_COMMUNICATION
@@ -177,7 +149,6 @@ WHERE
 		ORDER_NO,
 		RATING,
 		USER_CONTENT,
-		STORE_CONTENT,
 		IMG,
 		ENROLL_DATE,
 		DEL_YN
@@ -185,23 +156,35 @@ WHERE
 		VALUES
 		(
 		SEQ_REVIEW_COMMUNICATION_NO.NEXTVAL,
-		SEQ_ORDER_SHEET_NO.NEXTVAL,
+		#{orderNo}
 		#{rating},
 		#{memberContent},
-		0,
 		#{reviewImg},
 		SYSDATE,
 		'N'
 		)
 	</insert>
 
+	<update id="account">
+		UPDATE MEMBER_USER
+		SET ACCOUNT_BALANCE = ACCOUNT_BALANCE+#{chargeAmount}
+		WHERE NO =#{no}
+	</update>
 
-	
 
 	<update id="changeAddress">
 		UPDATE MEMBER_USER
-		SET ADDRESS=#{address},ADDRESS_DETAIL=#{addressDetail}
+		SET
+		ADDRESS=#{address},ADDRESS_DETAIL=#{addressDetail}
 		WHERE NO=${no}
 	</update>
+	
+	<select id="selectDeliveryProblem" resultType="com.kh.baemin.member.vo.DeliveryProblemVo">
+SELECT DELIVERY_PROBLEM,ORDER_NO
+FROM DELIVERY_PROBLEM D
+JOIN REVIEW_COMMUNICATION R 
+ON D.NO = R.NO 
+		
+	</select>
 
 </mapper>

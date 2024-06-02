@@ -23,26 +23,16 @@ public class MemberOrderListController extends HttpServlet {
 			MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
 			String no = loginMemberVo.getNo();
 			System.out.println(loginMemberVo);
-			
 
-			if (loginMemberVo == null) {
-				System.out.println("로그인 필요");
-				resp.sendRedirect("/baemin/member/login");
-				return;
-			}
-		
-			
-			
-		
 			MemberService ms = new MemberService();
 			List<StoreOrderVo> orderList = ms.getOrderListByUser(no);
-			
+
 			req.setAttribute("orderList", orderList);
 			req.getRequestDispatcher("/WEB-INF/views/member/orderList.jsp").forward(req, resp);
 
 		} catch (Exception e) {
 			req.setAttribute("errMsg", e.getMessage());
-		
+
 			e.printStackTrace();
 			System.out.println(e.getMessage());
 			req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);

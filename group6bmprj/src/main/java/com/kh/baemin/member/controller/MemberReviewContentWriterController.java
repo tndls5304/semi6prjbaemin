@@ -29,24 +29,7 @@ public class MemberReviewContentWriterController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
-        System.out.println(loginMemberVo);
-        
-        
-        if (loginMemberVo == null) {
-            System.out.println("로그인 필요");
-            resp.sendRedirect("/baemin/member/login");
-            return;
-        }
-   //insert
-        //update
-        String deliveryProblem = req.getParameter("deliveryProblem");
-        String orderNo = req.getParameter("orderNo");
-        System.out.println("Controller > orderNo : " + orderNo);
-
-        req.setAttribute("deliveryProblem", deliveryProblem);
-        req.setAttribute("orderNo", orderNo);
+   
 
         req.getRequestDispatcher("/WEB-INF/views/member/reviewContentWriter.jsp").forward(req, resp);
     }
@@ -55,29 +38,24 @@ public class MemberReviewContentWriterController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
+        String no = loginMemberVo.getNo();
         System.out.println(loginMemberVo);
 
-        if (loginMemberVo == null) {
-            System.out.println("로그인 필요");
-            resp.sendRedirect("/baemin/member/login");
-            return;
-        }
+    
+        String deliveryProblem = req.getParameter("deliveryProblem");
+        System.out.println("배달문제선택 번호 값 화면 받아 온지? #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+ deliveryProblem);
 
         String rating = req.getParameter("rating");
-        System.out.println("Rating: " + rating);  // rating 값 출력
         String memberContent = req.getParameter("memberContent");
-        String orderNo = req.getParameter("orderNo");
-        String deliveryProblem = (String) session.getAttribute("deliveryProblem");
-
         // 리뷰 이미지 파일 처리
         Part reviewImgPart = req.getPart("reviewImg");
         String reviewImg = ""; // 파일 이름 변경을 위한 변수 초기화
 
-        // 파일이 업로드된 경우
+       
         if (reviewImgPart.getSize() > 0) {
-            // 파일을 서버에 저장하기
-            String originFileName = reviewImgPart.getSubmittedFileName(); // 원본 파일 이름을 가져옴
-            InputStream is = reviewImgPart.getInputStream(); // 파일의 입력 스트림을 가져옴
+     
+            String originFileName = reviewImgPart.getSubmittedFileName(); 
+            InputStream is = reviewImgPart.getInputStream(); 
 
             
             ServletContext context = getServletContext();
@@ -105,7 +83,7 @@ public class MemberReviewContentWriterController extends HttpServlet {
         }
 
         ReviewWriterVo vo = new ReviewWriterVo();
-        vo.setOrderNo(orderNo);
+    
         vo.setRating(rating);
         vo.setMemberContent(memberContent);
         vo.setReviewImg(reviewImg);  // 저장된 파일 이름 설정
@@ -115,7 +93,7 @@ public class MemberReviewContentWriterController extends HttpServlet {
         int result = 0;
         try {
             result = ms.reviewContent(vo);
-            result = ms.contentDeliveryProblem(vo);
+          
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -126,7 +104,6 @@ public class MemberReviewContentWriterController extends HttpServlet {
             req.setAttribute("memberContent", memberContent);
             req.setAttribute("reviewImg", reviewImg);
             req.setAttribute("rating", rating);
-            req.setAttribute("orderNo", orderNo);
             req.getRequestDispatcher("/WEB-INF/views/member/reviewList.jsp").forward(req, resp);
         } else {
             req.setAttribute("message", "리뷰 저장에 실패했습니다.");

@@ -1,36 +1,37 @@
 function validateLogin() {
 
-    document.getElementById('id').addEventListener('keydown', function() {
-    hideErrorMessage('id-error');
-});
-document.getElementById('password').addEventListener('keydown', function() {
-    hideErrorMessage('password-error');
-});
-      clearErrors();
-      var id = document.getElementById('id').value;
-      var password = document.getElementById('password').value;
-      var isValid = true;
+	document.getElementById('id').addEventListener('keydown', function() {
+		hideErrorMessage('id-error');
+	});
+	document.getElementById('password').addEventListener('keydown', function() {
+		hideErrorMessage('password-error');
+	});
+	clearErrors();
+	var id = document.getElementById('id').value;
+	var password = document.getElementById('password').value;
+	var isValid = true;
 
-      if (id.length < 4 || id.length > 10) {
-          document.getElementById('id-error').innerText = '아이디는 4~10자여야 합니다.';
-          isValid = false;
-      }
-      if (password.length < 4 || password.length > 10) {
-          document.getElementById('password-error').innerText = '비밀번호는 4~10자여야 합니다.';
-          isValid = false;
-      }
+	if (id.length < 4 || id.length > 10) {
+		document.getElementById('id-error').innerText = '아이디는 4~10자여야 합니다.';
+		isValid = false;
+	}
+	if (password.length < 4 || password.length > 10) {
+		document.getElementById('password-error').innerText = '비밀번호는 4~10자여야 합니다.';
+		isValid = false;
+	}
 
-      if (isValid) {
-          document.getElementById('loginForm').submit();
-      
- 
-    }
-  }
-  function hideErrorMessage(id) {
-document.getElementById(id).innerText = '';
+	if (isValid) {
+		document.getElementById('loginForm').submit();
+
+
+	}
 }
 
-  function clearErrors() {
-      document.getElementById('id-error').innerText = '';
-      document.getElementById('password-error').innerText = '';
-  }
+function hideErrorMessage(id) {
+	document.getElementById(id).innerText = '';
+}
+
+function clearErrors() {
+	document.getElementById('id-error').innerText = '';
+	document.getElementById('password-error').innerText = '';
+}
