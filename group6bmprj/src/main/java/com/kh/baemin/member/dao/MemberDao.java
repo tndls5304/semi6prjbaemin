@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.kh.baemin.member.vo.DeliveryProblemVo;
 import com.kh.baemin.member.vo.MemberVo;
 import com.kh.baemin.member.vo.ReviewWriterVo;
 import com.kh.baemin.member.vo.StoreOrderVo;
@@ -25,7 +26,7 @@ public class MemberDao {
 	}
 
 	public int reviewStatus(SqlSession ss, ReviewWriterVo vo) {
-		return ss.update("MemberMapper.reviewStatus", vo);
+		return ss.insert("MemberMapper.reviewStatus", vo);
 	}
 
 	public int reviewContent(SqlSession ss, ReviewWriterVo vo) {
@@ -53,14 +54,19 @@ public class MemberDao {
 	    }
 
 
-	public int contentDeliveryProblem(SqlSession ss, ReviewWriterVo vo) {
-		return ss.update("MemberMapper.contentDeliveryProblem", vo);
-	}
+
 
 	public int MemberAccount(SqlSession ss, MemberVo vo) {
 		System.out.println("매퍼 들어가기전 vo" + vo);
 		return ss.update("MemberMapper.account", vo);
 	
+	}
+
+	public List<DeliveryProblemVo> selectDeliveryProblem(SqlSession ss) {
+		return ss.selectList("MemberMapper.selectDeliveryProblem");
+		
+	
+				//("MemberMapper.selectDeliveryProblem");
 	}
 
 	

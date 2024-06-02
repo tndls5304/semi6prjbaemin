@@ -92,6 +92,7 @@
 		resultType="com.kh.baemin.member.vo.StoreOrderVo">
 
 		SELECT
+		'1' orderNo,
 		'1717069005724_a8c5eb0a-2785-475a-b9d2-a2ea2c4912ae.png' AS storeImg,
 		'마라천국' AS storeName,
 		'마라탕' AS storeFoodName,
@@ -105,6 +106,7 @@
 		union all
 
 		SELECT
+		'2' orderNo,
 		'1717069005724_a8c5eb0a-2785-475a-b9d2-a2ea2c4912ae.png' AS storeImg,
 		'김밥나라' AS storeName,
 		'참치김밥' AS storeFoodName,
@@ -134,11 +136,11 @@
 		WHERE id = #{id}
 	</select>
 
-	<update id="reviewStatus">
+	<insert id="reviewStatus">
 		UPDATE DELIVERY_PROBLEM
 		SET DELIVERY_PROBLEM = #{deliveryProblem}
 		WHERE no = #{no}
-	</update>
+	</insert>
 
 	<insert id="reviewContent">
 		INSERT INTO REVIEW_COMMUNICATION
@@ -147,7 +149,6 @@
 		ORDER_NO,
 		RATING,
 		USER_CONTENT,
-		STORE_CONTENT,
 		IMG,
 		ENROLL_DATE,
 		DEL_YN
@@ -155,10 +156,9 @@
 		VALUES
 		(
 		SEQ_REVIEW_COMMUNICATION_NO.NEXTVAL,
-		SEQ_ORDER_SHEET_NO.NEXTVAL,
+		#{orderNo}
 		#{rating},
 		#{memberContent},
-		0,
 		#{reviewImg},
 		SYSDATE,
 		'N'
@@ -178,5 +178,13 @@
 		ADDRESS=#{address},ADDRESS_DETAIL=#{addressDetail}
 		WHERE NO=${no}
 	</update>
+	
+	<select id="selectDeliveryProblem" resultType="com.kh.baemin.member.vo.DeliveryProblemVo">
+SELECT DELIVERY_PROBLEM,ORDER_NO
+FROM DELIVERY_PROBLEM D
+JOIN REVIEW_COMMUNICATION R 
+ON D.NO = R.NO 
+		
+	</select>
 
 </mapper>
