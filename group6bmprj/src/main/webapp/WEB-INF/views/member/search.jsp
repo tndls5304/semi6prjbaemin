@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -217,27 +218,46 @@
             </div>
         </header>
         <main>
-            <div class="main-div">
-                <strong class="margin-left">가장 많이 검색하고 있어요<br></strong>
-                <small class="small-text" id="margin-left">05.15 기준</small>
-                <img src="/baemin/resources/img/popular.jpg" class="popular">
-                <div class="main-div2">
-                    <div class="column">
-                        <p>1. 요아정</p>
-                        <p>2. 타코야끼</p>
-                        <p>3. 피자나라치킨공주</p>
-                        <p>4. 가마치통닭</p>
-                        <p>5. 뭐시기</p>
+
+            <c:choose>
+                <c:when test="${empty searchText}">
+                    <div class="main-div">
+                        <strong class="margin-left">가장 많이 검색하고 있어요<br></strong>
+                        <small class="small-text" id="margin-left">05.15 기준</small>
+                            <%--                <img src="/baemin/resources/img/popular.jpg" class="popular">--%>
+                        <div class="main-div2">
+
+                                <%--  firstPart c:forEach 출력 --%>
+
+
+                            <div class="column">
+                                <c:forEach var="store" items="${firstPart}" varStatus="varStatus">
+                                    <p>${varStatus.count}. ${store.name}</p>
+                                </c:forEach>
+                            </div>
+                            <div class="column">
+                                <c:forEach var="store" items="${secondPart}" varStatus="varStatus">
+                                    <p>${varStatus.count}. ${store.name}</p>
+                                </c:forEach>
+                            </div>
+                        </div>
                     </div>
-                    <div class="column">
-                        <p>6. 뭐시기</p>
-                        <p>7. 뭐시기</p>
-                        <p>8. 뭐시기</p>
-                        <p>9. 뭐시기</p>
-                        <p>10. 뭐시기</p>
-                    </div>
-                </div>
-            </div>
+                </c:when>
+                <c:otherwise>
+                    <%-- storeInforList --%>
+                    <c:forEach items="${storeInforList}" var="storeInfor">
+                        <div class="main-div">
+
+                            <%-- 왼쪽에 이미지를 넣고 우측에 정보를 6개 정도 넣을수 있는 박스 만들어줘 --%>
+                            <b>${storeInfor.name}</b>
+                            <p>${storeInfor.introduce}</p>
+                            <img style="width: 100%" src="/baemin/resources${storeInfor.introductionImg}" >
+
+                        </div>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
+
         </main>
     </div>
 
@@ -248,12 +268,12 @@
 
         function submitSearch() {
             const searchTerm = searchInput.value.trim();
+
             if (searchTerm === '') {
                 alert('검색어를 입력해주세요!'); // 검색어가 비어있을 때 알림창 띄우기
                 footerSpan.style.display = 'block';
             } else {
-                alert(`Searching for: ${searchTerm}`);
-                footerSpan.style.display = 'none';
+                location.href = `/baemin/member/search?searchText=` + searchTerm;
             }
         }
     </script>
