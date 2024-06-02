@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import com.kh.baemin.store.service.StoreInforService;
+import com.kh.baemin.store.service.StoreOwnerService;
 import com.kh.baemin.util.file.FileUpload;
 
 
@@ -65,6 +66,10 @@ public class StoreAdmitController extends HttpServlet {
 
 
 		try {
+			 HttpSession session=req.getSession();
+			 StoreOwnerVo loginStoreOwnerVo= (StoreOwnerVo) session.getAttribute("loginStoreOwnerVo");
+	         String storeOwnerNo=loginStoreOwnerVo.getNo();
+
 
 			StoreInforVo storeInforVo = new StoreInforVo();
 			storeInforVo.setName(name);
@@ -77,6 +82,9 @@ public class StoreAdmitController extends HttpServlet {
 			storeInforService.insertStoreInfor(storeInforVo);
 
 			req.setAttribute("storeInforVo", storeInforVo);
+			
+	        session.setAttribute("storeInforNo", storeInforVo.getNo());
+			
 			resp.sendRedirect("/baemin/store/admit");
 
 	    }catch(Exception e) {

@@ -146,7 +146,7 @@
             <h2>가게 허가 신청</h2>
         </div>
         <div class="file-upload">
-            <form action="submit_file.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+            <form action="/baemin/store/admit" method="post" id = "storeAdmit" onsubmit="return validateForm()">
                 <div class="form-group">
                     <div class="form-group-row">
                         <label for="name">가게 이름:</label>
@@ -164,22 +164,22 @@
                 <div class="form-group">
                     <div class="form-group-row">
                         <label for="address-detail">가게 상세 주소:</label>
-                        <input type="text" id="address_detail" name="address_detail" required>
+                        <input type="text" id="addressDetail" name="addressDetail" required>
                     </div>
                     <p id="addressDetailError">15글자 내로 작성해주세요.</p>
                 </div>
                  <div class="form-group">
                     <div class="form-group-row">
                         <label for="delivery_zone">배달 지역 : </label>
-                        <input type="text" id="delivery_zone" name="delivery_zone" required> 
+                        <input type="text" id="deliveryZone" name="deliveryZone" required> 
                        <!-- 조건 안맞으면 되돌리기 --> 
                     </div>
                     <p id="addressDetailError">15글자 내로 작성해주세요.</p>
                 </div>
                 <div class="form-group">
                     <div class="form-group-row">
-                        <label for="store_category_no">가게 종목:</label>
-                        <select id="store_category_no" name="store_category_no" required>
+                        <label for="storeCategoryNo">가게 종목:</label>
+                        <select id="storeCategoryNo" name="storeCategoryNo" required>
                             <option value="1">찜,탕,찌개</option>
                             <option value="2">족발,보쌈</option>
                             <option value="3">돈까스,회,일식</option>
@@ -203,14 +203,14 @@
                 </div>
                 <div class="form-group">
                     <div class="form-group-row">
-                        <label for="company_resistraion_number">사업자 등록 번호:</label>
-                        <input type="text" id="company_resistraion_number" name="company_resistraion_number" required>
+                        <label for="companyResistraionNumber">사업자 등록 번호:</label>
+                        <input type="text" id="companyResistraionNumber" name="companyResistraionNumber" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-group-row">
-                        <label for="business_resistration">사업자 등록증:</label>
-                        <input type="file" id="business_resistration" name="business_resistration" required>
+                        <label for="businessResistration">사업자 등록증:</label>
+                        <input type="file" id="businessResistration" name="businessResistration" required>
                     </div>
                 </div>
                 <div class="form-group">

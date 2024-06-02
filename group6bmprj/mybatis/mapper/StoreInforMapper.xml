@@ -28,7 +28,9 @@
 		FROM STORE_INFOR WHERE STORE_ID = #{searchText} 
 	</select>
 	
-	<select id="getDeliveryZoneNoByLocalName"> SELECT ZONE_NUMBER FROM LOCAL_NAME WHERE ADDRESS = #{localName} </select>
+	<select id="getDeliveryZoneNoByLocalName"> 
+	SELECT ZONE_NUMBER FROM LOCAL_NAME WHERE ADDRESS = #{localName} 
+	</select>
 	
 	<insert id="insertStoreInfor" parameterType="com.kh.baemin.store.vo.StoreInforVo">
 	<selectKey keyProperty="no" resultType="int" order="BEFORE"> 
@@ -43,7 +45,9 @@
 		VALUES ( #{no}, #{name}, #{address}, #{addressDetail}, #{storeCategoryNo}, #{businessRegistrationCertificateImg}, )
 	</insert>
 	
-	<insert id="insertStoreZone"> INSERT INTO STORE_ZONE ( STORE_NO, ZONE_NO ) VALUES ( #{storeNo}, #{zoneNo} ) </insert>
+	<insert id="insertStoreZone"> 
+	INSERT INTO STORE_ZONE ( STORE_NO, ZONE_NO ) VALUES ( #{storeNo}, #{zoneNo} ) 
+	</insert>
 	
 	<select id="getStoreInfor" resultType="com.kh.baemin.store.vo.StoreInforVo"> 
 		SELECT 
