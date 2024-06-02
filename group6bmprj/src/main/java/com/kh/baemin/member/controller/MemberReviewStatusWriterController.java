@@ -16,67 +16,42 @@ import com.kh.baemin.member.vo.ReviewWriterVo;
 @WebServlet("/member/reviewStatusWriter")
 public class MemberReviewStatusWriterController extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
-        System.out.println(loginMemberVo);
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        if (loginMemberVo == null) {
-            System.out.println("로그인 필요");
-            resp.sendRedirect("/baemin/member/login");
-            return;
-        }
-        
-        
-        String orderNo = req.getParameter("orderNo");
-        
+		req.getRequestDispatcher("/WEB-INF/views/member/reviewStatusWriter.jsp").forward(req, resp);
+	}
 
-        req.getRequestDispatcher("/WEB-INF/views/member/reviewStatusWriter.jsp").forward(req, resp);
-    }
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
+		System.out.println(loginMemberVo);
+		String no = loginMemberVo.getNo();
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
-        System.out.println(loginMemberVo);
+		String deliveryProblem = req.getParameter("deliveryProblem");
 
-        
-        if (loginMemberVo == null) {
-            System.out.println("로그인 필요");
-            resp.sendRedirect("/baemin/member/login");
-            return;
-        }
-        
-        // 로그인 회원의 회원번호 가져오기
-     //   String no = loginMemberVo.getNo();
-        
-        String deliveryProblem = req.getParameter("deliveryProblem");
-        String orderNo =req.getParameter("orderNo");
+		ReviewWriterVo vo = new ReviewWriterVo();
+		vo.setDeliveryProblem(deliveryProblem);
 
-        ReviewWriterVo vo = new ReviewWriterVo();
-        vo.setDeliveryProblem(deliveryProblem);
-       vo.setOrderNo(orderNo);
+		System.out.println("배달 문제" + vo);
 
-        MemberService ms = new MemberService();
-        int result = 0;
+		MemberService ms = new MemberService();
+		int result = 0;
 
-        try {
-            result = ms.reviewStatus(vo);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+		try {
+			result = ms.reviewStatus(vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-        if (result == 1) {
-           
-            session.setAttribute("deliveryProblem", deliveryProblem);
-            req.setAttribute("message", "리뷰가 성공적으로 저장되었습니다.");
-            req.setAttribute("deliveryProblem", deliveryProblem);
-            req.setAttribute("orderNo", orderNo);
-            req.getRequestDispatcher("/WEB-INF/views/member/reviewContentWriter.jsp").forward(req, resp);
-        } else {
-            req.setAttribute("message", "리뷰 저장에 실패했습니다.");
-            req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
-        }
-    }
+		if (result == 1) {
+
+			resp.sendRedirect("/baemin/member/reviewContentWriter");
+
+		} else {
+
+			req.getRequestDispatcher("/WEB-INF/views/common/error.jsp").forward(req, resp);
+		}
+	}
 }

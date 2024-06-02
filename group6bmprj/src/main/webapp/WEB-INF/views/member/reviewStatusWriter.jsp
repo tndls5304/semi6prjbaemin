@@ -31,31 +31,15 @@
                     <button type="button" value="6" class="option btn btn-danger">다른 주소에 도착😒</button>
                     <button type="button" value="7" class="option btn btn-danger">해당 사항 없음 😊</button>
                     
-            </form>
         </div>
         <div>
-           <input type="hidden" name="orderNo" value="<%= request.getAttribute("orderNo") != null ? request.getAttribute("orderNo") : "" %>">
             <button id="nextButton" class="next-button">다음</button>
         </div>
+            </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('reviewForm');
-            const buttons = document.querySelectorAll('.option');
-            const nextButton = document.getElementById('nextButton');
-            const deliveryProblemInput = document.getElementById('deliveryProblem');
-
-            buttons.forEach(button => {
-                button.addEventListener('click', () => {
-                    deliveryProblemInput.value = button.value;
-                });
-            });
-
-            nextButton.addEventListener('click', () => {
-                form.submit();
-            });
-        });
+    
     </script>
 </body>
 </html>

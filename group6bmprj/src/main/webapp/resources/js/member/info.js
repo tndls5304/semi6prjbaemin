@@ -1,10 +1,4 @@
-   // 초기 잔액 설정
-   let balance = 0;
 
-   // 잔액을 업데이트하고 화면에 표시하는 함수
-   function updateBalanceDisplay() {
-       document.getElementById('balanceAmount').innerText = balance;
-   }
    
    // 배민페이 충전 함수
    function chargeBaeminPay() {
@@ -19,6 +13,3 @@
            alert("충전 금액을 입력하세요.");
        }
    }
-   
-   // 페이지 로드 시 초기 잔액 표시
-   updateBalanceDisplay(); // 초기 잔액을 화면에 표시합니다.

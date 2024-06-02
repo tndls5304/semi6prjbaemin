@@ -13,28 +13,7 @@
     <link rel="stylesheet" href="/baemin/resources/css/member/reviewContent.css">
     <title>리뷰 작성 페이지</title>
     <style>
-        .star-rating {
-            direction: rtl;
-            display: flex;
-            justify-content: center;
-            margin: 10px 0;
-        }
-        .star-rating input[type="radio"] {
-            display: none;
-        }
-        .star-rating label {
-            font-size: 2rem;
-            color: gray;
-            cursor: pointer;
-            padding: 0 5px;
-        }
-        .star-rating input[type="radio"]:checked ~ label {
-            color: gold;
-        }
-        .star-rating label:hover,
-        .star-rating label:hover ~ label {
-            color: gold;
-        }
+      
     </style>
 </head>
 <body>
@@ -45,7 +24,7 @@
         <div class="starlating"><h2>별점</h2></div>
 
         <form action="/baemin/member/reviewContentWriter" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="deliveryProblem" value="<%= request.getAttribute("deliveryProblem") != null ? request.getAttribute("deliveryProblem") : "" %>">
+            <input type="hidden" name="deliveryProblem" value="<%= request.getAttribute("deliveryProblem")%>">
             
             <div class="star-rating">
                 <input type="radio" id="star5" name="rating" value="5" /><label for="star5">★</label>

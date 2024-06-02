@@ -25,7 +25,7 @@ public class MemberDao {
 	}
 
 	public int reviewStatus(SqlSession ss, ReviewWriterVo vo) {
-		return ss.insert("MemberMapper.reviewStatus", vo);
+		return ss.update("MemberMapper.reviewStatus", vo);
 	}
 
 	public int reviewContent(SqlSession ss, ReviewWriterVo vo) {
@@ -58,7 +58,9 @@ public class MemberDao {
 	}
 
 	public int MemberAccount(SqlSession ss, MemberVo vo) {
-		return ss.update("MemberMapper.Account", vo);
+		System.out.println("매퍼 들어가기전 vo" + vo);
+		return ss.update("MemberMapper.account", vo);
+	
 	}
 
 	

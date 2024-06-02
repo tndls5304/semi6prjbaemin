@@ -164,28 +164,6 @@ public int reviewContent(ReviewWriterVo vo) throws Exception {
 	return result;
 }
 
-//// 리뷰를 저장하는 메서드
-//public int reviewList(ReviewWriterVo vo) throws Exception {
-//    SqlSession ss = getSqlSession();
-//    int result = 0;
-//
-//    try {
-//        MemberDao dao = ss.getMapper(MemberDao.class);
-//        result = dao.insertReview(vo);
-//        if (result > 0) {
-//            ss.commit();
-//        } else {
-//            ss.rollback();
-//        }
-//    } catch (Exception e) {
-//        ss.rollback();
-//        throw e;
-//    } finally {
-//        ss.close();
-//    }
-//
-//    return result;
-//}
 
 // 리뷰 리스트를 가져오는 메서드
 public List<ReviewWriterVo> reviewList(ReviewWriterVo vo) throws Exception {
@@ -238,12 +216,19 @@ public int contentDeliveryProblem(ReviewWriterVo vo) throws Exception {
 	return result;
 }
 
-public int updateAccount(String no) throws Exception {
+public int updateAccount(MemberVo vo) throws Exception {
+	System.out.println("디비 가기전 멤버 브이오"+vo);
 //	- DAO호출
 	SqlSession ss = getSqlSession();
-	int result = dao.MemberAccount(ss, no);
-	ss.close();
 	
+	int result = dao.MemberAccount(ss, vo);
+	
+	if(result == 1) {
+		ss.commit();
+		
+	}else {
+		ss.rollback();
+	} 
 	return result;
 }
 

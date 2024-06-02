@@ -70,10 +70,15 @@
             </div>
             <div class="baeminpay">
                 <h1>페이💰</h1>
-                <form id="chargeForm" method="POST" action="/baemin/member/info" class="mt-3">
-                    <input type="number" id="amountInput" name="accountBalance" class="form-control" placeholder="충전할 금액을 입력하세요">
-                    <button type="submit" class="btn btn-primary blue-button mt-5">충전</button>
-                    <div id="balanceDisplay">현재 잔액: <span id="balanceAmount"><%= loginMemberVo.getAccountBalance() %></span>원</div>
+                <form id="chargeForm" method="POST" action="/baemin/member/account" class="mt-3">
+                    <input type="number" id="amountInput" name="chargeAmount" class="form-control" placeholder="충전할 금액을 입력하세요">
+                    
+           
+                         <button type="submit" class="btn btn-primary blue-button mt-5">충전</button>
+                                                                                                
+
+                    <div id="balanceDisplay">현재 잔액: <span id="balanceAmount" name="accountBalance">
+                    <%=loginMemberVo.getAccountBalance() %></span>원</div>
                 </form>
             </div>
         </main>

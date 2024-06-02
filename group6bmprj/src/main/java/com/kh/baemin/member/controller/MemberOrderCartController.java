@@ -24,11 +24,6 @@ public class MemberOrderCartController extends HttpServlet {
 			System.out.println(loginMemberVo);
 			
 
-			if (loginMemberVo == null) {
-				System.out.println("로그인 필요");
-				resp.sendRedirect("/baemin/member/login");
-				return;
-			}
 			
         
         MemberService ms = new MemberService();
@@ -40,29 +35,8 @@ public class MemberOrderCartController extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String storeImg = req.getParameter("storeImg"); 
-        String storeName = req.getParameter("storeName"); 
-        String storeFood = req.getParameter("storeFood"); 
-        String foodPrice = req.getParameter("foodPrice"); 
-        String foodImg = req.getParameter("foodImg"); 
+   
         
-        StoreOrderVo vo = new StoreOrderVo();
-        vo.setStoreImg(storeImg);
-        vo.setStoreName(storeName);
-        vo.setStoreFood(storeFood);
-        vo.setFoodImg(foodImg);
-        vo.setFoodPrice(foodPrice);
-        
-        // 실제로 주문을 저장하는 로직을 추가합니다.
-        MemberService ms = new MemberService();
-        int result = ms.saveOrder(vo);
-        
-        if (result == 1) {
-            req.setAttribute("message", "Order saved successfully!");
-        } else {
-            req.setAttribute("message", "Failed to save order.");
-        }
-        
-        req.getRequestDispatcher("/WEB-INF/views/member/orderCart.jsp").forward(req, resp);
+    
     }
 }

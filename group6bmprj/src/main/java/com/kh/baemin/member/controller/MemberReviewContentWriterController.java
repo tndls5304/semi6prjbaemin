@@ -29,24 +29,7 @@ public class MemberReviewContentWriterController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
-        System.out.println(loginMemberVo);
-        
-        
-        if (loginMemberVo == null) {
-            System.out.println("로그인 필요");
-            resp.sendRedirect("/baemin/member/login");
-            return;
-        }
-   //insert
-        //update
-        String deliveryProblem = req.getParameter("deliveryProblem");
-        String orderNo = req.getParameter("orderNo");
-        System.out.println("Controller > orderNo : " + orderNo);
-
-        req.setAttribute("deliveryProblem", deliveryProblem);
-        req.setAttribute("orderNo", orderNo);
+   
 
         req.getRequestDispatcher("/WEB-INF/views/member/reviewContentWriter.jsp").forward(req, resp);
     }
@@ -57,11 +40,7 @@ public class MemberReviewContentWriterController extends HttpServlet {
         MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
         System.out.println(loginMemberVo);
 
-        if (loginMemberVo == null) {
-            System.out.println("로그인 필요");
-            resp.sendRedirect("/baemin/member/login");
-            return;
-        }
+    
 
         String rating = req.getParameter("rating");
         System.out.println("Rating: " + rating);  // rating 값 출력
