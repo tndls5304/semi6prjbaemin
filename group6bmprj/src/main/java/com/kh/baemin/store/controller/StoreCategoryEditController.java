@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.baemin.store.service.StoreMenuService;
 import com.kh.baemin.store.vo.CategoryVo;
@@ -24,7 +25,14 @@ public class StoreCategoryEditController extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			
-			//TODO StoreNo
+			HttpSession session = req.getSession();
+			
+			//세션에서 가게넘버 빼자
+			String storeNo=(String) session.getAttribute("storeNo");
+		
+			
+			
+			
 			String categoryNoText=req.getParameter("categoryNoText");	
 			//뽑아내는 categoryNoText는 "checkCategoryNo-10"문자열 형태다 숫자만 뽑아내는작업 하기
 			int indexOfDash=categoryNoText.indexOf("-");

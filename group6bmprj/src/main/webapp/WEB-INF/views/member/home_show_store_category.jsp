@@ -36,14 +36,14 @@
 <img src="/baemin/resources/수인img/카테고리-양식.png"	onclick="sendStoreCategoryNo('8','양식')">
 <img src="/baemin/resources/수인img/카테고리-1인분.png"	onclick="sendStoreCategoryNo('9','1인분')">
 <img src="/baemin/resources/수인img/카테고리-치킨.png"	onclick="sendStoreCategoryNo('10','치킨')">
-<img src="/baemin/resources/수인img/카테고리-중식.png"	onclick="sendStoreCategoryNo('11','중식'">
-<img src="/baemin/resources/수인img/카테고리-아시안.png"	onclick="sendStoreCategoryNo('12','아시안'">
-<img src="/baemin/resources/수인img/카테고리-백반국수.png"	onclick="sendStoreCategoryNo('13','백반죽국수'">
-<img src="/baemin/resources/수인img/카테고리-도시락.png"	onclick="sendStoreCategoryNo('14','도시락'">
-<img src="/baemin/resources/수인img/카테고리-분식.png"	onclick="sendStoreCategoryNo('15','분식'">
-<img src="/baemin/resources/수인img/카테고리-카페디저트.png"	onclick="sendStoreCategoryNo('16','카페디저트'">
-<img src="/baemin/resources/수인img/카테고리-채식.png"	onclick="sendStoreCategoryNo('17','채식'">
-<img src="/baemin/resources/수인img/카테고리-반찬.png"	onclick="sendStoreCategoryNo('18','반찬'">
+<img src="/baemin/resources/수인img/카테고리-중식.png"	onclick="sendStoreCategoryNo('11','중식')">
+<img src="/baemin/resources/수인img/카테고리-아시안.png"	onclick="sendStoreCategoryNo('12','아시안')">
+<img src="/baemin/resources/수인img/카테고리-백반국수.png"	onclick="sendStoreCategoryNo('13','백반죽국수')">
+<img src="/baemin/resources/수인img/카테고리-도시락.png"	onclick="sendStoreCategoryNo('14','도시락')">
+<img src="/baemin/resources/수인img/카테고리-분식.png"	onclick="sendStoreCategoryNo('15','분식')">
+<img src="/baemin/resources/수인img/카테고리-카페디저트.png"	onclick="sendStoreCategoryNo('16','카페디저트')">
+<img src="/baemin/resources/수인img/카테고리-채식.png"	onclick="sendStoreCategoryNo('17','채식')">
+<img src="/baemin/resources/수인img/카테고리-반찬.png"	onclick="sendStoreCategoryNo('18','반찬')">
 </div>
 
 <form action="/baemin/member/change_address" method="POST">

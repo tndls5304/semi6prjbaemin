@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.baemin.store.service.StoreMenuService;
 import com.kh.baemin.store.vo.CategoryVo;
@@ -22,8 +23,14 @@ public class StoreCategoryDeleteController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			
+			HttpSession session = req.getSession();
+			
+			//세션에서 가게넘버 빼자
+			String storeNo=(String) session.getAttribute("storeNo");
+		
 
-			// TODO StoreNo
+			
 
 			String categoryNoText = req.getParameter("categoryNoText");
 System.out.println(categoryNoText);
@@ -33,6 +40,7 @@ System.out.println(categoryNoText);
 System.out.println(no); 
 			CategoryVo vo = new CategoryVo();
 			vo.setNo(no);
+			
 			// TODO StoreNo
 			vo.setStoreNo("1");
 
