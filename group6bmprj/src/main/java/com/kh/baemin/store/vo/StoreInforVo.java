@@ -1,7 +1,5 @@
 package com.kh.baemin.store.vo;
 
-import java.util.List;
-
 public class StoreInforVo {
 	
 	private String no;
@@ -22,37 +20,12 @@ public class StoreInforVo {
 	private String storeOwnerNo;
 	private String storeCategoryNo;
 	private String approvalStatusNo;
-	private List<String> foodImgList;
-	public StoreInforVo() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public StoreInforVo(String no, String name, String address, String addressDetail,
-			String businessRegistrationCertificateImg, String introductionImg, String introduce, String mainImg,
-			String phone, String minimumOrderAmount, String viewedCnt, String openTime, String endTime,
-			String breakTimeStart, String breakTimeEnd, String storeOwnerNo, String storeCategoryNo,
-			String approvalStatusNo, List<String> foodImgList) {
-		super();
-		this.no = no;
-		this.name = name;
-		this.address = address;
-		this.addressDetail = addressDetail;
-		this.businessRegistrationCertificateImg = businessRegistrationCertificateImg;
-		this.introductionImg = introductionImg;
-		this.introduce = introduce;
-		this.mainImg = mainImg;
-		this.phone = phone;
-		this.minimumOrderAmount = minimumOrderAmount;
-		this.viewedCnt = viewedCnt;
-		this.openTime = openTime;
-		this.endTime = endTime;
-		this.breakTimeStart = breakTimeStart;
-		this.breakTimeEnd = breakTimeEnd;
-		this.storeOwnerNo = storeOwnerNo;
-		this.storeCategoryNo = storeCategoryNo;
-		this.approvalStatusNo = approvalStatusNo;
-		this.foodImgList = foodImgList;
-	}
+	private String localName;
+	private String storeOwnerPhone;
+	private String openYn;
+
+
+
 	public String getNo() {
 		return no;
 	}
@@ -161,12 +134,30 @@ public class StoreInforVo {
 	public void setApprovalStatusNo(String approvalStatusNo) {
 		this.approvalStatusNo = approvalStatusNo;
 	}
-	public List<String> getFoodImgList() {
-		return foodImgList;
+	public String getLocalName() {
+		return localName;
 	}
-	public void setFoodImgList(List<String> foodImgList) {
-		this.foodImgList = foodImgList;
+
+	public String getStoreOwnerPhone() {
+		return storeOwnerPhone;
 	}
+
+	public void setStoreOwnerPhone(String storeOwnerPhone) {
+		this.storeOwnerPhone = storeOwnerPhone;
+	}
+
+	public void setLocalName(String localName) {
+		this.localName = localName;
+	}
+
+	public String getOpenYn() {
+		return openYn;
+	}
+
+	public void setOpenYn(String openYn) {
+		this.openYn = openYn;
+	}
+
 	@Override
 	public String toString() {
 		return "StoreInforVo [no=" + no + ", name=" + name + ", address=" + address + ", addressDetail=" + addressDetail
@@ -175,14 +166,38 @@ public class StoreInforVo {
 				+ ", minimumOrderAmount=" + minimumOrderAmount + ", viewedCnt=" + viewedCnt + ", openTime=" + openTime
 				+ ", endTime=" + endTime + ", breakTimeStart=" + breakTimeStart + ", breakTimeEnd=" + breakTimeEnd
 				+ ", storeOwnerNo=" + storeOwnerNo + ", storeCategoryNo=" + storeCategoryNo + ", approvalStatusNo="
-				+ approvalStatusNo + ", foodImgList=" + foodImgList + "]";
+				+ approvalStatusNo + "]";
 	}
-
+	public StoreInforVo(String no, String name, String address, String addressDetail,
+			String businessRegistrationCertificateImg, String introductionImg, String introduce, String mainImg,
+			String phone, String minimumOrderAmount, String viewedCnt, String openTime, String endTime,
+			String breakTimeStart, String breakTimeEnd, String storeOwnerNo, String storeCategoryNo,
+			String approvalStatusNo) {
+		super();
+		this.no = no;
+		this.name = name;
+		this.address = address;
+		this.addressDetail = addressDetail;
+		this.businessRegistrationCertificateImg = businessRegistrationCertificateImg;
+		this.introductionImg = introductionImg;
+		this.introduce = introduce;
+		this.mainImg = mainImg;
+		this.phone = phone;
+		this.minimumOrderAmount = minimumOrderAmount;
+		this.viewedCnt = viewedCnt;
+		this.openTime = openTime;
+		this.endTime = endTime;
+		this.breakTimeStart = breakTimeStart;
+		this.breakTimeEnd = breakTimeEnd;
+		this.storeOwnerNo = storeOwnerNo;
+		this.storeCategoryNo = storeCategoryNo;
+		this.approvalStatusNo = approvalStatusNo;
+	}
+	public StoreInforVo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
-	
-	
-	
-
 	
 	
 	

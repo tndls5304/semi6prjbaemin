@@ -15,11 +15,11 @@ public class StoreAdmitService {
 		dao = new StoreAdmitDao();
 	}
 	
-		//í—ˆê°€ ìƒíƒœ ì¡°íšŒ
+		//Çã°¡ »óÅÂ Á¶È¸
 //		public List<StoreInforVo> selectStoreInForList() throws Exception {
-			// ë¹„ì¦ˆë‹ˆìŠ¤ ë¡œì§
+			// ºñÁî´Ï½º ·ÎÁ÷
 			
-			// DAO í˜¸ì¶œ
+			// DAO È£Ãâ
 //			SqlSession ss = getSqlSession();
 //			List<StoreInforVo> voList = dao.selectBoardList(ss , siv);
 //			
@@ -28,12 +28,12 @@ public class StoreAdmitService {
 //			return voList;
 //		}
 		
-		//í—ˆê°€ ì‹ ì²­í›„ ìˆ˜ì •
+		//Çã°¡ ½ÅÃ»ÈÄ ¼öÁ¤
 		public int writeStoreInfor(StoreAdmitVo vo) throws Exception {
 			
-			// ë¹„ì¦ˆë‹ˆìŠ¤ ë¡œì§
+			// ºñÁî´Ï½º ·ÎÁ÷
 			
-			// DAO í˜¸ì¶œ
+			// DAO È£Ãâ
 			SqlSession ss = getSqlSession();
 			int result = dao.updateStoreInfor(ss,  vo);
 			int result2 = dao.insertStoreInfor(ss, vo);
