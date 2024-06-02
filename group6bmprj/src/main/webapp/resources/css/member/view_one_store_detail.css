@@ -1,0 +1,338 @@
+ body {
+  background-color: rgb(236, 206, 227);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Jua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+/*  배민 앱은 content에요 */
+.content{
+  width: 515px;
+height: 100vh;
+background-color: white;
+
+
+}
+
+
+
+/* 고정 상단바 입니다 */
+header{
+  position: fixed;
+
+  width: 515px;
+  height: 50px;
+
+background-color: white;
+  display: grid;
+grid-template-columns:9fr 1fr ;
+
+}
+/* 제일 위 고정 상단이 header이고 
+윗 상단바의 첫번째 디브 */
+header > div:nth-child(1){
+background-color:white;
+display: grid;
+grid-template-columns: 0.5fr 7fr 1fr ;
+
+padding-bottom: 0px;
+}
+/* 윗 상단바의 두번째 디브 */
+header >div:nth-child(2){
+  font-size: 15px;
+  font-weight: 100;
+
+  margin-top: 0px;
+
+  padding-left: 30px;
+  margin-bottom: 5px;
+  padding-bottom: 0px;
+
+}
+
+
+
+/* 맨 밑의  검색,장바구니,찜,주문내역, my배민 클릭할 수 있는 하단바 입니다 */
+footer{
+  position: fixed;
+margin-bottom: 5px;
+width: 513px;
+height: 45px;
+border: solid 1px;
+bottom:1px;
+display: grid;
+grid-template-columns: repeat(5,1fr);
+background-color: white;
+}
+
+
+
+/* 홈이미지 버튼이에요 */
+.right-bar,.back-img{
+  margin-top: 10px;
+  margin-left: 5px;
+  width: 35px;
+  height: 35px;
+}
+
+/* 상단바에서 뒤로가기버튼   */
+.left-bar :nth-child(1){
+width: 20px;
+height: 30px;
+}
+/* 뒤로가기버튼 옆에 이 페이지의 제목을 담당 */
+.top-bar-name{
+  margin-top: 14px;
+  margin-left: 0px;
+  width: 60x;
+  height: 30px;
+}
+
+footer div{
+  display: grid;
+  grid-template-columns: 3fr lfr;
+}
+footer img{
+  width: 33px;
+  height: 27px;
+  margin-left: 32px;
+}
+
+footer span{
+  font-size: 12px;
+  margin-left: 28px;
+}
+
+
+/* 메인페이지----------------------------- */
+
+main{
+      width: 513px;
+      /* border:1px  solid black; */
+      margin-top: 50px;
+      /* display: grid;
+      grid-template-rows: 4fr 1fr 0.8fr 1fr 3fr 2fr ; */
+
+      height: 755px;
+
+   
+      overflow-y: scroll;
+
+      
+    }
+
+/* 스크롤바 숨기기 (크롬, 사파리, 오페라) */
+main::-webkit-scrollbar {
+    display: none; /* 스크롤바가 보이지 않도록 설정 */
+}
+
+/* 스크롤바 숨기기 (파이어폭스) */
+main {
+    scrollbar-width: none; /* 파이어폭스에서 스크롤바를 숨김 */
+}
+
+/* IE와 엣지 브라우저 */
+main {
+    -ms-overflow-style: none; /* 스크롤바 숨기기 */
+}
+
+
+    
+
+
+.top-viewStore{
+  display: grid;
+      grid-template-rows: 4fr 1fr 0.8fr 1fr 3fr 2fr ;
+      height: 380px;
+      
+
+}
+   .store-name{
+    margin-top: 80px;
+    font-size: 37px;
+    text-align: center;
+    }
+    .star{
+      font-size: 20px;
+      text-align: center;
+    }
+.review-count{
+  font-size: 14px;
+  font-weight: 100;
+  text-align: center;
+  margin-bottom: 0px;
+}
+.heart{
+margin-left: 230px;
+font-size: 15px;
+}
+.delivery-information{
+
+  height: 80px;
+  background: rgb(235, 247, 247);
+}
+
+.select-tab{
+  margin-top: 5px;
+  height: 40px;
+  background-color: blanchedalmond;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+ 
+  
+}
+
+.select-tab span{
+  margin-left: 50px;
+
+}
+
+.tab1,.tab2,.tab3{
+
+  border: solid 1px;
+}
+
+.categoryList{
+  margin-top: 10px;
+}
+.categoryName{
+  font-size: 27px;
+  margin-left: 7px;
+}
+
+.category-foodContentList{
+  display: grid;
+  /* 음식이름,가격 쓰는 구간과  음식사진넣는 구간을 나눔 */
+  grid-template-columns: 3fr 1fr  1fr;
+  background-color: rgb(232, 232, 195);
+  margin-top: 2px;
+}
+.count-button{
+  margin-left: 10px;
+  margin-top: 60px;
+  font-size: 12px;
+}
+
+
+/* 음식이름, 가격쓰는 공간 */
+.foodName{
+  color: rgb(93, 93, 93);
+  margin-top: 10px;
+font-size: 19px;
+margin-left: 15px;
+
+}
+.foodPrice{
+  color: rgb(93, 93, 93);
+  font-size: 14px;
+  margin-left: 20px;
+  margin-top: 25px;
+}
+
+
+
+
+.operationInfo,.business-infor {
+  background-color: rgb(249, 243, 234);
+  height: auto; /* 디브의 높이를 자동으로 설정합니다. */
+margin: 10px;
+font-size: 14px;
+display: flex;
+  flex-direction: row;
+
+}
+
+.operationInfo-right,.businessInfor-right{
+margin-left: 70px;
+}
+.mainPhoto{
+  margin: 20px;
+  text-align: center;  
+}
+.store-introduce{
+  color: grey;
+  margin-top: 0px;
+  margin-bottom: 30px;
+  margin-left: 20px;
+  font-size: 17px;
+  width: 480px;
+  height: auto; /* 디브의 높이를 자동으로 설정합니다. */
+  white-space: pre-wrap; /* 텍스트가 너비를 넘어가면 줄바꿈하여 표시합니다. */
+  word-wrap: break-word; /* 긴 단어가 행의 너비를 넘어가면 줄을 바꿉니다. */
+  overflow-y: scroll; /* 세로 스크롤을 항상 표시합니다. */
+
+}
+
+/* 스크롤바 숨기기 (크롬, 사파리, 오페라) */
+.store-introduce:-webkit-scrollbar{
+    display: none; /* 스크롤바가 보이지 않도록 설정 */
+}
+
+/* 스크롤바 숨기기 (파이어폭스) */
+.store-introduce {
+    scrollbar-width: none; /* 파이어폭스에서 스크롤바를 숨김 */
+}
+
+/* IE와 엣지 브라우저 */
+.store-introduce{
+    -ms-overflow-style: none; /* 스크롤바 숨기기 */
+}
+
+
+ /* 리뷰만--------------------- */
+ .case{
+  background-color: rgb(233, 235, 233);
+  margin-bottom: 15px;
+ }
+ .review-container {
+        background: white;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .review-header {
+        display: flex;
+        align-items: center;
+    }
+    .profile-pic {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #ccc;
+        margin-right: 10px;
+    }
+    .star-rating {
+        color: #f5b01d;
+        font-size: 18px;
+    }
+    .review-content {
+        margin-top: 10px;
+    }
+    .review-images {
+        margin-top: 10px;
+    }
+    .review-images img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+ 
+.review-images {
+    width: 50%; /* or any specific width */
+    max-width: 100px; /* maximum width to ensure responsiveness */
+    height: auto; /* maintains aspect ratio */
+}
+.my-food,.delivery-problem {
+    border: 1px solid #8b8b8b; /* 테두리를 진하게 */
+    padding: 2px 5px; /* 상하 패딩을 줄이고 좌우 패딩을 유지 */
+    margin: 0; /* 외부 여백 제거 */
+    font-size: 16px; /* 글꼴 크기 유지 */
+    border-radius: 10px; /* 모서리 둥글게 */
+    display: inline-block; /* 내용 너비에 맞게 표시 */
+    text-align: center; /* 텍스트 왼쪽 정렬 */
+}

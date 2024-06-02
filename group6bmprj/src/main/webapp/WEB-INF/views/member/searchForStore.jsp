@@ -39,17 +39,18 @@
         </header>
         <main>
  <c:forEach items="${storeInforVoList}"  var="storeInforVo"> 
-        <div class="storeList">
-	          <c:forEach items="${storeInforVo.foodImgList}" var="foodImgVo" >
-	          
-	          
-	                <img width="110px" height="110px"  src="/baemin/resources/upload/${foodImgVo}"alt="">
-	              
-	          </c:forEach>   
-                <div class="storeName">${storeInforVo.name}</div>
-                <div class="minimumMoney">최소주문: ${storeInforVo.minimumOrderAmount}</div>
-         </div>
-
+	<a href="/baemin/member/view_one_store_detail?storeNo=${storeInforVo.no}">
+	        <div class="storeList">
+		          <c:forEach items="${storeInforVo.foodImgList}" var="foodImgVo" >
+		          
+		          
+		                <img width="110px" height="110px"  src="/baemin/resources/upload/${foodImgVo}"alt="">
+		              
+		          </c:forEach>   
+	                <div class="storeName">${storeInforVo.name}</div>
+	                <div class="minimumMoney">최소주문: ${storeInforVo.minimumOrderAmount}</div>
+	         </div>
+	</a>
  </c:forEach>
 
 
