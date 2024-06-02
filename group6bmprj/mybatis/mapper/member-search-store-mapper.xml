@@ -7,31 +7,34 @@
 
 <mapper namespace="memberSearchForStoreMapper">
 
-<resultMap type="com.kh.baemin.store.vo.StoreInforVo" id="storeInforMap">
-	<id column="NO" property="no"/>
-	<result column="NAME" property="name"/>
-	<result column="ADDRESS" property="address"/>
-	<result column="ADDRESS_DETAIL" property="addressDetail"/>
-	<result column="BUSINESS_REGISTRATION_CERTIFICATE_IMG" property="businessRegistrationCertificateImg"/>
-	<result column="INTRODUCTION_IMG" property="introductionImg"/>
-	<result column="INTRODUCE" property="introduce"/>
-	<result column="PHONE" property="phone"/>
-	<result column="MINIMUM_ORDER_AMOUNT" property="minimumOrderAmount"/>
-	<result column="VIEWED_CNT" property="viewedCnt"/>
-	<result column="OPEN_TIME" property="openTime"/>
-	<result column="END_TIME" property="endTime"/>
-	<result column="BREAK_TIME_START" property="breakTimeStart"/>
-	<result column="BREAK_TIME_END" property="breakTimeEnd"/>
-	<result column="STORE_OWNER_NO" property="storeOwnerNo"/>
-	<result column="STORE_CATEGORY_NO" property="storeCategoryNo"/>
-	<result column="APPROVAL_STATUS_NO" property="approvalStatusNo"/>
-	 <collection property="foodImgList"  ofType="string" javaType="list">
-	 	<result column="FOOD_IMG"/>
-	 </collection>
-</resultMap>
+	<resultMap type="com.kh.baemin.store.vo.StoreInforVo"
+		id="storeInforMap">
+		<id column="NO" property="no" />
+		<result column="NAME" property="name" />
+		<result column="ADDRESS" property="address" />
+		<result column="ADDRESS_DETAIL" property="addressDetail" />
+		<result column="BUSINESS_REGISTRATION_CERTIFICATE_IMG"
+			property="businessRegistrationCertificateImg" />
+		<result column="INTRODUCTION_IMG" property="introductionImg" />
+		<result column="INTRODUCE" property="introduce" />
+		<result column="PHONE" property="phone" />
+		<result column="MINIMUM_ORDER_AMOUNT"
+			property="minimumOrderAmount" />
+		<result column="VIEWED_CNT" property="viewedCnt" />
+		<result column="OPEN_TIME" property="openTime" />
+		<result column="END_TIME" property="endTime" />
+		<result column="BREAK_TIME_START" property="breakTimeStart" />
+		<result column="BREAK_TIME_END" property="breakTimeEnd" />
+		<result column="STORE_OWNER_NO" property="storeOwnerNo" />
+		<result column="STORE_CATEGORY_NO" property="storeCategoryNo" />
+		<result column="APPROVAL_STATUS_NO" property="approvalStatusNo" />
+		<collection property="foodImgList" ofType="string"
+			javaType="list">
+			<result column="FOOD_IMG" />
+		</collection>
+	</resultMap>
 
-	<select id="searchForStoreByBasic"
-		resultMap="storeInforMap">
+	<select id="searchForStoreByBasic" resultMap="storeInforMap">
 	<![CDATA[
 	SELECT 
 			R.NO
@@ -97,5 +100,101 @@
 	
 	]]>
 	</select>
+
+
+
+
+	<resultMap id="MemberViewStoreInforMap"
+		type="com.kh.baemin.member.vo.MemberViewStoreInforVo">
+		<id column="NO" property="no" />
+		<result property="name" column="NAME" />
+		<result property="address" column="ADDRESS" />
+		<result property="addressDetail" column="ADDRESS_DETAIL" />
+		<result property="introductionImg" column="INTRODUCTION_IMG" />
+		<result property="introduce" column="INTRODUCE" />
+		<result property="mainImg" column="MAIN_IMG" />
+		<result property="phone" column="PHONE" />
+		<result property="minimumOrderAmount"
+			column="MINIMUM_ORDER_AMOUNT" />
+		<result property="viewedCnt" column="VIEWED_CNT" />
+		<result property="openTime" column="OPEN_TIME" />
+		<result property="endTime" column="END_TIME" />
+		<result property="breakTimeStart" column="BREAK_TIME_START" />
+		<result property="breakTimeEnd" column="BREAK_TIME_END" />
+		<collection property="closedayList"
+			ofType="com.kh.baemin.member.vo.ClosedayVo">
+			<result property="closeday" column="DAY" />
+			<result property="closeComment" column="COMMENTS" />
+		</collection>
+	</resultMap>
+
+	<select id="memberViewStoreInfor"
+		resultMap="MemberViewStoreInforMap">
+		SELECT
+		s.NO,
+		S.NAME,
+		S.ADDRESS,
+		S.ADDRESS_DETAIL,
+		S.INTRODUCTION_IMG,
+		S.INTRODUCE,
+		S.MAIN_IMG,
+		S.PHONE,
+		S.MINIMUM_ORDER_AMOUNT,
+		S.VIEWED_CNT,
+		S.OPEN_TIME,
+		S.END_TIME,
+		S.BREAK_TIME_START,
+		S.BREAK_TIME_END,
+		C.DAY,
+		C.COMMENTS
+		FROM STORE_INFOR S
+		JOIN CLOSED_DAY C ON S.NO = C.STORE_NO
+		WHERE S.NO = #{value}
+	
+	</select>
+
+
+
+
+
+
+
+
+<resultMap id="StoreOfFoodCategoryMap"
+		type="com.kh.baemin.member.vo.StoreOfFoodCategoryVo">
+
+		<id column="NO" property="no" />
+		<result  column="NAME"   property="name" />
+	
+	
+		<collection property="foodInforVoList"
+				ofType="com.kh.baemin.member.vo.FoodInforVo">
+				<result property="no" column="NO" />
+				<result property="name" column="NAME" />
+				<result property="price" column="PRICE" />
+				<result property="foodImg" column="FOOD_IMG" />
+		</collection>
+	</resultMap>
+
+
+
+	<select id="memberViewStoreFoodMenu" resultMap="StoreOfFoodCategoryMap">
+
+		SELECT
+		C.NO
+		,C.NAME
+		,F.NO
+		,F.NAME
+		,F.PRICE
+		,F.FOOD_IMG
+		FROM FOOD_MENU_CATEGORY C
+		JOIN FOOD_INFOR F ON C.NO=F.FOOD_MENU_CATEGORY_NO
+		WHERE C.STORE_NO=#{value} AND C.VIEW_YN='Y' AND C.DEL_YN='N' AND F.VIEW_YN='Y' AND F.DEL_YN='N'
+		ORDER BY C.NO, F.NO
+
+
+
+	</select>
+
 
 </mapper>

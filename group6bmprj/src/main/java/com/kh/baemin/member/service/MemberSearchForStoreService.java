@@ -7,7 +7,9 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.baemin.member.dao.MemberSearchForStoreDao;
+import com.kh.baemin.member.vo.MemberViewStoreInforVo;
 import com.kh.baemin.member.vo.SearchForStoreVo;
+import com.kh.baemin.member.vo.StoreOfFoodCategoryVo;
 import com.kh.baemin.store.vo.StoreInforVo;
 
 public class MemberSearchForStoreService {
@@ -31,5 +33,28 @@ public class MemberSearchForStoreService {
 		ss.close();
 		return storeInforVoList;
 	}
+
+	public MemberViewStoreInforVo memberViewStoreInfor(String storeNo) throws Exception {
+		SqlSession ss=getSqlSession();
+		MemberViewStoreInforVo memberViewStoreInforVo=dao.memberViewStoreInfor(ss,storeNo);
+		
+		if(memberViewStoreInforVo!=null) {
+			ss.commit();
+		}else {
+			ss.rollback();
+		}
+		ss.close();
+		return memberViewStoreInforVo;
+	}
+
+	public List<StoreOfFoodCategoryVo> memberViewStoreFoodMenu(String storeNo) throws Exception {
+		SqlSession ss=getSqlSession();
+		List <StoreOfFoodCategoryVo>storeOfFoodCategoryVoList=dao.memberViewStoreFoodMenu(ss,storeNo);
+		return storeOfFoodCategoryVoList;
+		
+	
+	}
+
+	
 
 }
