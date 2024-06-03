@@ -18,12 +18,12 @@
         <header>
             <div class="top-bar">
                 <div class="left-bar">
-                    <img class="back-img" src="/baemin/resources/수인img/상단바_뒤로가기.jpg" >
+                    <img class="back-img" onclick="location.href='/baemin/member/home'" src="/baemin/resources/수인img/상단바_뒤로가기.jpg" >
                 </div>
                 <div class="middle-bar">
                           <img class="back-img" src="/baemin/resources/수인img/하단바_마이배민.jpg" >
                 </div>
-                <img class="right-bar" src="/baemin/resources/수인img/홈.jpg">
+                <img class="right-bar" onclick="location.href='/baemin/member/home'"  src="/baemin/resources/수인img/홈.png" >
             </div>
             <div class="middle">주소입력칸&nbsp&nbsp&nbsp▽</div>
         </header>

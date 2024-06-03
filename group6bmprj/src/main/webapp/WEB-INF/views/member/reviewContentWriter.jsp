@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class="content">
-        <h1><a href="/home" class="custom-link">x</a></h1>
+        <h1><a href="/baemin/member/reviewStatusWriter" class="custom-link">x</a></h1>
 
         <div>&nbsp;</div>
         <div class="starlating"><h2>별점</h2></div>
