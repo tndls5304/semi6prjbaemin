@@ -185,22 +185,21 @@
 
 				<div id="reviewTab-content" style="display: none;">
 					<!-- 여기는 리뷰 -->
-
+<c:forEach items="oneStoreReviewVoList" var="OneStoreReviewVo">
 					<!-- 손님+ 사장 리뷰 디브 -->
 					<div class="case">
 						<!-- 손님 사진() -->
 						<img div class="profile-pic" src="" alt="">
 						<!-- 손님 닉네임 -->
-						<div class="member-name">손님 닉네임</div>
+						<div class="member-name">손님 ${OneStoreReviewVo.nick}</div>
 
 						<!-- 별점  -->
-						<div class="star-rating">★★★★★</div>
+						<div class="star-rating">${OneStoreReviewVo.rating}점</div>
 						<!-- 손님 리뷰 -->
-						<div class="member-comment">너무 맛있어요너무 맛있어요너무 맛있어요너무 맛있어요너무
-							맛있어요너무 맛있어요너무 맛있어요너무 맛있어요</div>
+						<div class="member-comment">리뷰내용 ${OneStoreReviewVo.userContent}</div>
 						<!-- 리뷰 사진 -->
 					
-						<img div class="review-images" src="" alt="">
+						<img div class="review-images" src="/baemin/resources/upload/${OneStoreReviewVo.img}">
 
 						<div></div>
 						<!--내가 시킨 음식 이름(jstl) -->
@@ -208,54 +207,24 @@
 						<div class="delivery-problem">배달문제선택</div>
 
 
+					<c:if test="${!empty OneStoreReviewVo.storeContent}">
 						<!-- 사장 사진 -->
 						<div class="profile-pic">
 
-							<img src="" alt="">
+							<img src="/baemin/resources/upload/${OneStoreReviewVo.storeownerpic}" alt="">
 						</div>
 						<!-- 사장 이름 표시 -->
 						<div class="ceoname">사장님</div>
 						<!-- 사장 대답 -->
-						<div class="comment-box">안녕하세요! kh 입니다 맛있게 즐겨주셔서 너무 감사합니다
+						<div class="comment-box">${OneStoreReviewVo.storeContent} 
 							...</div>
-
-					</div>
-
+					</c:if>
+			</div>
+</c:forEach>
 
 
 					<!--  리뷰테스트용 반복 하는거 -->
-					<div class="case">
-						<!-- 손님 사진() -->
-						<img div class="profile-pic" src="" alt="">
-						<!-- 손님 닉네임 -->
-						<div class="member-name">손님 닉네임</div>
-
-						<!-- 별점  -->
-						<div class="star-rating">★★★★★</div>
-						<!-- 손님 리뷰 -->
-						<div class="member-comment">너무 맛있어요너무 맛있어요너무 맛있어요너무 맛있어요너무
-							맛있어요너무 맛있어요너무 맛있어요너무 맛있어요</div>
-						<!-- 리뷰 사진 -->
-						<img div class="review-images" src="" alt="">
-
-						<div></div>
-						<!--내가 시킨 음식 이름(jstl) -->
-						<div class="my-food">음식이름</div>
-						<div class="delivery-problem">배달문제선택</div>
-
-
-						<!-- 사장 사진 -->
-						<div class="profile-pic">
-
-							<img src="" alt="">
-						</div>
-						<!-- 사장 이름 표시 -->
-						<div class="ceoname">사장님</div>
-						<!-- 사장 대답 -->
-						<div class="comment-box">안녕하세요! kh 입니다 맛있게 즐겨주셔서 너무 감사합니다
-							...</div>
-
-					</div>
+				
 
 					<!-- 리뷰테스트 끝 -->
 		</main>
