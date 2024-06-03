@@ -12,7 +12,6 @@ import com.kh.baemin.store.vo.StoreInforVo;
 public class MemberSearchForStoreDao {
 
 	public List<StoreInforVo> searchForStoreByBasic(SqlSession ss, SearchForStoreVo searchForStoreVo) {
-		
 		return ss.selectList("memberSearchForStoreMapper.searchForStoreByBasic",searchForStoreVo);
 	}
 
@@ -22,7 +21,6 @@ public class MemberSearchForStoreDao {
 	}
 
 	public List <StoreOfFoodCategoryVo>memberViewStoreFoodMenu(SqlSession ss, String storeNo) {
-		
 		return ss.selectList("memberSearchForStoreMapper.memberViewStoreFoodMenu", storeNo);
 	}
 	

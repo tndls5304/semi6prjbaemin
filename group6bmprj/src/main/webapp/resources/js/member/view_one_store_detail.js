@@ -40,3 +40,26 @@ menuTab.addEventListener("click", function() {
 
 });
 
+
+//장바구니에 담기
+function addCart(foodNo){
+	
+	var countInputPlace=document.querySelector("#countInputPlace");
+	var foodCount=countInputPlace.value;
+	
+	$.ajax({
+		
+		url: '/baemin/member/addcart',
+        type: 'POST',
+        data: { foodNo:foodNo, foodCount:foodCount},
+        
+        success: function(response) {
+            console.log('통신성공');
+        },
+        error: function(error) {
+            console.log('카트담기에러');
+        }
+
+	})
+}
+
