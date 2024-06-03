@@ -2,7 +2,7 @@ package com.kh.baemin.store.service;
 
 import com.kh.baemin.store.dao.StoreInforDao;
 import com.kh.baemin.store.vo.ClosedDayVo;
-import com.kh.baemin.store.vo.StoreCategory;
+import com.kh.baemin.store.vo.StoreCategoryVo;
 import com.kh.baemin.store.vo.StoreInforVo;
 import org.apache.ibatis.session.SqlSession;
 
@@ -115,7 +115,7 @@ public class StoreInforService {
 
     }
 
-    public List<StoreCategory> getStoreCategoryList() throws IOException {
+    public List<StoreCategoryVo> getStoreCategoryList() throws IOException {
         try (SqlSession ss = getSqlSession()) {
             return storeInforDao.getStoreCategoryList(ss);
         }
