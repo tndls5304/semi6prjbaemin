@@ -43,7 +43,7 @@ menuTab.addEventListener("click", function() {
 
 //장바구니에 담기
 function addCart(foodNo){
-	
+ console.log("장바구니버튼 누름? ");;
 	var countInputPlace=document.querySelector("#countInputPlace");
 	var foodCount=countInputPlace.value;
 	
@@ -51,13 +51,15 @@ function addCart(foodNo){
 		
 		url: '/baemin/member/addcart',
         type: 'POST',
-        data: { foodNo:foodNo, foodCount:foodCount},
+        data: {foodNo:foodNo,foodCount:foodCount},
         
-        success: function(response) {
-            console.log('통신성공');
+        success: function(result) {
+		
+            alert('result');
         },
         error: function(error) {
-            console.log('카트담기에러');
+			alert("장바구니 추가중 통신실패")
+
         }
 
 	})

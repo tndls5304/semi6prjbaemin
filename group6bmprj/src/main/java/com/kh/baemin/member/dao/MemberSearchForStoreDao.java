@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.baemin.member.vo.MemberViewStoreInforVo;
+import com.kh.baemin.member.vo.OneStoreReviewVo;
 import com.kh.baemin.member.vo.SearchForStoreVo;
 import com.kh.baemin.member.vo.StoreOfFoodCategoryVo;
 import com.kh.baemin.store.vo.StoreInforVo;
@@ -22,6 +23,11 @@ public class MemberSearchForStoreDao {
 
 	public List <StoreOfFoodCategoryVo>memberViewStoreFoodMenu(SqlSession ss, String storeNo) {
 		return ss.selectList("memberSearchForStoreMapper.memberViewStoreFoodMenu", storeNo);
+	}
+
+	public List<OneStoreReviewVo> memberViewReview(SqlSession ss, String storeNo) {
+		
+		return ss.selectList("memberSearchForStoreMapper.memberViewReview",storeNo);
 	}
 	
 

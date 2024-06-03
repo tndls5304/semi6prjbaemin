@@ -1,12 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script defer src="/baemin/resources/js/member/view_one_store_detail.js"></script>
 <link rel="stylesheet"
 	href="/baemin/resources/css/member/view_one_store_detail.css">
@@ -152,17 +154,16 @@
 
 					<div class="mainPhoto">
 						<!-- 크기 변경 고정하길!!! -->
-						<img width="250px" height="250px"
-							src="baemin/resources/수인img/가게대표사진.jpg"> <img width="250px"
-							height="250px" src="baemin/resources/img/store/.jpg">
+
+							<img width="250px" height="250px" src="/baemin/resources/upload/${MemberViewStoreInforVo.introductionImg}">
 					</div>
 					${memberViewStoreInforVo.introduce}
 
 					<div class="store-introduce"></div>
 					<div class="business-infor">
 						<div class="businessInfor-left">
-							<p>사업자 주소:</p>
-							<p>사업자 등록번호:</p>
+					<!-- 	<p>사업자 주소:</p>
+							<p>사업자 등록번호:</p>  -->	
 
 						</div>
 
@@ -188,7 +189,7 @@
 					<!-- 손님+ 사장 리뷰 디브 -->
 					<div class="case">
 						<!-- 손님 사진() -->
-						<img div class="profile-pic" src="/img/고양이.png">
+						<img div class="profile-pic" src="" alt="">
 						<!-- 손님 닉네임 -->
 						<div class="member-name">손님 닉네임</div>
 
@@ -198,7 +199,8 @@
 						<div class="member-comment">너무 맛있어요너무 맛있어요너무 맛있어요너무 맛있어요너무
 							맛있어요너무 맛있어요너무 맛있어요너무 맛있어요</div>
 						<!-- 리뷰 사진 -->
-						<img div class="review-images" src="/주형 img/햄버거사진.png">
+					
+						<img div class="review-images" src="" alt="">
 
 						<div></div>
 						<!--내가 시킨 음식 이름(jstl) -->
@@ -209,7 +211,7 @@
 						<!-- 사장 사진 -->
 						<div class="profile-pic">
 
-							<img src="/img/고양이.png">
+							<img src="" alt="">
 						</div>
 						<!-- 사장 이름 표시 -->
 						<div class="ceoname">사장님</div>
@@ -224,7 +226,7 @@
 					<!--  리뷰테스트용 반복 하는거 -->
 					<div class="case">
 						<!-- 손님 사진() -->
-						<img div class="profile-pic" src="/img/고양이.png">
+						<img div class="profile-pic" src="" alt="">
 						<!-- 손님 닉네임 -->
 						<div class="member-name">손님 닉네임</div>
 
@@ -234,7 +236,7 @@
 						<div class="member-comment">너무 맛있어요너무 맛있어요너무 맛있어요너무 맛있어요너무
 							맛있어요너무 맛있어요너무 맛있어요너무 맛있어요</div>
 						<!-- 리뷰 사진 -->
-						<img div class="review-images" src="/주형 img/햄버거사진.png">
+						<img div class="review-images" src="" alt="">
 
 						<div></div>
 						<!--내가 시킨 음식 이름(jstl) -->
@@ -245,7 +247,7 @@
 						<!-- 사장 사진 -->
 						<div class="profile-pic">
 
-							<img src="/img/고양이.png">
+							<img src="" alt="">
 						</div>
 						<!-- 사장 이름 표시 -->
 						<div class="ceoname">사장님</div>
