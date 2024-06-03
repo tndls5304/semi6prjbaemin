@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.kh.baemin.member.vo.DeliveryProblemVo;
 import com.kh.baemin.member.vo.MemberCartVo;
+import com.kh.baemin.member.vo.MemberOrderVo;
 import com.kh.baemin.member.vo.MemberVo;
 import com.kh.baemin.member.vo.ReviewWriterVo;
 import com.kh.baemin.member.vo.StoreOrderVo;
@@ -78,6 +79,22 @@ public class MemberDao {
 	public List<MemberCartVo> selectCartByUser(SqlSession ss, String no) {
 		List<MemberCartVo> voList = ss.selectList("MemberMapper.selectCartByUser" , no);
 		return voList;
+	}
+	
+	public MemberVo getMember(SqlSession ss, String memberNo) {
+		return ss.selectOne("MemberMapper.getMember", memberNo);
+	}
+	
+	public void insertStatus(SqlSession ss, MemberOrderVo memberOrderVo) {
+		ss.insert("MemberMapper.insertStatus", memberOrderVo);
+	}
+
+	public void insertOrder(SqlSession ss, MemberOrderVo memberOrderVo) {
+		ss.insert("MemberMapper.insertOrder", memberOrderVo);
+	}
+
+	public void insertOrderDetail(SqlSession ss, MemberOrderVo memberOrderVo) {
+		ss.insert("MemberMapper.insertOrderDetail", memberOrderVo);
 	}
 
 	

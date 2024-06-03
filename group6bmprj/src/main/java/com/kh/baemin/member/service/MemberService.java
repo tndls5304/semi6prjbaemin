@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.kh.baemin.member.dao.MemberDao;
 import com.kh.baemin.member.vo.DeliveryProblemVo;
 import com.kh.baemin.member.vo.MemberCartVo;
+import com.kh.baemin.member.vo.MemberOrderVo;
 import com.kh.baemin.member.vo.MemberVo;
 import com.kh.baemin.member.vo.ReviewWriterVo;
 import com.kh.baemin.member.vo.StoreOrderVo;
@@ -237,6 +238,30 @@ public class MemberService {
 		SqlSession ss = getSqlSession();
 		return dao.selectCartByUser(ss, no);
 	}
+	
+    public MemberVo getMember(String no) {
+        try(SqlSession ss = getSqlSession()) {
+            return dao.getMember(ss, no);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void insertOrder(MemberOrderVo memberOrderVo) throws IOException {
+        try(SqlSession ss = getSqlSession()) {
+            try {
+                // 주문 상태
+                dao.insertStatus(ss, memberOrderVo);
+                // 주문
+                dao.insertOrder(ss, memberOrderVo);
+                // 주문 상세
+                dao.insertOrderDetail(ss, memberOrderVo);
+                ss.commit();
+            } catch (Exception e) {
+                ss.rollback();
+            }
+        }
+    }
 
 	
 
