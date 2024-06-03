@@ -220,6 +220,22 @@
 		ON M.NO = F.NO
 		WHERE C.USER_NO = #{no}
 	</select>
+	
+	<select id="getMember" resultType="com.kh.baemin.member.vo.MemberVo"> 
+	SELECT 
+		NO, 
+		ID, 
+		PWD, 
+		NICK, 
+		PROFILE, 
+		NAME, 
+		PHONE, 
+		ADDRESS, 
+		ADDRESS_DETAIL, 
+		GENERATION,
+		GENDER, 
+	ACCOUNT_BALANCE FROM MEMBER_USER WHERE NO = #{memberNo} 
+	</select>
 
 
 
