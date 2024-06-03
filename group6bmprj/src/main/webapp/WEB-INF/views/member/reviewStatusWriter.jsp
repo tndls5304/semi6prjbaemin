@@ -17,7 +17,7 @@
 
 
     <div class="content">
-        <h1><a href="/home" class="custom-link">x</a></h1>
+        <h1><a href="/baemin/member/orderList" class="custom-link">x</a></h1>
         <div class="review"><h1>리뷰쓰기</h1></div>
         <div class="emoji-buttons"></div>
         <div class="question"><h2>어떤 점이 불편하셨나요?</h2></div>
@@ -39,6 +39,7 @@
    
         
         </div>
+        <div>&nbsp;</div>
         <div>
             <button type="submit" id="nextButton"  class="next-button">다음</button>
         </div>
