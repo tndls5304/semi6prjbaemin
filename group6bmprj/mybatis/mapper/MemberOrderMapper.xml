@@ -4,58 +4,17 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MemberOrderMapper">
 
-	<select id="getTotalPrice" resultType="int"> 
-	SELECT SUM(F.PRICE * C.FOOD_COUNT) AS TOTAL_PRICE FROM CART C LEFT JOIN FOOD_INFOR F ON C.FOOD_NO = F.NO 
-	WHERE USER_NO = #{memberNo} 
-	</select>
-
+	<select id="getTotalPrice" resultType="int"> SELECT SUM(F.PRICE * C.FOOD_COUNT) AS TOTAL_PRICE FROM CART C LEFT JOIN FOOD_INFOR F ON C.FOOD_NO = F.NO WHERE USER_NO = #{memberNo} </select>
 	<insert id="insertStatus" parameterType="com.kh.baemin.member.vo.MemberOrderVo">
-	<selectKey keyProperty="orderStatusNo" resultType="int" order="BEFORE"> 
-	SELECT SEQ_ORDER_STATUS_NO.NEXTVAL FROM DUAL </selectKey>
+	<selectKey keyProperty="orderStatusNo" resultType="string" order="BEFORE"> SELECT SEQ_ORDER_STATUS_NO.NEXTVAL FROM DUAL </selectKey>
 	INSERT INTO ORDER_STATUS (NO, STATUS) VALUES (#{orderStatusNo}, #{orderStatus})
 	</insert>
-	
 	<insert id="insertOrder" parameterType="com.kh.baemin.member.vo.MemberOrderVo">
-	<selectKey keyProperty="orderNo" resultType="int" order="BEFORE"> 
-		SELECT SEQ_ORDER_SHEET_NO.NEXTVAL FROM DUAL 
-	</selectKey>
-		INSERT INTO ORDER_SHEET 
-			( NO 
-			, REQUEST_MSG 
-			, TOTAL_ORDER_PAY 
-			, ORDER_DAY 
-			, ADDRESS 
-			, STORE_NO 
-			, USER_NO 
-			, STATUS_NO ) 
-		VALUES 
-			( #{orderNo} 
-			,#{requestMsg} 
-			, #{totalOrderPay} 
-			, SYSDATE 
-			, #{address} 
-			, #{storeNo} 
-			, #{memberNo} 
-			, #{orderStatusNo} )
+	<selectKey keyProperty="orderNo" resultType="string" order="BEFORE"> SELECT SEQ_ORDER_SHEET_NO.NEXTVAL FROM DUAL </selectKey>
+	INSERT INTO ORDER_SHEET ( NO , REQUEST_MSG , TOTAL_ORDER_PAY , ORDER_DAY , ADDRESS , STORE_NO , USER_NO , STATUS_NO ) VALUES ( #{orderNo} ,#{requestMsg} , #{totalOrderPay} , SYSDATE , #{address} , #{storeNo} , #{memberNo} , #{orderStatusNo} )
 	</insert>
-	
-	<insert id="insertOrderDetail" parameterType="com.kh.baemin.member.vo.MemberOrderVo">
-		<selectKey keyProperty="orderDetailNo" resultType="int" order="BEFORE"> 
-			SELECT SEQ_ORDER_DETAIL_NO.NEXTVAL FROM DUAL 
-		</selectKey>
-			INSERT INTO ORDER_DETAIL 
-			( NO 
-			, FOOD_COUNT 
-			, FOOD_PRICE 
-			, ORDER_NO 
-			, FOOD_NO ) 
-			SELECT SEQ_ORDER_DETAIL_NO.NEXTVAL 
-			, C.FOOD_COUNT 
-			, F.PRICE 
-			, #{orderNo} 
-			, C.FOOD_NO 
-			FROM CART C LEFT JOIN FOOD_INFOR F ON C.FOOD_NO = F.NO WHERE C.USER_NO = #{memberNo}
-	</insert>
+	<insert id="insertOrderDetail" parameterType="com.kh.baemin.member.vo.MemberOrderVo"> INSERT INTO ORDER_DETAIL ( NO , FOOD_COUNT , FOOD_PRICE , ORDER_NO , FOOD_NO ) SELECT SEQ_ORDER_DETAIL_NO.NEXTVAL , C.FOOD_COUNT , F.PRICE , #{orderNo} , C.FOOD_NO FROM CART C LEFT JOIN FOOD_INFOR F ON C.FOOD_NO = F.NO WHERE C.USER_NO = #{memberNo} </insert>
+	<select id="getMember" resultType="com.kh.baemin.member.vo.MemberVo"> SELECT NO, ID, PWD, NICK, PROFILE, NAME, PHONE, ADDRESS, ADDRESS_DETAIL, GENERATION, GENDER, ACCOUNT_BALANCE FROM MEMBER_USER WHERE NO = #{memberNo} </select>
 
 </mapper>
 

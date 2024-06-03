@@ -15,78 +15,74 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebServlet("/member/order")
-public class MemberOrderController extends HttpServlet{
+public class MemberOrderController extends HttpServlet {
 
-	private final MemberOrderService memberOrderService = new MemberOrderService();
-	private final MemberService memberService = new MemberService();
+    private final MemberOrderService memberOrderService = new MemberOrderService();
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		HttpSession session = req.getSession();
-		MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
+        HttpSession session = req.getSession();
+        MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
 
-		if (loginMemberVo == null) {
-			System.out.println("로그인 필요");
-			resp.sendRedirect("/baemin/member/login");
-			return;
-		}
+        if (loginMemberVo == null) {
+            resp.sendRedirect("/baemin/member/login");
+            return;
+        }
 
-		String storeNo = req.getParameter("storeNo");
-		String memberNo = loginMemberVo.getNo();
+        String storeNo = req.getParameter("storeNo");
+        String memberNo = loginMemberVo.getNo();
 
-		MemberVo memberVo = memberService.getMember(memberNo);
+        MemberVo memberVo = memberOrderService.getMember(memberNo);
 
-		String phone = memberVo.getPhone();
-		String address = memberVo.getAddress();
-		String accountBalance = memberVo.getAccountBalance();
+        String phone = memberVo.getPhone();
+        String address = memberVo.getAddress();
+        String accountBalance = memberVo.getAccountBalance();
 
-		Integer taotalPrice = memberOrderService.getTotalPrice(memberNo);
+        Integer taotalPrice = memberOrderService.getTotalPrice(memberNo);
 
-		MemberOrderVo memberOrderVo = new MemberOrderVo();
-		memberOrderVo.setStoreNo(storeNo);
-		memberOrderVo.setMemberNo(memberNo);
-		memberOrderVo.setPhone(phone);
-		memberOrderVo.setAddress(address);
-		memberOrderVo.setAccountBalance(accountBalance);
-		memberOrderVo.setTotalOrderPay(taotalPrice);
+        MemberOrderVo memberOrderVo = new MemberOrderVo();
+        memberOrderVo.setStoreNo(storeNo);
+        memberOrderVo.setMemberNo(memberNo);
+        memberOrderVo.setPhone(phone);
+        memberOrderVo.setAddress(address);
+        memberOrderVo.setAccountBalance(accountBalance);
+        memberOrderVo.setTotalOrderPay(taotalPrice);
 
-		req.setAttribute("memberOrderVo", memberOrderVo);
+        req.setAttribute("memberOrder", memberOrderVo);
 
-		req.getRequestDispatcher("/WEB-INF/views/member/order.jsp").forward(req, resp);
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
-		MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
+        req.getRequestDispatcher("/WEB-INF/views/member/order.jsp").forward(req, resp);
+    }
 
-		if (loginMemberVo == null) {
-			System.out.println("로그인 필요");
-			resp.sendRedirect("/baemin/member/login");
-			return;
-		}
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
 
-		String storeNo = req.getParameter("storeNo");
-		String memberNo = loginMemberVo.getNo();
-		String requestMsg = req.getParameter("requestMsg");
-		Integer toalOrderPay = memberOrderService.getTotalPrice(memberNo);
-		MemberVo memberVo = memberService.getMember(memberNo);
+        if (loginMemberVo == null) {
+            resp.sendRedirect("/baemin/member/login");
+            return;
+        }
 
-		MemberOrderVo memberOrderVo = new MemberOrderVo();
-		memberOrderVo.setMemberNo(loginMemberVo.getNo());
-		memberOrderVo.setStoreNo(storeNo);
-		memberOrderVo.setAddress(memberVo.getAddress());
-		memberOrderVo.setRequestMsg(requestMsg);
-		memberOrderVo.setOrderStatus("1");
-		memberOrderVo.setTotalOrderPay(toalOrderPay);
+        String storeNo = req.getParameter("storeNo");
+        String memberNo = loginMemberVo.getNo();
+        String requestMsg = req.getParameter("requestMsg");
+        Integer toalOrderPay = memberOrderService.getTotalPrice(memberNo);
+        MemberVo memberVo = memberOrderService.getMember(memberNo);
 
-		memberService.insertOrder(memberOrderVo);
+        MemberOrderVo memberOrderVo = new MemberOrderVo();
+        memberOrderVo.setMemberNo(loginMemberVo.getNo());
+        memberOrderVo.setStoreNo(storeNo);
+        memberOrderVo.setAddress(memberVo.getAddress());
+        memberOrderVo.setRequestMsg(requestMsg);
+        memberOrderVo.setOrderStatus("6");
+        memberOrderVo.setTotalOrderPay(toalOrderPay);
 
-		// 주문완료 후 어디로???
+        memberOrderService.insertOrder(memberOrderVo);
 
-		doGet(req, resp);
-	}
-	
+        resp.sendRedirect("/baemin/member/home");
+
+    }
+
 
 }

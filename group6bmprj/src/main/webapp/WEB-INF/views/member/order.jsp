@@ -31,23 +31,23 @@
 <div class="main-div">
 <h4 class = "margin-left">배달주소</h4>
 <!-- 유저 주소 받아오기 -->
-<p><img class = "location-img" src = "/baemin/resources/img/위치.PNG"> 강남구 도산대로 222 <small class = "small-text">호산빌딩</small></p> <br>
+<p><img class = "location-img" src = "/baemin/resources/img/위치.PNG"> ${memberOrder.address} </p> <br>
 </div>
 <!-- 유저 연락처 받아오기 -->
-<div class="main-div"><h4 class = "margin-left">내 연락처 : 000-0000-0000</h4></div>
+<div class="main-div"><h4 class = "margin-left">내 연락처 : ${memberOrder.phone}</h4></div>
 <div class="main-div"><p><strong class = "margin-left">가게 사장님께</strong><small>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</small><small class = "blue-font" onclick ="showRequest()">요청 입력&nbsp></small></p>
 <p class = "margin-left">입력시 내용 여기 출력</p>
 </div>
 <div class="main-div"><p><strong class = "margin-left">배민페이</strong></p>
-<p class = "margin-left">배민페이 잔액 : 00000원</p></div>
+<p class = "margin-left">배민페이 잔액 : ${memberOrder.accountBalance}원</p></div>
 <div class="main-div"><p><strong class = "margin-left">결제금액</strong></p>
-<p class = "margin-left">결제금액 : 48300원</p></div>
+<p class = "margin-left">결제금액 : ${memberOrder.totalOrderPay}원</p></div>
 <div><p>&nbsp&nbsp예상 도착 시간 : 30분 후</p></div>
 
         </main>
         <footer>
           <!-- 클릭하면 페이지 넘어갈 수 있게 온클릭에 url쓰기~  -->
-          <div onclick="paymentRequest()" class = "paymentRequest"> <p class = "payment-font">48,300원 결제하기</p> </div>
+          <div onclick="paymentRequest()" class = "paymentRequest"> <p class = "payment-font"> ${memberOrder.totalOrderPay}원 결제하기</p> </div>
 
          
   
@@ -60,8 +60,11 @@
     <div id="requestBlock" class="request-block">
       <form action=""></form>
       <div class="request-content">
-        
+
+          <form id="frm" action="/baemin/member/order" method="post">
           <p>사장님께 : <input type = "text" class = "request_msg" id = "request_msg" name = "request_msg"></p>
+              <input type="hidden" id="storeNo" name="storeNo" value="${memberOrder.storeNo}">
+          </form>
         
       </div>
       <div class="request-delete">
@@ -86,31 +89,10 @@
 
 // 작동하는지 안하는지 정확히모름 일단 만들어놓음
 function paymentRequest() {
-            var paymentAmount = 48300;
-
-            fetch('process_payment.php', { 
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    amount: paymentAmount
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('결제가 성공적으로 처리되었습니다.');
-                } else {
-                    alert('결제 처리에 실패했습니다. 다시 시도해주세요.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('결제 처리 중 오류가 발생했습니다. 다시 시도해주세요.');
-            });
+            $("#frm").submit();
         }
   
   
       </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </html>
