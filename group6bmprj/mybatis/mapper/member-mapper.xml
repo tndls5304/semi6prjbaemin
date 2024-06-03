@@ -54,10 +54,12 @@
 		M.NICK,
 		R.RATING,
 		R.ORDER_NO,
-		R.USER_CONTENT AS memberContent,
+		R.USER_CONTENT
+		AS memberContent,
 		R.IMG AS reviewImg,
 		S.NAME AS storeName,
-		F.NAME AS foodName
+		F.NAME AS
+		foodName
 		FROM
 		REVIEW_COMMUNICATION R
 		JOIN
@@ -84,7 +86,8 @@
 		FROM
 		MEMBER_USER M
 		WHERE
-		M.NO = #{no}
+		M.NO =
+		#{no}
 
 	</select>
 
@@ -99,7 +102,8 @@
 		'1' AS storeFoodCount,
 		'15000' AS storeFoodPrice,
 		'2024-06-01 18:12' AS storeOrderDate,
-		'주문완료' AS storeOrderStatus,
+		'주문완료'
+		AS storeOrderStatus,
 		'' AS NO
 		FROM DUAL
 
@@ -113,7 +117,8 @@
 		'2' AS storeFoodCount,
 		'30000' AS storeFoodPrice,
 		'2024-06-01 18:12' AS storeOrderDate,
-		'주문완료' AS storeOrderStatus,
+		'주문완료'
+		AS storeOrderStatus,
 		'' AS NO
 		FROM DUAL
 
@@ -138,7 +143,8 @@
 
 	<insert id="reviewStatus">
 		UPDATE DELIVERY_PROBLEM
-		SET DELIVERY_PROBLEM = #{deliveryProblem}
+		SET DELIVERY_PROBLEM =
+		#{deliveryProblem}
 		WHERE no = #{no}
 	</insert>
 
@@ -167,7 +173,8 @@
 
 	<update id="account">
 		UPDATE MEMBER_USER
-		SET ACCOUNT_BALANCE = ACCOUNT_BALANCE+#{chargeAmount}
+		SET ACCOUNT_BALANCE =
+		ACCOUNT_BALANCE+#{chargeAmount}
 		WHERE NO =#{no}
 	</update>
 
@@ -178,11 +185,42 @@
 		ADDRESS=#{address},ADDRESS_DETAIL=#{addressDetail}
 		WHERE NO=${no}
 	</update>
-	
-	<select id="selectDeliveryProblem" resultType="com.kh.baemin.member.vo.DeliveryProblemVo">
+
+	<select id="selectDeliveryProblem"
+		resultType="com.kh.baemin.member.vo.DeliveryProblemVo">
 		SELECT *
 		FROM DELIVERY_PROBLEM
-		
+
 	</select>
+
+	<select id="selectRating"
+		resultType="com.kh.baemin.member.vo.ReviewWriterVo">
+		SELECT RATING
+		FROM REVIEW_COMMUNICATION
+	</select>
+
+	<select id="selectCartByUser" resultType="com.kh.baemin.member.vo.MemberCartVo">
+		SELECT
+			S.NO AS storeNo,
+			C.NO AS cartNo,
+			C.USER_NO AS userNo,
+			C.FOOD_NO AS foodNo,
+			C.FOOD_COUNT AS foodCount,
+			F.NAME AS foodName ,
+			F.PRICE AS foodPrice,
+			F.FOOD_IMG AS foodImg ,
+			S.NAME AS storeName,
+			S.INTRODUCTION_IMG AS storeImg
+		FROM CART C
+		JOIN FOOD_INFOR F
+		ON F.NO = C.FOOD_NO
+		JOIN STORE_INFOR S
+		ON S.NO = C.FOOD_NO
+		JOIN MEMBER_USER M
+		ON M.NO = F.NO
+		WHERE C.USER_NO = #{no}
+	</select>
+
+
 
 </mapper>

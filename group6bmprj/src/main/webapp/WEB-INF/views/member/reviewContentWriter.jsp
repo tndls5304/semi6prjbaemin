@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,9 +24,14 @@
         <div class="starlating"><h2>별점</h2></div>
 
         <form action="/baemin/member/reviewContentWriter" method="post" enctype="multipart/form-data">
-            <input name="deliveryProblem" value="<%= request.getParameter("deliveryProblem")%>">
-            <input name="orderNo" value="<%= request.getParameter("orderNo")%>">
+            <input name="deliveryProblem" type="hidden" value="<%= request.getParameter("deliveryProblem")%>">
+            <input name="orderNo" type="hidden" value="<%= request.getParameter("orderNo")%>">
+                  <input name="nick"  type="hidden" value="${sessionScope.loginMemberVo.nick}">
             
+   
+            <input  name="rating" type="hidden">
+         
+        
             <div class="star-rating">
                 <input type="radio" id="star5" name="rating" value="5" /><label for="star5">★</label>
                 <input type="radio" id="star4" name="rating" value="4" /><label for="star4">★</label>
@@ -35,10 +41,9 @@
             </div>
             
             <label for="opinion"><h2>리뷰내용을 입력해주세요:</h2></label>
-            <div class="area">
-                <textarea name="MemberContent" id="opinion" cols="70" rows="7" oninput="updateCharCount(this)"></textarea>
-                <div class="char-count">0 / 16</div>
-            </div>
+        
+        <input type="text" name="memberContent" oninput="updateCharCount(this)"  style="width:100%; height:150px;" />
+   <div class="charcount">0 / 16</div>
 
             <label for="file-upload" class="custom-file-upload">
             <div>&nbsp;</div>
@@ -54,18 +59,26 @@
     </div>
 
     <script>
-        function updateCharCount(textarea) {
-            var charCount = textarea.value.length;
-            var charCountElement = textarea.nextElementSibling;
-            charCountElement.textContent = charCount + " / 16";
+    const divTag = document.querySelector("div.star-rating");
+    divTag.addEventListener("click" , function(evt){
+        const ratingTag = document.querySelector("input[name=rating]");
+        ratingTag.value = evt.target.value;
+    });
+    
+    
+    function updateCharCount(text) {
+        var charCount = text.value.length;
+        var charCountElement = text.nextElementSibling;
+        charCountElement.textContent = charCount + " / 16";
 
-            if (charCount > 16) {
-                charCountElement.classList.add("error");
-                textarea.value = textarea.value.slice(0, 16);
-            } else {
-                charCountElement.classList.remove("error");
-            }
+        if (charCount > 16) {
+            charCountElement.classList.add("error");
+            text.value = text.value.slice(0, 16);
+            charCountElement.textContent = "16 / 16"; // 글자 수 갱신
+        } else {
+            charCountElement.classList.remove("error");
         }
+    }
     </script>
 </body>
 </html>

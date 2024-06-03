@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.baemin.member.vo.DeliveryProblemVo;
+import com.kh.baemin.member.vo.MemberCartVo;
 import com.kh.baemin.member.vo.MemberVo;
 import com.kh.baemin.member.vo.ReviewWriterVo;
 import com.kh.baemin.member.vo.StoreOrderVo;
@@ -67,6 +68,16 @@ public class MemberDao {
 		
 	
 				//("MemberMapper.selectDeliveryProblem");
+	}
+
+	public List<ReviewWriterVo> selectRating(SqlSession ss) {
+		return ss.selectList("MemberMapper.selectRating");
+	
+	}
+
+	public List<MemberCartVo> selectCartByUser(SqlSession ss, String no) {
+		List<MemberCartVo> voList = ss.selectList("MemberMapper.selectCartByUser" , no);
+		return voList;
 	}
 
 	

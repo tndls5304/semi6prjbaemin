@@ -224,3 +224,51 @@ footer span {
         .star-rating label:hover ~ label {
             color: gold;
         }
+         .rating {
+      display: inline-block;
+    }
+
+    .rating input {
+      display: none;
+    }
+
+    .rating label {
+      float: right;
+      cursor: pointer;
+      color: grey;
+    }
+
+    .rating label:before {
+      content: '\2605';
+      font-size: 30px;
+    }
+
+    .rating input:checked ~ label {
+      color: orange;
+    }
+
+    /* ================== */
+
+    .test{
+        float: right;
+    }
+
+    .test:checked ,
+    .test:checked ~ .test{
+        width: 30px;
+        height: 30px;
+    }
+
+    .test + label{
+        float: right;
+    }
+
+    .test{
+        display: none;
+    }
+
+    .test:checked + label ~ label ,
+    .test:checked + label {
+        color: rgb(228, 176, 22);
+    }
+        
