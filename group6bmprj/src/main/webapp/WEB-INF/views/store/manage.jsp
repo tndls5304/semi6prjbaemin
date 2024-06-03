@@ -160,13 +160,18 @@
     <aside>
         <nav>
             <ul>
-                <li><a href=""><h1>배민관리자</h1></a></li>
-                <li><a href="">홈</a></li>
-                <li><a href="">사장계정관리</a></li>
-                <li><a href="">손님계정관리</a></li>
-                <li><a href="">가게허가신청</a></li>
+                
+                <li><a href=""><h1>사장님 페이지</h1></a></li>
+                <li><a href="">스토어 허가 신청</a></li>
+                <li><a href="">주문관리🕗</a></li>
+                <li><a href="">스토어 관리</a></li>
+                <li><a href="">회원관리</a></li>
+                <li><a href="">음식메뉴편집</a></li>
+                <li><a href="">매출관리</a></li>
                 <li><a href="">리뷰관리</a></li>
-                <li><a href="">문의사항</a></li>
+                <li><a href="">
+                 <button>로그아웃</button></a></li>
+
             </ul>
         </nav>
     </aside>
