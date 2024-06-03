@@ -59,11 +59,11 @@
         </main>
         <footer>
           <!-- 클릭하면 페이지 넘어갈 수 있게 온클릭에 url쓰기~  -->
-          <div onclick=""><img src="/baemin/resources/수인img/하단바_돋보기.jpg">  <span>&nbsp&nbsp검색</span> </div>
-          <div onclick=""> <img src="/baemin/resources/수인img/하단바_장바구니.jpg">  <span>장바구니</span></div>
+      <div onclick=""location.href='/baemin/member/search'"><img src="/baemin/resources/수인img/하단바_돋보기.jpg">  <span>&nbsp&nbsp검색</span> </div>
+        <div onclick="location.href='/baemin/member/orderCart'"><img src="/baemin/resources/수인img/하단바_장바구니.jpg">  <span>장바구니</span></div>
           <div onclick=""> <img src="/baemin/resources/수인img/하단바_찜.jpg"> <span>&nbsp&nbsp&nbsp&nbsp찜</span></div>
-          <div onclick=""> <img src="/baemin/resources/수인img/하단바_주문내역.jpg"> <span>주문내역</span></div>
-          <div onclick="">  <img src="/baemin/resources/수인img/하단바_마이배민.jpg"> <span>my배민</span></div>
+         <div onclick="location.href='/baemin/member/orderList'"> <img src="/baemin/resources/수인img/하단바_주문내역.jpg"> <span>주문내역</span></div>
+            <div onclick="location.href='/baemin/member/info'"> <img src="/baemin/resources/수인img/하단바_마이배민.jpg"> <span>my배민</span></div>
          
   
         </footer>

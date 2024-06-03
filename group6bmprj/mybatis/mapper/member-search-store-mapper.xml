@@ -208,17 +208,24 @@
 	<select id="memberViewReview"
 		resultType="com.kh.baemin.member.vo.OneStoreReviewVo">
 
-		SELECT
+     SELECT
 		R.IMG
 		,R.RATING
 		,R.USER_CONTENT
 		,R.STORE_CONTENT
 		,R.ENROLL_DATE
-		FROM REVIEW_COMMUNICATION R
-		JOIN ORDER_SHEET O ON R.ORDER_NO=O.NO
+        ,M.NICK 
+        ,M.PROFILE
+        ,N.PROFILE AS STOREOWNERPIC
+			FROM REVIEW_COMMUNICATION R
+			JOIN ORDER_SHEET O ON R.ORDER_NO=O.NO
+	        JOIN STORE_INFOR S ON O.STORE_NO=S.NO
+	        JOIN MEMBER_STORE_OWNER N ON N.NO=S.STORE_OWNER_NO
+	        JOIN MEMBER_USER  M ON M.NO=O.USER_NO
 		WHERE O.STORE_NO=#{value}
-		AND O.STATUS_NO='6'
-		AND R.DEL_YN='N'
+			AND O.STATUS_NO='6'
+			AND R.DEL_YN='N';
+        
 	</select>
 
 
