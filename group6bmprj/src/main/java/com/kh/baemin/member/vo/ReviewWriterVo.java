@@ -14,7 +14,7 @@ public class ReviewWriterVo {
 	private String storeName;
 	private String foodName;
 	private String ceoImg;
-	private String memberNickName;
+	private String nick;
 	private String id;
 	public ReviewWriterVo() {
 		super();
@@ -22,7 +22,7 @@ public class ReviewWriterVo {
 	}
 	public ReviewWriterVo(String no, String orderNo, String rating, String memberContent, String ceoContent,
 			String reviewImg, String memberImg, String enrollDate, String delYn, String deliveryProblem,
-			String storeName, String foodName, String ceoImg, String memberNickName, String id) {
+			String storeName, String foodName, String ceoImg, String nick, String id) {
 		super();
 		this.no = no;
 		this.orderNo = orderNo;
@@ -37,7 +37,7 @@ public class ReviewWriterVo {
 		this.storeName = storeName;
 		this.foodName = foodName;
 		this.ceoImg = ceoImg;
-		this.memberNickName = memberNickName;
+		this.nick = nick;
 		this.id = id;
 	}
 	@Override
@@ -45,8 +45,8 @@ public class ReviewWriterVo {
 		return "ReviewWriterVo [no=" + no + ", orderNo=" + orderNo + ", rating=" + rating + ", memberContent="
 				+ memberContent + ", CeoContent=" + CeoContent + ", reviewImg=" + reviewImg + ", memberImg=" + memberImg
 				+ ", enrollDate=" + enrollDate + ", delYn=" + delYn + ", deliveryProblem=" + deliveryProblem
-				+ ", storeName=" + storeName + ", foodName=" + foodName + ", ceoImg=" + ceoImg + ", memberNickName="
-				+ memberNickName + ", id=" + id + "]";
+				+ ", storeName=" + storeName + ", foodName=" + foodName + ", ceoImg=" + ceoImg + ", nick=" + nick
+				+ ", id=" + id + "]";
 	}
 	public String getNo() {
 		return no;
@@ -126,11 +126,11 @@ public class ReviewWriterVo {
 	public void setCeoImg(String ceoImg) {
 		this.ceoImg = ceoImg;
 	}
-	public String getMemberNickName() {
-		return memberNickName;
+	public String getNick() {
+		return nick;
 	}
-	public void setMemberNickName(String memberNickName) {
-		this.memberNickName = memberNickName;
+	public void setNick(String nick) {
+		this.nick = nick;
 	}
 	public String getId() {
 		return id;

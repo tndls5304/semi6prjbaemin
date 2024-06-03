@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.kh.baemin.member.dao.MemberDao;
 import com.kh.baemin.member.vo.DeliveryProblemVo;
+import com.kh.baemin.member.vo.MemberCartVo;
 import com.kh.baemin.member.vo.MemberVo;
 import com.kh.baemin.member.vo.ReviewWriterVo;
 import com.kh.baemin.member.vo.StoreOrderVo;
@@ -189,20 +190,20 @@ public class MemberService {
 		return orderList;
 	}
 
-	public int contentDeliveryProblem(ReviewWriterVo vo) throws Exception {
-//	- DAO호출
-		SqlSession ss = getSqlSession();
-		int result = dao.contentDeliveryProblem(ss, vo);
-
-		if (result == 1) {
-			ss.commit();
-
-		} else {
-			ss.rollback();
-		}
-
-		return result;
-	}
+//	public int contentDeliveryProblem(ReviewWriterVo vo) throws Exception {
+////	- DAO호출
+//		SqlSession ss = getSqlSession();
+//		int result = dao.contentDeliveryProblem(ss, vo);
+//
+//		if (result == 1) {
+//			ss.commit();
+//
+//		} else {
+//			ss.rollback();
+//		}
+//
+//		return result;
+//	}
 
 	public int updateAccount(MemberVo vo) throws Exception {
 		System.out.println("디비 가기전 멤버 브이오" + vo);
@@ -225,5 +226,18 @@ public class MemberService {
 		SqlSession ss = getSqlSession();
 		return dao.selectDeliveryProblem(ss);
 	}
+
+	public List<ReviewWriterVo> selectRating()throws IOException {
+		SqlSession ss = getSqlSession();
+		return dao.selectRating(ss);
+	}
+
+	
+	public List<MemberCartVo> selectCartByUser(String no) throws IOException {
+		SqlSession ss = getSqlSession();
+		return dao.selectCartByUser(ss, no);
+	}
+
+	
 
 }

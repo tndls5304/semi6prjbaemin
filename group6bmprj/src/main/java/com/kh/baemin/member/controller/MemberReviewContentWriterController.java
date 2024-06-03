@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+
 import com.kh.baemin.member.service.MemberService;
 import com.kh.baemin.member.vo.MemberVo;
 import com.kh.baemin.member.vo.ReviewWriterVo;
@@ -29,7 +31,12 @@ public class MemberReviewContentWriterController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-   
+   //1. 별점 문제 선택항목 조회한다 
+    	MemberService service =new MemberService();
+    	List<ReviewWriterVo> ratingList = service.selectRating();
+    	
+    	//조회한 별점을 배열 화면 뿌리기 위하여 어트리뷰트에 담는다 
+    	req.setAttribute("ratingList", ratingList);
 
         req.getRequestDispatcher("/WEB-INF/views/member/reviewContentWriter.jsp").forward(req, resp);
     }
@@ -40,7 +47,8 @@ public class MemberReviewContentWriterController extends HttpServlet {
         MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
         String no = loginMemberVo.getNo();
         System.out.println(loginMemberVo);
-
+       
+        
     
         String orderNo = req.getParameter("orderNo");
         String deliveryProblem = req.getParameter("deliveryProblem");
@@ -48,9 +56,9 @@ public class MemberReviewContentWriterController extends HttpServlet {
 
         String rating = req.getParameter("rating");
         String memberContent = req.getParameter("memberContent");
-        // 리뷰 이미지 파일 처리
+       
         Part reviewImgPart = req.getPart("reviewImg");
-        String reviewImg = ""; // 파일 이름 변경을 위한 변수 초기화
+        String reviewImg = ""; 
 
        
         if (reviewImgPart.getSize() > 0) {
@@ -58,7 +66,7 @@ public class MemberReviewContentWriterController extends HttpServlet {
             String originFileName = reviewImgPart.getSubmittedFileName(); 
             InputStream is = reviewImgPart.getInputStream(); 
 
-            
+
             ServletContext context = getServletContext();
             String path = context.getRealPath("/resources/upload/"); 
             // 파일 저장 경로 설정
@@ -83,6 +91,7 @@ public class MemberReviewContentWriterController extends HttpServlet {
             fos.close(); // 출력 스트림 닫기
         }
 
+        int ratingValue = Integer.parseInt(rating);
         ReviewWriterVo vo = new ReviewWriterVo();
         vo.setOrderNo(orderNo);
         vo.setRating(rating);
@@ -103,6 +112,8 @@ public class MemberReviewContentWriterController extends HttpServlet {
 
         if (result == 1) {
             req.setAttribute("message", "리뷰가 성공적으로 저장되었습니다.");
+          
+            
             req.setAttribute("deliveryProblem", deliveryProblem);
             req.setAttribute("memberContent", memberContent);
             req.setAttribute("reviewImg", reviewImg);
