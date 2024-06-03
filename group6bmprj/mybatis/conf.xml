@@ -28,5 +28,7 @@
 		<mapper resource="/mapper/member-mapper.xml" />
 		<mapper resource="/mapper/admin-ManageUser-mapper.xml" />
 		<mapper resource="/mapper/member-search-store-mapper.xml" />
+		<mapper resource="/mapper/cartMapper.xml" />
+	
 	</mappers>
 </configuration>

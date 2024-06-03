@@ -8,7 +8,7 @@ public class MemberAddCartDao {
 
 	public int addCart(SqlSession ss,CartVo cartVo) {
 		
-		return ss.insert("", cartVo);
+		return ss.insert("cartMapper.addCart", cartVo);
 	}
 
 }

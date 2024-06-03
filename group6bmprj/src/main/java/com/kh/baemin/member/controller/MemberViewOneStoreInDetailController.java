@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.kh.baemin.member.service.MemberSearchForStoreService;
 import com.kh.baemin.member.vo.MemberViewStoreInforVo;
+import com.kh.baemin.member.vo.OneStoreReviewVo;
 import com.kh.baemin.member.vo.StoreOfFoodCategoryVo;
 
 @WebServlet("/member/view_one_store_detail")
@@ -36,8 +37,10 @@ public class MemberViewOneStoreInDetailController extends HttpServlet {
 			System.out.println("손님이 가게 클릭하고 음식리스트 보여주는 vo 바로확인하자!!"+storeOfFoodCategoryVoList);
 			req.setAttribute("storeOfFoodCategoryVoList", storeOfFoodCategoryVoList);
 			
+			//한가게의 리뷰를 보여주는 
 			
-			
+			List<OneStoreReviewVo> oneStoreReviewVoList=service.memberViewReview(storeNo);
+			req.setAttribute("oneStoreReviewVoList", oneStoreReviewVoList);
 			
 			req.getRequestDispatcher("/WEB-INF/views/member/view_one_store_detail.jsp").forward(req, resp);
 		}catch(Exception e){
