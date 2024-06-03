@@ -54,7 +54,7 @@ public class MemberJoinController extends HttpServlet {
                 InputStream is = memberImg.getInputStream(); // 파일의 입력 스트림을 가져옴
                 
                 ServletContext context = getServletContext();
-                String path = context.getRealPath("/resources/upload/"); 
+                String path = context.getRealPath("/baemin/resources/upload/"); 
                 
                 java.io.File dir = new java.io.File(path); // 파일 저장 경로의 디렉토리 객체 생성
                 if (!dir.exists()) {
@@ -65,7 +65,7 @@ public class MemberJoinController extends HttpServlet {
                 String ext = originFileName.substring(originFileName.lastIndexOf(".")); // 파일 확장자를 가져옴
                 changeName = System.currentTimeMillis() + "_" + random + ext; // 현재 시간과 랜덤 문자열을 조합하여 고유한 파일 이름 생성
                 FileOutputStream fos = new FileOutputStream(path + changeName); // 파일 저장을 위한 출력 스트림 생성
-
+                System.out.println(path + changeName);
                 byte[] buf = new byte[1024]; // 파일을 읽고 쓰기 위한 버퍼 생성
                 int size = 0;
                 while ((size = is.read(buf)) != -1) { // 입력 스트림에서 데이터를 읽어 버퍼에 저장
