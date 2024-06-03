@@ -6,6 +6,8 @@ public class StoreOfFoodCategoryVo {
 	private String no;
 	private String name;
 	private List<String> foodInforVoList;
+	
+	
 	public StoreOfFoodCategoryVo() {
 		super();
 		// TODO Auto-generated constructor stub

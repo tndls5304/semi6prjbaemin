@@ -44,6 +44,7 @@ public class MemberSearchForStoreService {
 			ss.rollback();
 		}
 		ss.close();
+		System.out.println("유저가 가게를 클릭해서 가게 정보를 디비에서 받아왔을까? 여긴 시비스클래스임"+memberViewStoreInforVo);
 		return memberViewStoreInforVo;
 	}
 

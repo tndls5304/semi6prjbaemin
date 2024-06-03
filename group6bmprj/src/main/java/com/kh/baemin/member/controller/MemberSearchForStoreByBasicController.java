@@ -24,7 +24,7 @@ public class MemberSearchForStoreByBasicController extends HttpServlet {
 		//가게 카테고리와 카테고리 이름 받아오기
 			String storeCategoryNo=req.getParameter("storeCategoryNo");
 			String storeCategoryName=req.getParameter("storeCategoryName");
-			
+			System.out.println("홈에서 클릭한 가게종목 가져왔니?"+storeCategoryName);
 			
 			//세션에서 회원주소가져오기
 			HttpSession session=req.getSession();
@@ -37,7 +37,7 @@ public class MemberSearchForStoreByBasicController extends HttpServlet {
 			searchForStoreVo.setStoreCategoryNo(storeCategoryNo);
 			searchForStoreVo.setMemberAddress(memberAddress);
 			
-			
+			//가게목록들 뽑으러 가기~
 			MemberSearchForStoreService service=new MemberSearchForStoreService();
 			List<StoreInforVo>storeInforVoList=service.searchForStoreByBasic(searchForStoreVo);
 			
