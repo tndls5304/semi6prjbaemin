@@ -37,8 +37,7 @@
 												
 			</c:forEach>
    
-          ${selectList}
-                    
+        
         </div>
         <div>
             <button type="submit" id="nextButton"  class="next-button">다음</button>

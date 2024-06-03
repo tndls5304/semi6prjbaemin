@@ -83,7 +83,7 @@
 	
 	 <script>
         function goToPage(url) {
-            window.location.href = url; // 클릭 시 URL로 이동
+            window.location.href = url; 
         }
     </script>
 		</main>

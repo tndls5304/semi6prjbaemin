@@ -18,12 +18,12 @@
         <header>
             <div class="top-bar">
                 <div class="left-bar">
-                    <img class="back-img" src="/배민캡쳐/상단바_뒤로가기.jpg">
+                    <img class="back-img" src="/baemin/resources/수인img/상단바_뒤로가기.jpg" >
                 </div>
                 <div class="middle-bar">
-                    <img class="top-bar-name" src="/배민캡쳐/상단바_현재페이지이름_가게배달.jpg">
+                          <img class="back-img" src="/baemin/resources/수인img/하단바_마이배민.jpg" >
                 </div>
-                <img class="right-bar" src="/배민캡쳐/홈.png">
+                <img class="right-bar" src="/baemin/resources/수인img/홈.jpg">
             </div>
             <div class="middle">주소입력칸&nbsp&nbsp&nbsp▽</div>
         </header>
@@ -33,7 +33,7 @@
                     MemberVo loginMemberVo = (MemberVo) session.getAttribute("loginMemberVo");
                     if (loginMemberVo != null) {
                 %>
-                    <img class="picprofile" src="<%= loginMemberVo.getMemberImg() %>" alt="Profile Picture">
+                    <img class="picprofile" src="/baemin/member/info/<%=loginMemberVo.getMemberImg() %>" alt="Profile Picture">
                     <div class="membername">
                         <span><%= loginMemberVo.getNick() %></span>
                     </div>
@@ -68,6 +68,7 @@
                     </div>
                 </div>
             </div>
+            <div>&nbsp;</div>
             <div class="baeminpay">
                 <h1>페이💰</h1>
                 <form id="chargeForm" method="POST" action="/baemin/member/account" class="mt-3">
@@ -76,18 +77,18 @@
            
                          <button type="submit" class="btn btn-primary blue-button mt-5">충전</button>
                                                                                                 
-
+					
                     <div id="balanceDisplay">현재 잔액: <span id="balanceAmount" name="accountBalance">
                     <%=loginMemberVo.getAccountBalance() %></span>원</div>
                 </form>
             </div>
         </main>
         <footer>
-            <div onclick=""><img src="/배민캡쳐/하단바_돋보기.jpg"><span>&nbsp&nbsp검색</span></div>
-            <div onclick=""><img src="/배민캡쳐/하단바_장바구니.jpg"><span>장바구니</span></div>
-            <div onclick=""><img src="/배민캡쳐/하단바_찜.jpg"><span>&nbsp&nbsp&nbsp&nbsp찜</span></div>
-            <div onclick=""><img src="/배민캡쳐/하단바_주문내역.jpg"><span>주문내역</span></div>
-            <div onclick=""><img src="/배민캡쳐/하단바_마이배민.jpg"><span>my배민</span></div>
+            <div onclick="location.href='/baemin/member/search'"><img src="/baemin/resources/수인img/하단바_돋보기.jpg"><span>&nbsp&nbsp검색</span></div>
+            <div onclick="location.href='/baemin/member/orderCart'"><img src="/baemin/resources/수인img/하단바_장바구니.jpg"><span>장바구니</span></div>
+            <div onclick="location.href='/baemin/member/'"><img src="/baemin/resources/수인img/하단바_찜.jpg"><span>&nbsp&nbsp&nbsp&nbsp찜</span></div>
+            <div onclick="location.href='/baemin/member/orderList'"><img src="/baemin/resources/수인img/하단바_주문내역.jpg"><span>주문내역</span></div>
+            <div onclick="location.href='/baemin/member/info'"><img src="/baemin/resources/수인img/하단바_마이배민.jpg"><span>my배민</span></div>
         </footer>
     </div>
 </body>
