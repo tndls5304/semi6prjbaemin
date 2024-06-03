@@ -146,7 +146,7 @@ main {
 
 .top-viewStore{
   display: grid;
-      grid-template-rows: 4fr 1fr 0.8fr 1fr 3fr 2fr ;
+      grid-template-rows: 4fr 1fr 0.8fr 1fr 3fr 2fr;
       height: 380px;
       
 
@@ -182,8 +182,7 @@ font-size: 15px;
   background-color: blanchedalmond;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
- 
-  
+
 }
 
 .select-tab span{
@@ -207,14 +206,20 @@ font-size: 15px;
 .category-foodContentList{
   display: grid;
   /* 음식이름,가격 쓰는 구간과  음식사진넣는 구간을 나눔 */
-  grid-template-columns: 3fr 1fr  1fr;
+  grid-template-columns: 3fr 0.5fr  1fr;
   background-color: rgb(232, 232, 195);
   margin-top: 2px;
 }
-.count-button{
+
+.count{
+
   margin-left: 10px;
-  margin-top: 60px;
+  margin-top: 35px;
   font-size: 12px;
+}
+
+.countInput{
+	width:40px;
 }
 
 
