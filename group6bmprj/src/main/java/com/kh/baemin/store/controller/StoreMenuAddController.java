@@ -34,7 +34,7 @@ public class StoreMenuAddController extends HttpServlet {
 			String storeNo = (String) session.getAttribute("storeNo");
 			
 			// TODO StoreNo
-			 storeNo = "16";
+			 storeNo = "15";
 
 			// TODO ui구현
 
