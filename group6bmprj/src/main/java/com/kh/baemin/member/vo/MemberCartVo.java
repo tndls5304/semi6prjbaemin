@@ -10,6 +10,7 @@ public class MemberCartVo {
 	private String foodImg;
 	private String storeName;
 	private String storeImg;
+	private String totalPrice;
 	public String getCartNo() {
 		return cartNo;
 	}
@@ -64,14 +65,20 @@ public class MemberCartVo {
 	public void setStoreImg(String storeImg) {
 		this.storeImg = storeImg;
 	}
+	public String getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(String totalPrice) {
+		this.totalPrice = totalPrice;
+	}
 	@Override
 	public String toString() {
 		return "MemberCartVo [cartNo=" + cartNo + ", userNo=" + userNo + ", foodNo=" + foodNo + ", foodCount="
 				+ foodCount + ", foodName=" + foodName + ", foodPrice=" + foodPrice + ", foodImg=" + foodImg
-				+ ", storeName=" + storeName + ", storeImg=" + storeImg + "]";
+				+ ", storeName=" + storeName + ", storeImg=" + storeImg + ", totalPrice=" + totalPrice + "]";
 	}
 	public MemberCartVo(String cartNo, String userNo, String foodNo, String foodCount, String foodName,
-			String foodPrice, String foodImg, String storeName, String storeImg) {
+			String foodPrice, String foodImg, String storeName, String storeImg, String totalPrice) {
 		super();
 		this.cartNo = cartNo;
 		this.userNo = userNo;
@@ -82,10 +89,10 @@ public class MemberCartVo {
 		this.foodImg = foodImg;
 		this.storeName = storeName;
 		this.storeImg = storeImg;
+		this.totalPrice = totalPrice;
 	}
 	public MemberCartVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 }
