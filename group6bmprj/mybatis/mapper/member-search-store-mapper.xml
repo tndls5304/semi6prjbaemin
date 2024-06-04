@@ -224,7 +224,7 @@
 	        JOIN MEMBER_USER  M ON M.NO=O.USER_NO
 		WHERE O.STORE_NO=#{value}
 			AND O.STATUS_NO='6'
-			AND R.DEL_YN='N';
+			AND R.DEL_YN='N'
         
 	</select>
 

@@ -29,6 +29,9 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 		String storeNo=(String) session.getAttribute("storeNo");
 	
 	
+		// TODO StoreNo
+		storeNo="16";
+		
 		
 		StoreMenuService sms=new StoreMenuService();
 		List<CategoryVo> categoryVolist=sms.selectCategoryList(storeNo);

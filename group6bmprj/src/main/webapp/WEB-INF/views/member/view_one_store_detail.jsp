@@ -185,21 +185,21 @@
 
 				<div id="reviewTab-content" style="display: none;">
 					<!-- 여기는 리뷰 -->
-<c:forEach items="oneStoreReviewVoList" var="OneStoreReviewVo">
+
 					<!-- 손님+ 사장 리뷰 디브 -->
 					<div class="case">
 						<!-- 손님 사진() -->
 						<img div class="profile-pic" src="" alt="">
 						<!-- 손님 닉네임 -->
-						<div class="member-name">손님 ${OneStoreReviewVo.nick}</div>
+						<div class="member-name">손님닉네임</div>
 
 						<!-- 별점  -->
-						<div class="star-rating">${OneStoreReviewVo.rating}점</div>
+						<div class="star-rating">손님점수</div>
 						<!-- 손님 리뷰 -->
-						<div class="member-comment">리뷰내용 ${OneStoreReviewVo.userContent}</div>
+						<div class="member-comment">손님리뷰</div>
 						<!-- 리뷰 사진 -->
 					
-						<img div class="review-images" src="/baemin/resources/upload/${OneStoreReviewVo.img}">
+						<img div class="review-images" src="">
 
 						<div></div>
 						<!--내가 시킨 음식 이름(jstl) -->
@@ -220,7 +220,7 @@
 							...</div>
 					</c:if>
 			</div>
-</c:forEach>
+
 
 
 					<!--  리뷰테스트용 반복 하는거 -->
