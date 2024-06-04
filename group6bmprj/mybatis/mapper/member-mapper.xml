@@ -185,8 +185,6 @@
       ON F.NO = C.FOOD_NO
       JOIN STORE_INFOR S
       ON S.NO = C.FOOD_NO
-      JOIN MEMBER_USER M
-      ON M.NO = F.NO
       WHERE C.USER_NO = #{no}
 
 	</select>
