@@ -94,7 +94,7 @@
 	<select id="storeOrderList"
 		resultType="com.kh.baemin.member.vo.StoreOrderVo">
 
-
+		
 		 SELECT S.INTRODUCTION_IMG AS storeImg, S.NAME AS storeName, F.NAME 
 			AS storeFoodName, O.FOOD_COUNT AS storeFoodCount, O.FOOD_PRICE AS storeFoodPrice, 
 			OT.ORDER_DAY AS storeOrderDate, OS.STATUS AS storeOrderStatus, OS.NO , M.NO 
