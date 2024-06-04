@@ -25,6 +25,7 @@
     </header>
     <main>
     <form action="/baemin/member/order">
+  
         <c:forEach items="${orderCartList}" var="vo">
             <div class="time">
                 <!-- 가게사진 -->
@@ -34,57 +35,41 @@
                 <!-- 이시간은 구현은 못하지만 없으면 심심해서 넣었습니다.. -->
                 🧭 22~32분 후 도착
             </div>
-            <div class="restaurant">
-                <div class="restaurant-header">
-                    <div class="restaurant-info">
-                        <div class="menu-container">
-                            <!-- 메뉴 로고 이미지 -->
-                            ${vo.foodImg}
-                        </div>
-                        <!-- 가게 음식 이름 -->
-                        <div class="restaurant-menuname">
-                            <span>${vo.foodName}</span>
-                            <span>${vo.foodPrice}원</span>
-                            
-                             <span>갯수 :${vo.foodCount}</span>
-                        </div>
-       
-                        <!-- 가게 음식 가격 및 정산 가격 -->
-                        <!-- 메뉴 추가 버튼 -->
-                        
-                    </div>
+			        &nbsp
+                &nbsp
+                  <div>
+                     가게음식 사진 :   ${vo.foodImg}
                 </div>
-                
+        <div id="storeFood">
+            가게음식: ${vo.foodName}
+            <div id="FoodPrice">
+                가게음식 가격: ${vo.foodPrice }
             </div>
-             </c:forEach>
-            <div class="amountpay">결제금액을 확인해 주세요💲</div>
-            <div class="restaurant">
-                <div class="restaurant-header">
-                    <div class="restaurant-info">
-                        <div class="menu-container"></div>
-                        <!-- 주문금액 -->
-                        <div class="restaurant-menuname">
-                           
-                        </div>
-                        <!-- 배달팁 -->
-                        <div class="restaurant-rating">
-                            <div class="deliverytip">알뜰배달 :&nbsp;&nbsp;&nbsp;무료</div>
-                            <!-- 배달팁 가격 가게마다 달라서 jstl -->
-                            
-                            <!-- 결제 예정 금액 -->
-                            <div class="totallmoney">
-                                <span class="expectedmoney">결제 예정 총합 금액:</span>
-                                <!-- 결제 예정 금액 달라서 jstl -->
-                                <span class="totallmoney"><%= request.getAttribute("totalAmount") %></span>
-                            </div>
-                        </div>
-                        <!-- 주문하기 버튼 -->
-                        <div class="payment">
-                             <button type="submit" class="next-button">주문하기</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div id="foodCount">
+                갯수 :${vo.foodCount}
+            </div >
+        
+       </c:forEach>
+        &nbsp
+        &nbsp
+        
+        <div>
+            결제금액을 확인해 주세요💲
+        </div>
+        &nbsp
+        &nbsp
+        <div>
+            알뜰배달 :  &nbsp &nbsp 무료
+            &nbsp
+        </div><div>
+
+            결제 예정 총합 금액 :      <span class="totallmoney"><%= request.getAttribute("totalAmount") %></span>
+        </div>
+        &nbsp
+         <button type="submit" class="next-button">  주문하기</button>      
+                 
+      
+      
         </form>
     </main>
     <footer>
