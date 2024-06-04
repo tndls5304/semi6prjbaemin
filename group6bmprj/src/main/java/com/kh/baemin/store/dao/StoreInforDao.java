@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.baemin.store.vo.ClosedDayVo;
-import com.kh.baemin.store.vo.StoreCategoryVo;
+import com.kh.baemin.store.vo.StoreCategory;
 import com.kh.baemin.store.vo.StoreInforVo;
 
 public class StoreInforDao {
@@ -51,7 +51,7 @@ public class StoreInforDao {
         ss.insert("StoreInforMapper.insertApprovalStatus", approvalStatus);
     }
 
-    public List<StoreCategoryVo> getStoreCategoryList(SqlSession ss) {
+    public List<StoreCategory> getStoreCategoryList(SqlSession ss) {
         return ss.selectList("StoreInforMapper.getStoreCategoryList");
     }
 
