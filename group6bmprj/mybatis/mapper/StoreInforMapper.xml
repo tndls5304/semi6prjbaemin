@@ -167,7 +167,7 @@
 		INSERT INTO APPROVAL_STATUS ( NO, STATUS ) VALUES ( #{approvalStatusNo}, #{approvalStatus} )
 	</insert>
 
-	<select id="getStoreCategoryList" resultType="com.kh.baemin.store.vo.StoreCategoryVo">
+	<select id="getStoreCategoryList" resultType="com.kh.baemin.store.vo.CategoryVo">
 		SELECT NO, NAME FROM STORE_CATEGORY
 	</select>
 

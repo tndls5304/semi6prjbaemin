@@ -74,9 +74,9 @@
                             <div class="deliverymoney">무료</div>
                             <!-- 결제 예정 금액 -->
                             <div class="totallmoney">
-                                <span class="expectedmoney">결제 예정 금액:</span>
+                                <span class="expectedmoney">결제 예정 총합 금액:</span>
                                 <!-- 결제 예정 금액 달라서 jstl -->
-                                <span class="totallmoney">${vo.foodPrice}</span>
+                                <span class="totallmoney">${vo.totalPrice}</span>
                             </div>
                         </div>
                         <!-- 주문하기 버튼 -->
