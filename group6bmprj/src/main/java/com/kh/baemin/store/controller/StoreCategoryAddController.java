@@ -38,7 +38,9 @@ public class StoreCategoryAddController extends HttpServlet {
 			CategoryVo vo=new CategoryVo();
 			vo.setName(name);
 			vo.setViewYn(viewYn);
-			vo.setStoreNo(storeNo);
+			
+			//TODO StoreNo
+			vo.setStoreNo("1");
 
 			 StoreMenuService sms=new  StoreMenuService();;
 			int result=sms.categoryAdd(vo);
