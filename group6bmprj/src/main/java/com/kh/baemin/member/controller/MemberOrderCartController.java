@@ -26,7 +26,15 @@ public class MemberOrderCartController extends HttpServlet {
 			MemberService ms = new MemberService();
 		
 			List<MemberCartVo> orderCartList = ms.selectCartByUser(no);
-		
+			
+			int totalAmount = 0;
+			for (MemberCartVo orderCart : orderCartList) {
+				int count= Integer.parseInt(orderCart.getFoodCount());
+				int price = Integer.parseInt(orderCart.getFoodPrice()); 
+				totalAmount += count * price;
+			}
+
+			req.setAttribute("totalAmount", totalAmount);
 			req.setAttribute("orderCartList", orderCartList);
 			req.getRequestDispatcher("/WEB-INF/views/member/orderCart.jsp").forward(req, resp);
 		} catch (Exception e) {
