@@ -24,6 +24,7 @@
         <div class="middle">주소입력칸&nbsp;&nbsp;&nbsp;▽</div>
     </header>
     <main>
+    <form action="/baemin/member/order">
         <c:forEach items="${orderCartList}" var="vo">
             <div class="time">
                 <!-- 가게사진 -->
@@ -76,7 +77,7 @@
                             <div class="totallmoney">
                                 <span class="expectedmoney">결제 예정 총합 금액:</span>
                                 <!-- 결제 예정 금액 달라서 jstl -->
-                                <span class="totallmoney">${vo.totalPrice}</span>
+                                <span class="totallmoney">${vo.foodPrice}</span>
                             </div>
                         </div>
                         <!-- 주문하기 버튼 -->
@@ -87,6 +88,7 @@
                 </div>
             </div>
         </c:forEach>
+        </form>
     </main>
     <footer>
         <div onclick="location.href='/baemin/member/search'"><img src="/baemin/resources/수인img/하단바_돋보기.jpg"><span>&nbsp&nbsp검색</span></div>
