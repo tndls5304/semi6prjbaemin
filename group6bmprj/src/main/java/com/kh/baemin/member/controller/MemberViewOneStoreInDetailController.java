@@ -39,8 +39,10 @@ public class MemberViewOneStoreInDetailController extends HttpServlet {
 			
 			//한가게의 리뷰를 보여주는 
 			
-			List<OneStoreReviewVo> oneStoreReviewVoList=service.memberViewReview(storeNo);
-			req.setAttribute("oneStoreReviewVoList", oneStoreReviewVoList);
+//			List<OneStoreReviewVo> oneStoreReviewVoList=service.memberViewReview(storeNo);
+//			
+//			System.out.println("리뷰보여주니?"+oneStoreReviewVoList);
+//			req.setAttribute("oneStoreReviewVoList", oneStoreReviewVoList);
 			
 			req.getRequestDispatcher("/WEB-INF/views/member/view_one_store_detail.jsp").forward(req, resp);
 		}catch(Exception e){
