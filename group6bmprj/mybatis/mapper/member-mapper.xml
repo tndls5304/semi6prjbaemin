@@ -93,11 +93,18 @@
 
 	<select id="storeOrderList"
 		resultType="com.kh.baemin.member.vo.StoreOrderVo">
-
 		
-		 SELECT S.INTRODUCTION_IMG AS storeImg, S.NAME AS storeName, F.NAME 
-			AS storeFoodName, O.FOOD_COUNT AS storeFoodCount, O.FOOD_PRICE AS storeFoodPrice, 
-			OT.ORDER_DAY AS storeOrderDate, OS.STATUS AS storeOrderStatus, OS.NO , M.NO 
+		
+		 SELECT 
+		 S.INTRODUCTION_IMG AS storeImg,
+		  S.NAME AS storeName, 
+		  F.NAME AS storeFoodName,
+			 O.FOOD_COUNT AS storeFoodCount,
+			  O.FOOD_PRICE AS storeFoodPrice, 	  
+			OT.ORDER_DAY AS storeOrderDate,
+			 OS.STATUS AS storeOrderStatus,
+			  OS.NO , 
+			  M.NO 
 			FROM STORE_INFOR S JOIN ORDER_DETAIL O ON S.NO = O.NO JOIN FOOD_INFOR F ON 
 			F.NO = S.NO JOIN ORDER_SHEET OT ON S.NO = OT.NO JOIN ORDER_STATUS OS ON OS.NO 
 			= S.NO JOIN MEMBER_USER M ON M.NO = S.NO WHERE M.NO = #{no} 
@@ -169,7 +176,7 @@
 	</select>
 
 	<select id="selectCartByUser" resultType="com.kh.baemin.member.vo.MemberCartVo">
- SELECT
+          SELECT
          S.NO AS storeNo,
          C.NO AS cartNo,
          C.USER_NO AS userNo,
@@ -184,7 +191,7 @@
       JOIN FOOD_INFOR F
       ON F.NO = C.FOOD_NO
       JOIN STORE_INFOR S
-      ON S.NO = C.FOOD_NO
+     ON S.NO = f.store_no
       WHERE C.USER_NO = #{no}
       
 
