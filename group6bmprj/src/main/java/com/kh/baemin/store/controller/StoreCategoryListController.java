@@ -28,9 +28,9 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 		//세션에서 가게넘버 빼자
 		String storeNo=(String) session.getAttribute("storeNo");
 	
-	
 		// TODO StoreNo
 		storeNo="16";
+
 		
 		
 		StoreMenuService sms=new StoreMenuService();

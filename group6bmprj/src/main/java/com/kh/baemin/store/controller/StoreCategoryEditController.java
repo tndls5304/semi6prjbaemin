@@ -49,7 +49,6 @@ public class StoreCategoryEditController extends HttpServlet{
 			//TODO StoreNo
 			vo.setStoreNo(storeNo);
 			vo.setStoreNo("16");
-
 			 StoreMenuService sms=new StoreMenuService();;
 			int result=sms.categoryEdit(vo);
 			
