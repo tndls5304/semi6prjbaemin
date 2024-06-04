@@ -54,7 +54,7 @@ public class StoreAdmitInsertController extends HttpServlet {
 				}
 			}
 			
-//			서버에 파일 업로드
+
 			List<StoreAdmitVo> storeAdmitVoList = new ArrayList<StoreAdmitVo>();
 			for (Part f : fileList) {
 				//StoreAdmitVo storeAdmitVo = FileUpload.saveFile(f);

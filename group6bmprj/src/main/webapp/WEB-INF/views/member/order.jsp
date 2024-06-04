@@ -18,8 +18,7 @@
 <body>
     <div class="content">
         <header>
-          <div class="top-bar">
-            <div class="left-bar"><img class = "back-img" src="/baemin/resources/img/상단바_뒤로가기.jpg" onclick="history.back()"></div>
+           <div class="left-bar"><img class = "back-img" src="/baemin/resources/img/상단바_뒤로가기.jpg" onclick="history.back()"></div>
             <div class="middle-bar"> <h2>주문하기</h2> </div>
 
             <img  class="right-bar" src="/baemin/resources/img/홈.png" onclick="location.href='/baemin/member/home'">

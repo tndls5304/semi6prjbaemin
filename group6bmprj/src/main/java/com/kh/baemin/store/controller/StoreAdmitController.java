@@ -31,7 +31,7 @@ public class StoreAdmitController extends HttpServlet {
     private final StoreInforService storeInforService = new StoreInforService();
 
 
-    //ȭ�� ���
+ 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
