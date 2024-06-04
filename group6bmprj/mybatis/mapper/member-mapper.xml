@@ -210,7 +210,7 @@
 			F.PRICE AS foodPrice,
 			F.FOOD_IMG AS foodImg ,
 			S.NAME AS storeName,
-			S.INTRODUCTION_IMG AS storeImg
+			S.INTRODUCTION_IMG AS storeImg,
 		FROM CART C
 		JOIN FOOD_INFOR F
 		ON F.NO = C.FOOD_NO
