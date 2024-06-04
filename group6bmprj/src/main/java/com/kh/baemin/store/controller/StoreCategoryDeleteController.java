@@ -41,8 +41,8 @@ System.out.println(no);
 			CategoryVo vo = new CategoryVo();
 			vo.setNo(no);
 			
-			// TODO StoreNo
-			vo.setStoreNo("1");
+			
+			vo.setStoreNo(storeNo);
 
 			StoreMenuService sms = new StoreMenuService();
 			;
