@@ -77,7 +77,7 @@ public class MemberDao {
 	}
 
 	public List<MemberCartVo> selectCartByUser(SqlSession ss, String no) {
-		List<MemberCartVo> voList = ss.selectList("MemberMapper.selectCartByUser", no);
+		List<MemberCartVo> voList = ss.selectList("MemberMapper.selectCartByUser" , no);
 		return voList;
 	}
 	

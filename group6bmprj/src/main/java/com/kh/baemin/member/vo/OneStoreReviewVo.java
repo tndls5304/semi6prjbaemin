@@ -3,27 +3,22 @@ package com.kh.baemin.member.vo;
 public class OneStoreReviewVo {
 	private String img;
 	private String rating;
-	private String userContent;
-	private String storeContent;
-	private String enrollDate;
-	private String nick;
-	private String profile;
-	private String  storeownerpic;
+	private String user_content;
+	private String store_content;
+	private String enroll_date;
+	
+	
 	public OneStoreReviewVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public OneStoreReviewVo(String img, String rating, String userContent, String storeContent, String enrollDate,
-			String nick, String profile, String storeownerpic) {
+	public OneStoreReviewVo(String img, String rating, String user_content, String store_content, String enroll_date) {
 		super();
 		this.img = img;
 		this.rating = rating;
-		this.userContent = userContent;
-		this.storeContent = storeContent;
-		this.enrollDate = enrollDate;
-		this.nick = nick;
-		this.profile = profile;
-		this.storeownerpic = storeownerpic;
+		this.user_content = user_content;
+		this.store_content = store_content;
+		this.enroll_date = enroll_date;
 	}
 	public String getImg() {
 		return img;
@@ -37,49 +32,29 @@ public class OneStoreReviewVo {
 	public void setRating(String rating) {
 		this.rating = rating;
 	}
-	public String getUserContent() {
-		return userContent;
+	public String getUser_content() {
+		return user_content;
 	}
-	public void setUserContent(String userContent) {
-		this.userContent = userContent;
+	public void setUser_content(String user_content) {
+		this.user_content = user_content;
 	}
-	public String getStoreContent() {
-		return storeContent;
+	public String getStore_content() {
+		return store_content;
 	}
-	public void setStoreContent(String storeContent) {
-		this.storeContent = storeContent;
+	public void setStore_content(String store_content) {
+		this.store_content = store_content;
 	}
-	public String getEnrollDate() {
-		return enrollDate;
+	public String getEnroll_date() {
+		return enroll_date;
 	}
-	public void setEnrollDate(String enrollDate) {
-		this.enrollDate = enrollDate;
-	}
-	public String getNick() {
-		return nick;
-	}
-	public void setNick(String nick) {
-		this.nick = nick;
-	}
-	public String getProfile() {
-		return profile;
-	}
-	public void setProfile(String profile) {
-		this.profile = profile;
-	}
-	public String getStoreownerpic() {
-		return storeownerpic;
-	}
-	public void setStoreownerpic(String storeownerpic) {
-		this.storeownerpic = storeownerpic;
+	public void setEnroll_date(String enroll_date) {
+		this.enroll_date = enroll_date;
 	}
 	@Override
 	public String toString() {
-		return "OneStoreReviewVo [img=" + img + ", rating=" + rating + ", userContent=" + userContent
-				+ ", storeContent=" + storeContent + ", enrollDate=" + enrollDate + ", nick=" + nick + ", profile="
-				+ profile + ", storeownerpic=" + storeownerpic + "]";
+		return "OneStoreReviewVo [img=" + img + ", rating=" + rating + ", user_content=" + user_content
+				+ ", store_content=" + store_content + ", enroll_date=" + enroll_date + "]";
 	}
-
 	
 	
 	

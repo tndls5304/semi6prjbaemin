@@ -24,7 +24,7 @@
 		<header>
 			<div class="top-bar">
 				<div class="left-bar">
-					<img class = "back-img" src="/baemin/resources/img/상단바_뒤로가기.jpg" onclick="history.back()">
+					<img class="back-img" src="/baemin/resources/수인img/상단바_뒤로가기.jpg">
 				</div>
 			</div>
 			<img class="right-bar" src="/baemin/resources/수인img/홈.png">
@@ -191,15 +191,16 @@
 						<!-- 손님 사진() -->
 						<img div class="profile-pic" src="" alt="">
 						<!-- 손님 닉네임 -->
-						<div class="member-name">손님닉네임</div>
+						<div class="member-name">손님 닉네임</div>
 
 						<!-- 별점  -->
-						<div class="star-rating">손님점수</div>
+						<div class="star-rating">★★★★★</div>
 						<!-- 손님 리뷰 -->
-						<div class="member-comment">손님리뷰</div>
+						<div class="member-comment">너무 맛있어요너무 맛있어요너무 맛있어요너무 맛있어요너무
+							맛있어요너무 맛있어요너무 맛있어요너무 맛있어요</div>
 						<!-- 리뷰 사진 -->
 					
-						<img div class="review-images" src="">
+						<img div class="review-images" src="" alt="">
 
 						<div></div>
 						<!--내가 시킨 음식 이름(jstl) -->
@@ -207,34 +208,75 @@
 						<div class="delivery-problem">배달문제선택</div>
 
 
-					<c:if test="${!empty OneStoreReviewVo.storeContent}">
 						<!-- 사장 사진 -->
 						<div class="profile-pic">
 
-							<img src="/baemin/resources/upload/${OneStoreReviewVo.storeownerpic}" alt="">
+							<img src="" alt="">
 						</div>
 						<!-- 사장 이름 표시 -->
 						<div class="ceoname">사장님</div>
 						<!-- 사장 대답 -->
-						<div class="comment-box">${OneStoreReviewVo.storeContent} 
+						<div class="comment-box">안녕하세요! kh 입니다 맛있게 즐겨주셔서 너무 감사합니다
 							...</div>
-					</c:if>
-			</div>
+
+					</div>
 
 
 
 					<!--  리뷰테스트용 반복 하는거 -->
-				
+					<div class="case">
+						<!-- 손님 사진() -->
+						<img div class="profile-pic" src="" alt="">
+						<!-- 손님 닉네임 -->
+						<div class="member-name">손님 닉네임</div>
+
+						<!-- 별점  -->
+						<div class="star-rating">★★★★★</div>
+						<!-- 손님 리뷰 -->
+						<div class="member-comment">너무 맛있어요너무 맛있어요너무 맛있어요너무 맛있어요너무
+							맛있어요너무 맛있어요너무 맛있어요너무 맛있어요</div>
+						<!-- 리뷰 사진 -->
+						<img div class="review-images" src="" alt="">
+
+						<div></div>
+						<!--내가 시킨 음식 이름(jstl) -->
+						<div class="my-food">음식이름</div>
+						<div class="delivery-problem">배달문제선택</div>
+
+
+						<!-- 사장 사진 -->
+						<div class="profile-pic">
+
+							<img src="" alt="">
+						</div>
+						<!-- 사장 이름 표시 -->
+						<div class="ceoname">사장님</div>
+						<!-- 사장 대답 -->
+						<div class="comment-box">안녕하세요! kh 입니다 맛있게 즐겨주셔서 너무 감사합니다
+							...</div>
+
+					</div>
 
 					<!-- 리뷰테스트 끝 -->
 		</main>
 		<footer>
 			<!-- 클릭하면 페이지 넘어갈 수 있게 온클릭에 url쓰기~  -->
-  <div onclick="location.href='/baemin/member/search'"><img src="/baemin/resources/수인img/하단바_돋보기.jpg"><span>&nbsp&nbsp검색</span></div>
-      	  <div onclick="location.href='/baemin/member/orderCart'"><img src="/baemin/resources/수인img/하단바_장바구니.jpg">  <span>장바구니</span></div>
-          <div onclick=""> <img src="/baemin/resources/수인img/하단바_찜.jpg"> <span>&nbsp&nbsp&nbsp&nbsp찜</span></div>
-       	  <div onclick="location.href='/baemin/member/orderList'"> <img src="/baemin/resources/수인img/하단바_주문내역.jpg"> <span>주문내역</span></div>
-           <div onclick="location.href='/baemin/member/info'"> <img src="/baemin/resources/수인img/하단바_마이배민.jpg"> <span>my배민</span></div>
+			<div onclick="">
+				<img src="/baemin/resources/수인img/하단바_돋보기.jpg"> <span>&nbsp&nbsp검색</span>
+			</div>
+			<div onclick="">
+				<img src="/baemin/resources/수인img/하단바_장바구니.jpg"> <span>장바구니</span>
+			</div>
+			<div onclick="">
+				<img src="/baemin/resources/수인img/하단바_찜.jpg"> <span>&nbsp&nbsp&nbsp&nbsp찜</span>
+			</div>
+			<div onclick="">
+				<img src="/baemin/resources/수인img/하단바_주문내역.jpg"> <span>주문내역</span>
+			</div>
+			<div onclick="">
+				<img src="/baemin/resources/수인img/하단바_마이배민.jpg"> <span>my배민</span>
+			</div>
+
 
 		</footer>
 

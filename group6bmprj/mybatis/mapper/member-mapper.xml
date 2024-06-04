@@ -169,7 +169,7 @@
 	</select>
 
 	<select id="selectCartByUser" resultType="com.kh.baemin.member.vo.MemberCartVo">
-   SELECT
+ SELECT
          S.NO AS storeNo,
          C.NO AS cartNo,
          C.USER_NO AS userNo,
@@ -186,6 +186,26 @@
       JOIN STORE_INFOR S
       ON S.NO = C.FOOD_NO
       WHERE C.USER_NO = #{no}
+      
+
+		
+	</select>
+	
+	<select id="getMember" resultType="com.kh.baemin.member.vo.MemberVo"> 
+	SELECT 
+		NO, 
+		ID, 
+		PWD, 
+		NICK, 
+		PROFILE, 
+		NAME, 
+		PHONE, 
+		ADDRESS, 
+		ADDRESS_DETAIL, 
+		GENERATION,
+		GENDER, 
+	ACCOUNT_BALANCE FROM MEMBER_USER WHERE NO = #{memberNo} 
+
 
 	</select>
 

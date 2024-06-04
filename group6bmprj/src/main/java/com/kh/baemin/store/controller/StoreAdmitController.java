@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import com.kh.baemin.store.service.StoreInforService;
-import com.kh.baemin.store.vo.StoreCategory;
+import com.kh.baemin.store.vo.StoreCategoryVo;
 import com.kh.baemin.store.vo.StoreInforVo;
 import com.kh.baemin.store.vo.StoreOwnerVo;
 import com.kh.baemin.util.file.FileUpload;
@@ -31,13 +31,13 @@ public class StoreAdmitController extends HttpServlet {
     private final StoreInforService storeInforService = new StoreInforService();
 
 
- 
+    //ȭ�� ���
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         try {
 
-           List<StoreCategory> storeCategories =  storeInforService.getStoreCategoryList();
+           List<StoreCategoryVo> storeCategories =  storeInforService.getStoreCategoryList();
            req.setAttribute("storeCategories", storeCategories);
            req.getRequestDispatcher("/WEB-INF/views/store/admit.jsp").forward(req, resp);
         } catch (Exception e) {

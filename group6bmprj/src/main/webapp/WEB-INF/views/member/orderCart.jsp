@@ -17,14 +17,13 @@
 <div class="content">
     <header>
         <div class="top-bar">
-            <img class = "back-img" src="/baemin/resources/img/상단바_뒤로가기.jpg" onclick="history.back()">
+             <img class="back-img" onclick="location.href='/baemin/member/home'" src="/baemin/resources/수인img/상단바_뒤로가기.jpg" >
             <div class="middle-bar"><img class="top-bar-name" src="/baemin/resources/수인img/장바구니.png" alt="Current Page Name"></div>
             <img class="right-bar" onclick="location.href='/baemin/member/home'" src="/baemin/resources/수인img/홈.png" alt="Home">
         </div>
         <div class="middle">주소입력칸&nbsp;&nbsp;&nbsp;▽</div>
     </header>
     <main>
-    <form action="/baemin/member/order">
         <c:forEach items="${orderCartList}" var="vo">
             <div class="time">
                 <!-- 가게사진 -->
@@ -75,7 +74,7 @@
                             <div class="deliverymoney">무료</div>
                             <!-- 결제 예정 금액 -->
                             <div class="totallmoney">
-                                <span class="expectedmoney">결제 예정 총합 금액:</span>
+                                <span class="expectedmoney">결제 예정 금액:</span>
                                 <!-- 결제 예정 금액 달라서 jstl -->
                                 <span class="totallmoney">${vo.foodPrice}</span>
                             </div>
@@ -88,7 +87,6 @@
                 </div>
             </div>
         </c:forEach>
-        </form>
     </main>
     <footer>
         <div onclick="location.href='/baemin/member/search'"><img src="/baemin/resources/수인img/하단바_돋보기.jpg"><span>&nbsp&nbsp검색</span></div>

@@ -1,17 +1,15 @@
 package com.kh.baemin.store.service;
 
-import static com.kh.baemin.db.SqlSessionTemplate.getSqlSession;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.ibatis.session.SqlSession;
-
 import com.kh.baemin.store.dao.StoreInforDao;
 import com.kh.baemin.store.vo.ClosedDayVo;
-import com.kh.baemin.store.vo.StoreCategory;
+import com.kh.baemin.store.vo.StoreCategoryVo;
 import com.kh.baemin.store.vo.StoreInforVo;
+import org.apache.ibatis.session.SqlSession;
+
+import java.io.IOException;
+import java.util.List;
+
+import static com.kh.baemin.db.SqlSessionTemplate.getSqlSession;
 
 public class StoreInforService {
 
@@ -38,16 +36,16 @@ public class StoreInforService {
                     throw new RuntimeException("No delivery zone found for local name: " + storeInforVo.getLocalName());
                 }
 
-                // ï¿½ï¿½ï¿½ï¿½ï¿½Ð·ï¿½ ï¿½ï¿½ï¿½ï¿½
+                // ¾÷Á¾ºÐ·ù ÀúÀå
                 //storeInforDao.insertStoreCategory(ss, storeInforVo);
 
-                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                // °¡°Ô ½ÂÀÎ»óÅÂ ÀúÀå
                 //storeInforDao.insertApprovalStatus(ss, storeInforVo);
 
-                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                // °¡°Ô ÀúÀå
                 storeInforDao.insertStoreInfor(ss, storeInforVo);
 
-                // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                // ¹è´Þ Áö¿ª ÀúÀå
                 storeInforDao.insertStoreZone(ss, storeInforVo.getNo(), deliveryZoneNo);
 
                 ss.commit();
@@ -117,7 +115,7 @@ public class StoreInforService {
 
     }
 
-    public List<StoreCategory> getStoreCategoryList() throws IOException {
+    public List<StoreCategoryVo> getStoreCategoryList() throws IOException {
         try (SqlSession ss = getSqlSession()) {
             return storeInforDao.getStoreCategoryList(ss);
         }

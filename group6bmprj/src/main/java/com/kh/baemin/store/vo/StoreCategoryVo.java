@@ -1,6 +1,6 @@
 package com.kh.baemin.store.vo;
 
-public class StoreCategory {
+public class StoreCategoryVo {
     private String no;
     private String name;
 	public String getNo() {
@@ -19,12 +19,12 @@ public class StoreCategory {
 	public String toString() {
 		return "StoreCategory [no=" + no + ", name=" + name + "]";
 	}
-	public StoreCategory(String no, String name) {
+	public StoreCategoryVo(String no, String name) {
 		super();
 		this.no = no;
 		this.name = name;
 	}
-	public StoreCategory() {
+	public StoreCategoryVo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
