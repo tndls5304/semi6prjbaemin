@@ -70,11 +70,11 @@ public class StoreManageController extends HttpServlet {
 
 		storeInforService.updateStoreInfor(storeInfor);
 
-		// ÀÀ´ä ¼³Á¤
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		resp.setCharacterEncoding("UTF-8");
 
-		// JSON ÀÀ´ä Àü¼Û
-		resp.getWriter().write("¼º°ø");
+		// JSON ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		resp.getWriter().write("ï¿½ï¿½ï¿½ï¿½");
 	}
 
 

@@ -17,7 +17,7 @@
 <div class="content">
     <header>
         <div class="top-bar">
-             <img class="back-img" onclick="location.href='/baemin/member/home'" src="/baemin/resources/수인img/상단바_뒤로가기.jpg" >
+            <img class = "back-img" src="/baemin/resources/img/상단바_뒤로가기.jpg" onclick="history.back()">
             <div class="middle-bar"><img class="top-bar-name" src="/baemin/resources/수인img/장바구니.png" alt="Current Page Name"></div>
             <img class="right-bar" onclick="location.href='/baemin/member/home'" src="/baemin/resources/수인img/홈.png" alt="Home">
         </div>
