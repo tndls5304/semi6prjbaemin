@@ -24,11 +24,14 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="/mapper/storeOwner-menuEdit-mapper.xml" />
-		<mapper resource="/mapper/member-mapper.xml" />
-		<mapper resource="/mapper/admin-ManageUser-mapper.xml" />
-		<mapper resource="/mapper/member-search-store-mapper.xml" />
-		<mapper resource="/mapper/cartMapper.xml" />
-	
+		      <mapper resource="/mapper/admin-ManageUser-mapper.xml" />
+      <mapper resource="/mapper/AdminReviewMapper.xml" />
+      <mapper resource="/mapper/cartMapper.xml" />
+      <mapper resource="/mapper/member-mapper.xml" />
+      <mapper resource="/mapper/MemberOrderMapper.xml" />
+      <mapper resource="/mapper/MemberReviewMapper.xml" />
+      <mapper resource="/mapper/member-search-store-mapper.xml" />
+      <mapper resource="/mapper/StoreInforMapper.xml" />
+      <mapper resource="/mapper/storeOwner-menuEdit-mapper.xml" />
 	</mappers>
 </configuration>

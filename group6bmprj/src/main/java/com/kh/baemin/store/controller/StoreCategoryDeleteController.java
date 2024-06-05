@@ -42,7 +42,7 @@ System.out.println(no);
 			vo.setNo(no);
 			
 			// TODO StoreNo
-			vo.setStoreNo("1");
+			vo.setStoreNo("4");
 
 			StoreMenuService sms = new StoreMenuService();
 			;

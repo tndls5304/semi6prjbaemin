@@ -10,9 +10,7 @@
     
     <title>유저 회원가입</title>
       
-      <c:if test="${not empty resultMsg}">
-             alert('${resultMsg}');
-      </c:if>
+    
    
     
 

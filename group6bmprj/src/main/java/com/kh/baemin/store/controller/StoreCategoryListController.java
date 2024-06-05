@@ -29,7 +29,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 		String storeNo=(String) session.getAttribute("storeNo");
 	
 		// TODO StoreNo
-		storeNo="1";
+		storeNo="4";
 		
 		
 		StoreMenuService sms=new StoreMenuService();

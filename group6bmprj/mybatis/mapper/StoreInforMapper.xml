@@ -4,187 +4,187 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="StoreInforMapper">
 
-	<select id="getTop10StoreList" resultType="com.kh.baemin.store.vo.StoreInforVo">
-		SELECT NAME FROM ( SELECT NAME FROM STORE_INFOR ORDER BY viewed_cnt DESC ) WHERE ROWNUM
-		<![CDATA[ <= ]]>
-		10
-	</select>
-	
-	<select id="getStoreInforList" resultType="com.kh.baemin.store.vo.StoreInforVo">
-		SELECT
-		NO,
-		NAME,
-		ADDRESS,
-		ADDRESS_DETAIL,
-		BUSINESS_REGISTRATION_CERTIFICATE_IMG,
-		INTRODUCTION_IMG,
-		INTRODUCE,
-		MAIN_IMG,
-		PHONE,
-		MINIMUM_ORDER_AMOUNT,
-		VIEWED_CNT,
-		OPEN_TIME,
-		END_TIME,
-		BREAK_TIME_START,
-		BREAK_TIME_END,
-		STORE_OWNER_NO,
-		STORE_CATEGORY_NO,
-		APPROVAL_STATUS_NO,
-		OPEN_YN
-		FROM STORE_INFOR WHERE NAME LIKE '%' || #{searchText} || '%'
-	</select>
-	
-	<select id="getDeliveryZoneNoByLocalName" resultType="string">
-	SELECT ZONE_NUMBER FROM LOCAL_NAME WHERE ADDRESS = #{localName} 
-	</select>
-	
-	<insert id="insertStoreInfor" parameterType="com.kh.baemin.store.vo.StoreInforVo">
-	<selectKey keyProperty="no" resultType="string" order="BEFORE">
-		SELECT SEQ_STORE_INFOR_NO.NEXTVAL FROM DUAL
-	</selectKey>
+   <select id="getTop10StoreList" resultType="com.kh.baemin.store.vo.StoreInforVo">
+      SELECT NAME FROM ( SELECT NAME FROM STORE_INFOR ORDER BY viewed_cnt DESC ) WHERE ROWNUM
+      <![CDATA[ <= ]]>
+      10
+   </select>
+   
+   <select id="getStoreInforList" resultType="com.kh.baemin.store.vo.StoreInforVo">
+      SELECT
+      NO,
+      NAME,
+      ADDRESS,
+      ADDRESS_DETAIL,
+      BUSINESS_REGISTRATION_CERTIFICATE_IMG,
+      INTRODUCTION_IMG,
+      INTRODUCE,
+      MAIN_IMG,
+      PHONE,
+      MINIMUM_ORDER_AMOUNT,
+      VIEWED_CNT,
+      OPEN_TIME,
+      END_TIME,
+      BREAK_TIME_START,
+      BREAK_TIME_END,
+      STORE_OWNER_NO,
+      STORE_CATEGORY_NO,
+      APPROVAL_STATUS_NO,
+      OPEN_YN
+      FROM STORE_INFOR WHERE NAME LIKE '%' || #{searchText} || '%'
+   </select>
+   
+   <select id="getDeliveryZoneNoByLocalName" resultType="string">
+   SELECT ZONE_NUMBER FROM LOCAL_NAME WHERE ADDRESS = #{localName} 
+   </select>
+   
+   <insert id="insertStoreInfor" parameterType="com.kh.baemin.store.vo.StoreInforVo">
+   <selectKey keyProperty="no" resultType="string" order="BEFORE">
+      SELECT SEQ_STORE_INFOR_NO.NEXTVAL FROM DUAL
+   </selectKey>
 
 
-		INSERT INTO STORE_INFOR (
-			NO,
-			NAME,
-			ADDRESS,
-			ADDRESS_DETAIL,
-			BUSINESS_REGISTRATION_CERTIFICATE_IMG,
-			INTRODUCTION_IMG,
-			INTRODUCE,
-			MAIN_IMG,
-			PHONE,
-			MINIMUM_ORDER_AMOUNT,
-			VIEWED_CNT,
-			OPEN_TIME,
-			END_TIME,
-			BREAK_TIME_START,
-			BREAK_TIME_END,
-			STORE_OWNER_NO,
-			STORE_CATEGORY_NO,
-			APPROVAL_STATUS_NO,
-			OPEN_YN
-		) VALUES (
-			#{no},
-			#{name},
-			#{address},
-			#{addressDetail},
-			#{businessRegistrationCertificateImg},
-			#{introductionImg},
-			#{introduce},
-			#{mainImg},
-			#{phone},
-			#{minimumOrderAmount},
-			#{viewedCnt},
-			#{openTime},
-			#{endTime},
-			#{breakTimeStart},
-			#{breakTimeEnd},
-			#{storeOwnerNo},
-			#{storeCategoryNo},
-			#{approvalStatusNo},
-			'N'
-		)
+      INSERT INTO STORE_INFOR (
+         NO,
+         NAME,
+         ADDRESS,
+         ADDRESS_DETAIL,
+         BUSINESS_REGISTRATION_CERTIFICATE_IMG,
+         INTRODUCTION_IMG,
+         INTRODUCE,
+         MAIN_IMG,
+         PHONE,
+         MINIMUM_ORDER_AMOUNT,
+         VIEWED_CNT,
+         OPEN_TIME,
+         END_TIME,
+         BREAK_TIME_START,
+         BREAK_TIME_END,
+         STORE_OWNER_NO,
+         STORE_CATEGORY_NO,
+         APPROVAL_STATUS_NO,
+         OPEN_YN
+      ) VALUES (
+         #{no},
+         #{name},
+         #{address},
+         #{addressDetail},
+         #{businessRegistrationCertificateImg},
+         #{introductionImg},
+         #{introduce},
+         #{mainImg},
+         #{phone},
+         #{minimumOrderAmount},
+         #{viewedCnt},
+         #{openTime},
+         #{endTime},
+         #{breakTimeStart},
+         #{breakTimeEnd},
+         #{storeOwnerNo},
+         #{storeCategoryNo},
+         #{approvalStatusNo},
+         'N'
+      )
 
-	</insert>
-	
-	<insert id="insertStoreZone"> 
-	INSERT INTO STORE_DELIVERY_ZONE ( STORE_NO, ZONE_NO ) VALUES ( #{storeNo}, #{zoneNo} )
-	</insert>
-	
-	<select id="getStoreInfor" parameterType="string" resultType="com.kh.baemin.store.vo.StoreInforVo">
-		SELECT
-		  SI.NO
-		, SI.NAME
-		, SI.ADDRESS
-		, SI.ADDRESS_DETAIL
-		, SI.BUSINESS_REGISTRATION_CERTIFICATE_IMG
-		, SI.INTRODUCTION_IMG
-		, SI.INTRODUCE
-		, SI.MAIN_IMG
-		, SI.PHONE
-		, SI.MINIMUM_ORDER_AMOUNT
-		, SI.VIEWED_CNT
-		, SI.OPEN_TIME
-		, SI.END_TIME
-		, SI.BREAK_TIME_START
-		, SI.BREAK_TIME_END
-		, SI.STORE_OWNER_NO
-		, SI.STORE_CATEGORY_NO
-		, SI.APPROVAL_STATUS_NO
-		, SI.OPEN_YN
-		, SC.NAME AS STORE_CATEGORY_NAME
-		, MSO.PHONE AS STORE_OWNER_PHONE
-		FROM STORE_INFOR SI
-		JOIN STORE_CATEGORY SC ON SI.STORE_CATEGORY_NO = SC.NO
-		JOIN MEMBER_STORE_OWNER MSO ON SI.STORE_OWNER_NO = MSO.NO
-		WHERE SI.NO = #{no}
+   </insert>
+   
+   <insert id="insertStoreZone"> 
+   INSERT INTO STORE_DELIVERY_ZONE ( STORE_NO, ZONE_NO ) VALUES ( #{storeNo}, #{zoneNo} )
+   </insert>
+   
+   <select id="getStoreInfor" parameterType="string" resultType="com.kh.baemin.store.vo.StoreInforVo">
+      SELECT
+        SI.NO
+      , SI.NAME
+      , SI.ADDRESS
+      , SI.ADDRESS_DETAIL
+      , SI.BUSINESS_REGISTRATION_CERTIFICATE_IMG
+      , SI.INTRODUCTION_IMG
+      , SI.INTRODUCE
+      , SI.MAIN_IMG
+      , SI.PHONE
+      , SI.MINIMUM_ORDER_AMOUNT
+      , SI.VIEWED_CNT
+      , SI.OPEN_TIME
+      , SI.END_TIME
+      , SI.BREAK_TIME_START
+      , SI.BREAK_TIME_END
+      , SI.STORE_OWNER_NO
+      , SI.STORE_CATEGORY_NO
+      , SI.APPROVAL_STATUS_NO
+      , SI.OPEN_YN
+      , SC.NAME AS STORE_CATEGORY_NAME
+      , MSO.PHONE AS STORE_OWNER_PHONE
+      FROM STORE_INFOR SI
+      JOIN STORE_CATEGORY SC ON SI.STORE_CATEGORY_NO = SC.NO
+      JOIN MEMBER_STORE_OWNER MSO ON SI.STORE_OWNER_NO = MSO.NO
+      WHERE SI.NO = #{no}
 
-	</select>
-	
-	<update id="updateStoreOwnerPhone"> 
-		UPDATE
-			MEMBER_STORE_OWNER
-			SET PHONE = #{storeOwnerPhone}
-		WHERE NO = ( SELECT STORE_OWNER_NO FROM STORE_INFOR WHERE NO = #{storeNo} AND ROWNUM = 1)
-	</update>
-	
-	<update id="updateStoreInfor" parameterType="com.kh.baemin.store.vo.StoreInforVo">
-		UPDATE STORE_INFOR
-		<set>
-		<if test="openYn != null and openYn != ''"> OPEN_YN = #{openYn}, </if>
-		<if test="phone != null and phone != ''"> PHONE = #{phone}, </if>
-		<if test="introduce != null and introduce != ''"> INTRODUCE = #{introduce}, </if>
-		<if test="openTime != null and openTime != ''"> OPEN_TIME = #{openTime}, </if>
-		<if test="endTime != null and endTime != ''"> END_TIME = #{endTime}, </if>
-		<if test="breakTimeStart != null and breakTimeStart != ''"> BREAK_TIME_START = #{breakTimeStart}, </if>
-		<if test="breakTimeEnd != null and breakTimeEnd != ''"> BREAK_TIME_END = #{breakTimeEnd}, </if>
-		<if test="minimumOrderAmount != null and minimumOrderAmount != ''"> MINIMUM_ORDER_AMOUNT = #{minimumOrderAmount}, </if>
-		</set>
-		WHERE NO = #{no}
-	</update>
+   </select>
+   
+   <update id="updateStoreOwnerPhone"> 
+      UPDATE
+         MEMBER_STORE_OWNER
+         SET PHONE = #{storeOwnerPhone}
+      WHERE NO = ( SELECT STORE_OWNER_NO FROM STORE_INFOR WHERE NO = #{storeNo} AND ROWNUM = 1)
+   </update>
+   
+   <update id="updateStoreInfor" parameterType="com.kh.baemin.store.vo.StoreInforVo">
+      UPDATE STORE_INFOR
+      <set>
+      <if test="openYn != null and openYn != ''"> OPEN_YN = #{openYn}, </if>
+      <if test="phone != null and phone != ''"> PHONE = #{phone}, </if>
+      <if test="introduce != null and introduce != ''"> INTRODUCE = #{introduce}, </if>
+      <if test="openTime != null and openTime != ''"> OPEN_TIME = #{openTime}, </if>
+      <if test="endTime != null and endTime != ''"> END_TIME = #{endTime}, </if>
+      <if test="breakTimeStart != null and breakTimeStart != ''"> BREAK_TIME_START = #{breakTimeStart}, </if>
+      <if test="breakTimeEnd != null and breakTimeEnd != ''"> BREAK_TIME_END = #{breakTimeEnd}, </if>
+      <if test="minimumOrderAmount != null and minimumOrderAmount != ''"> MINIMUM_ORDER_AMOUNT = #{minimumOrderAmount}, </if>
+      </set>
+      WHERE NO = #{no}
+   </update>
 
-<!--	&#45;&#45; auto-generated definition-->
-<!--	create table STORE_CATEGORY-->
-<!--	(-->
-<!--	NO   NUMBER       not null-->
-<!--	primary key,-->
-<!--	NAME VARCHAR2(20) not null-->
-<!--	)-->
-<!--	/-->
+<!--   &#45;&#45; auto-generated definition-->
+<!--   create table STORE_CATEGORY-->
+<!--   (-->
+<!--   NO   NUMBER       not null-->
+<!--   primary key,-->
+<!--   NAME VARCHAR2(20) not null-->
+<!--   )-->
+<!--   /-->
 
-	<insert id="insertStoreCategory" parameterType="com.kh.baemin.store.vo.StoreInforVo">
-		<selectKey keyProperty="storeCategoryNo" resultType="string" order="BEFORE">
-			SELECT SEQ_STORE_CATEGORY_NO.NEXTVAL FROM DUAL
-		</selectKey>
-		INSERT INTO STORE_CATEGORY ( NO, NAME ) VALUES ( #{storeCategoryNo}, #{storeCategoryName} )
-	</insert>
+   <insert id="insertStoreCategory" parameterType="com.kh.baemin.store.vo.StoreInforVo">
+      <selectKey keyProperty="storeCategoryNo" resultType="string" order="BEFORE">
+         SELECT SEQ_STORE_CATEGORY_NO.NEXTVAL FROM DUAL
+      </selectKey>
+      INSERT INTO STORE_CATEGORY ( NO, NAME ) VALUES ( #{storeCategoryNo}, #{storeCategoryName} )
+   </insert>
 
-	<insert id="insertApprovalStatus" parameterType="com.kh.baemin.store.vo.StoreInforVo">
-		<selectKey keyProperty="approvalStatusNo" resultType="string" order="BEFORE">
-			SELECT SEQ_APPROVAL_STATUS_NO.NEXTVAL FROM DUAL
-		</selectKey>
-		INSERT INTO APPROVAL_STATUS ( NO, STATUS ) VALUES ( #{approvalStatusNo}, #{approvalStatus} )
-	</insert>
+   <insert id="insertApprovalStatus" parameterType="com.kh.baemin.store.vo.StoreInforVo">
+      <selectKey keyProperty="approvalStatusNo" resultType="string" order="BEFORE">
+         SELECT SEQ_APPROVAL_STATUS_NO.NEXTVAL FROM DUAL
+      </selectKey>
+      INSERT INTO APPROVAL_STATUS ( NO, STATUS ) VALUES ( #{approvalStatusNo}, #{approvalStatus} )
+   </insert>
 
-	<select id="getStoreCategoryList" resultType="com.kh.baemin.store.vo.StoreCategoryVo">
-		SELECT NO, NAME FROM STORE_CATEGORY
-	</select>
+   <select id="getStoreCategoryList" resultType="com.kh.baemin.store.vo.CategoryVo">
+      SELECT NO, NAME FROM STORE_CATEGORY
+   </select>
 
-	<insert id="insertStoreClosedDays">
-		INSERT INTO CLOSED_DAY (NO, STORE_NO, DAY, COMMENTS ) VALUES (SEQ_CLOSED_DAY_NO.NEXTVAL, #{storeNo}, #{closedDays}, 'TEST' )
-	</insert>
+   <insert id="insertStoreClosedDays">
+      INSERT INTO CLOSED_DAY (NO, STORE_NO, DAY, COMMENTS ) VALUES (SEQ_CLOSED_DAY_NO.NEXTVAL, #{storeNo}, #{closedDays}, 'TEST' )
+   </insert>
 
-	<delete id="deleteStoreClosedDays">
-		DELETE FROM CLOSED_DAY WHERE STORE_NO = #{storeNo}
-	</delete>
+   <delete id="deleteStoreClosedDays">
+      DELETE FROM CLOSED_DAY WHERE STORE_NO = #{storeNo}
+   </delete>
 
-	<select id="getClosedDays" resultType="com.kh.baemin.store.vo.ClosedDayVo">
-		<!--DAY YYYY-MM-DD format -->
-		SELECT NO, STORE_NO, TO_CHAR(DAY, 'YYYY-MM-DD') AS DAY, COMMENTS FROM CLOSED_DAY WHERE STORE_NO = #{no}
-	</select>
+   <select id="getClosedDays" resultType="com.kh.baemin.store.vo.ClosedDayVo">
+      <!--DAY YYYY-MM-DD format -->
+      SELECT NO, STORE_NO, TO_CHAR(DAY, 'YYYY-MM-DD') AS DAY, COMMENTS FROM CLOSED_DAY WHERE STORE_NO = #{no}
+   </select>
 
-	
+   
 </mapper>
 
 

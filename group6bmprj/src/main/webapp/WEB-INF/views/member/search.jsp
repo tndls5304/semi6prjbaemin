@@ -223,7 +223,7 @@
                 <c:when test="${empty searchText}">
                     <div class="main-div">
                         <strong class="margin-left">가장 많이 검색하고 있어요<br></strong>
-                        <small class="small-text" id="margin-left">05.15 기준</small>
+                        <small class="small-text" id="margin-left">06.05 기준</small>
                             <%--                <img src="/baemin/resources/img/popular.jpg" class="popular">--%>
                         <div class="main-div2">
 
