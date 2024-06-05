@@ -90,6 +90,7 @@
 // 작동하는지 안하는지 정확히모름 일단 만들어놓음
 function paymentRequest() {
             $("#frm").submit();
+            alert("주문이 완료되었습니다.");
         }
   
   

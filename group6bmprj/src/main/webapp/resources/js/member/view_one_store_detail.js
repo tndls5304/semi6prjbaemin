@@ -55,7 +55,7 @@ function addCart(foodNo){
         
         success: function(result) {
 		
-            alert('result');
+            alert('장바구니 담기 성공!');
         },
         error: function(error) {
 			alert("장바구니 추가중 통신실패")
