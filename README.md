@@ -37,6 +37,7 @@ UI
 
 ![image](https://github.com/user-attachments/assets/b178ad31-7f22-4765-9e05-c55a7ef4bb1d)
 
+![image](https://github.com/user-attachments/assets/0ff79c11-6d8b-4f23-a29d-2d2c81f397a8)
 
 
 
