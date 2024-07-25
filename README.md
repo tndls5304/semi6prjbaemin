@@ -4,11 +4,12 @@
 
 
 
-# Bae
+# BaeMin
 
  # 프로젝트 소개 : 배달 어플 
 
-![image](https://github.com/user-attachments/assets/e6f5bd7d-bb66-4662-a373-d33266da2e7d)
+![image](https://github.com/user-attachments/assets/c0645535-5975-4114-ac52-8df3c3d0294c)
+
 
 
 
@@ -26,7 +27,8 @@
 
 ERD
 
-![image](https://github.com/user-attachments/assets/007b64dd-93e7-452b-bf75-c440f76a6012)
+![image](https://github.com/user-attachments/assets/69055350-5885-446a-ae28-f746ab669241)
+
 
 UI  
 ![image](https://github.com/user-attachments/assets/05985b3b-d3e5-42cb-a7f4-fda8b817040d)
