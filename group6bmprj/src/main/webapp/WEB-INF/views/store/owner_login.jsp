@@ -20,28 +20,16 @@
 </head>
 <body>
 
- <aside>
-        <nav>
-            <ul>
-                
-                <li><a href=""><h1>사장님 페이지</h1></a></li>
-                <li><a href="">스토어 허가 신청</a></li>
-                <li><a href="">주문관리🕗</a></li>
-                <li><a href="">스토어 관리</a></li>
-                <li><a href="/baemin/store/category_list">음식메뉴편집</a></li>
-                <li><a href="">매출관리</a></li>
-                <li><a href="">리뷰관리</a></li>
-                <li> <button onclick="location.href='/baemin/store/store_owner_join'">회원가입</button></li>
-
-            </ul>
-        </nav>
+    <aside>
+   		 <%@ include file="/WEB-INF/views/store/common/nav.jsp" %>
     </aside>
+
     <main>
         <!-- 로그인 로고 -->
         <div class="mainjoin">
             <h1>사장 로그인 📃</h1>
         </div>
-        <form  action="/baemin/store/store_owner_login" method="post">
+        <form  action="/baemin/store/login" method="post">
             <div class="form-group">
                 <!-- 아이디 -->
                 <label for="id"><h3>아이디</h3> </label>

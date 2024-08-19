@@ -17,7 +17,10 @@ import javax.servlet.http.Part;
 
 import com.kh.baemin.store.service.StoreMenuService;
 import com.kh.baemin.store.vo.FoodInforVo;
-
+/**
+ * 스토어 사장님 파는 음식 메뉴 추가 요청
+ * @author 이수인
+ */
 @MultipartConfig(maxFileSize = 1024 * 1024 * 50, maxRequestSize = 1024 * 1024 * 100, fileSizeThreshold = 1024 * 1024
 		* 10)
 
@@ -32,17 +35,15 @@ public class StoreMenuAddController extends HttpServlet {
 
 			// 세션에서 가게넘버 빼자
 			String storeNo = (String) session.getAttribute("storeNo");
-			
+
 			// TODO StoreNo
-			 storeNo = "4";
+			storeNo = "7";
 
 			// TODO ui구현
-
 			String categyryNo = req.getParameter("categyryNo");
 			String name = req.getParameter("name");
 			String price = req.getParameter("price");
 			Part foodImg = req.getPart("foodImg");
-
 			String viewYn = req.getParameter("view_yn");
 
 			String changeName = "";

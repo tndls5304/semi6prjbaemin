@@ -12,7 +12,11 @@ import javax.servlet.http.HttpSession;
 import com.kh.baemin.store.service.StoreMenuService;
 import com.kh.baemin.store.vo.CategoryVo;
 import com.kh.baemin.store.vo.StoreOwnerVo;
-
+/**
+ * 스토어관리 카테고리 추가 요청
+ * 
+ * @author 이수인
+ */
 @WebServlet("/store/category_add")
 public class StoreCategoryAddController extends HttpServlet {
 
@@ -20,7 +24,6 @@ public class StoreCategoryAddController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 	}
-
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -29,18 +32,16 @@ public class StoreCategoryAddController extends HttpServlet {
 			
 			//세션에서 가게넘버 빼자
 			String storeNo=(String) session.getAttribute("storeNo");
-		
 			
 			String name=req.getParameter("name");
 			String viewYn=req.getParameter("viewYn");
-	
-			
+		
 			CategoryVo vo=new CategoryVo();
 			vo.setName(name);
 			vo.setViewYn(viewYn);
 			
 			//TODO StoreNo
-			vo.setStoreNo("4");
+			vo.setStoreNo("7");
 
 			 StoreMenuService sms=new  StoreMenuService();;
 			int result=sms.categoryAdd(vo);
@@ -51,7 +52,6 @@ public class StoreCategoryAddController extends HttpServlet {
 				req.setAttribute("resultMsg", "카테고리 추가 실패!ㅜㅜ");
 			}
 			resp.sendRedirect("/baemin/store/category_list");
-			
 		}
 		catch(Exception e){
 			e.printStackTrace();

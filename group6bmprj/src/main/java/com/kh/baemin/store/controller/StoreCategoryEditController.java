@@ -11,7 +11,11 @@ import javax.servlet.http.HttpSession;
 
 import com.kh.baemin.store.service.StoreMenuService;
 import com.kh.baemin.store.vo.CategoryVo;
-
+/**
+ * 스토어 관리:카테고리 수정 요청
+ * 
+ * @author 이수인
+ */
 @WebServlet("/store/category_edit")
 public class StoreCategoryEditController extends HttpServlet{
 
@@ -29,9 +33,6 @@ public class StoreCategoryEditController extends HttpServlet{
 			
 			//세션에서 가게넘버 빼자
 			String storeNo=(String) session.getAttribute("storeNo");
-		
-			
-			
 			
 			String categoryNoText=req.getParameter("categoryNoText");	
 			//뽑아내는 categoryNoText는 "checkCategoryNo-10"문자열 형태다 숫자만 뽑아내는작업 하기
@@ -39,7 +40,6 @@ public class StoreCategoryEditController extends HttpServlet{
 			String no=categoryNoText.substring(indexOfDash+1);
 			String name=req.getParameter("name");
 			String viewYn=req.getParameter("viewYn");
-	System.out.println(no);
 			
 			CategoryVo vo=new CategoryVo();
 			vo.setNo(no);
@@ -47,7 +47,7 @@ public class StoreCategoryEditController extends HttpServlet{
 			vo.setViewYn(viewYn);
 		
 			//TODO StoreNo
-			vo.setStoreNo("4");
+			vo.setStoreNo("7");
 
 			 StoreMenuService sms=new StoreMenuService();;
 			int result=sms.categoryEdit(vo);
