@@ -16,23 +16,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 </head>
 <body>
-    <aside>
-        <nav>
-            <ul>
-                <li><a href=""><h1>사장님 페이지</h1></a></li>
-                <li><a href="">스토어 허가 신청</a></li>
-                <li><a href="">주문관리🕗</a></li>
-                <li><a href="">스토어 관리</a></li>
-                <li><a href="">회원관리</a></li>
-                <li><a href="">음식메뉴편집</a></li>
-                <li><a href="">매출관리</a></li>
-                <li><a href="">리뷰관리</a></li>
-                <li><a href="">
-                 <button>로그아웃</button></a></li>
-            </ul>
-        </nav>
-    </aside>
 
+    <aside>
+   		<%@ include file="/WEB-INF/views/store/common/nav.jsp" %>
+    </aside>
+    
     <main>
         <div class="header">
             <h2>주문 관리</h2>

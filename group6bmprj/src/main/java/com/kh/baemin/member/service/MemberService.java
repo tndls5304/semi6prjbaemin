@@ -29,9 +29,7 @@ public class MemberService {
 		if (vo.getId().length() < 4 || vo.getId().length() > 10) {
 			System.out.println("1");
 			throw new Exception("아이디는 4~10자여야 합니다. ");
-
 		}
-
 		// 비밀번호 길이 검사 (4자 이상 10자 이하)
 		if (vo.getPwd().length() < 4 || vo.getPwd().length() > 10) {
 
@@ -86,7 +84,7 @@ public class MemberService {
 
 			throw new Exception("유저 사진을 업로드해주세요.");
 		}
-//	- DAO호출
+		//	- DAO호출
 		SqlSession ss = getSqlSession();
 		int result = dao.join(ss, vo);
 
@@ -221,48 +219,44 @@ public class MemberService {
 		}
 		return result;
 	}
-	
-	
+
 	public List<DeliveryProblemVo> selectDeliveryProblem() throws IOException {
 		SqlSession ss = getSqlSession();
 		return dao.selectDeliveryProblem(ss);
 	}
 
-	public List<ReviewWriterVo> selectRating()throws IOException {
+	public List<ReviewWriterVo> selectRating() throws IOException {
 		SqlSession ss = getSqlSession();
 		return dao.selectRating(ss);
 	}
 
-	
 	public List<MemberCartVo> selectCartByUser(String no) throws IOException {
 		SqlSession ss = getSqlSession();
 		return dao.selectCartByUser(ss, no);
 	}
-	
-    public MemberVo getMember(String no) {
-        try(SqlSession ss = getSqlSession()) {
-            return dao.getMember(ss, no);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
-    public void insertOrder(MemberOrderVo memberOrderVo) throws IOException {
-        try(SqlSession ss = getSqlSession()) {
-            try {
-                // 주문 상태
-                dao.insertStatus(ss, memberOrderVo);
-                // 주문
-                dao.insertOrder(ss, memberOrderVo);
-                // 주문 상세
-                dao.insertOrderDetail(ss, memberOrderVo);
-                ss.commit();
-            } catch (Exception e) {
-                ss.rollback();
-            }
-        }
-    }
+	public MemberVo getMember(String no) {
+		try (SqlSession ss = getSqlSession()) {
+			return dao.getMember(ss, no);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
-	
+	public void insertOrder(MemberOrderVo memberOrderVo) throws IOException {
+		try (SqlSession ss = getSqlSession()) {
+			try {
+				// 주문 상태
+				dao.insertStatus(ss, memberOrderVo);
+				// 주문
+				dao.insertOrder(ss, memberOrderVo);
+				// 주문 상세
+				dao.insertOrderDetail(ss, memberOrderVo);
+				ss.commit();
+			} catch (Exception e) {
+				ss.rollback();
+			}
+		}
+	}
 
 }

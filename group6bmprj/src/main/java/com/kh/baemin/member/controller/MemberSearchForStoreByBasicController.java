@@ -14,7 +14,10 @@ import com.kh.baemin.member.service.MemberSearchForStoreService;
 import com.kh.baemin.member.vo.MemberVo;
 import com.kh.baemin.member.vo.SearchForStoreVo;
 import com.kh.baemin.store.vo.StoreInforVo;
-
+/**
+ * 일반회원의 가게 조회 
+ * @author 이수인
+ */
 @WebServlet("/member/search_store_by_basic")
 public class MemberSearchForStoreByBasicController extends HttpServlet {
 

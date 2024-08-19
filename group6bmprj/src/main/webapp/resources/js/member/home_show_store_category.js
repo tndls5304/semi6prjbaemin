@@ -9,17 +9,12 @@ function trychangeAddress() {
 var inputAddress = document.querySelector("#input-address");
 inputAddress.addEventListener("input", function() { inputAddress.value = inputAddress.value.replace(/\s+/g, '') });
 
-
-
-
 //상세주소는 서블릿에 요청보내기전에 트림적용
 var inputAddressDetail = document.querySelector("#input-addressDetail");
 inputAddressDetail.addEventListener("keyup", function() {
 	inputAddressDetail.value = inputAddressDetail.value.trim();
 
 })
-
-
 
 //주소바꾸기 취소버튼
 function cancelAddressChange() {

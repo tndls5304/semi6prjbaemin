@@ -7,42 +7,42 @@
 
 <mapper namespace="memberSearchForStoreMapper">
 
-   <resultMap type="com.kh.baemin.store.vo.StoreInforVo"
-      id="storeInforMap">
-      <id column="NO" property="no" />
-      <result column="NAME" property="name" />
-      <result column="ADDRESS" property="address" />
-      <result column="ADDRESS_DETAIL" property="addressDetail" />
-      <result column="BUSINESS_REGISTRATION_CERTIFICATE_IMG"
-         property="businessRegistrationCertificateImg" />
-      <result column="INTRODUCTION_IMG" property="introductionImg" />
+	<resultMap type="com.kh.baemin.store.vo.StoreInforVo"
+		id="storeInforMap">
+		<id column="NO" property="no" />
+		<result column="NAME" property="name" />
+		<result column="ADDRESS" property="address" />
+		<result column="ADDRESS_DETAIL" property="addressDetail" />
+		<result column="BUSINESS_REGISTRATION_CERTIFICATE_IMG"
+			property="businessRegistrationCertificateImg" />
+		<result column="INTRODUCTION_IMG" property="introductionImg" />
 
-      <result column="INTRODUCE" property="introduce" />
-      <result column="MAIN_IMG" property="mainImg" />
+		<result column="INTRODUCE" property="introduce" />
+		<result column="MAIN_IMG" property="mainImg" />
 
-      <result column="PHONE" property="phone" />
-      <result column="MINIMUM_ORDER_AMOUNT"
-         property="minimumOrderAmount" />
-      <result column="VIEWED_CNT" property="viewedCnt" />
-      <result column="OPEN_TIME" property="openTime" />
-      <result column="END_TIME" property="endTime" />
-      <result column="BREAK_TIME_START" property="breakTimeStart" />
-      <result column="BREAK_TIME_END" property="breakTimeEnd" />
-      <result column="STORE_OWNER_NO" property="storeOwnerNo" />
-      <result column="STORE_CATEGORY_NO" property="storeCategoryNo" />
-      <result column="APPROVAL_STATUS_NO" property="approvalStatusNo" />
+		<result column="PHONE" property="phone" />
+		<result column="MINIMUM_ORDER_AMOUNT"
+			property="minimumOrderAmount" />
+		<result column="VIEWED_CNT" property="viewedCnt" />
+		<result column="OPEN_TIME" property="openTime" />
+		<result column="END_TIME" property="endTime" />
+		<result column="BREAK_TIME_START" property="breakTimeStart" />
+		<result column="BREAK_TIME_END" property="breakTimeEnd" />
+		<result column="STORE_OWNER_NO" property="storeOwnerNo" />
+		<result column="STORE_CATEGORY_NO" property="storeCategoryNo" />
+		<result column="APPROVAL_STATUS_NO" property="approvalStatusNo" />
 
 
-      <result column="APPROVAL_STATUS_NO" property="approvalStatusNo" />
-      <collection property="foodImgList" ofType="string"
-         javaType="list">
-         <result column="FOOD_IMG" />
-      </collection>
-   </resultMap>
+		<result column="APPROVAL_STATUS_NO" property="approvalStatusNo" />
+		<collection property="foodImgList" ofType="string"
+			javaType="list">
+			<result column="FOOD_IMG" />
+		</collection>
+	</resultMap>
 
-   <select id="searchForStoreByBasic" resultMap="storeInforMap">
+	<select id="searchForStoreByBasic" resultMap="storeInforMap">
    <![CDATA[
-   SELECT 
+   SELECT 																											
          R.NO
          ,R.NAME
          ,R.ADDRESS
@@ -86,7 +86,7 @@
                ,S.APPROVAL_STATUS_NO
                ,S.OPEN_YN
                ,F.FOOD_IMG
-               ,RANK() OVER (PARTITION BY S.no ORDER BY F.NO DESC)    AS  RK 
+               ,RANK() OVER (PARTITION BY S.no ORDER BY F.NO ASC)    AS  RK 
                FROM STORE_INFOR S 
                JOIN FOOD_INFOR F                  ON F.STORE_NO = S.NO
                LEFT JOIN CLOSED_DAY C             ON S.NO    =   C.STORE_NO
@@ -100,126 +100,128 @@
                AND S.OPEN_TIME <TO_CHAR(SYSDATE, 'HH24MISS')
                AND S.END_TIME > TO_CHAR(SYSDATE, 'HH24MISS')
                  AND ( S.BREAK_TIME_START IS NULL OR S.BREAK_TIME_END IS NULL
-            AND  TO_CHAR(SYSDATE, 'HH24MISS') NOT BETWEEN S.BREAK_TIME_START AND  S.BREAK_TIME_END )
-              
+            AND  TO_CHAR(SYSDATE, 'HH24MISS') NOT BETWEEN S.BREAK_TIME_START AND  S.BREAK_TIME_END )            
             AND ( C.DAY IS NULL OR TRUNC(C.DAY) != TRUNC(SYSDATE))
         ) R
-   WHERE RK<5
+   WHERE RK<5                                    																				
    
    ]]>
-   </select>
+	</select>
 
 
 
 
-   <resultMap id="MemberViewStoreInforMap"
-      type="com.kh.baemin.member.vo.MemberViewStoreInforVo">
-      <id column="NO" property="no" />
-      <result property="name" column="NAME" />
-      <result property="address" column="ADDRESS" />
-      <result property="addressDetail" column="ADDRESS_DETAIL" />
-      <result property="introductionImg" column="INTRODUCTION_IMG" />
-      <result property="introduce" column="INTRODUCE" />
-      <result property="mainImg" column="MAIN_IMG" />
-      <result property="phone" column="PHONE" />
-      <result property="minimumOrderAmount"
-         column="MINIMUM_ORDER_AMOUNT" />
-      <result property="viewedCnt" column="VIEWED_CNT" />
-      <result property="openTime" column="OPEN_TIME" />
-      <result property="endTime" column="END_TIME" />
-      <result property="breakTimeStart" column="BREAK_TIME_START" />
-      <result property="breakTimeEnd" column="BREAK_TIME_END" />
-      <collection property="closedayList"
-         ofType="com.kh.baemin.member.vo.ClosedayVo">
-         <result property="closeday" column="DAY" />
-         <result property="closeComment" column="COMMENTS" />
-      </collection>
-   </resultMap>
+	<resultMap id="MemberViewStoreInforMap"
+		type="com.kh.baemin.member.vo.MemberViewStoreInforVo">
+		<id column="NO" property="no" />
+		<result property="name" column="NAME" />
+		<result property="address" column="ADDRESS" />
+		<result property="addressDetail" column="ADDRESS_DETAIL" />
+		<result property="introductionImg" column="INTRODUCTION_IMG" />
+		<result property="introduce" column="INTRODUCE" />
+		<result property="mainImg" column="MAIN_IMG" />
+		<result property="phone" column="PHONE" />
+		<result property="minimumOrderAmount"
+			column="MINIMUM_ORDER_AMOUNT" />
+		<result property="viewedCnt" column="VIEWED_CNT" />
+		<result property="openTime" column="OPEN_TIME" />
+		<result property="endTime" column="END_TIME" />
+		<result property="breakTimeStart" column="BREAK_TIME_START" />
+		<result property="breakTimeEnd" column="BREAK_TIME_END" />
+		<collection property="closedayList"
+			ofType="com.kh.baemin.member.vo.ClosedayVo">
+			<result property="closeday" column="DAY" />
+			<result property="closeComment" column="COMMENTS" />
+		</collection>
+	</resultMap>
 
-   <select id="memberViewStoreInfor"
-      resultMap="MemberViewStoreInforMap">
-      SELECT
-      s.NO,
-      S.NAME,
-      S.ADDRESS,
-      S.ADDRESS_DETAIL,
-      S.INTRODUCTION_IMG,
-      S.INTRODUCE,
-      S.MAIN_IMG,
-      S.PHONE,
-      S.MINIMUM_ORDER_AMOUNT,
-      S.VIEWED_CNT,
-      S.OPEN_TIME,
-      S.END_TIME,
-      S.BREAK_TIME_START,
-      S.BREAK_TIME_END,
-      C.DAY,
-      C.COMMENTS
-      FROM STORE_INFOR S
-      LEFT JOIN CLOSED_DAY C ON S.NO = C.STORE_NO
-      WHERE S.NO = #{value}
+	<select id="memberViewStoreInfor"
+		resultMap="MemberViewStoreInforMap">
+		SELECT
+		s.NO,
+		S.NAME,
+		S.ADDRESS,
+		S.ADDRESS_DETAIL,
+		S.INTRODUCTION_IMG,
+		S.INTRODUCE,
+		S.MAIN_IMG,
+		S.PHONE,
+		S.MINIMUM_ORDER_AMOUNT,
+		S.VIEWED_CNT,
+		S.OPEN_TIME,
+		S.END_TIME,
+		S.BREAK_TIME_START,
+		S.BREAK_TIME_END,
+		C.DAY,
+		C.COMMENTS
+		FROM STORE_INFOR S
+		LEFT JOIN CLOSED_DAY C ON S.NO = C.STORE_NO
+		WHERE S.NO = #{value}
 
-   </select>
-
-
+	</select>
 
 
 
 
 
 
-   <resultMap id="StoreOfFoodCategoryMap"
-      type="com.kh.baemin.member.vo.StoreOfFoodCategoryVo">
-
-      <id column="CATEGORY_NO" property="no" />
-      <result column="CATEGORY_NAME" property="name" />
-
-      <collection property="foodInforVoList"
-         ofType="com.kh.baemin.member.vo.FoodInforVo">
-         <result property="no" column="NO" />
-         <result property="name" column="NAME" />
-         <result property="price" column="PRICE" />
-         <result property="foodImg" column="FOOD_IMG" />
-      </collection>
-   </resultMap>
 
 
+	<resultMap id="StoreOfFoodCategoryMap"
+		type="com.kh.baemin.member.vo.StoreOfFoodCategoryVo">
 
-   <select id="memberViewStoreFoodMenu"
-      resultMap="StoreOfFoodCategoryMap">
+		<id column="CATEGORY_NO" property="no" />
+		<result column="CATEGORY_NAME" property="name" />
 
-      SELECT
-      C.NO AS CATEGORY_NO
-      ,C.NAME AS CATEGORY_NAME
-      ,F.NO
-      ,F.NAME
-      ,F.PRICE
-      ,F.FOOD_IMG
-      FROM FOOD_MENU_CATEGORY C
-      JOIN FOOD_INFOR F ON
-      C.NO=F.FOOD_MENU_CATEGORY_NO
-      WHERE C.STORE_NO=#{value} AND
-      C.VIEW_YN='Y' AND C.DEL_YN='N' AND F.VIEW_YN='Y' AND F.DEL_YN='N'
-      ORDER BY C.NO, F.NO
-
-   </select>
+		<collection property="foodInforVoList"
+			ofType="com.kh.baemin.member.vo.FoodInforVo">
+			<result property="no" column="NO" />
+			<result property="name" column="NAME" />
+			<result property="price" column="PRICE" />
+			<result property="foodImg" column="FOOD_IMG" />
+		</collection>
+	</resultMap>
 
 
-   <select id="memberViewReview"
-      resultType="com.kh.baemin.member.vo.OneStoreReviewVo">
 
-      SELECT
-      R.IMG
-      ,R.RATING
-      ,R.USER_CONTENT
-      ,R.STORE_CONTENT
-      ,R.ENROLL_DATE
-      FROM REVIEW_COMMUNICATION R
-      JOIN ORDER_SHEET O ON R.ORDER_NO=O.NO
-      WHERE O.STORE_NO=#{value}
-      AND O.STATUS_NO='6'
-      AND R.DEL_YN='N'
-   </select>
+	<select id="memberViewStoreFoodMenu"
+		resultMap="StoreOfFoodCategoryMap">
+
+		SELECT
+		C.NO AS CATEGORY_NO
+		,C.NAME AS CATEGORY_NAME
+		,F.NO
+		,F.NAME
+		,F.PRICE
+		,F.FOOD_IMG
+		FROM FOOD_MENU_CATEGORY C
+		JOIN FOOD_INFOR F
+		ON
+		C.NO=F.FOOD_MENU_CATEGORY_NO
+		WHERE C.STORE_NO=#{value} AND
+		C.VIEW_YN='Y' AND C.DEL_YN='N' AND F.VIEW_YN='Y' AND F.DEL_YN='N'
+		ORDER BY C.NO, F.NO
+
+	</select>
+
+
+	<select id="memberViewReview"
+		resultType="com.kh.baemin.member.vo.OneStoreReviewVo">
+
+		SELECT
+		R.IMG
+		,R.RATING
+		,R.USER_CONTENT
+		,R.STORE_CONTENT
+		,R.ENROLL_DATE
+		FROM REVIEW_COMMUNICATION R
+		JOIN ORDER_SHEET O ON
+		R.ORDER_NO=O.NO
+		WHERE O.STORE_NO=#{value}
+		AND O.STATUS_NO='6'
+		AND
+		R.DEL_YN='N'
+	</select>
 
 
 </mapper>
