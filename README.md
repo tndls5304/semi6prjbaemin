@@ -19,14 +19,13 @@
 ---
 
 ### 🔸회원화면 일식 버튼 눌렀을때 일식 가게들의 정보
-
-https://github.com/user-attachments/assets/081f2e64-2e5d-40e9-9b78-3510628b14ee
-
----
+![image](https://github.com/user-attachments/assets/4787b3f2-6e55-413b-b9f3-9874fd0f2ff7)
 
 ### 🔸위 화면에서 각 가게마다 음식사진을 4개만 설정하기 위해서 고민을 해봤다
+![image](https://github.com/user-attachments/assets/de9ce2c0-6086-4c1e-8066-7de0e715f66e)
+![image](https://github.com/user-attachments/assets/4ee319f6-b491-4832-980b-3ebb2585498d)
+![image](https://github.com/user-attachments/assets/d970ae2f-629e-4aaa-b030-c2953ba15adb)
 
-https://github.com/user-attachments/assets/a2e41dbe-673d-4376-ab58-601e5a7c6e1a
 
 단순히 사용자와 가게의 영업 주소가 일치하는 가게를 조회 해오는데 그치지 않고 여러 필터링을 통해 (운영 중인 식당만 조회, 현재 시간이 휴식 시간 외에 있는 식당,식당의 휴무일이 없거나, 오늘이 휴무일이 아닌 식당 등 )
 <br>
@@ -35,8 +34,8 @@ https://github.com/user-attachments/assets/a2e41dbe-673d-4376-ab58-601e5a7c6e1a
 ---
 
 ### 🔸사장님의 파는 음식 등록 :편집 페이지
+![image](https://github.com/user-attachments/assets/e72cb512-4bcb-4d08-a635-2c300c883267)
 
-https://github.com/user-attachments/assets/8af2ddb8-bc26-4547-bdfb-4b0438b12cef
 
 카테고리 등록,추가,삭제,수정 가능
 <br>
@@ -46,13 +45,14 @@ https://github.com/user-attachments/assets/8af2ddb8-bc26-4547-bdfb-4b0438b12cef
 
 ### 🔸회원화면 (주소 재 설정, 음식 카테고리 선택)
 
-https://github.com/user-attachments/assets/9d170a02-a189-4e4c-93a2-aa28058f556a
+![image](https://github.com/user-attachments/assets/f2d3f416-da7c-4506-a05d-11849ab82fc1)
 
 ---
 
 ### 🔸회원화면 (가게 하나를 클릭했을때 보이는 화면) :장바구니 추가 가능
 
-https://github.com/user-attachments/assets/614cb95e-cfe7-4f1f-ac69-22621800b7dc
+![image](https://github.com/user-attachments/assets/f4148ef5-f746-4a8c-b6b4-2d4a08e1a917)
+
 
 ### 🔸관리자 화면 회원 검색, 상세보기, 계정삭제하기 (모두ajax로)
 
