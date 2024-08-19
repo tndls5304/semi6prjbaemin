@@ -74,8 +74,7 @@
 
 ## 스프링은
 
-https://github.com/user-attachments/assets/d5404042-f6b1-495b-b663-cfaa538a95f0
-
+![image](https://github.com/user-attachments/assets/ece06709-4228-483d-8547-62d48fddf8e0)
 컨트롤러: 스프링 부트에서는 @Controller 또는 @RestController 어노테이션을 사용하여 컨트롤러를 정의한다.
 <br>
 메서드에 @RequestMapping, @GetMapping, @PostMapping 등의 어노테이션을 사용하여 요청을 매핑한다.이로 인해 요청 처리가 간결하고 명확해짐.
