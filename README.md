@@ -10,12 +10,20 @@
 <br>
 사장님, 일반회원 계정 관리:회원가입, 로그인
 <br>
- ### 사장님의 파는 음식 편집 페이지
+ ### 사장님의 파는 음식 등록 :편집 페이지
 
 ![image](https://github.com/user-attachments/assets/8af2ddb8-bc26-4547-bdfb-4b0438b12cef)
 
 ### 회원화면 (주소 재 설정, 음식 카테고리 선택)
 ![image](https://github.com/user-attachments/assets/9d170a02-a189-4e4c-93a2-aa28058f556a)
+
+
+### 회원화면 일식 버튼 눌렀을때
+![image](https://github.com/user-attachments/assets/081f2e64-2e5d-40e9-9b78-3510628b14ee)
+
+![image](https://github.com/user-attachments/assets/614cb95e-cfe7-4f1f-ac69-22621800b7dc)
+
+
 
 <br>
  # 프로젝트 소개 : 배달 어플 
