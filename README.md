@@ -1,6 +1,9 @@
 
 
 # BaeMin
+## 🧱 프로젝트 설계
+ ### ERD : 첫 과제라 디비 모델링은 파트를 나누지 않고 다 같이 하였다 
+![image](https://github.com/user-attachments/assets/d23ec0ac-f70b-4c1e-802e-347109661c91)
 
 
  ## 이수인 : 담당 기능
@@ -30,6 +33,38 @@
 ![image](https://github.com/user-attachments/assets/614cb95e-cfe7-4f1f-ac69-22621800b7dc)
 
 * * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * *  
+ # 배민으로 전통적인 서블릿 처리 방식 (Eclipse에서 실행)으로 작업해보고 추후에 스프링부트로 작업 한 뒤 차이점에 대해 정리
+  ## 전통적인 서블릿 방식 
+ 컨트롤러: 요청을 처리하는 서블릿 클래스는 HttpServlet을 상속받아 doGet, doPost 메서드를 구현해야 한다. 요청에 대한 처리는 서블릿 클래스 내부에서 직접 구현해야 했다.
+    <br>
+ 각 서블릿 클래스는 별도의 인스턴스로 생성되며, 요청 URL에 따라 서블릿이 직접 처리한다.
+    <br>
+ 라이브러리 관리: 각종 라이브러리를 수동으로 관리해야 하며, 의존성 관리가 번거롭다.
+    <br>
+ 서블릿 인스턴스가 여러 개일 수 있으며, URL 패턴에 따라 서블릿을 직접 설정하고 요청을 처리한다.
+    <br>
+ 서블릿 설정은 web.xml 파일에서 이루어진다.서블릿 매핑, 초기화 파라미터, 리스너, 필터 등을 설정할 수 있는데. web.xml이 커지면 관리가 복잡해질 수 있다 
+   ## 스프링은
+   ![image](https://github.com/user-attachments/assets/d5404042-f6b1-495b-b663-cfaa538a95f0)
+   컨트롤러: 스프링 부트에서는 @Controller 또는 @RestController 어노테이션을 사용하여 컨트롤러를 정의한다.
+   <br>
+   메서드에 @RequestMapping, @GetMapping, @PostMapping 등의 어노테이션을 사용하여 요청을 매핑한다.이로 인해 요청 처리가 간결하고 명확해짐.
+   <br>
+   스프링부트로 작업하면 모든 HTTP 요청은 DispatcherServlet을 통해 중앙에서 처리한다.
+   <br>
+서블릿 초기화: 서블릿 초기화는 init 메서드에서 이루어진다. 서블릿이 처음 로드될 때 한 번만 호출된다
+* * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * *  
+ # 📚 기술 스택 📚
+✨ 플랫폼 & 언어 ✨
+
+![image](https://github.com/user-attachments/assets/21e67bd2-b816-4b16-86bb-0cb5b83d1997)
+
+🛠 사용 툴 🛠
+
+![image](https://github.com/user-attachments/assets/2601a8c3-fe2e-42d6-bb59-bd1f366c410a)
+
+
+
 # 프로젝트 소개 : 배달 어플 
 ![image](https://github.com/user-attachments/assets/c0645535-5975-4114-ac52-8df3c3d0294c)
 * * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * *  
@@ -37,34 +72,6 @@
  #  📅 프로젝트 기간
 2024-04-29 ~ 2024-06-03
 * * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * *  
-
-
- # 🧱 프로젝트 설계
-* * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * ** * *  
-ERD
-
-![image](https://github.com/user-attachments/assets/69055350-5885-446a-ae28-f746ab669241)
-
-
-
-
-
-
-
- # 📚 기술 스택 📚
-✨ 플랫폼 & 언어 ✨
-
-![image](https://github.com/user-attachments/assets/21e67bd2-b816-4b16-86bb-0cb5b83d1997)
-
-
-
-   
-
-
-🛠 사용 툴 🛠
-
-![image](https://github.com/user-attachments/assets/2601a8c3-fe2e-42d6-bb59-bd1f366c410a)
-
 
 
 
